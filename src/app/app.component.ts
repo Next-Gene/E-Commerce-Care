@@ -4,9 +4,10 @@ import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
+import { HomeComponent } from "./features/pages/home/home.component";
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

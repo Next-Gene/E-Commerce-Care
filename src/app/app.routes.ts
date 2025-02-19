@@ -8,12 +8,12 @@ import { AboutComponent } from './features/pages/about/about.component';
 import { CategoriesComponent } from './features/pages/categories/categories.component';
 
 export const routes: Routes = [
-    {  path:'' , component:HomeComponent,
-        children :[
-            {path:'', redirectTo:'about', pathMatch:'full'},
-            {path:'about',component:AboutComponent},
-            {path:'categories', component:CategoriesComponent},
-        ]},
+    {path:'' , redirectTo:'home', pathMatch:'full'},
+
+    {path:'home' , component:HomeComponent},
+    {path:'about',component:AboutComponent},
+    {path:'categories', component:CategoriesComponent},
+        ];
 
     
-];
+
