@@ -1,0 +1,57 @@
+@if (formName.get(controlName)?.errors && formName.get(controlName)?.touched) {
+<div class="ml-8">
+<ul>
+@if (formName.get(controlName)?.getError('required')) {
+<li>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">Required</p>
+</li>
+}
+@if (formName.get(controlName)?.getError('maxlength')&& controlName!="phone") {
+<li>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">The Name Should Be Less Than 20 Letters</p>
+</li>
+}
+
+@if (formName.get(controlName)?.getError('minlength')&& controlName!="phone") {
+<li>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">The Name Should Be More than 2 Letters</p>
+</li>   
+}
+@if (formName.get(controlName)?.getError(controlName)) {                    
+<li>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">You Should Write Your Email</p>        
+</li>              
+}
+@if (formName.get(controlName)?.getError('pattern')) {
+<li>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">
+Password must be at least 8 characters, include an uppercase letter, a number, and a special character.
+</p>
+</li>
+}  
+@if (formName.get(controlName)?.getError('maxlength') && controlName=="phone") {
+    <li>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">you should write phone number</p>
+    </li>
+    }
+    @if (formName.get(controlName)?.getError('minlength') && controlName=="phone") {
+    <li>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">you should write phone number</p>
+    </li>   
+    }
+</ul>
+
+</div>
+}
+
+
+
+
+ 
+@if (formName.getError('missmatch') && formName.get(controlName)?.touched && controlName == 'rePassword') {
+<ul>
+<p class="mt-2 text-sm text-red-600 dark:text-red-500">
+MissMatch password</p>  
+</ul>
+
+}
