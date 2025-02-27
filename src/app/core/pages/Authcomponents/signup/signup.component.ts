@@ -8,14 +8,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { AlertsComponent } from '../../../../shared/components/ui/alerts/alerts.component';
 import { EmailInputComponent } from '../../../../shared/components/ui/email-input/email-input.component';
 import { BackgroundComponent } from '../../../../shared/components/ui/background/background.component';
-import { IconComponent } from '../../../../shared/components/ui/icon/icon.component';
 import { RegButtonComponent } from '../../../../shared/components/ui/reg-button/reg-button.component';
 import { AuthApiService } from '../../../../../../projects/auth-api/src/public-api';
 import { validsignup } from '../../../../shared/utilites/validsignup';
 
 @Component({
   selector: 'app-signup',
-  imports: [AlertsComponent, EmailInputComponent, ReactiveFormsModule, BackgroundComponent, IconComponent, RegButtonComponent],
+  imports: [AlertsComponent, EmailInputComponent, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -24,7 +23,7 @@ export class SignupComponent {
 
   private _router = inject(Router)
   errormessage : string="";
-  private _auth=inject(AuthApiService)
+  private _AuthApiService=inject(AuthApiService)
   register:FormGroup=new FormGroup({
   username:new FormControl(null,validsignup.name),
   firstName:new FormControl(null,validsignup.name),
@@ -39,8 +38,8 @@ export class SignupComponent {
   }
 
 
-  getdata = () => {
-    this._auth.Regester(this.register.value)
+  signup= () => {
+    this._AuthApiService.Regester(this.register.value)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe({
         next: (res: any) => {

@@ -1,0 +1,19 @@
+<div class="mt-10 pb-7 flex w-full flex-col lg:flex-row">
+<div class="w-full  lg:w-2/3 h-full sm:pl-0 pl-16  pr-16">
+  <owl-carousel-o  [options]="carouselOptions">
+    @for (image of images; track image.id) {
+    <ng-template carouselSlide><img [src]="image.path" alt=""></ng-template>  
+    }
+  </owl-carousel-o>
+</div>
+<div class="bc  w-1/2 mt-8 m-auto text-right rounded-lg  lg:w-full   xl:m-0 xl:w-1/5  ">
+<h3 class="text-[#00366A] pr-3 mt-8">Prime Care</h3>
+<app-texts>All Your Baby Care</app-texts>
+<app-texts>With Us</app-texts>
+<app-disc-btn></app-disc-btn>
+</div>
+</div>
+
+
+
+

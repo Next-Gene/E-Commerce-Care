@@ -1,13 +1,15 @@
 <div class="flex h-screen flex-row  w-full ">
-    <div class="flex flex-col mr-28 justify-center items-center  lg:w-1/2 relative ">
-    <app-icon class="w-64 absolute top-0 left-0 mb-4"></app-icon>
+    <div class="flex flex-col mr-28 justify-center items-center lg:w-1/2 relative ">
+    <img class=" absolute top-0 left-0 mb-4 w-64" src="images/logo 2 trams.png" alt="Prime Care Logo">
+
+    <!-- <app-icon class="w-64 absolute top-0 left-0 mb-4"></app-icon> -->
     <div>
     <h3 class="text-xl font-semibold pb-4 flex  w-full text-center ml-20 mt-10 text-[#00366A] sm:text-3xl sm:ml-0">LOGIN IN TO  <span class="pl-2  text-2xl sm:text-4xl"><h3>PRIME CARE</h3></span> </h3>
       
     
     </div>
     <p class="text-black mb-6 ml-20 sm:ml-0">ADD YOUR EMAIL ACCOUNT</p>
-    <form [formGroup]="login" (ngSubmit)="getdata()" class="w-full  max-w-sm ml-20 sm:ml-0">
+    <form [formGroup]="login" (ngSubmit)="Login()" class="w-full  max-w-sm ml-20 sm:ml-0">
     <app-email-input>
     <i class="fas fa-envelope text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
     <input formControlName="email" type="email" placeholder="Email" 

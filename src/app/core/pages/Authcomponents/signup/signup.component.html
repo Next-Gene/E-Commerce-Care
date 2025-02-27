@@ -1,5 +1,5 @@
 <div class="flex h-screen flex-row  w-full relative ">
-    <app-icon class="w-64 absolute top-0 right-0  sm: pl-11"></app-icon>
+    <img class="sm:pl-11 w-64 absolute top-0 right-0 " src="images/logo 2 trams.png" alt="Prime Care Logo" >
 
     <app-background role="signup" class="hidden sm:block"/>
     
@@ -10,7 +10,7 @@
 
     <p class="mb-4 pl-8 sm:pl-0">Use your email for registration</p>
     
-    <form [formGroup]="register"(ngSubmit)="getdata()" class="w-full ml-12 sm:ml-4 max-w-sm">
+    <form [formGroup]="register"(ngSubmit)="signup()" class="w-full ml-12 sm:ml-4 max-w-sm">
         <!-- username input -->
     <app-email-input>
         <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
