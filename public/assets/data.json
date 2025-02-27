@@ -1,0 +1,27 @@
+[
+    {
+      "img": "assets/images/image.png",
+      "title": "Offers",
+      "description": "Offers updated every day."
+    },
+    {
+      "img": "assets/images/image 7.png",
+      "title": "Mother Child Care",
+      "description": "Everything about your baby."
+    },
+    {
+      "img": "assets/images/image 6.png",
+      "title": "Prescription Medications",
+      "description": "that is permitted to be dispensed only to those with a medical prescription."
+    },
+    {
+        "img": "assets/images/image 5.png",
+        "title": "Medicines Without a Prescripition",
+        "description": "The medicines can buy without prescripition."
+      },
+    {
+        "img": "assets/images/image 8.png",
+        "title": "Medical Supplies",
+        "description": "Explore essential medical products for quality care and reliability."
+    }
+  ]
