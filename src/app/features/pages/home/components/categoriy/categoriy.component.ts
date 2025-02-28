@@ -1,4 +1,4 @@
-import { CatserviceService } from './../../service/catservice.service';
+import { CatserviceService } from '../../../../../core/service/catservice.service';
 import { Component, inject, Inject } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o'; 
 
@@ -55,7 +55,7 @@ export class CategoriyComponent {
       }
 
     },
-    nav: true
+    nav: false
   }
 
 }

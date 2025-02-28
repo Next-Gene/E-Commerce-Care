@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { InformationComponent } from "../../../shared/slider/information/information.component";
-import { CategoriyComponent } from "../../../shared/slider/categoriy/categoriy.component";
+import { InformationComponent } from "./components/information/information.component";
+import { CategoriyComponent } from "./components/categoriy/categoriy.component";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
