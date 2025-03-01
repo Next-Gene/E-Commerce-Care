@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
+import { BrowserModule } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NavbarComponent, FooterComponent],

@@ -31,6 +31,7 @@ body {
   --rating-star-color: #fba707;
   --button-bg-color: #007bff;
   --footer-bg-color: #d8ecff;
+  
 
   /********* Font sizes ******** */
   --text-80: 3.81rem;
@@ -117,5 +118,9 @@ body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     z-index: -1;
+  }
+
+  .link-hover {
+    @apply hover:text-gray-300 transition;
   }
 }
