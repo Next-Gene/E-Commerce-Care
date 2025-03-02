@@ -11,5 +11,4 @@ import { Product } from '../../../../core/interfaces/product';
 })
 export class CartComponent {
   product = input<Product>({});
-
 }
