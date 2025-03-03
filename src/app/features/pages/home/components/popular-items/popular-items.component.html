@@ -1,0 +1,30 @@
+<div class="container ">
+  <div class="flex justify-between items-center w-full">
+    <div class="Popular-Items relative text-l font-bold text-black pb-1/2">
+      Popular Items
+      <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
+      <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
+  </div>
+    <div>
+      <ul class="flex space-x-4">
+        <li
+          *ngFor="let category of categories; let i = index"
+          class="cursor-pointer text-gray-600 hover:text-pink-500 transition-colors duration-300"
+          [ngClass]="{
+            'text-pink-500 border-b-2 border-pink-500': selectedCategoryIndex === i
+          }"
+          (click)="onCategoryClick(category, i)"
+        >
+          {{ category.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+    <app-cart
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-cart>
+  </div>
+</div>

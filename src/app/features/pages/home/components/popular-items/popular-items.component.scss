@@ -1,0 +1,26 @@
+.Popular-Items {
+  width: 700;
+  line-height: 36.31px;
+  font-size: 30px;
+  color:#160E4B
+}
+
+li {
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.text-pink-500 {
+  color: var(--primary-color);
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-pink-500 {
+  border-color: var(--primary-color);
+}
