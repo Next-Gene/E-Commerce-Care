@@ -1,5 +1,3 @@
-import { AboutComponent } from './features/pages/about/about.component';
-import { CartComponent } from './shared/components/ui/cart/cart.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [

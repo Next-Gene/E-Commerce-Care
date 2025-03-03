@@ -6,6 +6,7 @@ export interface Category {
   createdAt?: string;
   updatedAt?: string;
   productsCount?: number;
+  description?: string;
 }
 export interface APICategoriesResponse {
   message: string;

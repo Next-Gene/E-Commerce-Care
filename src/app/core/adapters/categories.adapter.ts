@@ -13,6 +13,7 @@ export class CategoriesAdapter {
       image: resItem.image,
       name: resItem.name,
       productsCount: resItem.productsCount,
+      description:resItem.description,
     }));
   }
 }

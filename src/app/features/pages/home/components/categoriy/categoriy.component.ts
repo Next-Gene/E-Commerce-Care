@@ -1,32 +1,38 @@
-import { CatserviceService } from '../../../../../core/service/catservice.service';
+import { Routes, RouterLink } from '@angular/router';
 import { Component, inject, Inject } from '@angular/core';
-import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o'; 
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { CategoriesService } from '../../../../../core/service/categories.service';
+import { Category } from '../../../../../core/interfaces/category';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categoriy',
-  imports: [CarouselModule],
+  imports: [CarouselModule,RouterLink,CommonModule],
   templateUrl: './categoriy.component.html',
   styleUrl: './categoriy.component.scss'
 })
 export class CategoriyComponent {
 
-  Categories: any[] = [];
+  Categories: Category[] = [];
 
-  constructor(private _CatserviceService: CatserviceService) {} 
+  constructor(private _CategoriesService: CategoriesService) { }
 
   ngOnInit(): void {
-    this._CatserviceService.getCategories().subscribe(data => {
+    this.getallCategories();
+  }
+  getallCategories() {
+    this._CategoriesService.getAllCategories().subscribe(data => {
       this.Categories = data;
     });
-  }
 
+  }
 
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
-    pullDrag: true,
-    autoplay:true,
+    // pullDrag: true,
+    autoplay: true,
     autoplayTimeout: 2000,
     dots: false,
     navSpeed: 700,
@@ -44,14 +50,14 @@ export class CategoriyComponent {
       800: {
         items: 3
       },
-      850:{
-        items:3
+      850: {
+        items: 3
       },
-      1050:{
-        items:4
+      1050: {
+        items: 4
       },
-      1300:{
-        items:5
+      1300: {
+        items: 5
       }
 
     },

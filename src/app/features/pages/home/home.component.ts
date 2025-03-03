@@ -1,14 +1,15 @@
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { Component } from '@angular/core';
 import { PopularItemsComponent } from "./components/popular-items/popular-items.component";
 import { InformationComponent } from "./components/information/information.component";
 import { CategoriyComponent } from "./components/categoriy/categoriy.component";
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
-  imports: [InformationComponent, CategoriyComponent,CarouselModule,PopularItemsComponent],
+  imports: [InformationComponent, CarouselModule, PopularItemsComponent, CategoriyComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  standalone: true
 })
 export class HomeComponent {
 

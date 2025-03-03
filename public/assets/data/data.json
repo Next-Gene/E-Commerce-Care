@@ -11,7 +11,7 @@
       "_id": "1",
       "name": "Medical Equipment",
       "slug": "Medical Equipment",
-      "image": "assets/images/category/Medical Equipment.png",
+      "image": "/images/category/Medical-Equipment.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount": 3
@@ -20,7 +20,7 @@
       "_id": "2",
       "name": "Diagnostic Equipment",
       "slug": "Diagnostic Equipment",
-      "image": "assets/images/category/Diagnostic Equipment.png",
+      "image": "/images/category/Diagnostic-Equipment.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount": 2
@@ -29,16 +29,17 @@
       "_id": "3",
       "name": "Medical Supplies",
       "slug": "Medical Supplies",
-      "image": "assets/images/category/Medical Supplies.png",
+      "image": "/images/category/Medical-Supplies.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount":3
+      "productsCount":3,
+      "description": "Explore essential medical products for quality care and reliability."
     },
     {
       "_id": "4",
       "name": "Hygiene",
       "slug": "Hygiene",
-      "image": "assets/images/category/Hygiene.png",
+      "image": "/images/category/Hygiene.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount":1
@@ -47,7 +48,7 @@
       "_id": "5",
       "name": "Surgical Instruments",
       "slug": "Surgical Instruments",
-      "image": "assets/images/category/Surgical Instruments.png",
+      "image": "/images/category/Surgical-Instruments.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount":1
@@ -56,46 +57,42 @@
       "_id": "6",
       "name": "Offers",
       "slug": "Offers",
-      "image": "assets/images/image.png",
+      "image": "/images/category/image.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 0
+      "productsCount": 0,
+      "description": "Offers updated every day."
     },
     {
       "_id": "7",
       "name": "Mother Child Care",
       "slug": "mother-child-care",
-      "image": "assets/images/image 7.png",
+      "image": "/images/category/image 7.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 0
+      "productsCount": 0,
+      "description": "Everything about your baby."
     },
     {
       "_id": "8",
       "name": "Prescription Medications",
       "slug": "prescription-medications",
-      "image": "assets/images/image 6.png",
+      "image": "/images/category/image 6.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 0
+      "productsCount": 0,
+      "description": "That is permitted to be dispensed only to those with a medical prescription."
     },
     {
       "_id": "9",
       "name": "Medicines Without a Prescription",
       "slug": "medicines-without-prescription",
-      "image": "assets/images/image 5.png",
+      "image": "/images/category/image 5.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 0
-    },
-    {
-      "_id": "10",
-      "name": "Medical Supplies",
-      "slug": "medical-supplies",
-      "image": "assets/images/image 8.png",
-      "createdAt": "2025-03-01T12:00:00.000Z",
-      "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 0
+      "productsCount": 0,
+      "description": "The medicines can buy without prescripition."
     }
+    
   ]
 }
