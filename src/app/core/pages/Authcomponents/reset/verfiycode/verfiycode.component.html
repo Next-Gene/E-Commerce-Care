@@ -1,0 +1,41 @@
+<div class="flex m-auto flex-col  justify-center items-center lg:w-1/2">
+    <img class="m-auto w-80" src="images/logo 2 trams.png" alt="Prime Care Logo">
+    <p class=" text-xl mt-14 sm:ml-0">ENTER YOUR CODE</p>
+
+    <p class=" text-xl mt-12 sm:ml-0">CODE SEND TO YOUR EMAIL </p>
+    <p class=" text-xl mt-3 sm:ml-0 ">EXAMPLE:NAMEME&#64;GMAIL.COM</p>
+    <form [formGroup]="verifycode" (ngSubmit)="submit2()" class="w-full mt-6  max-w-sm ml-36 sm:ml-0">
+    <div class="flex mb-2 ml-12 space-x-2 rtl:space-x-reverse">
+        <div>
+            <label for="digit1" class="sr-only">First code</label>
+            <input formControlName="digit1" id="digit1" type="text" maxlength="1"(input)="onInput($event, 'digit2')" (paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+            <label for="digit2" class="sr-only">Second code</label>
+            <input formControlName="digit2" id="digit2"  type="text" maxlength="1"  (input)="onInput($event, 'digit3', 'digit1')"(paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+            <label for="digit3" class="sr-only">Third code</label>
+            <input formControlName="digit3" id="digit3"  type="text" maxlength="1" (input)="onInput($event, 'digit4', 'digit2')" (paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+            <label for="digit4" class="sr-only">Fourth code</label>
+            <input formControlName="digit4" id="digit4"  type="text" maxlength="1"  (input)="onInput($event, 'digit5', 'digit3')"(paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+            <label for="digit5" class="sr-only">Fifth code</label>
+            <input formControlName="digit5" id="digit5" type="text" maxlength="1" (input)="onInput($event, 'digit6', 'digit4')"(paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+            <label for="digit6" class="sr-only">Sixth code</label>
+            <input formControlName="digit6" id="digit6" type="text" maxlength="1"(input)="onInput($event, undefined, 'digit5')"(paste)="onPaste($event)" class="block w-11 h-16 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+    </div>
+
+
+    <div class=" text-center mt-24 ">
+    <app-reg-button > verfiy </app-reg-button>
+    </div>
+    </form>
+    </div>
+    
