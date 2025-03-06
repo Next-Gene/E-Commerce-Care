@@ -5,13 +5,10 @@ import { initFlowbite } from 'flowbite';
 import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
 import { filter } from 'rxjs';
-import { ResetPasswordComponent } from "./core/pages/Authcomponents/reset/reset-password/reset-password.component";
-import { VerfiycodeComponent } from "./core/pages/Authcomponents/reset/verfiycode/verfiycode.component";
-import { NewPasswordComponent } from "./core/pages/Authcomponents/reset/new-password/new-password.component";
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, NavbarComponent, FooterComponent,RouterOutlet,ResetPasswordComponent,VerfiycodeComponent,NewPasswordComponent],
+  imports: [CommonModule, NavbarComponent, FooterComponent,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -29,7 +26,7 @@ export class AppComponent implements OnInit {
     this._router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      const authPages = ['/login', '/register', '/forgot-password', '/verify', '/reset-password'];
+      const authPages = ['/login', '/register', '/newPassword', '/verifyCode', '/resetPassword'];
       this.isAuthPage = authPages.includes(event.url);
     });
   }
