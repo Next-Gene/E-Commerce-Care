@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetImagesService {
-private images="/images.json"
+private images="/assets/data/images.json"
   constructor(private _HttpClient:HttpClient) { 
     
   }
