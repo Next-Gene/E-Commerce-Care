@@ -1,0 +1,75 @@
+<div class="flex h-screen flex-row  w-full relative ">
+    <img class="sm:pl-11 w-64 absolute top-0 right-0 " src="images/logo 2 trams.png" alt="Prime Care Logo" >
+
+    <app-background role="signup" class="hidden sm:block"/>
+    
+    <div class="flex flex-col justify-center items-center   lg:w-1/2 ">
+    <div>
+    <h3 class="text-3xl  font-semibold pb-4 pl-8 flex pt-56 w-full text-center text-[#00366A] sm:text-4xl sm:pl-0 sm:pt-0 ">CREATE ACCOUNT  </h3>
+    </div>
+
+    <p class="mb-4 pl-8 sm:pl-0">Use your email for registration</p>
+    
+    <form [formGroup]="register"(ngSubmit)="signup()" class="w-full ml-12 sm:ml-4 max-w-sm">
+        <!-- username input -->
+    <app-email-input>
+        <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+    <input formControlName="username" type="text" placeholder="username" class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
+    </app-email-input>
+    <app-alerts [formName]="register" controlName="username"/>
+    
+        <!-- firstName input -->
+    <app-email-input>
+    <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+    <input formControlName="firstName" type="text" placeholder="firstName" class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
+              
+    </app-email-input>
+    <app-alerts [formName]="register" controlName="firstName"/>
+    
+    <!-- last name input -->
+     <app-email-input>
+        <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+        <input formControlName="lastName" type="text" placeholder="LastName" class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
+     </app-email-input>
+     <app-alerts [formName]="register" controlName="lastName"/>
+    
+     <!-- phone number input -->
+     <app-email-input>
+        <i class="fa-solid fa-phone text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+        <input formControlName="phone" type="text" placeholder="phone number" class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
+     </app-email-input>
+     <app-alerts [formName]="register" controlName="phone"/>
+     <!-- email input -->
+    <app-email-input>
+    
+    <i class="fas fa-envelope text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+    <input formControlName="email" type="email" placeholder="Email" class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
+              
+    </app-email-input>
+    <app-alerts [formName]="register" controlName="email"/>
+    <app-email-input>
+    
+        <!-- password input -->
+    <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+    <input formControlName="password" type="password" placeholder="Password" class="dark:bg-gray-300 border border-blue-300 text-sm rounded-lg placeholder-blue-900 text-blue-800 focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5">
+    </app-email-input>
+    <app-alerts [formName]="register" controlName="password"/>
+    <!-- rePassword input -->
+    <app-email-input>
+        <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+    
+    <input formControlName="rePassword" type="password" placeholder="rePassword" class="dark:bg-gray-300 border border-blue-300 text-sm rounded-lg placeholder-blue-900 text-blue-800 focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5">
+    </app-email-input>  
+    <app-alerts [formName]="register" controlName="rePassword"/>
+    <p class=" mt-2  text-red-600 dark:text-red-500">{{errormessage}}</p>
+    
+    <div class=" text-center mt-6 ">
+    <app-reg-button > register </app-reg-button>
+    </div>
+    <h2 class="text-center mt-8 block sm:hidden">have account? <span><a class="text-blue-800 hover:underline" href="/login">Login</a></span></h2>
+    </form>
+    </div>
+    
+    </div>
+    
+    

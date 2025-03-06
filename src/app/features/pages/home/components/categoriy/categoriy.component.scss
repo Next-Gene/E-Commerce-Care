@@ -1,0 +1,41 @@
+.active {
+    color: #3b82f6 !important;
+    text-decoration: none; /* إزالة التسطير الافتراضي */
+  }
+  /* تأثير الأنيميشن عند تمرير الفأرة */
+  .li {
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .li:hover {
+    transform: scale(1.1); /* تكبير العنصر عند التمرير عليه */
+    color: #3b82f6;
+  }
+  
+  /* تحسين شكل الـ underline */
+  .li::after {
+      content: "";
+      position: absolute;
+      left: 0; /* جعل الخط يبدأ من المنتصف */
+      bottom: -2px; /* التحكم في المسافة بين النص والخط */
+      width: 100%;
+    height: 2px; /* سمك الخط */
+    background-color: #3b82f6;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* اظهار الـ underline عند active فقط */
+  .li.active::after {
+      transform: scaleX(1);
+      
+  }
+  
+  /* اظهار الـ underline عند hover فقط إذا لم يكن العنصر active */
+  .li:not(.active):hover::after {
+      transform: scaleX(1);
+  }
+  
+  

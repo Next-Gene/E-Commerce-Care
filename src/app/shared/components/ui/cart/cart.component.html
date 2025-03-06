@@ -1,1 +1,66 @@
-<p>cart works!</p>
+<div class="product-card flex justify-center mb-4">
+    <div class="product-card__inner">
+      <div
+        class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
+      >
+        <img
+          class="rounded-20 images w-96 h-full"
+          [src]="product().imgCover"
+          [alt]="product().title"
+        />
+        <div
+          class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"
+        >
+          <div
+            class="product-card__overlay__content flex justify-center items-center"
+          >
+            <div
+              class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+            >
+              <img src="/icons/eye.svg" alt="" />
+            </div>
+            <div
+              class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+            >
+            <button class="text-white hover:text-red-500">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"></path>
+              </svg>
+          </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div
+        class="product-card__content px-4 mx-auto my-4 flex justify-between items-end"
+      >
+        <div class="product-card__details flex justify-center">
+          <h3 class="font-semibold" [title]="product().title">
+            {{ product().title | truncate : 3 | titlecase }}
+          </h3>
+          <div class="product-card__stars flex my-2">
+            @for (item of [1,2,3]; track $index) {
+              <img src="/icons/full-star.svg" alt="">
+            }
+            @for (item of [1]; track $index) {
+              <img src="/icons/empty-star.svg" alt="">
+            }
+          </div>
+          <span class="text-price font-medium">{{
+            product().price | currency : "$"
+          }}</span>
+        </div>
+        <div class="product-card__actions flex justify-end items-end">
+          <div
+            class="product-card__actions__item  flex justify-center "
+          >
+          <div class="w-6 h-6 text-white product-card__actions__add-to-cart">
+            <img src="/icons/shopping-bag-icon.svg" alt="Shopping Bag" class="w-6 h-6 text-white">
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

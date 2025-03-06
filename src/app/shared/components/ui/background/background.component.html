@@ -1,0 +1,18 @@
+
+@if (role=="login") {
+    <div class=" im flex flex-col justify-center items-center  h-full px-24  rounded-l-3xl text-white ">
+        <h2 class="text-4xl font-semibold mb-4 ">Hello, Friend!</h2>
+        <br>
+        <br>
+        <h2 class="text-xl ">Enter your personal details and start the journey with us</h2>
+        <app-reg-button role="tosignup" class="mt-56 "> sign up </app-reg-button>        </div>
+}
+@else if (role=="signup") {
+<div class=" im flex flex-col justify-center items-center  h-full px-24  rounded-r-3xl text-white">
+<h2 class="text-4xl font-semibold mb-4 ">WELCOME BACK !</h2>
+<br>
+<br>
+<h2 class="text-xl ">to keep connected to us please login with your presonal info</h2>
+<app-reg-button role="tologin"  class="mt-56 "> SIGN IN </app-reg-button>
+</div>
+}

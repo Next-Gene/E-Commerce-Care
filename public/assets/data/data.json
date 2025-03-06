@@ -1,0 +1,98 @@
+{
+  "message": "success",
+  "metadata": {
+    "currentPage": 1,
+    "limit": 10,
+    "totalPages": 1,
+    "totalItems": 10
+  },
+  "categories": [
+    {
+      "_id": "1",
+      "name": "Medical Equipment",
+      "slug": "Medical Equipment",
+      "image": "/images/category/Medical-Equipment.png",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 3
+    },
+    {
+      "_id": "2",
+      "name": "Diagnostic Equipment",
+      "slug": "Diagnostic Equipment",
+      "image": "/images/category/Diagnostic-Equipment.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 2
+    },
+    {
+      "_id": "3",
+      "name": "Medical Supplies",
+      "slug": "Medical Supplies",
+      "image": "/images/category/Medical-Supplies.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount":3,
+      "description": "Explore essential medical products for quality care and reliability."
+    },
+    {
+      "_id": "4",
+      "name": "Hygiene",
+      "slug": "Hygiene",
+      "image": "/images/category/Hygiene.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount":1
+    },
+    {
+      "_id": "5",
+      "name": "Surgical Instruments",
+      "slug": "Surgical Instruments",
+      "image": "/images/category/Surgical-Instruments.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount":1
+    },
+    {
+      "_id": "6",
+      "name": "Offers",
+      "slug": "Offers",
+      "image": "/images/category/image.png",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Offers updated every day."
+    },
+    {
+      "_id": "7",
+      "name": "Mother Child Care",
+      "slug": "mother-child-care",
+      "image": "/images/category/image 7.png",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Everything about your baby."
+    },
+    {
+      "_id": "8",
+      "name": "Prescription Medications",
+      "slug": "prescription-medications",
+      "image": "/images/category/image 6.png",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "That is permitted to be dispensed only to those with a medical prescription."
+    },
+    {
+      "_id": "9",
+      "name": "Medicines Without a Prescription",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image 5.png",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "The medicines can buy without prescripition."
+    }
+    
+  ]
+}
