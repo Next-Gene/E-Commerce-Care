@@ -3,32 +3,33 @@ import { Component, inject } from '@angular/core';
 import { DiscBtnComponent } from "../../../../../shared/components/ui/disc-btn/disc-btn.component";
 import { TextsComponent } from "../../../../../shared/texts/texts.component";
 import { GetImagesService } from '../../../../../core/service/get-images.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-slider',
-  standalone:true,
-  imports: [DiscBtnComponent, TextsComponent ,CarouselModule],
-  
+  standalone: true,
+  imports: [DiscBtnComponent, TextsComponent, CarouselModule,CommonModule ],
+
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss'
 })
 
 export class SliderComponent {
-private _GetImagesService=inject(GetImagesService);
-images:any[]=[];
-carouselOptions: any;
-setimage(){
-this._GetImagesService.getimage().subscribe( {
-next:(res)=>{
-this.images=res.images   
-}
-});
-}
-croissant(){
-this.carouselOptions = {
-loop: true,
-autoplay: true,
-      autoplayTimeout: 5000,
+  private _GetImagesService = inject(GetImagesService);
+  images: any[] = [];
+  carouselOptions: any;
+  setimage() {
+    this._GetImagesService.getimage().subscribe({
+      next: (res) => {
+        this.images = res.images
+      }
+    });
+  }
+  croissant() {
+    this.carouselOptions = {
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 2000,
       responsive: {
         0: {
           items: 1,
@@ -41,14 +42,14 @@ autoplay: true,
         },
       },
       nav: false,
-      dots: true,
-    
+      dots: false,
+
     };
   }
- ngOnInit(): void {
- this.setimage()
-this.croissant()
- }
+  ngOnInit(): void {
+    this.setimage()
+    this.croissant()
+  }
 
 
 }
