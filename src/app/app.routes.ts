@@ -26,15 +26,18 @@ export const routes: Routes = [
         
     },
     {
+        path: 'All-prodect',
+        loadComponent: () => import('./features/pages/all-prodect/all-prodect.component')
+            .then(c => c.AllProdectComponent)
+        
+    },
+    {
         path: 'cart',
         loadComponent: () => import('./shared/components/ui/cart/cart.component')
             .then(c => c.CartComponent)
         
     },
     {
-
-
-
         path: 'login',
         loadComponent: () =>
             import('./core/pages/Authcomponents/login/login.component').then(

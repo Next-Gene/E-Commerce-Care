@@ -1,5 +1,5 @@
-import { Routes, RouterLink } from '@angular/router';
-import { Component, inject, Inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from '../../../../../core/service/categories.service';
 import { Category } from '../../../../../core/interfaces/category';
@@ -31,7 +31,6 @@ export class CategoriyComponent {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
-    // pullDrag: true,
     autoplay: true,
     autoplayTimeout: 2000,
     dots: false,
