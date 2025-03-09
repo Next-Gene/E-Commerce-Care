@@ -1,19 +1,19 @@
 <nav
-  class="bg-slate-50 fixed  w-full z-20 top-0 start-0 border-gray-100 dark:border-gray-600"
+  class="bg-slate-50 fixed w-full z-20 top-0 start-0 border-gray-100 dark:border-gray-600"
 >
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1/2"
+    class="max-w-screen-xl flex max-sm:flex-nowrap flex-wrap  items-center justify-between mx-auto p-1/2"
   >
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <a routerLink="" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="/prime care.png" class="h-20 top-0 left-3" alt="PrimeCare" />
       <span
         class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-      ></span>
+     ></span>
     </a>
 
-    <div class="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse">
-      <div class="flex items-center space-x-4">
-        <button class="text-black hover:text-red-500">
+    <div class="flex md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+      <div class="flex items-center max-sm:space-x-1 space-x-4">
+        <button *ngIf="isLoggedIn" class="text-black hover:text-red-500">
           <svg
             class="w-6 h-6"
             fill="none"
@@ -30,7 +30,7 @@
           </svg>
         </button>
 
-        <button class="text-black hover:text-blue-500">
+        <button *ngIf="isLoggedIn" class="text-black hover:text-blue-500">
           <svg
             class="w-6 h-6"
             fill="none"
@@ -73,6 +73,7 @@
           </span>
         </a>
         <button
+          *ngIf="!isLoggedIn"
           type="button"
           routerLink="login"
           class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-blue-400 dark:hover:bg-blue-500"
@@ -80,31 +81,36 @@
           LOGIN
         </button>
         <button
-          data-collapse-toggle="navbar-sticky"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-sticky"
-          aria-expanded="false"
+        data-collapse-toggle="navbar-sticky"
+        (click)="toggleMenu()"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        aria-expanded="isMenuOpen"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
         >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
 
-        <a href="#" class="text-black hover:text-blue-500 transition">
+        <a
+          href="#"
+          *ngIf="isLoggedIn"
+          class="text-black hover:text-blue-500 transition"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -124,46 +130,47 @@
     </div>
 
     <div
-      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-      id="navbar-sticky"
-    >
-      <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"
+  class="items-center justify-between w-full md:flex md:w-auto md:order-1"
+  id="navbar-sticky"
+  [ngClass]="{ 'hidden': !isMenuOpen, 'flex': isMenuOpen }"
+>
+  <ul
+    class="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"
+  >
+    <li>
+      <a
+        routerLinkActive="active"
+        routerLink="home"
+        class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
+        aria-current="page"
+        >Home</a
       >
-        <li>
-          <a
-            routerLinkActive="active"
-            routerLink="home"
-            class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
-            aria-current="page"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            routerLink="All-prodect"
-            class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
-            >All prodect</a
-          >
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            routerLink="categories"
-            class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
-            >Categories</a
-          >
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            routerLink="about"
-            class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
-            >About</a
-          >
-        </li>
-      </ul>
-    </div>
+    </li>
+    <li>
+      <a
+        routerLinkActive="active"
+        routerLink="All-prodect"
+        class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
+        >All prodect</a
+      >
+    </li>
+    <li>
+      <a
+        routerLinkActive="active"
+        routerLink="categories"
+        class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
+        >Categories</a
+      >
+    </li>
+    <li>
+      <a
+        routerLinkActive="active"
+        routerLink="about"
+        class="block li py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:text-blue-900 md:dark:hover:bg-transparent dark:border-gray-700"
+        >About</a
+      >
+    </li>
+  </ul>
+</div>
   </div>
 </nav>

@@ -37,3 +37,36 @@ li:not(.active):hover::after {
     transform: scaleX(1);
 }
 
+.nav-link {
+  @apply text-black px-3 py-2 relative transition-colors duration-300;
+
+  &.active {
+    @apply text-blue-600;
+  }
+
+  &:hover {
+    @apply text-blue-600;
+  }
+
+  &::after {
+    @apply absolute bottom-0 left-1/2 w-4/5 -translate-x-1/2;
+    content: '';
+    height: 2px;
+    background-color: #3b82f6;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover::after,
+  &.active::after {
+    transform: scaleX(1);
+  }
+}
+
+#cart-count {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
