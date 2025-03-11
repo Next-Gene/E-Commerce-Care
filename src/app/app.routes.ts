@@ -1,3 +1,5 @@
+import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
+import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -80,6 +82,21 @@ export const routes: Routes = [
             import('./core/pages/Authcomponents/signup/signup.component').then(
                 (c) => c.SignupComponent
             ),
+    },
+    {
+        path: 'form',
+        loadComponent: () =>
+            import('./features/pages/checkout/form/form.component').then(
+                (c) => c.FormComponent
+            ),
+    },
+    {
+        path: 'paymet',
+        loadComponent: () =>
+            import('./features/pages/checkout/paymet/paymet.component').then(
+                (c) => c.PaymetComponent
+            ),
     }
+
 
 ];
