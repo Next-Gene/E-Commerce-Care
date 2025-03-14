@@ -1,60 +1,79 @@
-<div class=" bg-slate-50 flex justify-center items-center min-h-screen mt-7">
+<div class="bg-slate-50 flex justify-center items-center min-h-screen mt-7">
     <div class="max-w-7xl mx-auto w-full p-4">
         <div class="grid grid-cols-1 md:grid-cols-3 md:items-start gap-6">
             <div class="md:col-span-2 p-6 order-2 md:order-1">
-                <h2 class="text-md border rounded-lg h-10 font-semibold mb-4 shadow-lg shadow-gray-350 border-gray-200 text-right flex items-center px-4">Your Billing Address</h2>
-                
+                <h2 class="text-md border rounded-lg h-10 font-semibold mb-4 shadow-lg shadow-gray-350 border-gray-200 text-right flex items-center px-4">
+                    Your Billing Address
+                </h2>
                 <div class="flex gap-4 mb-6">
-                    <div class="payment-option border border-[#757f95] rounded-3xl p-3 text-center cursor-pointer shadow-md hover:shadow-2xl hover:text-blue-500 hover:border-blue-600 transition-all">
-                        <img src="/money.png" class="w-12 mx-auto mb-2" alt="Cash">
-                        <p class="text-gray-500 font-extralight ">Cash On Delivery</p>
-                    </div>
-                    <div class="payment-option border border-[#757f95] rounded-3xl p-3 text-center cursor-pointer shadow-md hover:shadow-2xl hover:text-blue-500 hover:border-blue-600 transition-all">
-                        <img src="/credit.png" class="w-12 mx-auto mb-2" alt="Card">
-                        <p class="text-gray-500 font-extralight">Pay With Credit Card</p>
-                    </div>
+                    @for (option of paymentOptions; track option.type) {
+                        <div class="payment-option border border-[#757f95] rounded-3xl p-3 text-center cursor-pointer shadow-md hover:shadow-2xl hover:text-blue-500 hover:border-blue-600 transition-all"
+                            (click)="selectPaymentMethod(option.type)">
+                            <img [src]="option.img" class="w-12 mx-auto mb-2" [alt]="option.label">
+                            <p class="text-gray-500 font-extralight">{{ option.label }}</p>
+                        </div>
+                    }
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-[#160E4B] text-lg drop-shadow-lg">Card Holder Name</label>
-                        <input type="text" placeholder=" Name on Card" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                @if (paymentMethod === 'cash') {
+                    <div class=" text-lg font-light text-gray-500  p-3 mb-4">
+                        <p>Your order has been placed successfully! Please have the exact amount ready upon delivery.</p>
                     </div>
+                }
+                @if (paymentMethod === 'card') {
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[#160E4B] text-lg drop-shadow-lg">Card Holder Name</label>
+                            <input type="text" placeholder=" Name on Card" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                        </div>
 
-                    <div>
-                        <label class="block text-[#160E4B] text-lg drop-shadow-lg">Card Number</label>
-                        <input type="text" placeholder="Card Number" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                        <div>
+                            <label class="block text-[#160E4B] text-lg drop-shadow-lg">Card Number</label>
+                            <input type="text" placeholder="Card Number" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-[#160E4B] text-lg drop-shadow-lg">Expire Date</label>
+                            <input type="text" placeholder="Expire" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-[#160E4B] text-lg drop-shadow-lg">CCV</label>
+                            <input type="text" placeholder="CCV" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
+                        </div>
                     </div>
-
-                    <div>
-                        <label class="block text-[#160E4B] text-lg drop-shadow-lg">Expire Date</label>
-                        <input type="email" placeholder="Expire" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
-                    </div>
-
-                    <div>
-                        <label class="block text-[#160E4B] text-lg drop-shadow-lg">CCV</label>
-                        <input type="text" placeholder="CCV" class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500">
-                    </div>
-                </div>
-
+                }
                 <div class="flex justify-between mt-6">
-                    <button routerLink="cart" class="px-4 py-2 bg-[#0070CD] text-white rounded-lg shadow-md">&larr; Previous</button>
-                    <button class="px-4 py-2 bg-[#0070CD] text-white rounded-lg shadow-md">Pay Now &rarr;</button>
+                    <button routerLink="cart" class="px-4 py-2 bg-[#0070CD] text-white rounded-lg shadow-md">
+                        &larr; Previous
+                    </button>
+                    <button class="px-4 py-2 bg-[#0070CD] text-white rounded-lg shadow-md">
+                        Pay Now &rarr;
+                    </button>
                 </div>
             </div>
-
             <div class="bg-[#E9F5FF] p-8 rounded-xl shadow-md h-fit w-60 mx-auto md:mx-0 md:mt-10 order-2 md:order-1 py-11 px-4">
                 <h2 class="text-sm font-medium mb-4 text-[#160E4B]">Cart Summary</h2>
                 <div class=" text-sm ">
-                    <p class="flex justify-between text-[#160E4B]"><span>Sub Total:</span> <span class="text-[#547BD1]">$4,500.00</span></p>
-                    <p class="flex justify-between text-[#160E4B]"><span>Discount:</span> <span class="text-[#547BD1]">$5.00</span></p>
-                    <p class="flex justify-between text-[#160E4B]"><span>Shipping:</span> <span class="text-[#547BD1]">Free</span></p>
-                    <p class="flex justify-between text-[#160E4B]"><span>Taxes:</span> <span class="text-[#547BD1]">$25.00</span></p>
-                    <p class="flex justify-between mt-3 font-medium text-[#160E4B]"><span>Total:</span> <span class="text-[#547BD1]">$4,520.00</span></p>
+                    <p class="flex justify-between text-[#160E4B]">
+                        <span>Sub Total:</span> <span class="text-[#547BD1]">$4,500.00</span>
+                    </p>
+                    <p class="flex justify-between text-[#160E4B]">
+                        <span>Discount:</span> <span class="text-[#547BD1]">$5.00</span>
+                    </p>
+                    <p class="flex justify-between text-[#160E4B]">
+                        <span>Shipping:</span> <span class="text-[#547BD1]">Free</span>
+                    </p>
+                    <p class="flex justify-between text-[#160E4B]">
+                        <span>Taxes:</span> <span class="text-[#547BD1]">$25.00</span>
+                    </p>
+                    <p class="flex justify-between mt-3 font-medium text-[#160E4B]">
+                        <span>Total:</span> <span class="text-[#547BD1]">$4,520.00</span>
+                    </p>
                 </div>
-                <button class="w-25 bg-[#0070CD] text-white text-xs py-2 px-1 mt-1 ml-20 rounded-lg shadow-md">Checkout Now →</button>
+                <button class="w-25 bg-[#0070CD] text-white text-xs py-2 px-1 mt-1 ml-20 rounded-lg shadow-md">
+                    Checkout Now →
+                </button>
             </div>
         </div>
     </div>
 </div>
-

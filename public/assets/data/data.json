@@ -92,7 +92,173 @@
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount": 0,
       "description": "The medicines can buy without prescripition."
+    },
+    {
+      "_id": "11",
+      "name": "Blood Sugar Monitoring",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image53.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "A glucose meter for accurate health tracking."
+    },
+    {
+      "_id": "12",
+      "name": "Cosmetic Treatments",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image76.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Advanced medical techniques to enhance and maintain skin beauty."
+    },
+    {
+      "_id": "13",
+      "name": "Medical Ampoules",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image98.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "High-quality pharmaceutical ampoules used for various treatments."
+    },
+    {
+      "_id": "14",
+      "name": "Injections & Medical Care",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image88.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Medical injection tools ensuring precision and safety in treatments."
+    },
+    {
+      "_id": "15",
+      "name": "Doctor’s Essentials",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image22.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "A stethoscope and digital device for efficient medical diagnosis."
+    },
+    {
+      "_id": "16",
+      "name": "Medications & Medical Solutions",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image111.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "A collection of essential medical solutions for various conditions."
+    },
+    {
+      "_id": "17",
+      "name": "Creative Medical Frame",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image222.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "An innovative design combining medical elements in a unique layout."
+    },
+    {
+      "_id": "18",
+      "name": "Telemedicine Services",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image1213.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Modern technology enabling remote medical consultations with ease."
+    },
+    {
+      "_id": "19",
+      "name": "Patient Care",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image13112.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Compassionate and professional medical care."
+    },
+    {
+      "_id": "20",
+      "name": "Family Healthcare",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image112.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Medical tools designed for family health and optimal care."
+    },
+    {
+      "_id": "21",
+      "name": "Medical Consultation",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image15.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Professional doctors providing expert health advice and treatment."
+    },
+    {
+      "_id": "22",
+      "name": "Health Protection Supplies",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image16.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Protective essentials for daily safety."
+    },
+    {
+      "_id": "23",
+      "name": "Online Medical Consultation",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image18.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0
+    },
+    {
+      "_id": "24",
+      "name": "Medical Research & Laboratory",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image937.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0
+    },
+    {
+      "_id": "25",
+      "name": "Time & Health Management",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image38774.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Prioritizing timely medical care to enhance well-being and longevity."
+    },
+    {
+      "_id": "26",
+      "name": "Health Monitoring Devices",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image59.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": "Essential medical tools for accurate temperature and vital sign tracking."
+    },
+    {
+      "_id": "27",
+      "name": "Medical Work Environment",
+      "slug": "medicines-without-prescription",
+      "image": "/images/category/image2836.jpg",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0
     }
-    
   ]
 }
