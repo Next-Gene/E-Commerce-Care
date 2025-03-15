@@ -1,0 +1,184 @@
+<aside
+  *ngIf="!isMobile() || showFilters"
+  (click)="$event.stopPropagation()"
+   class="w-3/4 md:w-64 p-4 rounded-lg space-y-6"
+  [ngClass]="
+    isMobile()
+      ? {
+          'fixed top-14 left-0 w-3/4 bg-white h-full z-50 transition-transform duration-300 shadow-2xl overflow-y-auto rounded-40': true,
+          '-translate-x-full': !showFilters,
+          'translate-x-0': showFilters
+        }
+      : ''
+  "
+>
+  <!-- Close button (only on mobile) -->
+  <div class="flex justify-end mb-2 sm:hidden">
+    <button (click)="onToggleFilters()" class="text-2xl">&times;</button>
+  </div>
+
+  <!-- Department Filter -->
+  <div>
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Department</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let dept of ['all', 'deals', 'super_offers']">
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="department"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedDepartment"
+            [value]="dept"
+            (change)="applyFilters()"
+          />
+          <span>{{ dept === 'all' ? 'All' : dept | titlecase }}</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+  <hr class="my-4 border-gray-300" />
+
+  <!-- Category Filter -->
+  <div>
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Category</h3>
+    <ul class="space-y-2">
+      <li>
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="category"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedCategory"
+            value="all"
+            (change)="applyFilters()"
+          />
+          <span>All</span>
+        </label>
+      </li>
+      <li *ngFor="let category of categories">
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="category"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedCategory"
+            [value]="category"
+            (change)="applyFilters()"
+          />
+          <span>{{ category }}</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+  <hr class="my-4 border-gray-300" />
+
+  <!-- Customer Reviews Filter -->
+  <div>
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Customer Reviews</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let review of ['all', '5.0', '4.0-4.9', '3.0-3.9', '2.0-2.9', '1.0-1.9']">
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="reviews"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedReview"
+            [value]="review"
+            (change)="applyFilters()"
+          />
+          <span *ngIf="review === 'all'">All</span>
+          <span *ngIf="review !== 'all'">
+            <ng-container *ngIf="review === '5.0'">
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+            </ng-container>
+            <ng-container *ngIf="review === '4.0-4.9'">
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+            </ng-container>
+            <ng-container *ngIf="review === '3.0-3.9'">
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+            </ng-container>
+            <ng-container *ngIf="review === '2.0-2.9'">
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+            </ng-container>
+            <ng-container *ngIf="review === '1.0-1.9'">
+              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+            </ng-container>
+          </span>
+        </label>
+      </li>
+    </ul>
+    <hr class="my-4 border-gray-300" />
+  </div>
+
+  <!-- Price Filter -->
+  <div>
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Price</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let price of ['', '0-25', '25-50', '50-100', '100-200', '200-999999']">
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="price"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedPriceRange"
+            [value]="price"
+            (change)="applyFilters()"
+          />
+          <span>
+            {{
+              price === ''
+                ? 'All'
+                : price === '0-25'
+                ? 'Under $25'
+                : price === '200-999999'
+                ? '$200 & Above'
+                : price
+            }}
+          </span>
+        </label>
+      </li>
+    </ul>
+    <hr class="my-4 border-gray-300" />
+  </div>
+
+  <!-- Discount Filter -->
+  <div>
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Discount</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let discount of ['', '0-10', '25', '50', '70']">
+        <label class="inline-flex items-center space-x-2">
+          <input
+            type="radio"
+            name="discount"
+            class="form-radio h-4 w-4 text-blue-600"
+            [(ngModel)]="selectedDiscount"
+            [value]="discount"
+            (change)="applyFilters()"
+          />
+          <span>{{ discount === '' ? 'All' : discount + '% off or more' }}</span>
+        </label>
+      </li>
+    </ul>
+    <br /><br />
+  </div>
+</aside>
