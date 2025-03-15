@@ -16,6 +16,7 @@ export interface Product {
   discount?: number;
   sold?: number;
   id?: string;
+  rate?: number;
 }
 
 export interface APIProductsResponse {
