@@ -1,70 +1,35 @@
-<div class="container mx-auto p-6">
-  <h1
-    class="text-4xl font-bold text-center mb-10"
-    style="color: var(--secondary-color)"
-  >
-    Our Products
-  </h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div
-      class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
-    >
-      <img
-        src="https://via.placeholder.com/300"
-        alt="Product Image"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-4">
-        <h2 class="text-xl font-semibold" style="color: var(--secondary-color)">
-          Product Name
-        </h2>
-        <p class="text-gray-600 mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <p class="text-lg font-bold mt-4" style="color: var(--primary-color)">
-          $99.99
-        </p>
-      </div>
-    </div>
-    <div
-      class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
-    >
-      <img
-        src="https://via.placeholder.com/300"
-        alt="Product Image"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-4">
-        <h2 class="text-xl font-semibold" style="color: var(--secondary-color)">
-          Product Name
-        </h2>
-        <p class="text-gray-600 mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <p class="text-lg font-bold mt-4" style="color: var(--primary-color)">
-          $99.99
-        </p>
-      </div>
-    </div>
-    <div
-      class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
-    >
-      <img
-        src="https://via.placeholder.com/300"
-        alt="Product Image"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-4">
-        <h2 class="text-xl font-semibold" style="color: var(--secondary-color)">
-          Product Name
-        </h2>
-        <p class="text-gray-600 mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <p class="text-lg font-bold mt-4" style="color: var(--primary-color)">
-          $99.99
-        </p>
-      </div>
-    </div>
+<div class="container mx-auto max-sm:p-1 px-4 md:px-8 lg:px-32 xl:px-40 max-sm:mt-16 mt-24 xl:mb-20">
+  <div class="relative text-2xl font-semibold text-black inline-block mb-5">
+    All Products
+    <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
+    <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
+  </div>
+
+  <div class="sm:hidden mb-4">
+    <button (click)="toggleFilters()" class="bg-[var(--button-bg-color)] rounded-40 text-white py-2 px-4 flex items-center">
+      <i class="fa-solid fa-bars mr-2 text-xl"></i>
+      <span>Filters</span>
+    </button>
+  </div>
+
+  <!-- Backdrop for small screens when filters are open -->
+  <div
+    *ngIf="isMobile() && showFilters"
+    class="fixed inset-0 bg-black opacity-70 z-40"
+    (click)="toggleFilters()">
+  </div>
+
+  <div class="flex flex-row xl:gap-8 relative">
+    <app-filters
+      [products]="products"
+      [showFilters]="showFilters"
+      (filteredProductsChange)="filteredProducts = $event"
+      (toggleFiltersEvent)="toggleFilters()"
+    ></app-filters>
+
+    <section class="w-full sm:w-2/3 flex-1 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-x-4 lg:gap-6">
+      <app-cart *ngFor="let product of filteredProducts" [product]="product" class="product-card">
+      </app-cart>
+    </section>
   </div>
 </div>

@@ -7,9 +7,9 @@ export class TruncatePipe implements PipeTransform {
 
   transform(sentence: string|any, wordLimit: number): string {
     const sentenceArr = sentence.split(' ');
-    if (sentenceArr.length > 3) {
+    if (sentenceArr.length > 1) {
       const truncatedSentence = sentenceArr.splice(0, wordLimit);
-      return truncatedSentence.join(' ') + '...';
+      return truncatedSentence.join(' ');
     }
     return sentence;
   }

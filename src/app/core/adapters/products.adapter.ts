@@ -15,6 +15,7 @@ export class ProductsAdapter {
       priceAfterDiscount: resItem.priceAfterDiscount,
       imgCover: resItem.imgCover,
       category: resItem.category,
+      rate: resItem.rate,
     }));
   }
 }
