@@ -29,7 +29,7 @@ export const routes: Routes = [
     {
         path: 'All-prodect',
         loadComponent: () => import('./features/pages/all-prodect/all-prodect.component')
-            .then(c => c.AllProdectComponent)
+            .then(c => c.AllProductComponent)
         
     },
     {

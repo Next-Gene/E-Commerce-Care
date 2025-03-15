@@ -14,7 +14,8 @@
       "image": "/images/category/Medical-Equipment.png",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 3
+      "productsCount": 3,
+      "description": "Essential devices for patient care."
     },
     {
       "_id": "2",
@@ -23,7 +24,8 @@
       "image": "/images/category/Diagnostic-Equipment.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount": 2
+      "productsCount": 2,
+      "description": "Tools for accurate health diagnostics."
     },
     {
       "_id": "3",
@@ -32,7 +34,7 @@
       "image": "/images/category/Medical-Supplies.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount":3,
+      "productsCount": 3,
       "description": "Explore essential medical products for quality care and reliability."
     },
     {
@@ -42,7 +44,8 @@
       "image": "/images/category/Hygiene.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount":1
+      "productsCount": 1,
+      "description": "Products for personal cleanliness and safety."
     },
     {
       "_id": "5",
@@ -51,7 +54,8 @@
       "image": "/images/category/Surgical-Instruments.jpg",
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
-      "productsCount":1
+      "productsCount": 1,
+      "description": "Precision instruments for surgical procedures."
     },
     {
       "_id": "6",
@@ -91,7 +95,7 @@
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount": 0,
-      "description": "The medicines can buy without prescripition."
+      "description": "Medicines available without a prescription."
     }
     
   ]
