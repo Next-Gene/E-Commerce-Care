@@ -6,6 +6,7 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+
     {
         path: 'home',
         loadComponent: () => import('./features/pages/home/home.component')
@@ -45,6 +46,13 @@ export const routes: Routes = [
             ),
     },
     {
+        path: 'SingleProduct/:id',
+        loadComponent: () =>
+            import('./features/pages/home/components/single-product/single-product.component').then(
+                (c) => c.SingleProductComponent
+            ),
+    },
+    {
 
 
 
@@ -80,6 +88,6 @@ export const routes: Routes = [
             import('./core/pages/Authcomponents/signup/signup.component').then(
                 (c) => c.SignupComponent
             ),
-    }
-
+    },
+ 
 ];

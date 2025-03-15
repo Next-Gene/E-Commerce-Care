@@ -18,6 +18,7 @@ export interface Product {
   id?: string;
 }
 
+
 export interface APIProductsResponse {
   message: string;
   products: Product[];

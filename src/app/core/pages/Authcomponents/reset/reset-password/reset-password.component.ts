@@ -1,4 +1,3 @@
-import { ForgetPassUser } from './../../../../../../../dist/auth-api/lib/interface/forgetPass.d';
 import { validsignup } from './../../../../../shared/utilites/validsignup';
 import { Subject, takeUntil } from 'rxjs';
 import { Component, inject } from '@angular/core';
@@ -7,8 +6,8 @@ import { AlertsComponent } from "../../../../../shared/components/ui/alerts/aler
 import { RegButtonComponent } from "../../../../../shared/components/ui/reg-button/reg-button.component";
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthApiService } from '../../../../../../../dist/auth-api';
 import { Router } from '@angular/router';
+import { AuthApiService } from '../../../../../../../projects/auth-api/src/public-api';
 
 @Component({
   selector: 'app-reset-password',
