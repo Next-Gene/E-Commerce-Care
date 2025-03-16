@@ -84,10 +84,10 @@ export const routes: Routes = [
             ),
     },
     {
-        path: 'form',
+        path: 'checkout',
         loadComponent: () =>
-            import('./features/pages/checkout/form/form.component').then(
-                (c) => c.FormComponent
+            import('./features/pages/checkout/ckeckout/ckeckout.component').then(
+                (c) => c.CkeckoutComponent
             ),
     },
     {

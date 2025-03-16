@@ -9,8 +9,6 @@ import { Component } from '@angular/core';
 })
 export class PaymetComponent {
   paymentMethod: string = '';
-
-  // قائمة خيارات الدفع
   paymentOptions = [
     { type: 'cash', label: 'Cash On Delivery', img: '/money.png' },
     { type: 'card', label: 'Pay With Credit Card', img: '/credit.png' }
