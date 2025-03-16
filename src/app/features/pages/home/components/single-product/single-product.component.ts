@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
@@ -6,86 +6,68 @@ import { Product } from '../../../../../core/interfaces/product';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartComponent } from "../../../../../shared/components/ui/cart/cart.component";
+import { SingleProductTitleComponent } from "../../../../../shared/components/ui/single-product-title/single-product-title.component";
+import { SingleProductInformationComponent } from "../../../../../shared/components/ui/single-product-information/single-product-information.component";
+import { SingleProductRatingComponent } from "../../../../../shared/components/ui/single-product-rating/single-product-rating.component";
 
 @Component({
   selector: 'app-single-product',
-  imports: [CarouselModule, CommonModule, CartComponent],
+  imports: [CarouselModule, CommonModule, CartComponent, SingleProductTitleComponent, SingleProductInformationComponent, SingleProductRatingComponent],
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss'
 })
 export class SingleProductComponent implements OnInit {
-  carouselOptions: any;
   product!: Product;
   id: string = "";
-  
-  // Modal and rating variables
-  showRatingModal: boolean = false;
-  currentRating: number = 0;
+  relatedProducts: Product[] = [];
 
   private _Activatedroute = inject(ActivatedRoute);
   private _ProductsService = inject(ProductsService);
   private _destroy$ = new Subject<void>();
 
   ngOnInit(): void {
-    this.getpram();
-    this.croissant();
+    this.getParam();
   }
 
-  getpram(): void {
-    this._Activatedroute.paramMap.subscribe({
-      next: (params) => {
-        this.id = params.get('id') || '';
-        if (this.id) {
-          this._ProductsService.getProductById(this.id).subscribe({
-            next: (res) => {
-              this.product = res;
-            },
-          });
+  getParam(): void {
+    this._Activatedroute.paramMap
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (params) => {
+          this.id = params.get('id') || '';
+          if (this.id) {
+            // 1) Get the current product
+            this._ProductsService.getProductById(this.id)
+              .pipe(takeUntil(this._destroy$))
+              .subscribe({
+                next: (res) => {
+                  this.product = res;
+
+                  // 2) Now fetch related products
+                  this._ProductsService.getRelatedProducts(
+                    this.product.category || '',
+                    this.product._id || ''
+                  )
+                  .pipe(takeUntil(this._destroy$))
+                  .subscribe({
+                    next: (related) => {
+                      this.relatedProducts = related;
+                    }
+                  });
+                }
+              });
+          }
         }
-      }
-    });
+      });
   }
 
-  increase(product: any): void {
-    product.quantity++;
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
-  decrease(product: any): void {
-    if (product.quantity > 1) {
-      product.quantity--;
-    }
+
+ 
   }
 
-  croissant(): void {
-    this.carouselOptions = {
-      loop: true,
-      mouseDrag: true,
-      touchDrag: true,
-      autoplay: true,
-      autoplayTimeout: 2000,
-      dots: false,
-      navSpeed: 700,
-      responsive: {
-        0: { items: 1 },
-        600: { items: 2 },
-        1000: { items: 3 }
-      },
-      nav: false,
-    };
-  }
 
-  // Modal control methods
-  toggleRatingModal(): void {
-    this.showRatingModal = !this.showRatingModal;
-  }
-
-  setRating(star: number): void {
-    this.currentRating = star;
-  }
-
-  submitRating(): void {
-    console.log('Rating submitted:', this.currentRating);
-    // Add your submission logic here (e.g., call an API with the rating)
-    this.toggleRatingModal();
-  }
-}

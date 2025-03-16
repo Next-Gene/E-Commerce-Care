@@ -2,12 +2,12 @@
     <div class="product-card__inner">
       <div
         class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square "
-        routerLink="/SingleProduct/{{ product()._id }}"
+        routerLink="/SingleProduct/{{ product._id }}"
       >
         <img
           class="rounded-20 images w-96 h-full"
-          [src]="product().imgCover"
-          [alt]="product().title"
+          [src]="product.imgCover"
+          [alt]="product.title"
         />
         <div
           class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"

@@ -1,151 +1,17 @@
-<div class="mt-20 max-sm:mt-32 ml-0 md:ml-20  md:flex mb-14">
-<div class=" mr-0 md:mr-20 lg:mr-44 ">
-    <div
-    class="product-card__image relative  mx-auto overflow-hidden rounded-20 aspect-square shadow-xl border-t-white  border  w-80 h-96 bg-white"
-  >
-    <img class="rounded-20 images w-96 h-full" [src]="product.imgCover"/>
-    </div>
-    <div class="mt-5  flex justify-center">  
-    @for (image of product.images; track $index) {
-        <div class="product-card__image overflow-hidden mr-3  rounded-lg aspect-square shadow-xl  border  w-24 h-24 bg-white">
-            <img class="rounded-lg images w-24 h-24" [src]="image"/>
-        </div>
-    }
-    </div>
+<div class="mx-12 max-lg:mx-0  ">
+<app-single-product-title></app-single-product-title>
+<app-single-product-information></app-single-product-information>
+<app-single-product-rating></app-single-product-rating>
+<div class="relative text-2xl w-48 font-semibold text-black max-lg:ml-6 ml-24 mt-10">
+Related Items
+<span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
+<span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
 </div>
-<div class="lg:mx-auto lg:w-full">
-<h2 class="text-2xl">{{product.title}}</h2>
-<h2 class="text-[#0070CD] text-xl">{{product.priceAfterDiscount}}EGP</h2>
-<h2 class=""> 
-<span class="line-through text-[#757F95] text-xl">{{product.price}}EGP </span> {{product.discount}}%Off</h2>
-<h2 class="text-[#757F95]  sm:w-1/2  w-full">{{product.description}}</h2>
-<h2 class="text-[#757F95] pt-3 ">Quantity</h2>
-<div class="flex pt-3">
-    <button (click)="decrease(product)" class=" p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9] ">-</button>
-    <h2 class="text-[#0070CD] mx-3 pt-2">{{product.quantity}}</h2>
-    <button (click)="increase(product)" class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]">+</button>
-
-</div>
-<ul class="mt-7 list-disc text-[#757F95]">
-    <li class="mt-4"><span class=" font-semibold">Stock:</span>Available</li>
-    <li class="mt-4"><span class="font-semibold">Category:</span>{{product.category}}</li>
-    <li class="mt-4"><span class="font-semibold">Brand:</span>Sparta</li>
-    <li class="mt-4"><span class="font-semibold">Tags:</span>Medical Equipment</li>
-
-</ul>
-<div class="flex  mt-5">
-<button class="bg-[#0070CD] text-white p-2 px-4 rounded-xl hover:bg-blue-600 duration-500 mr-2"><i class="fa-solid fa-bag-shopping mr-2"> </i>Add To Cart </button>
-<button _ngcontent-ng-c501201935="" class="text-white bg-[#0070CD]  hover:bg-blue-600 duration-500 p-3 rounded-full  hover:text-red-500"><svg _ngcontent-ng-c501201935="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"><path _ngcontent-ng-c501201935="" stroke-linecap="round" stroke-linejoin="round" d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"></path></svg></button></div>
+<div class="grid grid-cols-1 mx-14 max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+<app-cart
+*ngFor="let product of relatedProducts"
+[product]="product"
+class="w-full">
+</app-cart>
 </div>
 </div>
-<h2 class="text-xl ml-10">Product Information</h2>
-<div class="  md:flex  mt-4 mb-14">
-    <div class=" md:ml-10  rounded-20  border  w-72 h-80 ">
-   
-        <img class="rounded-20 images w-96 h-full" [src]="product.imgCover"/>
-    </div>
-<div class=" md:ml-14">
-<h2>{{product.description}}</h2>
-<ul class="list-disc ml-8 ">
-    <li>i Dont know What To Say Here</li>
-    <li> so this words are temporarily </li>
-    <li>Waiting For The Api To End</li>
-</ul>
-
-</div>
-
-</div>
-<div>
-<div class="relative text-2xl w-1/4 font-semibold text-black ml-10">
-    Rating&Reviws 
-       <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
-        <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
-      </div>
-      <div class="w-full   overflow-hidden px-2 sm:px-0 mt-3">
-        <owl-carousel-o [options]="carouselOptions">
-          <ng-container>
-<ng-template carouselSlide *ngFor="let i of [1, 2, 3]">
-              <div class="product-card mx-auto overflow-hidden rounded-20 border-t-white shadow-xl border bg-white p-4 sm:p-6 max-sm:p-1 max-sm:w-1/2   flex flex-col  w-full max-w-sm">
-                <div class="flex flex-col sm:flex-row mt-2 sm:ml-6">
-                  <h2 class="text-lg font-semibold">Amazed</h2>
-                  <div class="flex items-center space-x-1 rtl:space-x-reverse sm:ml-4">
-                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                      <svg class="w-4 h-4 text-[#00E8F9]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                      </svg>
-                    </ng-container>
-                  </div>
-                </div>
-                <h2 class="text-[#757F95] pt-2 ml-6 mb-2 text-sm">Heatherl5 - 2024-03-13</h2>
-                <hr class="border-black w-full">
-                <p class="w-full text-sm  text-center">I'm extremely happy with this product from my pick from Tryit. I have been looking for eye drops that help with dry eyes at night time that actually last and these eye drops from Ivizia dry eye nighttime gel drops is what I've needed all along thank you.</p>
-                <h2 class="text-[#757F95] mt-2 text-sm text-center">Originally posted on iVIZIA</h2>
-              </div>
-            </ng-template>
-          </ng-container>
-        </owl-carousel-o>
-      </div>
-        <div class="mt-10">
-<!-- Modal toggle button -->
-<!-- Rate Me Button -->
-<button (click)="toggleRatingModal()" 
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 m-auto focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center">
-  Rate Me
-</button>
-
-<!-- Rating Modal -->
-<div *ngIf="showRatingModal" class="fixed inset-0 z-50 flex justify-center items-center">
-  <!-- Backdrop -->
-  <div class="absolute inset-0 bg-black opacity-50" (click)="toggleRatingModal()"></div>
-  
-  <!-- Modal Content -->
-  <div class="relative p-4 w-full max-w-md z-10">
-    <div class="bg-white rounded-lg shadow-lg">
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between p-4 border-b">
-        <h3 class="text-xl font-semibold text-gray-900">
-          Rate this Product
-        </h3>
-        <button (click)="toggleRatingModal()" 
-                class="text-gray-400 hover:bg-gray-200 rounded p-1">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Modal Body -->
-      <div class="p-4">
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-900 mb-2">Your Rating</label>
-          <div class="flex">
-            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-              <svg (click)="setRating(star)"
-                   [ngClass]="{'text-yellow-400': star <= currentRating, 'text-gray-400': star > currentRating}"
-                   class="w-6 h-6 cursor-pointer" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.178 6.704a1 1 0 00.95.69h7.034c.969 0 1.371 1.24.588 1.81l-5.68 4.13a1 1 0 00-.364 1.118l2.178 6.704c.3.921-.755 1.688-1.54 1.118l-5.68-4.13a1 1 0 00-1.176 0l-5.68 4.13c-.784.57-1.838-.197-1.539-1.118l2.178-6.704a1 1 0 00-.364-1.118L2.49 12.13c-.783-.57-.38-1.81.588-1.81h7.034a1 1 0 00.95-.69l2.178-6.704z"/>
-              </svg>
-            </ng-container>
-          </div>
-        </div>
-        <!-- Optional: Additional review fields can be added here -->
-        <button (click)="submitRating()"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-          Submit Rating
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-      </div> 
-      
-
-
-
-      <div class="grid grid-cols-1 max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-        <app-cart
-       
-        > <h2>hi</h2>
-    </app-cart>
-      </div>
