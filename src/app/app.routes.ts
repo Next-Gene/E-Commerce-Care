@@ -89,13 +89,6 @@ export const routes: Routes = [
             import('./features/pages/checkout/ckeckout/ckeckout.component').then(
                 (c) => c.CkeckoutComponent
             ),
-    },
-    {
-        path: 'paymet',
-        loadComponent: () =>
-            import('./features/pages/checkout/paymet/paymet.component').then(
-                (c) => c.PaymetComponent
-            ),
     }
 
 
