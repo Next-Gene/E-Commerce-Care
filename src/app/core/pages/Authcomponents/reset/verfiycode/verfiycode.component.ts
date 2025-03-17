@@ -9,7 +9,7 @@ import { AuthApiService } from '../../../../../../../projects/auth-api/src/publi
 
 @Component({
   selector: 'app-verfiycode',
-  imports: [RegButtonComponent , ReactiveFormsModule],
+  imports: [RegButtonComponent, ReactiveFormsModule],
   templateUrl: './verfiycode.component.html',
   styleUrl: './verfiycode.component.scss'
 })
