@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChange
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../../../../core/interfaces/product';
+import { Category } from '../../../../../core/interfaces/category';
 
 @Component({
   selector: 'app-filters',
@@ -12,11 +13,10 @@ import { Product } from '../../../../../core/interfaces/product';
 })
 export class FiltersComponent implements OnInit, OnChanges {
   @Input() products: Product[] = [];
+  @Input() categories: Category[] = [];
   @Input() showFilters: boolean = false;
   @Output() filteredProductsChange = new EventEmitter<Product[]>();
   @Output() toggleFiltersEvent = new EventEmitter<void>();
-
-  categories: string[] = [];
   selectedCategory: string = 'all';
   selectedReview: string = 'all';
   selectedPriceRange: string = '';
@@ -24,24 +24,16 @@ export class FiltersComponent implements OnInit, OnChanges {
   selectedDepartment: string = 'all';
 
   ngOnInit(): void {
-    this.initializeCategories();
     this.applyFilters();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['products']) {
-      this.initializeCategories();
       this.applyFilters();
     }
   }
 
-  initializeCategories(): void {
-    if (this.products.length) {
-      this.categories = Array.from(
-        new Set(this.products.map(item => item.category).filter((cat): cat is string => cat !== undefined))
-      );
-    }
-  }
+ 
 
   applyFilters(): void {
     const filtered = this.products.filter(product => {
