@@ -1,22 +1,18 @@
 import { Subject, takeUntil } from 'rxjs';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../../../../../core/service/products.service';
+import { CartComponent } from '../../../../../shared/components/ui/cart/cart.component';
 import { Product } from '../../../../../core/interfaces/product';
+import { ProductsService } from '../../../../../core/service/products.service';
 import { CommonModule } from '@angular/common';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { CartComponent } from "../../../../../shared/components/ui/cart/cart.component";
-import { SingleProductTitleComponent } from "../../../../../shared/components/ui/single-product-title/single-product-title.component";
-import { SingleProductInformationComponent } from "../../../../../shared/components/ui/single-product-information/single-product-information.component";
-import { SingleProductRatingComponent } from "../../../../../shared/components/ui/single-product-rating/single-product-rating.component";
 
 @Component({
-  selector: 'app-single-product',
-  imports: [CarouselModule, CommonModule, CartComponent, SingleProductTitleComponent, SingleProductInformationComponent, SingleProductRatingComponent],
-  templateUrl: './single-product.component.html',
-  styleUrl: './single-product.component.scss'
+  selector: 'app-single-product-related-items',
+  imports: [CartComponent, CommonModule],
+  templateUrl: './single-product-related-items.component.html',
+  styleUrl: './single-product-related-items.component.scss'
 })
-export class SingleProductComponent implements OnInit {
+export class SingleProductRelatedItemsComponent {
   product!: Product;
   id: string = "";
   relatedProducts: Product[] = [];
@@ -48,12 +44,12 @@ export class SingleProductComponent implements OnInit {
                     this.product.category || '',
                     this.product._id || ''
                   )
-                  .pipe(takeUntil(this._destroy$))
-                  .subscribe({
-                    next: (related) => {
-                      this.relatedProducts = related;
-                    }
-                  });
+                    .pipe(takeUntil(this._destroy$))
+                    .subscribe({
+                      next: (related) => {
+                        this.relatedProducts = related;
+                      }
+                    });
                 }
               });
           }
@@ -66,8 +62,4 @@ export class SingleProductComponent implements OnInit {
     this._destroy$.complete();
   }
 
-
- 
-  }
-
-
+}

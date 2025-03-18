@@ -1,4 +1,4 @@
-<div class="mt-20 max-sm:mt-20 ml-0 md:ml-20   md:flex mb-14">
+<div class="mt-24 max-sm:mt-20 ml-0 md:ml-20   md:flex mb-14">
 <div class=" mr-0 md:mr-20 max-sm:pb-10 lg:mr-44 ">
 <div
 class="product-card__image relative  mx-auto overflow-hidden rounded-20 aspect-square shadow-xl border-t-white  border  w-80 h-96 bg-white">
@@ -14,9 +14,9 @@ class="product-card__image relative  mx-auto overflow-hidden rounded-20 aspect-s
 </div>
 <div class="max-sm:mx-12">
 <h2 class="text-2xl">{{product.title}}</h2>
-<h2 class="text-[#0070CD] text-xl">{{product.priceAfterDiscount}}EGP</h2>
+<h2 class="text-[#0070CD] text-xl">${{product.priceAfterDiscount}}</h2>
 <h2 class=""> 
-<span class="line-through text-[#757F95] text-xl">{{product.price}}EGP </span> {{product.discount}}%Off</h2>
+<span class="line-through text-[#757F95] text-xl">${{product.price}}</span> {{product.discount}}%Off</h2>
 <h2 class="text-[#757F95]  sm:w-1/2  w-full">{{product.description}}</h2>
 <h2 class="text-[#757F95] pt-3 ">Quantity</h2>
 <div class="flex pt-3">
