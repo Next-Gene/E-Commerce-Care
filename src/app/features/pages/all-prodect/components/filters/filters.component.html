@@ -1,7 +1,7 @@
 <aside
   *ngIf="!isMobile() || showFilters"
   (click)="$event.stopPropagation()"
-   class="w-3/4 md:w-64 p-4 rounded-lg space-y-6"
+   class="w-3/4 md:w-[20rem] p-4 rounded-lg space-y-6"
   [ngClass]="
     isMobile()
       ? {
@@ -41,7 +41,7 @@
   <!-- Category Filter -->
   <div>
     <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Category</h3>
-    <ul class="space-y-2">
+    <ul class="space-y-4">
       <li>
         <label class="inline-flex items-center space-x-2">
           <input
@@ -62,10 +62,10 @@
             name="category"
             class="form-radio h-4 w-4 text-blue-600"
             [(ngModel)]="selectedCategory"
-            [value]="category"
+            [value]="category.name"
             (change)="applyFilters()"
           />
-          <span>{{ category }}</span>
+          <span class="w-full">{{ category.name }}</span>
         </label>
       </li>
     </ul>

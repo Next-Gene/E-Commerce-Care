@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../../core/service/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,6 +6,7 @@ import { Product } from '../../../core/interfaces/product';
 import { ProductsService } from '../../../core/service/products.service';
 import { CartComponent } from '../../../shared/components/ui/cart/cart.component';
 import { FiltersComponent } from './components/filters/filters.component';
+import { Category } from '../../../core/interfaces/category';
 
 @Component({
   selector: 'app-all-product',
@@ -15,15 +17,19 @@ import { FiltersComponent } from './components/filters/filters.component';
 })
 export class AllProductComponent implements OnInit {
   products: Product[] = [];
+  categories: Category[] = [];
   filteredProducts: Product[] = [];
   showFilters: boolean = false;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private _productsService: ProductsService,private _categoriesService:CategoriesService) {}
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe((data: Product[]) => {
+    this._productsService.getAllProducts().subscribe((data: Product[]) => {
       this.products = data;
       this.filteredProducts = [...this.products];
+    });
+    this._categoriesService.getAllCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
     });
   }
 

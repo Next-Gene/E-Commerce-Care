@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { CartSammaryComponent } from "../../../../shared/components/ui/cart-sammary/cart-sammary.component";
 
 @Component({
   selector: 'app-paymet',
   standalone: true,
-  imports: [],
+  imports: [CartSammaryComponent],
   templateUrl: './paymet.component.html',
   styleUrl: './paymet.component.scss'
 })
