@@ -3,11 +3,13 @@ import { Subscription, fromEvent } from 'rxjs';
 import { CommonModule, CurrencyPipe, DecimalPipe, TitleCasePipe } from '@angular/common';
 import { TruncatePipe } from '../../../pipes/truncate.pipe';
 import { Product } from '../../../../core/interfaces/product';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [TruncatePipe, CurrencyPipe, TitleCasePipe, DecimalPipe, CommonModule],
+
+  imports: [TruncatePipe, CurrencyPipe, TitleCasePipe, DecimalPipe, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })

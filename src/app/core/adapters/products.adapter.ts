@@ -1,5 +1,6 @@
+import { Product } from './../interfaces/product';
 import { Injectable } from '@angular/core';
-import { APIProductsResponse, Product } from '../interfaces/product';
+import { APIProductsResponse} from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,7 @@ export class ProductsAdapter {
       category: resItem.category,
       rate: resItem.rate,
     }));
+    
   }
+
 }
