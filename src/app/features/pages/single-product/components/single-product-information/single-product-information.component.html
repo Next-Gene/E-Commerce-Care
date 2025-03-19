@@ -5,7 +5,12 @@
 </div>
 <div class="  md:flex max-md:mx-5  mx-12 mt-4 mb-14">
 <div class=" ml-10 max-md:mb-6 max-md:ml-0 rounded-20  border  w-72 h-80 ">
-<img class="rounded-20 images w-96 h-full" [src]="product.imgCover"/>
+    <img class="rounded-20 images w-96 h-full" [src]="product?.imgCover" *ngIf="product?.imgCover; else placeholderImage"/>
+    <ng-template #placeholderImage>
+      <div class="w-96 h-full flex items-center justify-center bg-gray-200 rounded-20">
+        <span class="text-gray-500">Loading Image...</span>
+      </div>
+    </ng-template>
 </div>
 <div class=" md:ml-14">
 <h2>{{product.description}}</h2>
