@@ -19,6 +19,7 @@ export interface Product {
   rate?: number;
 }
 
+
 export interface APIProductsResponse {
   message: string;
   products: Product[];

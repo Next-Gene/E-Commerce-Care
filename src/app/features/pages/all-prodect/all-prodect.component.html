@@ -19,9 +19,10 @@
     (click)="toggleFilters()">
   </div>
 
-  <div class="flex flex-row xl:gap-8 relative">
+  <div class="flex flex-row xl:gap-6 relative">
     <app-filters
       [products]="products"
+      [categories]="categories"
       [showFilters]="showFilters"
       (filteredProductsChange)="filteredProducts = $event"
       (toggleFiltersEvent)="toggleFilters()"

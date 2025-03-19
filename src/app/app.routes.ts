@@ -1,3 +1,5 @@
+import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
+import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -6,42 +8,50 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+
     {
         path: 'home',
         loadComponent: () => import('./features/pages/home/home.component')
             .then(c => c.HomeComponent)
-        
+
     },
 
     {
         path: 'about',
         loadComponent: () => import('./features/pages/about/about.component')
             .then(c => c.AboutComponent)
-        
+
     },
     {
         path: 'categories',
         loadComponent: () => import('./features/pages/categories/categories.component')
             .then(c => c.CategoriesComponent)
-        
+
     },
     {
         path: 'All-prodect',
         loadComponent: () => import('./features/pages/all-prodect/all-prodect.component')
             .then(c => c.AllProductComponent)
-        
+
     },
     {
         path: 'cart',
         loadComponent: () => import('./shared/components/ui/cart/cart.component')
             .then(c => c.CartComponent)
-        
+
     },
     {
         path: 'login',
         loadComponent: () =>
             import('./core/pages/Authcomponents/login/login.component').then(
                 (c) => c.LoginComponent
+            ),
+    },
+    {
+        path: 'SingleProduct/:id',
+        loadComponent: () =>
+            import('./features/pages/single-product/single-product.component').then(
+                (c) => c.SingleProductComponent
             ),
     },
     {
@@ -79,6 +89,13 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./core/pages/Authcomponents/signup/signup.component').then(
                 (c) => c.SignupComponent
+            ),
+    },
+    {
+        path: 'checkout',
+        loadComponent: () =>
+            import('./features/pages/checkout/ckeckout/ckeckout.component').then(
+                (c) => c.CkeckoutComponent
             ),
     }
 

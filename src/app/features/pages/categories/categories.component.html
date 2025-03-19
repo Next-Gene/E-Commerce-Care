@@ -1,1 +1,35 @@
-<p>categories works!</p>
+<div class="mb-5">
+    <div class="flex flex-col justify-center items-center mt-24 max-sm:mt-36 max-sm:ml-2 max-sm:mb-1 max-sm:mr-3 ml-10 mr-10">
+        <div class="relative text-2xl font-bold text-[var(--secondary-color)] pb-1/2 text-center">
+            Shop By Category
+            <span class="absolute left-0 bottom-0 w-3/4 h-3 bg-blue-600/20 rounded-r-full"></span>
+            <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
+        </div>
+        <div class=" w-full flex justify-center">
+        </div>
+    </div>
+    
+
+<div class="flex items-center justify-center flex-row-reverse my-7">
+    <img src="/370146.png" class="w-8 h-8 ml-1/2" alt="image">
+    <p class="text-xs text-gray-700">جميع الادوية يتم صرفها من صيدليات مرخصة من وزاره الصحة بجمهورية مصر العربية</p>
+</div>
+
+
+<div class="justify-center mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
+            gap-6 sm:gap-7 md:gap-6 lg:gap-16 p-3 max-w-[1200px] mx-auto xl:px-40 lg:px-40 md:px-30">
+    @for (category of Categories; track category._id) {
+        <div class="bg-white shadow-md shadow-gray-400 rounded-lg w-64 h-28 flex items-center overflow-hidden mx-auto">
+            <img [src]="category.image" [alt]="category.name" class="w-2/3 h-full object-cover">
+            <div class="w-2/3 p-2 flex flex-col justify-center text-center">
+                <h3 class="text-[11px] md:text-xs font-bold text-[#0070CD] text-center">
+                    {{ category.name }}
+                </h3>
+                <p class="text-[#00366A] text-[7px] md:text-[10px] font-semibold text-center leading-tight">
+                    {{ category.description }}
+                </p>
+            </div>
+        </div>
+    }
+   </div>
+</div>

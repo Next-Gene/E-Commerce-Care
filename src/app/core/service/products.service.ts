@@ -24,4 +24,28 @@ export class ProductsService implements ProductsAPI {
         )
       );
   }
+  getProductById(id: string): Observable<Product> {
+    return this._httpClient.get<APIProductsResponse>(`${ApiEndpoint.PRODUCTS}`).pipe(
+      map((res: APIProductsResponse) => {
+        const product = res.products.find(p => p._id === id);
+        if (!product) {
+          throw new Error(`Product with ID ${id} not found`);
+        }
+        return product;
+      })
+    );
+  }
+  getRelatedProducts(category: string, excludeProductId: string): Observable<Product[]> {
+    return this._httpClient
+      .get<APIProductsResponse>(ApiEndpoint.PRODUCTS)
+      .pipe(
+        map((res: APIProductsResponse) => {
+          return res.products.filter(
+            (p) => p.category === category && p._id !== excludeProductId
+          );
+        })
+      );
+  }
+  
 }
+

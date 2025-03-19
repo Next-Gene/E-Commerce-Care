@@ -1,19 +1,28 @@
 <div class="product-card flex justify-center mb-4">
-  <div class="product-card__inner">
-    <!-- صورة المنتج -->
-    <div class="product-card__image relative mx-auto overflow-hidden rounded-lg aspect-square">
-      <img
-        class="rounded-20 images w-96 h-full"
-        [src]="product.imgCover"
-        [alt]="product.title"
-      />
-      <!-- طبقة التراكب عند التحويم -->
-      <div class="product-card__overlay absolute inset-0 flex justify-center items-center opacity-0 transition duration-300 hover:opacity-100 bg-blue-600/70">
-        <div class="product-card__overlay__content flex space-x-2">
-          <div class="product-card__overlay__item flex justify-center items-center bg-primary p-2 rounded-full">
-            <img src="/icons/eye.svg" alt="View" class="w-4 h-4" />
-          </div>
-          <div class="product-card__overlay__item flex justify-center items-center bg-primary p-2 rounded-full">
+    <div class="product-card__inner">
+      <div
+        class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square "
+        routerLink="/SingleProduct/{{ product._id }}"
+      >
+        <img
+          class="rounded-20 images w-96 h-full"
+          [src]="product.imgCover"
+          [alt]="product.title"
+        />
+        <div
+          class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"
+        >
+          <div
+            class="product-card__overlay__content flex justify-center items-center"
+          >
+            <div
+              class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+            >
+              <img src="/icons/eye.svg" alt="" />
+            </div>
+            <div
+              class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+            >
             <button class="text-white hover:text-red-500">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                    xmlns="http://www.w3.org/2000/svg">
