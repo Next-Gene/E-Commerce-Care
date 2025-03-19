@@ -56,4 +56,8 @@ export class SingleProductTitleComponent {
     this._destroy$.next();
     this._destroy$.complete();
   }
+  changeMainImage(newImage: string) {
+    this.product.imgCover = newImage;
+}
+
 }
