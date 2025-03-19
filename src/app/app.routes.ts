@@ -89,5 +89,11 @@ export const routes: Routes = [
                 (c) => c.SignupComponent
             ),
     },
-
+    {
+    path: 'checkout',
+    loadComponent: () =>
+        import('./features/pages/checkout/ckeckout/ckeckout.component').then(
+            (c) => c.CkeckoutComponent
+        ),
+}
 ];
