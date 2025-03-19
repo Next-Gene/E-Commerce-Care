@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Product } from '../../../../../core/interfaces/product';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-single-product-information',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './single-product-information.component.html',
   styleUrl: './single-product-information.component.scss'
 })
