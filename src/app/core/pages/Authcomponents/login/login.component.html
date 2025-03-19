@@ -1,43 +1,36 @@
-<div class="flex h-screen flex-row  w-full ">
-    <div class="flex flex-col mr-28 justify-center items-center lg:w-1/2 relative ">
-    <img class=" absolute top-0 left-0 mb-4 w-64" src="images/logo 2 trams.png" alt="Prime Care Logo">
-
-    <!-- <app-icon class="w-64 absolute top-0 left-0 mb-4"></app-icon> -->
-    <div>
-    <h3 class="text-xl font-semibold pb-4 flex  w-full text-center ml-20 mt-10 text-[#00366A] sm:text-3xl sm:ml-0">LOGIN IN TO  <span class="pl-2  text-2xl sm:text-4xl"><h3>PRIME CARE</h3></span> </h3>
-      
-    
-    </div>
-    <p class="text-black mb-6 ml-20 sm:ml-0">ADD YOUR EMAIL ACCOUNT</p>
-    <form [formGroup]="login" (ngSubmit)="Login()" class="w-full  max-w-sm ml-20 sm:ml-0">
-    <app-email-input>
-    <i class="fas fa-envelope text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-    <input formControlName="email" type="email" placeholder="Email" 
-    
-    class="dark:bg-gray-300 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 text-blue-800 placeholder-blue-900 focus:border-blue-500 block w-80 pl-10 p-2.5">
-    </app-email-input>
-    <app-alerts [formName]="login" controlName="email"/>
-    
-    <app-email-input> 
-    <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-    <input formControlName="password" type="password" placeholder="Password" class="dark:bg-gray-300 border border-blue-300 text-sm rounded-lg placeholder-blue-900 text-blue-800 focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5">
-    </app-email-input>
-    <app-alerts [formName]="login" controlName="password"/>
-    <p class=" mt-2  text-center text-red-600 dark:text-red-500">{{errormessage}}</p>
-    
-    <div class="w-full mt-5 text-center">
-    <a routerLink="/resetPassword" class="  text-blue-900  hover:underline">Forgot your password?</a>
-    </div>
-    
-    <div class=" text-center mt-6 ">
-    <app-reg-button > submit </app-reg-button>
-    </div>
-    <h2 class="text-center mt-14 block sm:hidden">dont have account? <span><a class="text-blue-800 hover:underline" href="/register">Create one here</a></span></h2>
-
-    </form>
-    </div>
-    
-    <app-background class="hidden lg:block" role="login" />
-   
-    </div>
-    
+<div class="flex min-h-screen flex-col lg:flex-row w-full">
+<div class="flex flex-col justify-center items-center w-full lg:w-1/2 px-4 sm:px-8 lg:px-16 relative mr-20 sm:mr-20">
+<img class="absolute top-0 left-0 mb-4 w-32 sm:w-48" src="images/logo 2 trams.png" alt="Prime Care Logo">      
+<h3 class="font-semibold text-center text-[#00366A] text-xl sm:text-2xl lg:text-3xl mt-16">
+LOGIN IN TO <span class="text-2xl sm:text-4xl">PRIME CARE</span>
+</h3>      
+<p class="text-black mt-4 text-center">ADD YOUR EMAIL ACCOUNT</p>   
+<form [formGroup]="login" (ngSubmit)="Login()" class="w-full mt-5 max-w-xs sm:max-w-sm">
+<div class="relative w-full">
+<i class="fas fa-envelope text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+<input formControlName="email" type="email" placeholder="Email" 
+class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+</div>
+<app-alerts [formName]="login" controlName="email"/>        
+<div class="relative w-full mt-4">
+<i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+<input formControlName="password" type="password" placeholder="Password" 
+class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+</div>
+<app-alerts [formName]="login" controlName="password"/>        
+<p class="mt-2 text-center text-red-600">{{errormessage}}</p>        
+<div class="w-full mt-5 text-center">
+<a routerLink="/resetPassword" class="text-blue-900 hover:underline">Forgot your password?</a>
+</div>        
+<div class="text-center mt-6">
+<app-reg-button>Submit</app-reg-button>
+</div>        
+<h2 class="text-center mt-10 block lg:hidden">
+Don't have an account? 
+<span><a class="text-blue-800 hover:underline" href="/register">Create one here</a></span>
+</h2>
+</form>
+</div>    
+<app-background class="hidden lg:block" role="login" />
+</div>
+  

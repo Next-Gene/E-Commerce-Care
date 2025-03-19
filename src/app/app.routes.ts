@@ -1,3 +1,5 @@
+import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
+import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -89,5 +91,12 @@ export const routes: Routes = [
                 (c) => c.SignupComponent
             ),
     },
+    {
+        path: 'checkout',
+        loadComponent: () =>
+            import('./features/pages/checkout/ckeckout/ckeckout.component').then(
+                (c) => c.CkeckoutComponent
+            ),
+    }
 
 ];

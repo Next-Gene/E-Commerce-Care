@@ -1,0 +1,106 @@
+<div class="bg-slate-50 min-h-screen py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:items-start">
+        <div class="md:col-span-2 p-6 order-2 md:order-1">
+          <h2 class="text-xl text-[#160E4B] font-light mb-4 text-right flex items-center justify-between">
+            Choose the payment method
+          </h2>
+          <div class="flex gap-4 mb-6">
+            @for (option of paymentOptions; track option.type) {
+              <div
+                class="payment-option border border-gray-300 rounded-3xl p-3 text-center cursor-pointer
+                       shadow-md hover:shadow-lg hover:text-blue-500 hover:border-blue-600 transition-all"
+                (click)="selectPaymentMethod(option.type)"
+              >
+                <img [src]="option.img" [alt]="option.label" class="w-12 mx-auto mb-2" />
+                <p class="text-gray-500 font-extralight">
+                  {{ option.label }}
+                </p>
+              </div>
+            }
+          </div>
+  
+          @if (paymentMethod === 'cash') {
+            <div class="text-base font-light text-gray-600 bg-gray-50 p-3 mb-4 rounded-md">
+              <p>
+                Your order has been placed successfully!
+                Please have the exact amount ready upon delivery.
+              </p>
+            </div>
+          }
+  
+          @if (paymentMethod === 'card') {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-[var(--secondary-color)] block  text-sm font-medium mb-1">
+                  Card Holder Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Name on Card"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+  
+              <div>
+                <label class="text-[var(--secondary-color)] block  text-sm font-medium mb-1">
+                  Card Number
+                </label>
+                <input
+                  type="text"
+                  placeholder="Card Number"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+  
+              <div>
+                <label class="text-[var(--secondary-color)] block  text-sm font-medium mb-1">
+                  Expiration Date
+                </label>
+                <input
+                  type="text"
+                  placeholder="MM/YY"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+  
+              <div>
+                <label class="text-[var(--secondary-color)] block  text-sm font-medium mb-1">
+                  CCV
+                </label>
+                <input
+                  type="text"
+                  placeholder="CCV"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+          }
+  
+          <div class="flex justify-between mt-6">
+            <button
+              routerLink="cart"
+              class="px-4 py-2 bg-[#0070CD] text-white rounded-md shadow-md
+                     hover:bg-blue-600 transition-colors"
+            >
+              &larr; Previous
+            </button>
+            <button
+              class="px-4 py-2 bg-[#0070CD] text-white rounded-md shadow-md
+                     hover:bg-blue-600 transition-colors"
+            >
+              Pay Now &rarr;
+            </button>
+          </div>
+        </div>
+  
+        <app-cart-sammary class="order-1 md:order-2"></app-cart-sammary>
+      </div>
+    </div>
+  </div>
+  
+ 

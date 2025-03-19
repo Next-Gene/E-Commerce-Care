@@ -1,0 +1,149 @@
+<div class="bg-slate-50 min-h-screen ">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 p-6">
+        <h2 class="text-2xl font-semibold mb-6 text-[var(--secondary-color)]">
+          Billing Address
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="mb-2  block text-[var(--secondary-color)] text-lg  drop-shadow-lg"
+              >First Name</label
+            >
+            <input
+              type="text"
+              placeholder="First Name"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Last Name</label
+            >
+            <input
+              type="text"
+              placeholder="Last Name"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Email</label
+            >
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Phone</label
+            >
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Address Line 1</label
+            >
+            <input
+              type="text"
+              placeholder="Address Line 1"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Address Line 2</label
+            >
+            <input
+              type="text"
+              placeholder="Address Line 2"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Country</label
+            >
+            <select
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            >
+              <option>Choose Country</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >City</label
+            >
+            <input
+              type="text"
+              placeholder="City"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Post Code</label
+            >
+            <input
+              type="text"
+              placeholder="Post Code"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >State</label
+            >
+            <input
+              type="text"
+              placeholder="State"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+            />
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="mb-2 block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >Your Message For Order</label
+            >
+            <textarea
+              placeholder="Your Message"
+              class="w-full text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500 h-20"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button
+            routerLink="/cart"
+            class="px-1 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200"
+          >
+            &larr; Back To Cart
+          </button>
+          <button
+            class="max-sm:px-1 xl:px-2 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200"
+          >
+            Next Step &rarr;
+          </button>
+        </div>
+      </div>
+      <div>
+        <app-cart-sammary></app-cart-sammary>
+      </div>
+    </div>
+  </div>
+</div>
