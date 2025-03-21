@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+import { MadeByComponent } from "./About-us-component`s/made-by/made-by.component";
+import { AboutBackEndComponent } from "./About-us-component`s/about-back-end/about-back-end.component";
+import { AboutFrontEndComponent } from "./About-us-component`s/about-front-end/about-front-end.component";
+import { AboutProjectManagerComponent } from "./About-us-component`s/about-project-manager/about-project-manager.component";
+import { AboutUIUXComponent } from "./About-us-component`s/about-ui-ux/about-ui-ux.component";
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [MadeByComponent, AboutBackEndComponent, AboutFrontEndComponent, AboutProjectManagerComponent, AboutUIUXComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
