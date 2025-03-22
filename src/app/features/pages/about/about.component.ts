@@ -4,10 +4,11 @@ import { AboutBackEndComponent } from "./About-us-component`s/about-back-end/abo
 import { AboutFrontEndComponent } from "./About-us-component`s/about-front-end/about-front-end.component";
 import { AboutProjectManagerComponent } from "./About-us-component`s/about-project-manager/about-project-manager.component";
 import { AboutUIUXComponent } from "./About-us-component`s/about-ui-ux/about-ui-ux.component";
+import { AboutPrimeCareComponent } from "./About-us-component`s/about-prime-care/about-prime-care.component";
 
 @Component({
   selector: 'app-about',
-  imports: [MadeByComponent, AboutBackEndComponent, AboutFrontEndComponent, AboutProjectManagerComponent, AboutUIUXComponent],
+  imports: [MadeByComponent, AboutBackEndComponent, AboutFrontEndComponent, AboutProjectManagerComponent, AboutUIUXComponent, AboutPrimeCareComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
