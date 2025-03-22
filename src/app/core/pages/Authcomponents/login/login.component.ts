@@ -13,7 +13,7 @@ import { AuthApiService } from '../../../../../../projects/auth-api/src/public-a
 
 @Component({
   selector: 'app-login',
-  imports: [ EmailInputComponent,RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
+  imports: [ RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

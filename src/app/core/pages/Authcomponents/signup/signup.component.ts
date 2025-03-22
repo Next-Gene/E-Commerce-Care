@@ -14,7 +14,7 @@ import { validsignup } from '../../../../shared/utilites/validsignup';
 
 @Component({
   selector: 'app-signup',
-  imports: [AlertsComponent, EmailInputComponent, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
+  imports: [AlertsComponent,  ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })

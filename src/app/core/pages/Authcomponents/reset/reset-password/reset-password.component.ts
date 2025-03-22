@@ -11,7 +11,7 @@ import { AuthApiService } from '../../../../../../../projects/auth-api/src/publi
 
 @Component({
   selector: 'app-reset-password',
-  imports: [EmailInputComponent, AlertsComponent, RegButtonComponent,ReactiveFormsModule],
+  imports: [ AlertsComponent, RegButtonComponent,ReactiveFormsModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'
 })
