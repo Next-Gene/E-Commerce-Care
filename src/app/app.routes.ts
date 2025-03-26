@@ -1,3 +1,4 @@
+import { DetailsCategoryComponent } from './features/pages/home/components/details-category/details-category.component';
 import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
 import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
@@ -96,6 +97,14 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./features/pages/checkout/ckeckout/ckeckout.component').then(
                 (c) => c.CkeckoutComponent
+            ),
+    }
+    ,
+    {
+        path: 'details-category/:id',
+        loadComponent: () =>
+            import('./features/pages/home/components/details-category/details-category.component').then(
+                (c) => c.DetailsCategoryComponent
             ),
     }
 
