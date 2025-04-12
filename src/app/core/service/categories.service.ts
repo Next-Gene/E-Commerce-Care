@@ -23,4 +23,18 @@ export class CategoriesService implements CategoriesAPI{
         )
       );
   }
+
+
+  getCategoryById(id: string): Observable<Category> {
+    return this._httpClient.get<APICategoriesResponse>(`${ApiEndpoint.CATEGORIES}`)
+      .pipe(
+        map((res: APICategoriesResponse) => {
+          const category = res.categories.find(p => p._id === id);
+          if (!category) {
+            throw new Error(`Category with ID ${id} not found`);
+          }
+          return category;
+        })
+      );
+  }
 }
