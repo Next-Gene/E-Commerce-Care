@@ -30,4 +30,5 @@ export class AppComponent implements OnInit {
       this.isAuthPage = authPages.includes(event.url);
     });
   }
+  
 }

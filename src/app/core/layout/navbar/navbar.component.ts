@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../service/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  private _ThemeService = inject(ThemeService);
+  toggleTheme() {
+    this._ThemeService.toggleDarkMode();
+  }
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
@@ -18,6 +23,7 @@ export class NavbarComponent {
   ngOnInit(): void {
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
+  
   }
 
   checkLoginStatus() {

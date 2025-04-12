@@ -38,7 +38,7 @@
 
     <!-- محتوى بطاقة المنتج -->
     <div class="product-card__content px-2 py-2 flex flex-col  ">
-      <h3 class="font-semibold text-sm" [title]="product.title">
+      <h3 class="font-semibold text-sm dark:text-white transition-colors duration-300" [title]="product.title">
         {{ product.title | truncate:truncateCount | titlecase }}
       </h3>
       
@@ -55,14 +55,14 @@
       <!-- الأسعار ونسبة الخصم -->
       <div class="product-card__price flex flex-col ">
         <div class="flex items-center">
-          <span class="text-price font-medium text-sm">
+          <span class="dark:text-cyan-300 duration-300 transition-colors text-blue-800 font-medium text-sm ">
             {{ product.priceAfterDiscount | currency:"$" }}
           </span>
           <span class="text-xs text-gray-500 line-through ml-1">
             {{ product.price | currency:"$" }}
           </span>
         </div>
-        <span class="text-[10px] text-green-600 mt-1">
+        <span class="text-[10px] text-blue-600 mt-1">
           {{ calculateDiscount(product) | number:'1.0-0' }}% خصم
         </span>
       </div>

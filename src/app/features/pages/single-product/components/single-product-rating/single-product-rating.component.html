@@ -1,13 +1,13 @@
 <div>
   <div
-    class="relative text-2xl w-48 font-semibold text-black mb-8 max-lg:ml-6 ml-24"
+    class="relative text-2xl w-48 font-semibold text-black mb-8 max-lg:ml-6 ml-24 dark:text-white transition-colors duration-300"
   >
     Rating&Reviws
     <span
-      class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"
+      class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 dark:bg-white/50 transition-colors duration-300 rounded-r-full"
     ></span>
     <span
-      class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"
+      class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 dark:bg-white transition-colors duration-300 rounded-r-full"
     ></span>
   </div>
   <div class="w-full mx-12 max-lg:mx-0 overflow-hidden px-2 sm:px-0 mt-3">
@@ -15,12 +15,12 @@
       <ng-container>
         <ng-template carouselSlide *ngFor="let i of [1, 2, 3]">
           <div
-            class="product-card mx-auto overflow-hidden rounded-20 border-t-white shadow-xl border bg-white p-4 sm:p-6 max-sm:p-1 flex flex-col w-full max-w-sm"
+            class="product-card mx-auto overflow-hidden rounded-20 border-t-white shadow-xl border dark:bg-[#353535] duration-300 transition-colors p-4 sm:p-6 max-sm:p-1 flex flex-col w-full max-w-sm"
           >
             <div class="flex flex-col sm:flex-row mt-2 sm:ml-6">
-              <h2 class="text-lg font-semibold">Amazed</h2>
+              <h2 class="text-lg font-semibold dark:text-white duration-300 transition-colors">Amazed</h2>
               <div
-                class="flex items-center space-x-1 rtl:space-x-reverse sm:ml-4"
+                class="flex items-center space-x-1  rtl:space-x-reverse sm:ml-4"
               >
                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
                   <svg
@@ -37,17 +37,17 @@
                 </ng-container>
               </div>
             </div>
-            <h2 class="text-[#757F95] pt-2 ml-6 mb-2 text-sm">
+            <h2 class="text-[#757F95] pt-2 ml-6 mb-2 dark:text-gray-200 duration-300 transition-colors text-sm">
               Heatherl5 - 2024-03-13
             </h2>
             <hr class="border-black w-full" />
-            <p class="w-full text-sm text-center">
+            <p class="w-full text-sm text-center dark:text-gray-100 duration-300 transition-colors mt-2">
               I'm extremely happy with this product from my pick from Tryit. I
               have been looking for eye drops that help with dry eyes at night
               time that actually last and these eye drops from Ivizia dry eye
               nighttime gel drops is what I've needed all along thank you.
             </p>
-            <h2 class="text-[#757F95] mt-2 text-sm text-center">
+            <h2 class="text-[#757F95] mt-2 text-sm text-center dark:text-gray-200 duration-300 transition-colors">  
               Originally posted on iVIZIA
             </h2>
           </div>

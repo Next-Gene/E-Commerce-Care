@@ -1,4 +1,4 @@
-<div class="mt-24 max-sm:mt-20 ml-0 md:ml-20 md:flex mb-14">
+<div class="pt-24 max-sm:pt-20 ml-0 md:ml-20 md:flex mb-14">
   <div class="mr-0 md:mr-20 max-sm:pb-10 lg:mr-44">
     <div
       class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square shadow-xl border-t-white border w-80 h-96 bg-white"
@@ -20,16 +20,16 @@
     </div>
   </div>
   <div class="max-sm:mx-12">
-    <h2 class="text-2xl">{{ product.title }}</h2>
-    <h2 class="text-[#0070CD] text-xl">${{ product.priceAfterDiscount }}</h2>
-    <h2 class="">
-      <span class="line-through text-[#757F95] text-xl"
+    <h2 class="text-2xl dark:text-white transition-colors duration-300">{{ product.title }}</h2>
+    <h2 class="text-[#0070CD] dark:text-blue-500 duration-300 transition-colors text-xl">${{ product.priceAfterDiscount }}</h2>
+    <h2 class=" dark:text-white transition-colors duration-300 ">
+      <span class="line-through text-[#757F95] dark:text-gray-400 duration-300 transition-colors text-xl"
         >${{ product.price }}</span
       >
       {{ product.discount }}%Off
     </h2>
-    <h2 class="text-[#757F95] sm:w-1/2 w-full">{{ product.description }}</h2>
-    <h2 class="text-[#757F95] pt-3">Quantity</h2>
+    <h2 class="text-[#757F95] sm:w-1/2 w-full dark: dark:text-gray-300 duration-300 transition-colors">{{ product.description }}</h2>
+    <h2 class="text-[#757F95] pt-3 dark:text-white duration-300 transition-colors">Quantity</h2>
     <div class="flex pt-3">
       <button
         (click)="decrease(product)"
@@ -45,7 +45,7 @@
         +
       </button>
     </div>
-    <ul class="mt-7 list-disc text-[#757F95]">
+    <ul class="mt-7 list-disc text-[#757F95] dark:text-white transition-colors duration-300">
       <li class="mt-4"><span class="font-semibold">Stock:</span>Available</li>
       <li class="mt-4">
         <span class="font-semibold">Category:</span>{{ product.category }}

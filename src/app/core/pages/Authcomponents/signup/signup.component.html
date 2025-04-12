@@ -1,50 +1,50 @@
-<div class="flex min-h-screen flex-col lg:flex-row w-full relative text-center">
+<div class="flex min-h-screen dark:bg-[#252525] flex-col lg:flex-row w-full relative text-center">
 <img class="absolute top-0 right-0 w-32 sm:w-48" src="images/logo 2 trams.png" alt="Prime Care Logo">
 <app-background role="signup" class="hidden lg:block lg:w-2/5" />
 <div class="flex flex-col justify-center items-center w-full px-4 sm:px-8 lg:px-16 lg:w-1/2">
-<h3 class="text-2xl sm:text-3xl font-semibold text-[#00366A] mt-16 sm:mt-0">CREATE ACCOUNT</h3>      
-<p class="mt-4">Use your email for registration</p>
+<h3 class="text-2xl sm:text-3xl font-semibold text-[#00366A] mt-16 sm:mt-0 dark:text-white">CREATE ACCOUNT</h3>      
+<p class="mt-4 dark:text-white">Use your email for registration</p>
 <form [formGroup]="register" (ngSubmit)="signup()" class="w-full max-w-xs sm:max-w-sm">
 <div class="relative w-full mt-4">
 <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="username" type="text" placeholder="Username" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="username" type="text" placeholder="Username" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="username"/>
 <div class="relative w-full mt-4">
 <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="firstName" type="text" placeholder="First Name" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="firstName" type="text" placeholder="First Name" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="firstName"/>
 <div class="relative w-full mt-4">
 <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="lastName" type="text" placeholder="Last Name" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="lastName" type="text" placeholder="Last Name" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="lastName"/>
 <div class="relative w-full mt-4">
 <i class="fa-solid fa-phone text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="phone" type="text" placeholder="Phone Number" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="phone" type="text" placeholder="Phone Number" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="phone"/>
 <div class="relative w-full mt-4">
 <i class="fas fa-envelope text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="email" type="email" placeholder="Email" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="email" type="email" placeholder="Email" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="email"/>
 <div class="relative w-full mt-4">
 <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="password" type="password" placeholder="Password" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="password" type="password" placeholder="Password" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="password"/>
 <div class="relative w-full mt-4">
 <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-<input formControlName="rePassword" type="password" placeholder="Confirm Password" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+<input formControlName="rePassword" type="password" placeholder="Confirm Password" class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
 </div>
 <app-alerts [formName]="register" controlName="rePassword"/>        
 <p class="mt-2 text-red-600">{{errormessage}}</p>        
 <div class="text-center mt-6">
 <app-reg-button>Register</app-reg-button>
 </div>        
-<h2 class="text-center mt-8 block lg:hidden">Have an account? <a class="text-blue-800 hover:underline" href="/login">Login</a></h2>
+<h2 class="text-center mt-8 block lg:hidden dark:text-white">Have an account? <a class="text-blue-800 dark:text-blue-600 hover:underline" href="/login">Login</a></h2>
 </form>
 </div>
 </div>
