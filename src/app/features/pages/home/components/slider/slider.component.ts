@@ -44,6 +44,12 @@ export class SliderComponent {
       },
       nav: false,
       dots: false,
+      rtl: true, // This is the key RTL setting
+      autoWidth: false, // Ensure consistent item width
+      slideBy: 1, // Slide one item at a time
+      mouseDrag: true, // Allow mouse dragging
+      touchDrag: true, // Allow touch dragging
+      pullDrag: true // Allow pull-to-drag
 
     };
   }

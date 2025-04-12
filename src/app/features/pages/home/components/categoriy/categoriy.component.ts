@@ -61,7 +61,11 @@ export class CategoriyComponent {
       }
 
     },
-    nav: false
+    nav: false,
+    rtl: true, // This is the key RTL setting
+    autoWidth: false, // Ensure consistent item width
+    slideBy: 1, // Slide one item at a time
+    pullDrag: true // Allow pull-to-drag
   }
 
 }
