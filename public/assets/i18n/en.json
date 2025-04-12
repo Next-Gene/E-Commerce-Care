@@ -277,5 +277,14 @@
   "RELATED_PRODUCTS": {
     "TITLE": "Related Items",
     "VIEW_ALL": "View All Related Products"
+  },
+  "FORGOT_PASSWORD": {
+    "LOGO_ALT": "Prime Care Logo",
+    "TITLE": "Reset Your Password",
+    "INSTRUCTIONS": "Enter your email to receive a password reset code",
+    "EMAIL_PLACEHOLDER": "Email",
+    "BUTTON_TEXT": "Send Code",
+    "EMAIL_LABEL": "Email address",
+    "BACK_TO_LOGIN": "Back to Login"
   }
 }
