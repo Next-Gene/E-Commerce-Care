@@ -209,5 +209,11 @@
       "50_OFF": "50% off or more",
       "70_OFF": "70% off or more"
     }
+  },
+  "PRODUCT_CARD": {
+    "VIEW": "View product",
+    "WISHLIST": "Add to wishlist",
+    "DISCOUNT": "% off",
+    "ADD_TO_CART": "Add to cart"
   }
 }
