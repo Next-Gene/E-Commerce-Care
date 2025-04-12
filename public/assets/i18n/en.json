@@ -215,5 +215,41 @@
     "WISHLIST": "Add to wishlist",
     "DISCOUNT": "% off",
     "ADD_TO_CART": "Add to cart"
+  },
+  "LOGIN": {
+    "TITLE": "LOGIN TO",
+    "BRAND": "PRIME CARE",
+    "SUBTITLE": "ADD YOUR EMAIL ACCOUNT",
+    "FORM": {
+      "EMAIL": {
+        "PLACEHOLDER": "Email",
+        "LABEL": "Email"
+      },
+      "PASSWORD": {
+        "PLACEHOLDER": "Password",
+        "LABEL": "Password"
+      },
+      "FORGOT_PASSWORD": "Forgot your password?",
+      "SUBMIT": "Submit",
+      "NO_ACCOUNT": "Don't have an account?",
+      "CREATE_ACCOUNT": "Create one here"
+    }
+  },
+  "AUTH_BACKGROUND": {
+    "LOGIN": {
+      "TITLE": "Hello, Friend!",
+      "SUBTITLE": "Enter your personal details and start the journey with us",
+      "BUTTON": "Sign up"
+    },
+    "SIGNUP": {
+      "TITLE": "Welcome Back!",
+      "SUBTITLE": "To keep connected to us please login with your personal info",
+      "BUTTON": "Sign in"
+    }
+  },
+  "AUTH_BUTTONS": {
+    "SIGNUP": "Sign up",
+    "LOGIN": "Login",
+    "SUBMIT": "Submit"
   }
 }
