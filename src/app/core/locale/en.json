@@ -278,6 +278,23 @@
     "TITLE": "Related Items",
     "VIEW_ALL": "View All Related Products"
   },
+  "RATINGS": {
+    "TITLE": "Ratings & Reviews",
+    "REVIEW": {
+      "USER": "Heatherl5 - 2024-03-13",
+      "CONTENT": "I'm extremely happy with this product from my pick from Tryit. I have been looking for eye drops that help with dry eyes at night time that actually last and these eye drops from Ivizia dry eye nighttime gel drops is what I've needed all along thank you.",
+      "ORIGIN": "Originally posted on iVIZIA"
+    },
+    "BUTTONS": {
+      "RATE_ME": "Rate Me",
+      "SUBMIT": "Submit",
+      "CLOSE": "Close"
+    },
+    "MODAL": {
+      "PLACEHOLDER": "Add your comment",
+      "TITLE": "Rate this product"
+    }
+  },
   "FORGOT_PASSWORD": {
     "LOGO_ALT": "Prime Care Logo",
     "TITLE": "Reset Your Password",

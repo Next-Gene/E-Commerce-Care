@@ -23,7 +23,7 @@ export class NavbarComponent {
   ) {}
 
   ngOnInit(): void {
-    this.currentLanguage = this.translationService.currentLang;
+    this.currentLanguage = this.translationService.getLang();
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
   }

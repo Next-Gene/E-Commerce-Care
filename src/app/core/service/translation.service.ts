@@ -3,19 +3,19 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LocalStorageService } from './local-storage.service';
-import * as en from '../../../../public/assets/i18n/en.json';
-import * as ar from '../../../../public/assets/i18n/ar.json';
+import * as en from '../locale/en.json';
+import * as ar from '../locale/ar.json';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http);
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
-  protected defaultLang = 'en';
-  public currentLang: 'en' | 'ar';
+  private defaultLang = 'en';
+  private currentLang: 'en' | 'ar';
 
   constructor(
     private translateService: TranslateService,
@@ -39,5 +39,9 @@ export class TranslationService {
 
   getDir(): 'rtl' | 'ltr' {
     return this.currentLang === 'ar' ? 'rtl' : 'ltr';
+  }
+
+  getLang(): 'ar' | 'en' {
+    return this.currentLang;
   }
 }
