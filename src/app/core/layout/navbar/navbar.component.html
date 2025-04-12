@@ -1,4 +1,6 @@
-<nav class="bg-slate-50 fixed w-full z-20 top-0 left-0 border-b border-gray-100">
+<nav
+  class="bg-slate-50 fixed w-full z-20 top-0 left-0 border-b border-gray-100"
+>
   <!-- الحاوية الرئيسية -->
   <div class="max-w-screen-xl mx-auto flex items-center justify-between p-2">
     <!-- القسم الأيسر: الشعار وروابط القائمة (تظهر على الشاشات الكبيرة) -->
@@ -10,22 +12,38 @@
       <!-- روابط القائمة (تُعرض ابتداءً من الشاشات المتوسطة) -->
       <ul class="hidden md:flex space-x-5 md:space-x-2 md:ml-6 xl:ml-56">
         <li>
-          <a routerLink="home" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700">
+          <a
+            routerLink="home"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700"
+          >
             Home
           </a>
         </li>
         <li>
-          <a routerLink="All-prodect" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700">
+          <a
+            routerLink="All-prodect"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700"
+          >
             All product
           </a>
         </li>
         <li>
-          <a routerLink="categories" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700">
+          <a
+            routerLink="categories"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700"
+          >
             Categories
           </a>
         </li>
         <li>
-          <a routerLink="about" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700">
+          <a
+            routerLink="about"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700"
+          >
             About
           </a>
         </li>
@@ -35,12 +53,18 @@
     <!-- القسم الأيمن: أيقونات الإجراء وزر الدخول والقائمة المتجاوبة -->
     <div class="flex items-center max-sm:space-x-1 space-x-4">
       <button *ngIf="isLoggedIn" class="text-black hover:text-red-500">
-        <i class="fa-regular fa-heart text-2xl hover:text-red-500 "></i>
+        <i class="fa-regular fa-heart text-2xl hover:text-red-500"></i>
       </button>
 
       <!-- زر البحث -->
       <button class="text-black hover:text-blue-500">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -51,71 +75,131 @@
       </button>
 
       <!-- أيقونة عربة التسوق -->
-      <a *ngIf="isLoggedIn" href="/cart" class="relative text-black hover:text-blue-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 3h2l3.6 7.59M7 16h10l3-9H6.8m-1.6 0L5 6 
+      <a
+        *ngIf="isLoggedIn"
+        href="/cart"
+        class="relative text-black hover:text-blue-500 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 3h2l3.6 7.59M7 16h10l3-9H6.8m-1.6 0L5 6 
                    m5 14a1 1 0 102 0 1 1 0 00-2 0 
-                   m6 0a1 1 0 102 0 1 1 0 00-2 0"/>
+                   m6 0a1 1 0 102 0 1 1 0 00-2 0"
+          />
         </svg>
-        <span id="cart-count" class="absolute -top-4 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full hidden">
+        <span
+          id="cart-count"
+          class="absolute -top-4 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full hidden"
+        >
           {{ cartCount }}
         </span>
       </a>
 
       <!-- زر الدخول للمستخدم غير المسجل -->
-      <button *ngIf="!isLoggedIn" type="button" routerLink="login"
-              class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2">
+      <button
+        *ngIf="!isLoggedIn"
+        type="button"
+        routerLink="login"
+        class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2"
+      >
         LOGIN
       </button>
 
-      <!-- زر القائمة (الهامبرغر) يظهر فقط في الشاشات الصغيرة -->
-      <button (click)="toggleMenu()" type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2"
-      aria-controls="navbar-menu" [attr.aria-expanded]="isMenuOpen">
-<span class="sr-only">Open main menu</span>
-<i class="fa-solid fa-bars mr-2 text-2xl"></i>
-</button>
+      <!-- زر تغيير اللغة -->
+      <button
+        type="button"
+        (click)="switchLang()"
+        class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2"
+      >
+        ع
+      </button>
 
+      <!-- زر القائمة (الهامبرغر) يظهر فقط في الشاشات الصغيرة -->
+      <button
+        (click)="toggleMenu()"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2"
+        aria-controls="navbar-menu"
+        [attr.aria-expanded]="isMenuOpen"
+      >
+        <span class="sr-only">Open main menu</span>
+        <i class="fa-solid fa-bars mr-2 text-2xl"></i>
+      </button>
 
       <!-- أيقونة الملف الشخصي للمستخدم -->
-      <a *ngIf="isLoggedIn" href="#" class="text-black hover:text-blue-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5.121 17.804A4 4 0 018 15h8a4 4 0 012.879 1.121
-                   M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+      <a
+        *ngIf="isLoggedIn"
+        href="#"
+        class="text-black hover:text-blue-500 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5.121 17.804A4 4 0 018 15h8a4 4 0 012.879 1.121
+                   M12 11a4 4 0 100-8 4 4 0 000 8z"
+          />
         </svg>
       </a>
     </div>
   </div>
 
   <!-- قائمة الموبايل -->
-  <div *ngIf="isMenuOpen" class="md:hidden bg-slate-50 border-t border-gray-200 shadow-md">
+  <div
+    *ngIf="isMenuOpen"
+    class="md:hidden bg-slate-50 border-t border-gray-200 shadow-md"
+  >
     <ul class="flex flex-col p-4 font-medium">
       <li>
-        <a routerLink="home" routerLinkActive="active"
-           class="block py-2 px-3 text-black hover:bg-gray-100"
-           aria-current="page">
+        <a
+          routerLink="home"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100"
+          aria-current="page"
+        >
           Home
         </a>
       </li>
       <li>
-        <a routerLink="All-prodect" routerLinkActive="active"
-           class="block py-2 px-3 text-black hover:bg-gray-100">
+        <a
+          routerLink="All-prodect"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100"
+        >
           All product
         </a>
       </li>
       <li>
-        <a routerLink="categories" routerLinkActive="active"
-           class="block py-2 px-3 text-black hover:bg-gray-100">
+        <a
+          routerLink="categories"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100"
+        >
           Categories
         </a>
       </li>
       <li>
-        <a routerLink="about" routerLinkActive="active"
-           class="block py-2 px-3 text-black hover:bg-gray-100">
+        <a
+          routerLink="about"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100"
+        >
           About
         </a>
       </li>

@@ -2,18 +2,22 @@ import { Component } from '@angular/core';
 import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../service/translation.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink,RouterLinkActive,CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
-  constructor(private _FlowbiteService: FlowbiteService, private router: Router) {}
+  constructor(
+    private _FlowbiteService: FlowbiteService,
+    private translationService: TranslationService
+  ) {}
 
   ngOnInit(): void {
     this._FlowbiteService.loadFlowbite(() => {});
@@ -35,5 +39,9 @@ export class NavbarComponent {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  switchLang() {
+    this.translationService.switchLang();
   }
 }
