@@ -459,5 +459,39 @@
     "MENU": {
       "TOGGLE": "Toggle navigation menu"
     }
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "About Us",
+      "DESCRIPTION": "We are a company that cares about your health and helps hospitals and doctors provide the best equipment and treatment."
+    },
+    "SOCIAL": {
+      "FOLLOW_US": "Follow Us",
+      "FACEBOOK": "Facebook",
+      "TWITTER": "Twitter",
+      "INSTAGRAM": "Instagram",
+      "LINKEDIN": "LinkedIn"
+    },
+    "COMPANY": {
+      "TITLE": "Prime Care",
+      "HOME": "Home",
+      "PRODUCTS": "Products",
+      "TESTIMONIALS": "Testimonials",
+      "ABOUT": "About"
+    },
+    "STORE": {
+      "TITLE": "Store Location",
+      "CONTACT": "Contact",
+      "DELIVERY": "Delivery",
+      "POLICY": "Policy",
+      "FAQS": "FAQs"
+    },
+    "CATEGORIES": {
+      "TITLE": "Shop Categories",
+      "MEDICAL_DEVICES": "Medical Devices",
+      "HEALTH_WELLNESS": "Health & Wellness",
+      "HOSPITAL_EQUIPMENT": "Hospital Equipment",
+      "PHARMACEUTICALS": "Pharmaceuticals"
+    }
   }
 }
