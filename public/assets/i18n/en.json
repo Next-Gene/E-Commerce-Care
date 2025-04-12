@@ -352,5 +352,84 @@
       "HAVE_ACCOUNT": "Have an account?",
       "LOGIN_LINK": "Login"
     }
+  },
+  "PAYMENT": {
+    "TITLE": "Choose the payment method",
+    "METHODS": {
+      "CASH": {
+        "LABEL": "Cash on Delivery",
+        "MESSAGE": "Your order has been placed successfully! Please have the exact amount ready upon delivery."
+      },
+      "CARD": {
+        "LABEL": "Credit Card",
+        "FIELDS": {
+          "CARD_HOLDER": "Card Holder Name",
+          "CARD_NUMBER": "Card Number",
+          "EXPIRATION": "Expiration Date",
+          "CVV": "CVV"
+        },
+        "PLACEHOLDERS": {
+          "NAME": "Name on Card",
+          "NUMBER": "Card Number",
+          "DATE": "MM/YY",
+          "CVV": "CVV"
+        }
+      }
+    },
+    "BUTTONS": {
+      "PREVIOUS": "Previous",
+      "PAY_NOW": "Pay Now"
+    }
+  },
+  "CART_SUMMARY": {
+    "TITLE": "Cart Summary",
+    "SUBTOTAL": "Sub Total:",
+    "DISCOUNT": "Discount:",
+    "SHIPPING": "Shipping:",
+    "TAXES": "Taxes:",
+    "TOTAL": "Total:",
+    "CHECKOUT_BUTTON": "Checkout Now →",
+    "VALUES": {
+      "SUBTOTAL": "$4,500.00",
+      "DISCOUNT": "$5.00",
+      "SHIPPING": "Free",
+      "TAXES": "$25.00",
+      "TOTAL": "$4,520.00"
+    }
+  },
+  "CHECKOUT": {
+    "BILLING_ADDRESS": {
+      "TITLE": "Billing Address",
+      "FIRST_NAME": "First Name",
+      "FIRST_NAME_PLACEHOLDER": "First Name",
+      "LAST_NAME": "Last Name",
+      "LAST_NAME_PLACEHOLDER": "Last Name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Email Address",
+      "PHONE": "Phone",
+      "PHONE_PLACEHOLDER": "Phone Number",
+      "ADDRESS_LINE_1": "Address Line 1",
+      "ADDRESS_LINE_1_PLACEHOLDER": "Address Line 1",
+      "ADDRESS_LINE_2": "Address Line 2",
+      "ADDRESS_LINE_2_PLACEHOLDER": "Address Line 2",
+      "COUNTRY": "Country",
+      "COUNTRY_PLACEHOLDER": "Choose Country",
+      "CITY": "City",
+      "CITY_PLACEHOLDER": "City",
+      "POST_CODE": "Post Code",
+      "POST_CODE_PLACEHOLDER": "Post Code",
+      "STATE": "State",
+      "STATE_PLACEHOLDER": "State",
+      "MESSAGE": "Your Message For Order",
+      "MESSAGE_PLACEHOLDER": "Your Message"
+    },
+    "BUTTONS": {
+      "BACK_TO_CART": "Back To Cart",
+      "NEXT_STEP": "Next Step"
+    }
+  },
+  "CHECKOUT_SECTIONS": {
+    "BILLING_ADDRESS": "Your Billing Address",
+    "PAYMENT_INFO": "Your Payment Information"
   }
 }

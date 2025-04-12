@@ -1,39 +1,35 @@
 <div class="mt-20 bg-slate-50 py-6">
-    <div class="max-w-[52rem] xl:ml-36 px-4">
-      @for (section of sections; track section.type) {
-        <div
-          class="text-md font-semibold border border-gray-200 rounded-lg shadow-md mb-4
-                 text-right flex items-center justify-between px-4 py-2 cursor-pointer
-                 transition-colors duration-300 w-full"
-          (click)="showSection(section.type)"
-          [class.bg-gray-100]="selectedSection === section.type"
-          [class.text-[#013c76]]="selectedSection === section.type"
-        >
-          {{ section.label }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-transform duration-300"
-            [class.rotate-180]="selectedSection === section.type"
-          >
-            <path d="M6 9l6 6 6-6"></path>
-          </svg>
-        </div>
-      }
+  <div class="max-w-[52rem] xl:ml-36 px-4">
+    @for (section of sections; track section.type) {
+    <div
+      class="text-md font-semibold border border-gray-200 rounded-lg shadow-md mb-4 text-right flex items-center justify-between px-4 py-2 cursor-pointer transition-colors duration-300 w-full"
+      (click)="showSection(section.type)"
+      [class.bg-gray-100]="selectedSection === section.type"
+      [class.text-[#013c76]]="selectedSection === section.type"
+    >
+      {{ section.label | translate }}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="transition-transform duration-300"
+        [class.rotate-180]="selectedSection === section.type"
+      >
+        <path d="M6 9l6 6 6-6"></path>
+      </svg>
     </div>
-  
-    @if (selectedSection === 'form') {
-      <app-form></app-form>
-    }
-    @if (selectedSection === 'paymet') {
-      <app-paymet></app-paymet>
     }
   </div>
-  
+
+  @if (selectedSection === 'form') {
+  <app-form></app-form>
+  } @if (selectedSection === 'paymet') {
+  <app-paymet></app-paymet>
+  }
+</div>
