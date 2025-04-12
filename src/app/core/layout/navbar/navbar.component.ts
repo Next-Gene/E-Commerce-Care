@@ -3,10 +3,11 @@ import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../service/translation.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, TranslateModule, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
@@ -14,12 +15,15 @@ export class NavbarComponent {
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
+  currentLanguage!: 'ar' | 'en';
+
   constructor(
     private _FlowbiteService: FlowbiteService,
     private translationService: TranslationService
   ) {}
 
   ngOnInit(): void {
+    this.currentLanguage = this.translationService.currentLang;
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
   }

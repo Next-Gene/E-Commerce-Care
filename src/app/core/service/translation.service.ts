@@ -15,7 +15,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class TranslationService {
   protected defaultLang = 'en';
-  protected currentLang: 'en' | 'ar';
+  public currentLang: 'en' | 'ar';
 
   constructor(
     private translateService: TranslateService,

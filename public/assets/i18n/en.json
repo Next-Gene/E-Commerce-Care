@@ -439,5 +439,25 @@
       "IMAGE_ALT": "404 Error Illustration",
       "RETURN_HOME": "Return to Home"
     }
+  },
+  "NAV": {
+    "LOGO_ALT": "PrimeCare Logo",
+    "LINKS": {
+      "HOME": "Home",
+      "ALL_PRODUCTS": "All Products",
+      "CATEGORIES": "Categories",
+      "ABOUT": "About"
+    },
+    "ACTIONS": {
+      "WISHLIST": "Wishlist",
+      "SEARCH": "Search",
+      "CART": "Shopping Cart",
+      "LOGIN": "LOGIN",
+      "CHANGE_LANGUAGE": "Change language",
+      "PROFILE": "User Profile"
+    },
+    "MENU": {
+      "TOGGLE": "Toggle navigation menu"
+    }
   }
 }
