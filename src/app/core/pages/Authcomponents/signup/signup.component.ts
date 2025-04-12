@@ -6,15 +6,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { AlertsComponent } from '../../../../shared/components/ui/alerts/alerts.component';
-import { EmailInputComponent } from '../../../../shared/components/ui/email-input/email-input.component';
 import { BackgroundComponent } from '../../../../shared/components/ui/background/background.component';
 import { RegButtonComponent } from '../../../../shared/components/ui/reg-button/reg-button.component';
 import { AuthApiService } from '../../../../../../projects/auth-api/src/public-api';
 import { validsignup } from '../../../../shared/utilites/validsignup';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
-  imports: [AlertsComponent, EmailInputComponent, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
+  imports: [AlertsComponent, TranslateModule,  ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })

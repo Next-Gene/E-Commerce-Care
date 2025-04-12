@@ -314,5 +314,43 @@
       },
       "SUBMIT_BUTTON": "Confirm"
     }
+  },
+  "SIGNUP": {
+    "LOGO_ALT": "Prime Care Logo",
+    "TITLE": "Create Account",
+    "SUBTITLE": "Use your email for registration",
+    "FORM": {
+      "USERNAME": {
+        "PLACEHOLDER": "Username",
+        "LABEL": "Username"
+      },
+      "FIRST_NAME": {
+        "PLACEHOLDER": "First Name",
+        "LABEL": "First name"
+      },
+      "LAST_NAME": {
+        "PLACEHOLDER": "Last Name",
+        "LABEL": "Last name"
+      },
+      "PHONE": {
+        "PLACEHOLDER": "Phone Number",
+        "LABEL": "Phone number"
+      },
+      "EMAIL": {
+        "PLACEHOLDER": "Email",
+        "LABEL": "Email address"
+      },
+      "PASSWORD": {
+        "PLACEHOLDER": "Password",
+        "LABEL": "Password"
+      },
+      "CONFIRM_PASSWORD": {
+        "PLACEHOLDER": "Confirm Password",
+        "LABEL": "Confirm password"
+      },
+      "REGISTER_BUTTON": "Register",
+      "HAVE_ACCOUNT": "Have an account?",
+      "LOGIN_LINK": "Login"
+    }
   }
 }
