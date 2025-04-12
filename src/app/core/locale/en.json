@@ -92,6 +92,13 @@
       "IMAGE_ALT": "Seif Emam - Project Manager"
     }
   },
+  "FULL_STACK": {
+    "TITLE": "Full Stack",
+    "DESCRIPTION": "A full-stack web developer is responsible for developing both the front-end and back-end of an application, including databases, the user interface, and all the layers in between.",
+    "NAME": "Mostafa Atef (Algorithm)",
+    "POSITION": "Full Stack",
+    "IMAGE_ALT": "Mostafa Algorithm"
+  },
   "UI_UX_TEAM": {
     "TITLE": "UI UX",
     "DESCRIPTION": [
