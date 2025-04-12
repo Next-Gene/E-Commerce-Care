@@ -286,5 +286,14 @@
     "BUTTON_TEXT": "Send Code",
     "EMAIL_LABEL": "Email address",
     "BACK_TO_LOGIN": "Back to Login"
+  },
+  "VERIFICATION": {
+    "LOGO_ALT": "Prime Care Logo",
+    "TITLE": "Enter Your Verification Code",
+    "INSTRUCTIONS": "Code sent to your email",
+    "EMAIL_EXAMPLE": "Example: example@gmail.com",
+    "VERIFY_BUTTON": "Verify",
+    "RESEND_CODE": "Resend Code",
+    "DIGIT_LABEL": "Verification code digit"
   }
 }

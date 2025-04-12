@@ -2,14 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Subject, takeUntil } from 'rxjs';
 import { Component, inject } from '@angular/core';
 import { RegButtonComponent } from "../../../../../shared/components/ui/reg-button/reg-button.component";
-import { EmailInputComponent } from "../../../../../shared/components/ui/email-input/email-input.component";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthApiService } from '../../../../../../../projects/auth-api/src/public-api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verfiycode',
-  imports: [RegButtonComponent, ReactiveFormsModule],
+  imports: [TranslateModule, RegButtonComponent, ReactiveFormsModule],
   templateUrl: './verfiycode.component.html',
   styleUrl: './verfiycode.component.scss'
 })
