@@ -4,11 +4,12 @@ import { DiscBtnComponent } from "../../../../../shared/components/ui/disc-btn/d
 import { TextsComponent } from "../../../../../shared/texts/texts.component";
 import { GetImagesService } from '../../../../../core/service/get-images.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [DiscBtnComponent, TextsComponent, CarouselModule,CommonModule ],
+  imports: [DiscBtnComponent, TextsComponent, CarouselModule,CommonModule, TranslateModule ],
 
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss'

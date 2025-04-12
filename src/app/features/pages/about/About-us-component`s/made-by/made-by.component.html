@@ -1,15 +1,16 @@
 <div class="w-[80%] max-md:w-full m-auto mb-16">
-<div class="grid grid-cols-1 w-[80%] max-md:w-full m-auto md:grid-cols-2    ">
-<div>
-<h2 class=" text-2xl max-lg:text-xl text-[#160E4B] max-md:text-center leading-relaxed font-semibold " >
-Made by <span class="text-[#B800D8]">Nexgen Team</span> if you <br class="max-md:block hidden lg:block">
-want to know more click on the <br>
-image
-</h2>
+  <div class="grid grid-cols-1 w-[80%] max-md:w-full m-auto md:grid-cols-2">
+    <div>
+      <h2 class="text-2xl max-lg:text-xl text-[#160E4B] max-md:text-center leading-relaxed font-semibold">
+        <span [innerHTML]="'NEXGEN_TEAM.TITLE' | translate"></span>
+        <br class="max-md:block hidden lg:block">
+        {{ 'NEXGEN_TEAM.DESCRIPTION' | translate }}
+      </h2>
+    </div>
+    <div class="flex flex-col items-center max-md:mt-7 m-auto">
+      <img src="/images/Our Team/Nexgen Logo.png" 
+           [alt]="'NEXGEN_TEAM.LOGO_ALT' | translate"
+           class="object-cover rounded-md mb-4 w-[55%] shadow"/>
+    </div>
+  </div>
 </div>
-<div class="flex flex-col items-center max-md:mt-7  m-auto">
-<img src="/images/Our Team/Nexgen Logo.png" alt="Nexgen" class="object-cover rounded-md mb-4 w-[55%] shadow"/>
-</div>
-</div>
-</div>
-      

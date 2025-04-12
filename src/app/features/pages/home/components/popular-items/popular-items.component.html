@@ -1,8 +1,8 @@
 <div class="container mx-auto mb-10 px-4">
   <!-- Title and Category List -->
   <div class="flex flex-col sm:flex-row justify-between items-center w-full gap-4">
-    <div class="relative text-2xl font-semibold text-black ">
-      Popular Items
+    <div class="relative text-2xl font-semibold text-black">
+      {{ 'POPULAR_ITEMS.TITLE' | translate }}
       <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
       <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
     </div>
@@ -17,7 +17,7 @@
           }"
           (click)="onCategoryClick(category, i)"
         >
-          {{ category.name }}
+          {{ 'POPULAR_ITEMS.CATEGORIES.' + category.name | uppercase | translate }}
         </li>
       </ul>
     </div>

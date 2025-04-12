@@ -6,11 +6,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { CartComponent } from "../../../../../shared/components/ui/cart/cart.component";
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Category } from '../../../../../core/interfaces/category';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-items',
   standalone: true,
-  imports: [CommonModule, CartComponent],
+  imports: [CommonModule, CartComponent, TranslateModule],
   templateUrl: './popular-items.component.html',
   styleUrls: ['./popular-items.component.scss']
 })

@@ -1,35 +1,43 @@
-<div class="relative bg-white max-w-6xl border border-[#57CFFB]  mx-auto mt-8 pt-8 p-6  rounded-lg shadow-md ">
-<div
-class="absolute top-0 left-0 w-24 h-24 bg-[#57CFFB]"
-style="clip-path: polygon(0 0, 100% 0, 0 100%);"
->
-</div>
-<div
-class="absolute bottom-0 right-0 w-24 h-24 bg-[#57CFFB]"
-style="clip-path: polygon(100% 100%, 100% 0, 0 100%);"
->
-</div>
-<h2 class="text-center text-3xl md:text-4xl font-bold text-[#0079AB] mb-4">
-Ui UX   
-</h2>
-<p class="text-center  text-lg md:text-xl text-[#160E4B] md:mt-5 mb-5">
-UI/UX design is an area concerned with user  experience (UX) and<br>
-interaction with the graphical interface (UI) to ensure a smooth and enjoyable 
-</p>
-<div class="grid grid-cols-1 w-[75%] m-auto md:grid-cols-2 max-md:gap-8  gap-40">
-<div class="flex flex-col items-center">
-<img src="/images/Our Team/Nour Mamdouh.png" alt="Nour Mamdouh" class=" object-cover rounded-md mb-4 shadow"/>
-<h2 class="text-xl font-semibold text-[#160E4B] mb-1">
-Nour Mamdouh
-</h2>
-<p class="text-[#160E4B]">UI&UX Designer</p>
-</div>
-<div class="flex flex-col items-center">
-<img src="/images/Our Team/Ali Okasha.png" alt="Ali Okasha" class="object-cover rounded-md mb-4 h-[77%] shadow"/>
-<h2 class="text-xl font-semibold text-[#160E4B] mb-1">
-Ali Okasha
-</h2>
-<p class="text-[#160E4B]">UI&UX Designer</p>
-</div>
-</div>
+<div class="relative bg-white max-w-6xl border border-[#57CFFB] mx-auto mt-8 pt-8 p-6 rounded-lg shadow-md">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-24 h-24 bg-[#57CFFB]" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+  <div class="absolute bottom-0 right-0 w-24 h-24 bg-[#57CFFB]" style="clip-path: polygon(100% 100%, 100% 0, 0 100%);"></div>
+
+  <!-- Title and Description -->
+  <h2 class="text-center text-3xl md:text-4xl font-bold text-[#0079AB] mb-4">
+    {{ 'UI_UX_TEAM.TITLE' | translate }}
+  </h2>
+  <p class="text-center text-lg md:text-xl text-[#160E4B] md:mt-5 mb-5">
+    {{ 'UI_UX_TEAM.DESCRIPTION[0]' | translate }}<br>
+    {{ 'UI_UX_TEAM.DESCRIPTION[1]' | translate }}
+  </p>
+
+  <!-- Team Members -->
+  <div class="grid grid-cols-1 w-[75%] m-auto md:grid-cols-2 max-md:gap-8 gap-40">
+    <!-- Nour Mamdouh -->
+    <div class="flex flex-col items-center">
+      <img src="/images/Our Team/Nour Mamdouh.png" 
+           [alt]="'UI_UX_TEAM.MEMBERS.NOUR_MAMDOUH.IMAGE_ALT' | translate" 
+           class="object-cover rounded-md mb-4 shadow"/>
+      <h2 class="text-xl font-semibold text-[#160E4B] mb-1">
+        {{ 'UI_UX_TEAM.MEMBERS.NOUR_MAMDOUH.NAME' | translate }}
+      </h2>
+      <p class="text-[#160E4B]">
+        {{ 'UI_UX_TEAM.MEMBERS.NOUR_MAMDOUH.POSITION' | translate }}
+      </p>
+    </div>
+
+    <!-- Ali Okasha -->
+    <div class="flex flex-col items-center">
+      <img src="/images/Our Team/Ali Okasha.png" 
+           [alt]="'UI_UX_TEAM.MEMBERS.ALI_OKASHA.IMAGE_ALT' | translate" 
+           class="object-cover rounded-md mb-4 h-[77%] shadow"/>
+      <h2 class="text-xl font-semibold text-[#160E4B] mb-1">
+        {{ 'UI_UX_TEAM.MEMBERS.ALI_OKASHA.NAME' | translate }}
+      </h2>
+      <p class="text-[#160E4B]">
+        {{ 'UI_UX_TEAM.MEMBERS.ALI_OKASHA.POSITION' | translate }}
+      </p>
+    </div>
+  </div>
 </div>
