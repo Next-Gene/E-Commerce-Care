@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from '../../../core/service/categories.service';
 import { Category } from '../../../core/interfaces/category';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
