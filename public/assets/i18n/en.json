@@ -295,5 +295,24 @@
     "VERIFY_BUTTON": "Verify",
     "RESEND_CODE": "Resend Code",
     "DIGIT_LABEL": "Verification code digit"
+  },
+  "PASSWORD_RESET": {
+    "LOGO_ALT": "Prime Care Logo",
+    "TITLE": "Enter Your New Password",
+    "FORM": {
+      "EMAIL": {
+        "PLACEHOLDER": "Email",
+        "LABEL": "Email address"
+      },
+      "NEW_PASSWORD": {
+        "PLACEHOLDER": "New Password",
+        "LABEL": "New password"
+      },
+      "CONFIRM_PASSWORD": {
+        "PLACEHOLDER": "Confirm Password",
+        "LABEL": "Confirm new password"
+      },
+      "SUBMIT_BUTTON": "Confirm"
+    }
   }
 }
