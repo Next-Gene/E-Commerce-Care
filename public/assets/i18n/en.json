@@ -251,5 +251,31 @@
     "SIGNUP": "Sign up",
     "LOGIN": "Login",
     "SUBMIT": "Submit"
+  },
+  "PRODUCT_DETAILS": {
+    "PRICE": "Price",
+    "DISCOUNT": "% Off",
+    "DESCRIPTION": "Description",
+    "QUANTITY": "Quantity",
+    "STOCK": "Stock:",
+    "AVAILABLE": "Available",
+    "CATEGORY": "Category:",
+    "BRAND": "Brand:",
+    "TAGS": "Tags:",
+    "ADD_TO_CART": "Add To Cart",
+    "WISHLIST": "Add to wishlist"
+  },
+  "PRODUCT_INFO": {
+    "TITLE": "Product Information",
+    "PLACEHOLDER": "Loading Image...",
+    "BULLET_POINTS": [
+      "Detailed product specifications",
+      "High-quality materials",
+      "Manufacturer warranty included"
+    ]
+  },
+  "RELATED_PRODUCTS": {
+    "TITLE": "Related Items",
+    "VIEW_ALL": "View All Related Products"
   }
 }
