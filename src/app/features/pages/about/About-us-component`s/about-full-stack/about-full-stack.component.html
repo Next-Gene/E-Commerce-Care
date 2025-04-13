@@ -1,0 +1,24 @@
+<div class="relative bg-white max-w-6xl border border-[#57CFFB] mx-auto pt-8 p-6 mt-8 rounded-lg shadow-md">
+  <!-- Decorative elements (no translation needed) -->
+  <div class="absolute top-0 right-0 w-24 h-24 bg-[#57CFFB]" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+  <div class="absolute bottom-0 left-0 w-24 h-24 bg-[#57CFFB]" style="clip-path: polygon(0 100%, 0 0, 100% 100%);"></div>
+
+  <div class="grid grid-cols-1 w-[80%] max-md:w-full m-auto md:grid-cols-2 gap-8">
+    <!-- Project Manager Description -->
+    <div class="pt-4">
+      <h2 class="text-center text-3xl font-semibold mt-15 text-[#160E4B]">{{ 'FULL_STACK.TITLE' | translate }}</h2>
+      <h2 class="text-center text-2xl max-lg:text-2xl text-[#160E4B] text-black mt-10 leading-relaxed pt-4">
+        {{ 'FULL_STACK.DESCRIPTION' | translate }}
+      </h2>
+    </div>
+
+    <!-- Team Member Profile -->
+    <div class="flex flex-col items-center m-auto">
+      <img src="/images/Our Team/Mostafa-Atef.png" [alt]="'FULL_STACK.IMAGE_ALT' | translate" class="object-cover rounded-md mb-4 w-[80%] shadow"/>
+      <h2 class="text-xl font-semibold text-[#160E4B] mb-1">
+        {{ 'FULL_STACK.NAME' | translate }}
+      </h2>
+      <p class="text-[#160E4B]">{{ 'FULL_STACK.POSITION' | translate }}</p>
+    </div>
+  </div>
+</div>

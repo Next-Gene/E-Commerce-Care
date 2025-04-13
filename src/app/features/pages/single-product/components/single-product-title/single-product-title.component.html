@@ -1,9 +1,14 @@
 <div class="mt-24 max-sm:mt-20 ml-0 md:ml-20 md:flex mb-14">
+  <!-- Product Images -->
   <div class="mr-0 md:mr-20 max-sm:pb-10 lg:mr-44">
     <div
       class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square shadow-xl border-t-white border w-80 h-96 bg-white"
     >
-      <img class="rounded-20 images w-96 h-full" [src]="product.imgCover" />
+      <img
+        class="rounded-20 images w-96 h-full"
+        [src]="product.imgCover"
+        [alt]="product.title"
+      />
     </div>
     <div class="mt-5 flex justify-center">
       @for (image of product.images; track $index) {
@@ -13,12 +18,15 @@
         <img
           class="rounded-lg images w-24 h-24 cursor-pointer"
           [src]="image"
+          [alt]="'Product image ' + ($index + 1)"
           (click)="changeMainImage(image)"
         />
       </div>
       }
     </div>
   </div>
+
+  <!-- Product Details -->
   <div class="max-sm:mx-12">
     <h2 class="text-2xl">{{ product.title }}</h2>
     <h2 class="text-[#0070CD] text-xl">${{ product.priceAfterDiscount }}</h2>
@@ -26,14 +34,19 @@
       <span class="line-through text-[#757F95] text-xl"
         >${{ product.price }}</span
       >
-      {{ product.discount }}%Off
+      {{ product.discount }}{{ "PRODUCT_DETAILS.DISCOUNT" | translate }}
     </h2>
     <h2 class="text-[#757F95] sm:w-1/2 w-full">{{ product.description }}</h2>
-    <h2 class="text-[#757F95] pt-3">Quantity</h2>
+    <h2 class="text-[#757F95] pt-3">
+      {{ "PRODUCT_DETAILS.QUANTITY" | translate }}
+    </h2>
+
+    <!-- Quantity Selector -->
     <div class="flex pt-3">
       <button
         (click)="decrease(product)"
         class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]"
+        [attr.aria-label]="'Decrease quantity'"
       >
         -
       </button>
@@ -41,32 +54,53 @@
       <button
         (click)="increase(product)"
         class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]"
+        [attr.aria-label]="'Increase quantity'"
       >
         +
       </button>
     </div>
+
+    <!-- Product Specs -->
     <ul class="mt-7 list-disc text-[#757F95]">
-      <li class="mt-4"><span class="font-semibold">Stock:</span>Available</li>
       <li class="mt-4">
-        <span class="font-semibold">Category:</span>{{ product.category }}
+        <span class="font-semibold">{{
+          "PRODUCT_DETAILS.STOCK" | translate
+        }}</span>
+        {{ "PRODUCT_DETAILS.AVAILABLE" | translate }}
       </li>
-      <li class="mt-4"><span class="font-semibold">Brand:</span>Sparta</li>
       <li class="mt-4">
-        <span class="font-semibold">Tags:</span>Medical Equipment
+        <span class="font-semibold">{{
+          "PRODUCT_DETAILS.CATEGORY" | translate
+        }}</span>
+        {{ product.category }}
+      </li>
+      <li class="mt-4">
+        <span class="font-semibold">{{
+          "PRODUCT_DETAILS.BRAND" | translate
+        }}</span>
+        Sparta
+      </li>
+      <li class="mt-4">
+        <span class="font-semibold">{{
+          "PRODUCT_DETAILS.TAGS" | translate
+        }}</span>
+        Medical Equipment
       </li>
     </ul>
+
+    <!-- Action Buttons -->
     <div class="flex mt-5">
       <button
         class="bg-[#0070CD] text-white p-2 px-4 rounded-xl hover:bg-blue-600 duration-500 mr-2"
       >
-        <i class="fa-solid fa-bag-shopping mr-2"> </i>Add To Cart
+        <i class="fa-solid fa-bag-shopping mr-2"></i>
+        {{ "PRODUCT_DETAILS.ADD_TO_CART" | translate }}
       </button>
       <button
-        _ngcontent-ng-c501201935=""
         class="text-white bg-[#0070CD] hover:bg-blue-600 duration-500 p-3 rounded-full hover:text-red-500"
+        [attr.aria-label]="'PRODUCT_DETAILS.WISHLIST' | translate"
       >
         <svg
-          _ngcontent-ng-c501201935=""
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -75,7 +109,6 @@
           class="w-6 h-6"
         >
           <path
-            _ngcontent-ng-c501201935=""
             stroke-linecap="round"
             stroke-linejoin="round"
             d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"

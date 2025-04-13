@@ -1,15 +1,14 @@
 <div class="min-h-screen w-full bg-white flex flex-col items-center justify-center text-center">
-    <img 
-      src="/image.png" 
-      alt="404 Error" 
-      class="max-w-xs mb-8"
-    />
-  
-    <a 
-      routerLink="/home" 
-      class="inline-block bg-blue-500 text-white px-5 py-2 rounded-3xl hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-    >
-      Return to Home
-    </a>
-  </div>
-  
+  <img 
+    src="/image.png" 
+    [alt]="'ERROR.404.IMAGE_ALT' | translate" 
+    class="max-w-xs mb-8"
+  />
+
+  <a 
+    routerLink="/home" 
+    class="inline-block bg-blue-500 text-white px-5 py-2 rounded-3xl hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+  >
+    {{ 'ERROR.404.RETURN_HOME' | translate }}
+  </a>
+</div>

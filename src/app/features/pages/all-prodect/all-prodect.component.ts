@@ -7,11 +7,12 @@ import { ProductsService } from '../../../core/service/products.service';
 import { CartComponent } from '../../../shared/components/ui/cart/cart.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { Category } from '../../../core/interfaces/category';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, CartComponent, FiltersComponent],
+  imports: [CommonModule, FormsModule, TranslateModule, CartComponent, FiltersComponent],
   templateUrl: './all-prodect.component.html',
   styleUrls: ['./all-prodect.component.scss']
 })

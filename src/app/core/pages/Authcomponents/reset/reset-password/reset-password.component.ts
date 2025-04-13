@@ -7,10 +7,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthApiService } from '../../../../../../../projects/auth-api/src/public-api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [ AlertsComponent, RegButtonComponent,ReactiveFormsModule],
+  imports: [TranslateModule, AlertsComponent, RegButtonComponent,ReactiveFormsModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'
 })

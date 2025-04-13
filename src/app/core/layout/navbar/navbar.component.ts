@@ -2,21 +2,26 @@ import { Component } from '@angular/core';
 import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../service/translation.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink,RouterLinkActive,CommonModule],
+  imports: [RouterLink, RouterLinkActive, TranslateModule, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
   isDropdownOpen = false;
-  constructor(private _FlowbiteService: FlowbiteService, private router: Router) {}
+   currentLanguage!: 'ar' | 'en';
+  constructor(private _FlowbiteService: FlowbiteService, private router: Router,
+    private translationService: TranslationService) {}
 
   ngOnInit(): void {
+    this.currentLanguage = this.translationService.getLang();
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
   }
@@ -37,7 +42,6 @@ export class NavbarComponent {
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
-
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
@@ -45,5 +49,8 @@ export class NavbarComponent {
     this.isLoggedIn = false; 
     this.isDropdownOpen = false;
     this.router.navigate(['/home']);
+  }
+   switchLang() {
+    this.translationService.switchLang();
   }
 }
