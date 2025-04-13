@@ -106,6 +106,11 @@ export const routes: Routes = [
             import('./features/pages/home/components/details-category/details-category.component').then(
                 (c) => c.DetailsCategoryComponent
             ),
+    },{
+        path: '**',
+        loadComponent: () =>
+            import('./shared/components/ui/error-page/error-page.component').then(
+                (c) => c.ErrorPageComponent
+            ),
     }
-
 ];
