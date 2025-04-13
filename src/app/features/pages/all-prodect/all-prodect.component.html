@@ -1,14 +1,22 @@
-<div class="container mx-auto max-sm:p-1 px-4 md:px-8 lg:px-32 xl:px-40 max-sm:mt-16 mt-24 xl:mb-20">
-  <div class="relative text-2xl font-semibold text-black inline-block mb-5">
-    All Products
-    <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
-    <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
+<div class="container  dark:bg-[#242424] mx-auto max-sm:p-1 px-4 md:px-8  transition-colors duration-300 lg:px-32 xl:px-40 max-sm:pt-16 pt-24 xl:pb-20">
+   <!-- Title Section -->
+  <div class="relative text-2xl font-semibold text-black inline-block mb-5  dark:text-white transition-colors duration-300">
+    {{ 'PRODUCTS_SECTION.TITLE' | translate }}
+    <span
+        class="absolute bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-r-full end-0 rounded-s-full dark:bg-white/50 duration-300 transition-colors"
+      ></span>
+    
+      <!-- الخط الرفيع الأمامي -->
+      <span
+        class="absolute bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full dark:bg-white duration-300 transition-colors"
+      ></span>
   </div>
 
+  <!-- Mobile Filters Button -->
   <div class="sm:hidden mb-4">
     <button (click)="toggleFilters()" class="bg-[var(--button-bg-color)] rounded-40 text-white py-2 px-4 flex items-center">
       <i class="fa-solid fa-bars mr-2 text-xl"></i>
-      <span>Filters</span>
+      <span>{{ 'PRODUCTS_SECTION.FILTERS_BUTTON' | translate }}</span>
     </button>
   </div>
 
@@ -19,7 +27,9 @@
     (click)="toggleFilters()">
   </div>
 
+  <!-- Main Content Area -->
   <div class="flex flex-row xl:gap-6 relative">
+    <!-- Filters Component -->
     <app-filters
       [products]="products"
       [categories]="categories"
@@ -28,6 +38,7 @@
       (toggleFiltersEvent)="toggleFilters()"
     ></app-filters>
 
+    <!-- Products Grid -->
     <section class="w-full sm:w-2/3 flex-1 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-x-4 lg:gap-6">
       <app-cart *ngFor="let product of filteredProducts" [product]="product" class="product-card">
       </app-cart>

@@ -3,17 +3,17 @@
     <owl-carousel-o [options]="carouselOptions">
       <ng-container *ngFor="let image of images;">
         <ng-template carouselSlide>
-          <img [src]="image.path" alt="Product Image" class="w-full h-full">
+          <img [src]="image.path" alt="Product Image" class="w-full h-auto rounded-3xl">
 
         </ng-template>
       </ng-container>
     </owl-carousel-o>
   </div>
 
-  <div class="bc w-full sm:w-1/2 xl:w-1/5 text-right rounded-lg  mx-auto mt-8 xl:m-0">
-    <h3 class="text-[#00366A] mr-3 mt-8">Prime Care</h3>
-    <app-texts>All Your Baby Care</app-texts>
-    <app-texts>With Us</app-texts>
+  <div class="bc w-full sm:w-1/2 xl:w-1/5 text-right rounded-lg mx-auto mt-8 xl:m-0">
+    <h3 class="text-[#00366A] mr-3 mt-8">{{ 'SLIDER.TITLE' | translate }}</h3>
+    <app-texts>{{ 'SLIDER.TAGLINE_1' | translate }}</app-texts>
+    <app-texts>{{ 'SLIDER.TAGLINE_2' | translate }}</app-texts>
     <app-disc-btn></app-disc-btn>
   </div>
 </div>

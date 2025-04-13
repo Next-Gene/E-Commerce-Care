@@ -4,16 +4,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Component, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-import { EmailInputComponent } from '../../../../shared/components/ui/email-input/email-input.component';
 import { AlertsComponent } from '../../../../shared/components/ui/alerts/alerts.component';
 import { RegButtonComponent } from '../../../../shared/components/ui/reg-button/reg-button.component';
 import { BackgroundComponent } from '../../../../shared/components/ui/background/background.component';
 import { AuthApiService } from '../../../../../../projects/auth-api/src/public-api';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login',
-  imports: [ EmailInputComponent,RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
+  imports: [TranslateModule, RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

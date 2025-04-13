@@ -1,7 +1,7 @@
 <aside
   *ngIf="!isMobile() || showFilters"
   (click)="$event.stopPropagation()"
-   class="w-3/4 md:w-[20rem] p-4 rounded-lg space-y-6"
+  class="w-3/4 md:w-[20rem] p-4 rounded-lg space-y-6"
   [ngClass]="
     isMobile()
       ? {
@@ -19,8 +19,8 @@
 
   <!-- Department Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Department</h3>
-    <ul class="space-y-2">
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)] dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.DEPARTMENT.TITLE' | translate }}</h3>
+    <ul class="space-y-2 dark:text-white duration-300 transition-colors">
       <li *ngFor="let dept of ['all', 'deals', 'super_offers']">
         <label class="inline-flex items-center space-x-2">
           <input
@@ -31,7 +31,13 @@
             [value]="dept"
             (change)="applyFilters()"
           />
-          <span>{{ dept === 'all' ? 'All' : dept | titlecase }}</span>
+          <span class="mr-4">
+            {{ 
+              dept === 'all' ? ('FILTERS.DEPARTMENT.ALL' | translate) : 
+              dept === 'deals' ? ('FILTERS.DEPARTMENT.DEALS' | translate) : 
+              ('FILTERS.DEPARTMENT.SUPER_OFFERS' | translate) 
+            }}
+          </span>
         </label>
       </li>
     </ul>
@@ -40,10 +46,10 @@
 
   <!-- Category Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Category</h3>
-    <ul class="space-y-4">
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.CATEGORY.TITLE' | translate }}</h3>
+    <ul class="space-y-4  duration-300 dark:text-white transition-colors">
       <li>
-        <label class="inline-flex items-center space-x-2">
+        <label class="inline-flex items-center space-x-4">
           <input
             type="radio"
             name="category"
@@ -52,7 +58,7 @@
             value="all"
             (change)="applyFilters()"
           />
-          <span>All</span>
+          <span>{{ 'FILTERS.CATEGORY.ALL' | translate }}</span>
         </label>
       </li>
       <li *ngFor="let category of categories">
@@ -74,8 +80,8 @@
 
   <!-- Customer Reviews Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Customer Reviews</h3>
-    <ul class="space-y-2">
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.REVIEWS.TITLE' | translate }}</h3>
+    <ul class="space-y-2  dark:text-white duration-300 transition-colors">
       <li *ngFor="let review of ['all', '5.0', '4.0-4.9', '3.0-3.9', '2.0-2.9', '1.0-1.9']">
         <label class="inline-flex items-center space-x-2">
           <input
@@ -86,7 +92,7 @@
             [value]="review"
             (change)="applyFilters()"
           />
-          <span *ngIf="review === 'all'">All</span>
+          <span *ngIf="review === 'all'">{{ 'FILTERS.REVIEWS.ALL' | translate }}</span>
           <span *ngIf="review !== 'all'">
             <ng-container *ngIf="review === '5.0'">
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
@@ -94,6 +100,7 @@
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
+              {{ 'FILTERS.REVIEWS.5_STAR' | translate }}
             </ng-container>
             <ng-container *ngIf="review === '4.0-4.9'">
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
@@ -101,6 +108,7 @@
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              {{ 'FILTERS.REVIEWS.4_STAR' | translate }}
             </ng-container>
             <ng-container *ngIf="review === '3.0-3.9'">
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
@@ -108,6 +116,7 @@
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              {{ 'FILTERS.REVIEWS.3_STAR' | translate }}
             </ng-container>
             <ng-container *ngIf="review === '2.0-2.9'">
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
@@ -115,6 +124,7 @@
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              {{ 'FILTERS.REVIEWS.2_STAR' | translate }}
             </ng-container>
             <ng-container *ngIf="review === '1.0-1.9'">
               <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
@@ -122,6 +132,7 @@
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
               <i class="fa-regular fa-star" style="color: #74c0fc"></i>
+              {{ 'FILTERS.REVIEWS.1_STAR' | translate }}
             </ng-container>
           </span>
         </label>
@@ -132,8 +143,8 @@
 
   <!-- Price Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Price</h3>
-    <ul class="space-y-2">
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.PRICE.TITLE' | translate }}</h3>
+    <ul class="space-y-2 dark:text-white duration-300 transition-colors">
       <li *ngFor="let price of ['', '0-25', '25-50', '50-100', '100-200', '200-999999']">
         <label class="inline-flex items-center space-x-2">
           <input
@@ -147,12 +158,16 @@
           <span>
             {{
               price === ''
-                ? 'All'
+                ? ('FILTERS.PRICE.ALL' | translate)
                 : price === '0-25'
-                ? 'Under $25'
-                : price === '200-999999'
-                ? '$200 & Above'
-                : price
+                ? ('FILTERS.PRICE.UNDER_25' | translate)
+                : price === '25-50'
+                ? ('FILTERS.PRICE.25_TO_50' | translate)
+                : price === '50-100'
+                ? ('FILTERS.PRICE.50_TO_100' | translate)
+                : price === '100-200'
+                ? ('FILTERS.PRICE.100_TO_200' | translate)
+                : ('FILTERS.PRICE.ABOVE_200' | translate)
             }}
           </span>
         </label>
@@ -163,8 +178,8 @@
 
   <!-- Discount Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]">Discount</h3>
-    <ul class="space-y-2">
+    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.DISCOUNT.TITLE' | translate }}</h3>
+    <ul class="space-y-2  dark:text-white duration-300 transition-colors">
       <li *ngFor="let discount of ['', '0-10', '25', '50', '70']">
         <label class="inline-flex items-center space-x-2">
           <input
@@ -175,7 +190,19 @@
             [value]="discount"
             (change)="applyFilters()"
           />
-          <span>{{ discount === '' ? 'All' : discount + '% off or more' }}</span>
+          <span>
+            {{
+              discount === ''
+                ? ('FILTERS.DISCOUNT.ALL' | translate)
+                : discount === '0-10'
+                ? ('FILTERS.DISCOUNT.10_OFF' | translate)
+                : discount === '25'
+                ? ('FILTERS.DISCOUNT.25_OFF' | translate)
+                : discount === '50'
+                ? ('FILTERS.DISCOUNT.50_OFF' | translate)
+                : ('FILTERS.DISCOUNT.70_OFF' | translate)
+            }}
+          </span>
         </label>
       </li>
     </ul>

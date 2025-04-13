@@ -1,22 +1,25 @@
-<div class="w-full h-auto flex flex-col sm:flex-row justify-center text-right mt-10 max-sm:gap-y-2  max-sm:mt-7">
-    <div class="doc w-full sm:w-[30%] p-4 rounded-xl mx-auto">
-      <br>
-      <app-texts>The Best <span class="text-[#37B2FF]">Doctor</span></app-texts>
-      <app-texts>In The Area</app-texts>
-      <app-disc-btn></app-disc-btn>
-    </div>
-    
-    <div class="med w-full sm:w-[30%] p-4 rounded-xl mx-auto">
-      <h3 class="text-[#00366A] mt-8 mb-2">Prime Care</h3>
-      <app-texts>All The <span class="text-[#1C00D4]">Medicine</span></app-texts>
-      <app-texts>You Need In One Place</app-texts>
-      <app-disc-btn></app-disc-btn>
-    </div>
-  
-    <div class="skn w-full sm:w-[30%] p-4 rounded-xl mx-auto">
-      <h3 class="text-[#00366A] mt-3">Prime Care</h3>
-      <app-texts>Your <span class="text-[#98E1EA]">Skin Care</span> Is On</app-texts>
-      <app-texts>Us With La Roche</app-texts>
-      <app-disc-btn></app-disc-btn>
-    </div>
+<div class="w-full h-auto flex flex-col sm:flex-row justify-center text-right mt-10 max-sm:gap-y-2 max-sm:mt-7">
+  <!-- Doctor Section -->
+  <div class="doc w-full sm:w-[30%] p-4 rounded-xl mx-auto">
+    <br>
+    <app-texts [innerHTML]="'DOCTOR_SECTION.TITLE' | translate"></app-texts>
+    <app-texts>{{ 'DOCTOR_SECTION.SUBTITLE' | translate }}</app-texts>
+    <app-disc-btn></app-disc-btn>
   </div>
+  
+  <!-- Medicine Section -->
+  <div class="med w-full sm:w-[30%] p-4 rounded-xl mx-auto">
+    <h3 class="text-[#00366A] mt-8 mb-2">{{ 'MEDICINE_SECTION.TITLE' | translate }}</h3>
+    <app-texts [innerHTML]="'MEDICINE_SECTION.TAGLINE_1' | translate"></app-texts>
+    <app-texts>{{ 'MEDICINE_SECTION.TAGLINE_2' | translate }}</app-texts>
+    <app-disc-btn></app-disc-btn>
+  </div>
+
+  <!-- Skin Care Section -->
+  <div class="skn w-full sm:w-[30%] p-4 rounded-xl mx-auto">
+    <h3 class="text-[#00366A] mt-3">{{ 'SKIN_CARE_SECTION.TITLE' | translate }}</h3>
+    <app-texts [innerHTML]="'SKIN_CARE_SECTION.TAGLINE_1' | translate"></app-texts>
+    <app-texts>{{ 'SKIN_CARE_SECTION.TAGLINE_2' | translate }}</app-texts>
+    <app-disc-btn></app-disc-btn>
+  </div>
+</div>

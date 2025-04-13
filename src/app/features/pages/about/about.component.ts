@@ -5,6 +5,7 @@ import { AboutFrontEndComponent } from "./About-us-component`s/about-front-end/a
 import { AboutProjectManagerComponent } from "./About-us-component`s/about-project-manager/about-project-manager.component";
 import { AboutUIUXComponent } from "./About-us-component`s/about-ui-ux/about-ui-ux.component";
 import { AboutPrimeCareComponent } from "./About-us-component`s/about-prime-care/about-prime-care.component";
+import { AboutFullStackComponent } from './About-us-component`s/about-full-stack/about-full-stack.component';
 
 @Component({
   selector: 'app-about',
