@@ -193,7 +193,7 @@
     },
     {
       "_id": "9",
-      "title": "Surgical Scissors",
+      "title": "surgical scissors",
       "slug": "surgical-scissors",
       "description": "Precision surgical scissors designed for clean cuts during operations.",
       "imgCover": "/images/product/surgical-scissors.jpg",
@@ -236,6 +236,207 @@
       "sold": 5,
       "id": "10",
       "rate": 4.7
+    },
+    {
+      "_id": "11",
+      "title": "Intravenous Injection ",
+      "slug": "Intravenous Injection ",
+      "description": "A method of delivering fluids, medications, or nutrients directly into a vein using a needle or catheter. It allows for rapid absorption into the bloodstream.",
+      "imgCover": "/images/product/medical sup.jpg" ,
+      "images": [
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "12",
+      "title": "Dermaheal SB",
+      "slug": "Dermaheal SB",
+      "description": "Care",
+      "imgCover": "/images/product/cosmaticc.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "13",
+      "title": "kerastase",
+      "slug": "kerastase",
+      "description": "",
+      "imgCover": "../../images/product/kerastase.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "14",
+      "title": "",
+      "slug": "",
+      "description": "",
+      "imgCover": "../../images/product/med equi.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "15",
+      "title": "Stethoscope",
+      "slug": "Stethoscope",
+      "description": "A tool used by doctors to listen to the heart, lungs, and other body sounds to help diagnose health problems.",
+      "imgCover": "../../images/product/sma3aa.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "16",
+      "title": "Dermatology and Cosmetics",
+      "slug": "Dermatology and Cosmetics",
+      "description": " Dermatology treats skin conditions, while cosmetics enhance appearance and beauty.",
+      "imgCover": "../../images/product/cosmetic.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "17",
+      "title": "Blood Glucose Meter",
+      "slug": "Blood Glucose Meter",
+      "description": "",
+      "imgCover": "../../images/product/healt monn.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "18",
+      "title": "Heart Rate Monitor",
+      "slug": "Heart Rate Monitor",
+      "description": "A device used to measure the number of heartbeats per minute, helping to monitor heart health and detect any irregularities in the heart rate.",
+      "imgCover": "../../images/product/time.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "19",
+      "title": "Cardiac Defibrillator",
+      "slug": "Cardiac Defibrillator",
+      "description": "A device used to restore a normal heart rhythm by delivering an electric shock to the heart in cases of severe arrhythmia or cardiac arrest.",
+      "imgCover": "../../images/product/timer.jpg",
+      "images": [
+      
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
     }
+
+
+    
+
   ]
 }

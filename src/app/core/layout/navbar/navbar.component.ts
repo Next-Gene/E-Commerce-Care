@@ -13,6 +13,7 @@ export class NavbarComponent {
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
+  isDropdownOpen = false;
   constructor(private _FlowbiteService: FlowbiteService, private router: Router) {}
 
   ngOnInit(): void {
@@ -35,5 +36,14 @@ export class NavbarComponent {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  logout() {
+    this.isLoggedIn = false; 
+    this.isDropdownOpen = false;
+    this.router.navigate(['/home']);
   }
 }
