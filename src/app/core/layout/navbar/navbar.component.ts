@@ -29,7 +29,10 @@ export class NavbarComponent {
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
   }
-
+  get isArabic(): boolean {
+    return document.documentElement.dir === 'rtl'; // أو استخدم أي منطق يعتمد على اللغة الحالية
+  }
+  
   checkLoginStatus() {
     this.isLoggedIn = !!localStorage.getItem('token');
   }

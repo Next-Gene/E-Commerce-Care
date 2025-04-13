@@ -2,7 +2,7 @@
   <div class="max-w-[52rem] xl:ml-36 px-4">
     @for (section of sections; track section.type) {
     <div
-      class="text-md font-semibold border  dark:bg-gray-300 transition-all duration-300 border-gray-200 rounded-lg shadow-md mb-4 text-right flex items-center justify-between px-4 py-2 cursor-pointer transition-colors duration-300 w-full"
+      class="text-md font-semibold border  dark:bg-gray-300  border-gray-200 rounded-lg shadow-md mb-4 text-right flex items-center justify-between px-4 py-2 cursor-pointer transition-colors duration-300 w-full"
       (click)="showSection(section.type)"
       [class.bg-gray-100]="selectedSection === section.type"
       [class.text-[#013c76]]="selectedSection === section.type"
