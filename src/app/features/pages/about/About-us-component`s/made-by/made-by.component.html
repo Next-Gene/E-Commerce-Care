@@ -1,16 +1,18 @@
-<div class="w-[80%] max-md:w-full m-auto mb-16">
+<div class="pb-5">
+<div class="w-[80%] max-md:w-full pb-8 dark:bg-[#313131] duration-300 transition-colors m-auto  rounded-2xl">
   <div class="grid grid-cols-1 w-[80%] max-md:w-full m-auto md:grid-cols-2">
-    <div>
-      <h2 class="text-2xl max-lg:text-xl text-[#160E4B] max-md:text-center leading-relaxed font-semibold">
+    <div class="pt-8">
+      <h2 class="text-2xl max-lg:text-xl text-[#160E4B]  dark:text-white duration-300 transition-colors max-md:text-center leading-relaxed font-semibold " >
         <span [innerHTML]="'NEXGEN_TEAM.TITLE' | translate"></span>
         <br class="max-md:block hidden lg:block">
         {{ 'NEXGEN_TEAM.DESCRIPTION' | translate }}
       </h2>
     </div>
-    <div class="flex flex-col items-center max-md:mt-7 m-auto">
+    <div class="flex flex-col items-center max-md:mt-7  pt-8 m-auto">
       <img src="/images/Our Team/Nexgen Logo.png" 
            [alt]="'NEXGEN_TEAM.LOGO_ALT' | translate"
            class="object-cover rounded-md mb-4 w-[55%] shadow"/>
     </div>
   </div>
+</div>
 </div>

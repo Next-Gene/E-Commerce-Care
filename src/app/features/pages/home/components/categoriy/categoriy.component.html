@@ -1,14 +1,14 @@
-<div class="flex justify-between items-center mt-24 max-sm:mt-20 max-sm:ml-2 max-sm:mb-1 max-sm:mr-3 ml-10 mr-10">
-  <div class="relative text-l font-bold text-[var(--secondary-color)] pb-1/2">
-      {{ 'CATEGORY.SHOP_BY_CATEGORY' | translate }}
-      <span
-      class="absolute bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"
-    ></span>
-  
-    <!-- الخط الرفيع الأمامي -->
+<div class="flex  justify-between items-center pt-24 max-sm:pt-20 max-sm:ml-2 max-sm:mb-1 max-sm:mr-3 ml-10 mr-10">
+  <div class="relative text-l  transition-colors duration-300 dark:text-white font-bold text-[var(--secondary-color)] pb-1/2">
+    {{ 'CATEGORY.SHOP_BY_CATEGORY' | translate }}
     <span
-      class="absolute bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full"
-    ></span>
+    class="absolute dark:bg-white/50 transition-colors duration-300 bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"
+  ></span>
+
+  <!-- الخط الرفيع الأمامي -->
+  <span
+    class="absolute  transition-colors duration-300 dark:bg-white bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full"
+  ></span>
   </div>
   <a routerLink="/categories" class="text-gray-500 text-sm font-medium hover:text-gray-600 li">
     {{ 'CATEGORY.SEE_ALL' | translate }}
@@ -19,10 +19,11 @@
   @for (category of Categories; track category._id) {
     <ng-template carouselSlide>
       <div [routerLink]="['/details-category',category._id]" class="flex justify-center  p-4">
-        <div class="bg-white shadow-md shadow-gray-400 rounded-lg w-full h-28 flex items-center overflow-hidden">
+        <div class="bg-white  dark:bg-[#313131] transition-all duration-300 shadow-md shadow-gray-400 rounded-lg w-full h-28 flex items-center overflow-hidden">
           <img [src]="category.image" [alt]="category.name" class="w-1/2 h-full object-cover">
-          <div class="w-1/2 p-2 flex flex-col justify-center">
-            <h3 class="text-[11px] md:text-xs font-bold text-[#0070CD] text-center">
+
+              <div class="w-1/2 p-2 flex flex-col justify-center">
+            <h3 class="text-[11px] md:text-xs font-bold text-[#0070CD]  dark:text-white duration-300 transition-colors text-center">
               {{ category.name }}
             </h3>
            

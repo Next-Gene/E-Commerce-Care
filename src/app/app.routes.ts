@@ -106,11 +106,46 @@ export const routes: Routes = [
             import('./features/pages/home/components/details-category/details-category.component').then(
                 (c) => c.DetailsCategoryComponent
             ),
-    },{
+            
+    },
+    {
+        path: 'policy',
+        loadComponent: () =>
+            import('./features/pages/static pages/policy/policy.component').then(
+                (c) => c.PolicyComponent
+            ),
+            
+    },
+    {
+        path: 'delivery',
+        loadComponent: () =>
+            import('./features/pages/static pages/delivery/delivery.component').then(
+                (c) => c.DeliveryComponent
+            ),
+            
+    },
+    {
+        path: 'faqs',
+        loadComponent: () =>
+            import('./features/pages/static pages/faqs/faqs.component').then(
+                (c) => c.FAQSComponent
+            ),
+            
+    },
+    {
+        path: 'stores',
+        loadComponent: () =>
+            import('./features/pages/static pages/stores/stores.component').then(
+                (c) => c.StoresComponent
+            ),
+            
+    },
+    {
         path: '**',
         loadComponent: () =>
             import('./shared/components/ui/error-page/error-page.component').then(
                 (c) => c.ErrorPageComponent
             ),
     }
+
 ];

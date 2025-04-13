@@ -1,4 +1,4 @@
-<div class="flex min-h-screen flex-col lg:flex-row w-full">
+<div class="flex min-h-screen dark:bg-[#252525]  flex-col lg:flex-row w-full">
   <!-- Login Form Section -->
   <div class="flex flex-col justify-center items-center w-full lg:w-1/2 px-4 sm:px-8 lg:px-16 relative mr-20 sm:mr-20">
     <!-- Logo -->
@@ -7,12 +7,12 @@
          [alt]="'PRIME_CARE.LOGO_ALT' | translate">
     
     <!-- Title -->
-    <h3 class="font-semibold text-center text-[#00366A] text-xl sm:text-2xl lg:text-3xl mt-16">
+    <h3 class="font-semibold text-center text-[#00366A] dark:text-white text-xl sm:text-2xl lg:text-3xl mt-16">
       {{ 'LOGIN.TITLE' | translate }} <span class="text-2xl sm:text-4xl">{{ 'LOGIN.BRAND' | translate }}</span>
     </h3>
     
     <!-- Subtitle -->
-    <p class="text-black mt-4 text-center">{{ 'LOGIN.SUBTITLE' | translate }}</p>
+    <p class="text-black mt-4 text-center dark:text-white transition-colors duration-300">{{ 'LOGIN.SUBTITLE' | translate }}</p>
     
     <!-- Login Form -->
     <form [formGroup]="login" (ngSubmit)="Login()" class="w-full mt-5 max-w-xs sm:max-w-sm">
@@ -43,7 +43,7 @@
       
       <!-- Forgot Password -->
       <div class="w-full mt-5 text-center">
-        <a routerLink="/resetPassword" class="text-blue-900 hover:underline">
+        <a routerLink="/resetPassword" class="text-blue-900 hover:underline dark:text-white">
           {{ 'LOGIN.FORM.FORGOT_PASSWORD' | translate }}
         </a>
       </div>
@@ -54,10 +54,10 @@
       </div>
       
       <!-- Create Account (Mobile) -->
-      <h2 class="text-center mt-10 block lg:hidden">
+      <h2 class="text-center mt-10 block lg:hidden dark:text-white">
         {{ 'LOGIN.FORM.NO_ACCOUNT' | translate }} 
         <span>
-          <a class="text-blue-800 hover:underline" href="/register">
+          <a class="text-blue-800 hover:underline dark:text-blue-600" href="/register">
             {{ 'LOGIN.FORM.CREATE_ACCOUNT' | translate }}
           </a>
         </span>

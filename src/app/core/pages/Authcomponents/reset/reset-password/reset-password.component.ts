@@ -5,13 +5,13 @@ import { AlertsComponent } from "../../../../../shared/components/ui/alerts/aler
 import { RegButtonComponent } from "../../../../../shared/components/ui/reg-button/reg-button.component";
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthApiService } from '../../../../../../../projects/auth-api/src/public-api';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [TranslateModule, AlertsComponent, RegButtonComponent,ReactiveFormsModule],
+  imports: [TranslateModule, AlertsComponent, RegButtonComponent,ReactiveFormsModule,RouterLink],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'
 })

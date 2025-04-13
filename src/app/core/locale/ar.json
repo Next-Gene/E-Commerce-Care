@@ -485,7 +485,8 @@
     },
     "DROPDOWN": {
       "EDIT_PROFILE": "تعديل الملف الشخصي",
-      "LOGOUT": "تسجيل الخروج"
+      "LOGOUT": "تسجيل الخروج",
+      "TOGGLE_THEME": "تغيير المظهر"
     }
   },
   "FOOTER": {

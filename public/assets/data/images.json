@@ -2,24 +2,27 @@
     "images": [
       {
         "id": 1,
-        "path": "/images/image 35.png"
+        "path": "/images/slider/wine.png"
       },
       {
         "id": 2,
-        "path": "/images/image 35.png"
+        "path": "/images/slider/Dom Vasto.png"
       },
       {
         "id": 3,
-        "path": "/images/image 35.png"
+        "path": "/images/slider/clear for mens.png"
       },
       {
         "id": 4,
-        "path": "/images/image 35.png"
+        "path": "/images/slider/voltarine.png"
       },
       {
         "id": 5,
-        "path": "/images/image 35.png"
+        "path": "/images/slider/Koreian beauty.png"
+      },
+      {
+        "id": 5,
+        "path": "/images/slider/clear.png"
       }
-
     ]
   }

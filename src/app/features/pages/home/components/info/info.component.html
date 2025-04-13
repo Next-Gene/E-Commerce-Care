@@ -1,5 +1,5 @@
 <div
-  class="w-full sm:w-[90%] sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10"
+  class="w-full sm:w-[90%] sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] dark:bg-[#313131] transition-colors duration-300 rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10"
   [ngClass]="{ 'rtl': currentLanguage === 'ar', 'ltr': currentLanguage !== 'ar' }"
 >
 
@@ -13,10 +13,10 @@
    <i class="text-white fa-solid fa-truck fa-lg"></i>
  </div>
  <div class="flex-1 text-left ">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
      {{ 'INFO.FREE_DELIVERY.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.FREE_DELIVERY.SUBTITLE' | translate }}
    </h3>
  </div>
@@ -25,10 +25,10 @@
 <!-- لما اللغة إنجليزي: النص في اليسار، الأيقونة في الشمال -->
 <ng-template #rtrOrder>
  <div class="flex-1 text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
      {{ 'INFO.FREE_DELIVERY.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.FREE_DELIVERY.SUBTITLE' | translate }}
    </h3>
  </div>
@@ -46,10 +46,10 @@
 [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
 <ng-container *ngIf="currentLanguage === 'ar'; else refundLtr">
   <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
      {{ 'INFO.REFUND.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.REFUND.SUBTITLE' | translate }}
    </h3>
   </div>
@@ -62,10 +62,10 @@
     <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
   </div>
   <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
      {{ 'INFO.REFUND.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.REFUND.SUBTITLE' | translate }}
    </h3>
   </div>
@@ -77,10 +77,10 @@
 [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
 <ng-container *ngIf="currentLanguage === 'ar'; else paymentLtr">
   <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300 ">
      {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
    </h3>
   </div>
@@ -93,10 +93,10 @@
     <i class="text-white fa-solid fa-wallet fa-lg"></i>
   </div>
   <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
      {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
    </h3>
   </div>
@@ -108,10 +108,10 @@
 [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
 <ng-container *ngIf="currentLanguage === 'ar'; else supportLtr">
   <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
      {{ 'INFO.SUPPORT.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
    </h3>
   </div>
@@ -124,10 +124,10 @@
     <i class="text-white fa-solid fa-headset fa-xl"></i>
   </div>
   <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
      {{ 'INFO.SUPPORT.TITLE' | translate }}
    </h2>
-   <h3 class="text-[#757F95] text-sm">
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
      {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
    </h3>
   </div>

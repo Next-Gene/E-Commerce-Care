@@ -1,4 +1,4 @@
-<div class="flex min-h-screen flex-col lg:flex-row w-full relative text-center">
+<div class="flex min-h-screen dark:bg-[#252525] flex-col lg:flex-row w-full relative text-center">
   <!-- Logo -->
   <img class="absolute top-0 right-0 w-32 sm:w-48" 
        src="images/logo 2 trams.png" 
@@ -9,10 +9,10 @@
 
   <!-- Signup Form -->
   <div class="flex flex-col justify-center items-center w-full px-4 sm:px-8 lg:px-16 lg:w-1/2">
-    <h3 class="text-2xl sm:text-3xl font-semibold text-[#00366A] mt-16 sm:mt-0">
+    <h3 class="text-2xl sm:text-3xl font-semibold text-[#00366A] mt-16 sm:mt-0 dark:text-white">
       {{ 'SIGNUP.TITLE' | translate }}
     </h3>
-    <p class="mt-4 text-[#757F95]">
+    <p class="mt-4 dark:text-white text-[#757F95]">
       {{ 'SIGNUP.SUBTITLE' | translate }}
     </p>
 
@@ -37,7 +37,7 @@
           type="text" 
           [placeholder]="'SIGNUP.FORM.FIRST_NAME.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.FIRST_NAME.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="firstName"/>
 
@@ -49,7 +49,7 @@
           type="text" 
           [placeholder]="'SIGNUP.FORM.LAST_NAME.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.LAST_NAME.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="lastName"/>
 
@@ -61,7 +61,7 @@
           type="tel" 
           [placeholder]="'SIGNUP.FORM.PHONE.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.PHONE.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="phone"/>
 
@@ -73,7 +73,7 @@
           type="email" 
           [placeholder]="'SIGNUP.FORM.EMAIL.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.EMAIL.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="email"/>
 
@@ -85,7 +85,7 @@
           type="password" 
           [placeholder]="'SIGNUP.FORM.PASSWORD.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.PASSWORD.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="password"/>
 
@@ -97,7 +97,7 @@
           type="password" 
           [placeholder]="'SIGNUP.FORM.CONFIRM_PASSWORD.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.CONFIRM_PASSWORD.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-300">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="rePassword"/>
 

@@ -485,7 +485,8 @@
     },
     "DROPDOWN": {
       "EDIT_PROFILE": "Edit Profile",
-      "LOGOUT": "Log out"
+      "LOGOUT": "Log out",
+    "TOGGLE_THEME": "Change Mood"
     }
   },
   "FOOTER": {

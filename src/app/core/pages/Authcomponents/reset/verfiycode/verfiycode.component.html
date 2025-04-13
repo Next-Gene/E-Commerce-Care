@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center items-center min-h-screen w-full px-4 sm:px-8 lg:px-16">
+<div class="flex flex-col dark:bg-[#252525] justify-center items-center min-h-screen w-full px-4 sm:px-8 lg:px-16">
   <!-- Logo -->
   <img class="w-44 sm:w-52" 
        src="images/logo 2 trams.png" 
@@ -6,13 +6,13 @@
   
   <!-- Title and Instructions -->
   <div class="text-center mt-5">
-    <h1 class="text-xl font-semibold text-[#00366A]">
+    <h1 class="text-xl dark:text-white font-semibold text-[#00366A]">
       {{ 'VERIFICATION.TITLE' | translate }}
     </h1>
-    <p class="text-lg mt-4 text-[#757F95]">
+    <p class="text-lg mt-4 dark:text-white text-[#757F95]">
       {{ 'VERIFICATION.INSTRUCTIONS' | translate }}
     </p>
-    <p class="text-lg mt-2 text-gray-600">
+    <p class="text-lg mt-2 dark:text-white text-gray-600">
       {{ 'VERIFICATION.EMAIL_EXAMPLE' | translate }}
     </p>
   </div>
@@ -59,7 +59,7 @@
         (input)="onInput($event, 'digit5', 'digit3')" 
         (paste)="onPaste($event)"
         [attr.aria-label]="('VERIFICATION.DIGIT_LABEL' | translate) + ' 4'"
-        class="w-11 h-11 text-lg font-bold text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 text-blue-700">
+        class="w-11 h-11 text-lg font-bold text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-200 dark:border-gray-600 text-blue-700">
 
       <input 
         formControlName="digit5" 
@@ -69,7 +69,7 @@
         (input)="onInput($event, 'digit6', 'digit4')" 
         (paste)="onPaste($event)"
         [attr.aria-label]="('VERIFICATION.DIGIT_LABEL' | translate) + ' 5'"
-        class="w-11 h-11 text-lg font-bold text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 text-blue-700">
+        class="w-11 h-11 text-lg font-bold text-center border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-200 dark:border-gray-600 text-blue-700">
 
       <input 
         formControlName="digit6" 
