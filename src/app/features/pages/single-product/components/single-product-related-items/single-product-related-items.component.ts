@@ -5,10 +5,11 @@ import { CartComponent } from '../../../../../shared/components/ui/cart/cart.com
 import { Product } from '../../../../../core/interfaces/product';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-single-product-related-items',
-  imports: [CartComponent, CommonModule],
+  imports: [TranslateModule, CartComponent, CommonModule],
   templateUrl: './single-product-related-items.component.html',
   styleUrl: './single-product-related-items.component.scss'
 })

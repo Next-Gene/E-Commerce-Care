@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-single-product-rating',
-  imports: [CarouselModule, CommonModule],
+  imports: [CarouselModule, TranslateModule, CommonModule],
   templateUrl: './single-product-rating.component.html',
   styleUrl: './single-product-rating.component.scss'
 })
@@ -23,6 +24,7 @@ loop: true,
 mouseDrag: true,
 touchDrag: true,
 autoplay: true,
+rtl:true,
 autoplayTimeout: 2000,
 dots: false,
 navSpeed: 700,

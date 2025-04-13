@@ -8,11 +8,12 @@ import { AlertsComponent } from '../../../../shared/components/ui/alerts/alerts.
 import { RegButtonComponent } from '../../../../shared/components/ui/reg-button/reg-button.component';
 import { BackgroundComponent } from '../../../../shared/components/ui/background/background.component';
 import { AuthApiService } from '../../../../../../projects/auth-api/src/public-api';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
+  imports: [TranslateModule, RouterLink, ReactiveFormsModule,AlertsComponent,RegButtonComponent , BackgroundComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

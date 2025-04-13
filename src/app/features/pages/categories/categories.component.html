@@ -1,25 +1,29 @@
 <div class="pb-5 dark:bg-[#242424] transition-colors duration-300">
     <div class="flex flex-col justify-center items-center pt-24 max-sm:pt-36 max-sm:ml-2 max-sm:pb-1 max-sm:mr-3 pl-10 pr-10">
         <div class="relative text-2xl font-bold text-[var(--secondary-color)] pb-1/2 text-center dark:text-white transition-colors duration-300">
-            Shop By Category
-            <span class="absolute left-0 bottom-0 w-3/4 h-3 bg-blue-600/20 rounded-r-full dark:bg-white/50 transition-colors duration-300"></span>
-            <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full dark:bg-white transition-colors duration-300"></span>
+        {{ 'CATEGORY_SECTION.TITLE' | translate }}
+            <span
+            class="absolute bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full dark:bg-white/50 transition-colors duration-300"
+          ></span>
+        
+          <!-- الخط الرفيع الأمامي -->
+          <span
+            class="absolute bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full  dark:bg-white transition-colors duration-300"
+          ></span>
         </div>
-        <div class=" w-full flex justify-center">
+        <div class="w-full flex justify-center">
         </div>
     </div>
-    
 
-<div class="flex items-center justify-center flex-row-reverse my-7">
-    <img src="/370146.png" class="w-8 h-8 ml-1/2" alt="image">
-    <p class="text-xs text-gray-700 dark:text-white transition-colors duration-300">جميع الادوية يتم صرفها من صيدليات مرخصة من وزاره الصحة بجمهورية مصر العربية</p>
-</div>
+    <div class="flex items-center justify-center flex-row-reverse my-7">
+        <img src="/370146.png" class="w-8 h-8 ml-1/2" alt="Pharmacy License">
+        <p class="text-xs text-gray-700  dark:text-white transition-colors duration-300">{{ 'CATEGORY_SECTION.PHARMACY_NOTICE' | translate }}</p>
+    </div>
 
-
-<div class="justify-center mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
+<div class="justify-center mb-10 grid cursor-pointer grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
             gap-6 sm:gap-7 md:gap-6 lg:gap-16 p-3 max-w-[1200px] mx-auto xl:px-40 lg:px-40 md:px-30">
     @for (category of Categories; track category._id) {
-        <div class="bg-white dark:dark:bg-[#313131] dark:shadow-none transition-all duration-300 shadow-md shadow-gray-400 rounded-lg w-64 h-28 flex items-center overflow-hidden mx-auto">
+        <div [routerLink]="['/details-category',category._id]" class="bg-white  dark:dark:bg-[#313131] dark:shadow-none transition-all duration-300 shadow-md shadow-gray-400 rounded-lg w-64 h-28 flex items-center overflow-hidden mx-auto">
             <img [src]="category.image" [alt]="category.name" class="w-2/3 h-full object-cover">
             <div class="w-2/3 p-2 flex flex-col justify-center text-center">
                 <h3 class="text-[11px] md:text-xs font-bold text-[#0070CD] text-center dark:text-white transition-colors duration-300">

@@ -10,10 +10,11 @@ import { BackgroundComponent } from '../../../../shared/components/ui/background
 import { RegButtonComponent } from '../../../../shared/components/ui/reg-button/reg-button.component';
 import { AuthApiService } from '../../../../../../projects/auth-api/src/public-api';
 import { validsignup } from '../../../../shared/utilites/validsignup';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
-  imports: [AlertsComponent, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
+  imports: [AlertsComponent,TranslateModule, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })

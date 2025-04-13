@@ -1,13 +1,22 @@
 <div class="container mx-auto pb-10 px-4">
   <!-- Title and Category List -->
   <div class="flex flex-col sm:flex-row justify-between items-center w-full gap-4">
-    <div class="relative text-2xl font-semibold dark:text-white transition-colors duration-300 text-black ">
-      Popular Items
-      <span class="absolute dark:bg-white/50 transition-colors duration-300 left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 rounded-r-full"></span>
-      <span class="absolute left-0 dark:bg-white transition-colors duration-300 bottom-0 w-1/2 h-[2px] bg-blue-600 rounded-r-full"></span>
+    <div class="relative inline-block text-2xl font-semibold  dark:text-white transition-colors duration-300 text-black">
+      {{ 'POPULAR_ITEMS.TITLE' | translate }}
+      
+      <!-- الخط العريض الخلفي -->
+      <span
+        class="absolute  dark:bg-white/50 transition-colors duration-300 bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"
+      ></span>
+    
+      <!-- الخط الرفيع الأمامي -->
+      <span
+        class="absolute  dark:bg-white transition-colors duration-300 bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full"
+      ></span>
     </div>
     
-    <div class="w-full sm:w-auto dark:text-white transition-colors duration-300 overflow-x-auto">
+    
+    <div class="w-full sm:w-auto overflow-x-auto">
       <ul class="flex gap-2 whitespace-nowrap max-sm:flex-wrap max-sm:justify-center">
         <li
           *ngFor="let category of categories; let i = index"
@@ -17,7 +26,7 @@
           }"
           (click)="onCategoryClick(category, i)"
         >
-          {{ category.name }}
+          {{ category.name | uppercase }}
         </li>
       </ul>
     </div>
