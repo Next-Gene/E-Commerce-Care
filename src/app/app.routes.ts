@@ -97,6 +97,34 @@ export const routes: Routes = [
             import('./features/pages/checkout/ckeckout/ckeckout.component').then(
                 (c) => c.CkeckoutComponent
             ),
-    }
+    },
+    {
+    path: 'Policy',
+    loadComponent: () =>
+        import('./features/pages/static pages/policy/policy.component').then(
+            (c) => c.PolicyComponent
+        ),
+    },
+    {
+        path: 'FAQS',
+        loadComponent: () =>
+            import('./features/pages/static pages/faqs/faqs.component').then(
+                (c) => c.FAQSComponent
+            ),
+        },
+        {
+            path: 'Delivery',
+            loadComponent: () =>
+                import('./features/pages/static pages/delivery/delivery.component').then(
+                    (c) => c.DeliveryComponent
+                ),
+            },
+            {
+                path: 'stores',
+                loadComponent: () =>
+                    import('./features/pages/static pages/stores/stores.component').then(
+                        (c) => c.StoresComponent
+                    ),
+                }
 
 ];
