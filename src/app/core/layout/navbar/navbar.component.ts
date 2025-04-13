@@ -15,12 +15,10 @@ export class NavbarComponent {
   cartCount: number = 0;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
-  currentLanguage!: 'ar' | 'en';
-
-  constructor(
-    private _FlowbiteService: FlowbiteService,
-    private translationService: TranslationService
-  ) {}
+  isDropdownOpen = false;
+   currentLanguage!: 'ar' | 'en';
+  constructor(private _FlowbiteService: FlowbiteService, private router: Router,
+    private translationService: TranslationService) {}
 
   ngOnInit(): void {
     this.currentLanguage = this.translationService.getLang();
@@ -44,8 +42,15 @@ export class NavbarComponent {
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
-
-  switchLang() {
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  logout() {
+    this.isLoggedIn = false; 
+    this.isDropdownOpen = false;
+    this.router.navigate(['/home']);
+  }
+   switchLang() {
     this.translationService.switchLang();
   }
 }

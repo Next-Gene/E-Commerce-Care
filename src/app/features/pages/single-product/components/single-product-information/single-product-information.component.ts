@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-single-product-information',
   imports: [CommonModule, TranslateModule],
   templateUrl: './single-product-information.component.html',
-  styleUrl: './single-product-information.component.scss'
+  styleUrls: ['./single-product-information.component.scss']
 })
 export class SingleProductInformationComponent {
   product!: Product;

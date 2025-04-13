@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
-  imports: [AlertsComponent, TranslateModule,  ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
+  imports: [AlertsComponent,TranslateModule, ReactiveFormsModule, BackgroundComponent, RegButtonComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
