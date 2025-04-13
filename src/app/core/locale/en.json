@@ -482,6 +482,10 @@
     },
     "MENU": {
       "TOGGLE": "Toggle navigation menu"
+    },
+    "DROPDOWN": {
+      "EDIT_PROFILE": "Edit Profile",
+      "LOGOUT": "Log out"
     }
   },
   "FOOTER": {

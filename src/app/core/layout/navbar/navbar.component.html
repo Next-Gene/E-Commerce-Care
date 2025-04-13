@@ -1,4 +1,6 @@
-<nav class="bg-slate-50 fixed w-full z-20 top-0 left-0 border-b border-gray-100">
+<nav
+  class="bg-slate-50 fixed w-full z-20 top-0 left-0 border-b border-gray-100"
+>
   <div class="max-w-screen-xl mx-auto flex items-center justify-between p-2">
     <!-- Left: Logo + Links -->
     <div class="flex items-center">
@@ -9,28 +11,46 @@
           [alt]="'NAV.LOGO_ALT' | translate"
         />
       </a>
-      <ul class="hidden md:flex space-x-5 md:space-x-4 md:ml-6 xl:ml-56"
-      [ngClass]="{
-        'md:ml-6 xl:ml-56': currentLanguage === 'en',
-        'md:mr-6 xl:mr-72': currentLanguage === 'ar'
-      }">
+      <ul
+        class="hidden md:flex space-x-5 md:space-x-4 md:ml-6 xl:ml-56"
+        [ngClass]="{
+          'md:ml-6 xl:ml-56': currentLanguage === 'en',
+          'md:mr-6 xl:mr-72': currentLanguage === 'ar'
+        }"
+      >
         <li>
-          <a routerLink="home" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700 whitespace-nowrap">
+          <a
+            routerLink="home"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700 whitespace-nowrap"
+          >
             {{ "NAV.LINKS.HOME" | translate }}
           </a>
         </li>
         <li>
-          <a routerLink="All-prodect" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700 whitespace-nowrap">
+          <a
+            routerLink="All-prodect"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700 whitespace-nowrap"
+          >
             {{ "NAV.LINKS.ALL_PRODUCTS" | translate }}
           </a>
         </li>
         <li>
-          <a routerLink="categories" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700 whitespace-nowrap">
+          <a
+            routerLink="categories"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700 whitespace-nowrap"
+          >
             {{ "NAV.LINKS.CATEGORIES" | translate }}
           </a>
         </li>
         <li>
-          <a routerLink="about" routerLinkActive="active" class="py-2 px-3 hover:text-blue-700 whitespace-nowrap">
+          <a
+            routerLink="about"
+            routerLinkActive="active"
+            class="py-2 px-3 hover:text-blue-700 whitespace-nowrap"
+          >
             {{ "NAV.LINKS.ABOUT" | translate }}
           </a>
         </li>
@@ -39,79 +59,173 @@
 
     <!-- Right: Icons + Buttons -->
     <div class="flex items-center max-sm:space-x-2 space-x-4">
-      <button *ngIf="isLoggedIn" class="text-black hover:text-red-500 p-1" [attr.aria-label]="'NAV.ACTIONS.WISHLIST' | translate">
+      <button
+        *ngIf="isLoggedIn"
+        class="text-black hover:text-red-500 p-1"
+        [attr.aria-label]="'NAV.ACTIONS.WISHLIST' | translate"
+      >
         <i class="fa-regular fa-heart text-2xl mx-2"></i>
       </button>
 
-      <button class="text-black hover:text-blue-500 p-1" [attr.aria-label]="'NAV.ACTIONS.SEARCH' | translate">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m2.3-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"></path>
+      <button
+        class="text-black hover:text-blue-500 p-1"
+        [attr.aria-label]="'NAV.ACTIONS.SEARCH' | translate"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-4.35-4.35m2.3-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+          ></path>
         </svg>
       </button>
 
-      <a *ngIf="isLoggedIn" href="/cart" class="relative text-black hover:text-blue-500 transition p-1" [attr.aria-label]="'NAV.ACTIONS.CART' | translate">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      <a
+        *ngIf="isLoggedIn"
+        href="/cart"
+        class="relative text-black hover:text-blue-500 transition p-1"
+        [attr.aria-label]="'NAV.ACTIONS.CART' | translate"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
             d="M3 3h2l3.6 7.59M7 16h10l3-9H6.8m-1.6 0L5 6 
                m5 14a1 1 0 102 0 1 1 0 00-2 0 
-               m6 0a1 1 0 102 0 1 1 0 00-2 0" />
+               m6 0a1 1 0 102 0 1 1 0 00-2 0"
+          />
         </svg>
-        <span id="cart-count" class="absolute -top-4 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full" [class.hidden]="cartCount === 0">
+        <span
+          id="cart-count"
+          class="absolute -top-4 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full"
+          [class.hidden]="cartCount === 0"
+        >
           {{ cartCount }}
         </span>
       </a>
 
-      <button *ngIf="!isLoggedIn" routerLink="login" type="button" class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 whitespace-nowrap">
+      <button
+        *ngIf="!isLoggedIn"
+        routerLink="login"
+        type="button"
+        class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 whitespace-nowrap"
+      >
         {{ "NAV.ACTIONS.LOGIN" | translate }}
       </button>
 
-      <button type="button" (click)="switchLang()" class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 min-w-[3rem]" [attr.aria-label]="'NAV.ACTIONS.CHANGE_LANGUAGE' | translate">
-        {{ currentLanguage === 'en' ? 'ع' : 'EN' }}
+      <button
+        type="button"
+        (click)="switchLang()"
+        class="text-white bg-[#8ACCFF] hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 min-w-[3rem]"
+        [attr.aria-label]="'NAV.ACTIONS.CHANGE_LANGUAGE' | translate"
+      >
+        {{ currentLanguage === "en" ? "ع" : "EN" }}
       </button>
-
 
       <!-- أيقونة الملف الشخصي للمستخدم -->
       <div class="relative inline-block text-left" *ngIf="isLoggedIn">
-        <button (click)="toggleDropdown()" class="text-black hover:text-blue-500 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-               viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A4 4 0 018 15h8a4 4 0 012.879 1.121
-                     M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+        <button
+          (click)="toggleDropdown()"
+          class="text-black hover:text-blue-500 transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5.121 17.804A4 4 0 018 15h8a4 4 0 012.879 1.121
+               M12 11a4 4 0 100-8 4 4 0 000 8z"
+            />
           </svg>
         </button>
-        <button (click)="toggleMenu()" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2" aria-controls="navbar-menu" [attr.aria-expanded]="isMenuOpen">
+        <button
+          (click)="toggleMenu()"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2"
+          aria-controls="navbar-menu"
+          [attr.aria-expanded]="isMenuOpen"
+        >
           <span class="sr-only">{{ "NAV.MENU.TOGGLE" | translate }}</span>
           <i class="fa-solid fa-bars text-2xl"></i>
         </button>
-        <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-          <a routerLink="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Edit Profile</a>
-          <a (click)="logout()" class="block px-4 py-2 text-red-600 hover:bg-gray-100 cursor-pointer">Log out</a>
+        <div
+          *ngIf="isDropdownOpen"
+          class="absolute right-[-73px] mt-2 w-48 bg-white border rounded-lg shadow-lg z-50"
+        >
+          <a
+            routerLink=""
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer"
+            >{{ "NAV.DROPDOWN.EDIT_PROFILE" | translate }}</a
+          >
+          <a
+            (click)="logout()"
+            class="block px-4 py-2 text-red-600 hover:bg-gray-100 cursor-pointer"
+            >{{ "NAV.DROPDOWN.LOGOUT" | translate }}</a
+          >
         </div>
       </div>
+      
     </div>
   </div>
 
   <!-- Mobile Menu -->
-  <div *ngIf="isMenuOpen" class="md:hidden bg-slate-50 border-t border-gray-200 shadow-md">
+  <div
+    *ngIf="isMenuOpen"
+    class="md:hidden bg-slate-50 border-t border-gray-200 shadow-md"
+  >
     <ul class="flex flex-col p-4 font-medium space-y-2">
       <li>
-        <a routerLink="home" routerLinkActive="active" class="block py-2 px-3 text-black hover:bg-gray-100 rounded">
+        <a
+          routerLink="home"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100 rounded"
+        >
           {{ "NAV.LINKS.HOME" | translate }}
         </a>
       </li>
       <li>
-        <a routerLink="All-prodect" routerLinkActive="active" class="block py-2 px-3 text-black hover:bg-gray-100 rounded">
+        <a
+          routerLink="All-prodect"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100 rounded"
+        >
           {{ "NAV.LINKS.ALL_PRODUCTS" | translate }}
         </a>
       </li>
       <li>
-        <a routerLink="categories" routerLinkActive="active" class="block py-2 px-3 text-black hover:bg-gray-100 rounded">
+        <a
+          routerLink="categories"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100 rounded"
+        >
           {{ "NAV.LINKS.CATEGORIES" | translate }}
         </a>
       </li>
       <li>
-        <a routerLink="about" routerLinkActive="active" class="block py-2 px-3 text-black hover:bg-gray-100 rounded">
+        <a
+          routerLink="about"
+          routerLinkActive="active"
+          class="block py-2 px-3 text-black hover:bg-gray-100 rounded"
+        >
           {{ "NAV.LINKS.ABOUT" | translate }}
         </a>
       </li>
