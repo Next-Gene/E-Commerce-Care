@@ -1,7 +1,6 @@
 import { validsignup } from './../../../../../shared/utilites/validsignup';
 import { Subject, takeUntil } from 'rxjs';
 import { Component, inject } from '@angular/core';
-import { EmailInputComponent } from "../../../../../shared/components/ui/email-input/email-input.component";
 import { AlertsComponent } from "../../../../../shared/components/ui/alerts/alerts.component";
 import { RegButtonComponent } from "../../../../../shared/components/ui/reg-button/reg-button.component";
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,7 +10,7 @@ import { AuthApiService } from '../../../../../../../projects/auth-api/src/publi
 
 @Component({
   selector: 'app-reset-password',
-  imports: [EmailInputComponent, AlertsComponent, RegButtonComponent,ReactiveFormsModule],
+  imports: [ AlertsComponent, RegButtonComponent,ReactiveFormsModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'
 })
