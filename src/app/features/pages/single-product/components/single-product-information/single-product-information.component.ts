@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-single-product-information',
   imports: [CommonModule],
   templateUrl: './single-product-information.component.html',
-  styleUrl: './single-product-information.component.scss'
+  styleUrls: ['./single-product-information.component.scss']
 })
 export class SingleProductInformationComponent {
   product!: Product;
