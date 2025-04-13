@@ -1,3 +1,4 @@
+import { DetailsCategoryComponent } from './features/pages/home/components/details-category/details-category.component';
 import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
 import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
@@ -97,34 +98,19 @@ export const routes: Routes = [
             import('./features/pages/checkout/ckeckout/ckeckout.component').then(
                 (c) => c.CkeckoutComponent
             ),
-    },
+    }
+    ,
     {
-    path: 'Policy',
-    loadComponent: () =>
-        import('./features/pages/static pages/policy/policy.component').then(
-            (c) => c.PolicyComponent
-        ),
-    },
-    {
-        path: 'FAQS',
+        path: 'details-category/:id',
         loadComponent: () =>
-            import('./features/pages/static pages/faqs/faqs.component').then(
-                (c) => c.FAQSComponent
+            import('./features/pages/home/components/details-category/details-category.component').then(
+                (c) => c.DetailsCategoryComponent
             ),
-        },
-        {
-            path: 'Delivery',
-            loadComponent: () =>
-                import('./features/pages/static pages/delivery/delivery.component').then(
-                    (c) => c.DeliveryComponent
-                ),
-            },
-            {
-                path: 'stores',
-                loadComponent: () =>
-                    import('./features/pages/static pages/stores/stores.component').then(
-                        (c) => c.StoresComponent
-                    ),
-                }
-
+    },{
+        path: '**',
+        loadComponent: () =>
+            import('./shared/components/ui/error-page/error-page.component').then(
+                (c) => c.ErrorPageComponent
+            ),
+    }
 ];

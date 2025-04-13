@@ -4,18 +4,20 @@ import { CommonModule, CurrencyPipe, DecimalPipe, TitleCasePipe } from '@angular
 import { TruncatePipe } from '../../../pipes/truncate.pipe';
 import { Product } from '../../../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
 
-  imports: [TruncatePipe, CurrencyPipe, TitleCasePipe, DecimalPipe, CommonModule, RouterLink],
+  imports: [TruncatePipe, TranslateModule, CurrencyPipe, TitleCasePipe, DecimalPipe, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
-  truncateCount: number = 3;
+  @Input() currencyCode: string = 'USD';
+  @Input() truncateCount: number = 3;
   resizeSubscription: Subscription | undefined;
 
   ngOnInit(): void {

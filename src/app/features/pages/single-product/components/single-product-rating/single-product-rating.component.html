@@ -1,80 +1,63 @@
 <div>
-  <div
-    class="relative text-2xl w-48 font-semibold text-black mb-8 max-lg:ml-6 ml-24 dark:text-white transition-colors duration-300"
-  >
-    Rating&Reviws
-    <span
-      class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20 dark:bg-white/50 transition-colors duration-300 rounded-r-full"
-    ></span>
-    <span
-      class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 dark:bg-white transition-colors duration-300 rounded-r-full"
-    ></span>
+  <!-- Title Section -->
+  <div class="relative text-2xl w-60 font-semibold text-black mb-8 max-lg:ml-6 ml-24 dark:text-white transition-colors duration-300">
+    {{ 'RATINGS.TITLE' | translate }}
+    <span class="absolute left-0 bottom-0 w-3/4 h-2 bg-blue-600/20  dark:bg-white/50 transition-colors duration-300 rounded-r-full"></span>
+    <span class="absolute left-0 bottom-0 w-1/2 h-[2px] bg-blue-600 dark:bg-white transition-colors duration-300  rounded-r-full"></span>
   </div>
+
+  <!-- Reviews Carousel -->
   <div class="w-full mx-12 max-lg:mx-0 overflow-hidden px-2 sm:px-0 mt-3">
     <owl-carousel-o [options]="carouselOptions">
       <ng-container>
         <ng-template carouselSlide *ngFor="let i of [1, 2, 3]">
-          <div
-            class="product-card mx-auto overflow-hidden rounded-20 border-t-white shadow-xl border dark:bg-[#353535] duration-300 transition-colors p-4 sm:p-6 max-sm:p-1 flex flex-col w-full max-w-sm"
-          >
+          <div class="product-card mx-auto overflow-hidden rounded-20 border-t-white shadow-xl border dark:bg-[#353535] duration-300 transition-colors p-4 sm:p-6 max-sm:p-1 flex flex-col w-full max-w-sm">
             <div class="flex flex-col sm:flex-row mt-2 sm:ml-6">
-              <h2 class="text-lg font-semibold dark:text-white duration-300 transition-colors">Amazed</h2>
-              <div
-                class="flex items-center space-x-1  rtl:space-x-reverse sm:ml-4"
-              >
+              <h2 class="text-lg font-semibold  dark:text-white duration-300 transition-colors">Amazed</h2>
+              <div class="flex items-center space-x-1  rtl:space-x-reverse sm:ml-4">
                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                  <svg
-                    class="w-4 h-4 text-[#00E8F9]"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path
-                      d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-                    />
+                  <svg class="w-4 h-4 text-[#00E8F9]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                   </svg>
                 </ng-container>
               </div>
             </div>
-            <h2 class="text-[#757F95] pt-2 ml-6 mb-2 dark:text-gray-200 duration-300 transition-colors text-sm">
-              Heatherl5 - 2024-03-13
+            <h2 class="text-[#757F95] pt-2 ml-6 mb-2  dark:text-gray-200 duration-300 transition-colors text-sm">
+              {{ 'RATINGS.REVIEW.USER' | translate }}
             </h2>
             <hr class="border-black w-full" />
-            <p class="w-full text-sm text-center dark:text-gray-100 duration-300 transition-colors mt-2">
-              I'm extremely happy with this product from my pick from Tryit. I
-              have been looking for eye drops that help with dry eyes at night
-              time that actually last and these eye drops from Ivizia dry eye
-              nighttime gel drops is what I've needed all along thank you.
+            <p class="w-full text-sm text-center">
+              {{ 'RATINGS.REVIEW.CONTENT' | translate }}
             </p>
-            <h2 class="text-[#757F95] mt-2 text-sm text-center dark:text-gray-200 duration-300 transition-colors">  
-              Originally posted on iVIZIA
+            <h2 class="text-[#757F95] mt-2 text-sm text-center  dark:text-gray-200 duration-300 transition-colors">
+              {{ 'RATINGS.REVIEW.ORIGIN' | translate }}
             </h2>
           </div>
         </ng-template>
       </ng-container>
     </owl-carousel-o>
   </div>
+
+  <!-- Rating Modal Trigger -->
   <div class="mt-10">
     <button
       (click)="toggleRatingModal()"
       class="block text-white bg-[#0070CD] hover:bg-blue-600 duration-500 focus:ring-4 m-auto focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center"
+      [attr.aria-label]="'RATINGS.BUTTONS.RATE_ME' | translate"
     >
-      <i class="fa-solid fa-message mr-2"></i> Rate Me
+      <i class="fa-solid fa-message mr-2"></i> {{ 'RATINGS.BUTTONS.RATE_ME' | translate }}
     </button>
-    <div
-      *ngIf="showRatingModal"
-      class="fixed inset-0 z-50 flex justify-center items-center"
-    >
-      <div
-        class="absolute inset-0 bg-black opacity-50"
-        (click)="toggleRatingModal()"
-      ></div>
+
+    <!-- Rating Modal -->
+    <div *ngIf="showRatingModal" class="fixed inset-0 z-50 flex justify-center items-center">
+      <div class="absolute inset-0 bg-black opacity-50" (click)="toggleRatingModal()"></div>
       <div class="relative p-4 w-full max-w-md z-10">
         <div class="bg-blue-200 rounded-lg shadow-lg">
+          <!-- Close Button -->
           <button
             (click)="toggleRatingModal()"
             class="absolute top-6 right-6 text-black border-none rounded-full hover:bg-blue-400 duration-500 p-1"
+            [attr.aria-label]="'RATINGS.BUTTONS.CLOSE' | translate"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path
@@ -85,11 +68,13 @@
             </svg>
           </button>
 
+          <!-- Modal Content -->
           <div class="p-4">
-            <div class="my-6 ">
+            <h3 class="text-xl font-semibold text-center mb-4">{{ 'RATINGS.MODAL.TITLE' | translate }}</h3>
+            <div class="my-6">
               <input
                 class="w-[90%] max-sm:w-full max-sm:mx-0 pb-28 ml-6 rounded-lg border-white focus:border-blue-400 focus:ring-blue-400 placeholder-[#022553]"
-                placeholder="ADD YOUR COMMENT"
+                [placeholder]="'RATINGS.MODAL.PLACEHOLDER' | translate"
                 type="text"
               />
             </div>
@@ -99,12 +84,13 @@
                   <svg
                     (click)="setRating(star)"
                     [ngClass]="{
-                      'text-yellow-300 ': star <= currentRating,
+                      'text-yellow-300': star <= currentRating,
                       'text-white': star > currentRating
                     }"
                     class="w-8 h-8 cursor-pointer ml-[0.20rem]"
                     fill="currentColor"
                     viewBox="0 0 24 24"
+                    [attr.aria-label]="'Rate ' + star + ' stars'"
                   >
                     <path
                       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.178 6.704a1 1 0 00.95.69h7.034c.969 0 1.371 1.24.588 1.81l-5.68 4.13a1 1 0 00-.364 1.118l2.178 6.704c.3.921-.755 1.688-1.54 1.118l-5.68-4.13a1 1 0 00-1.176 0l-5.68 4.13c-.784.57-1.838-.197-1.539-1.118l2.178-6.704a1 1 0 00-.364-1.118L2.49 12.13c-.783-.57-.38-1.81.588-1.81h7.034a1 1 0 00.95-.69l2.178-6.704z"
@@ -117,7 +103,7 @@
               (click)="submitRating()"
               class="w-[95%] ml-4 text-white bg-[#5BB8FF] mt-2 hover:bg-blue-500 duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-sm py-2.5 text-center"
             >
-              SUBMIT
+              {{ 'RATINGS.BUTTONS.SUBMIT' | translate }}
             </button>
           </div>
         </div>

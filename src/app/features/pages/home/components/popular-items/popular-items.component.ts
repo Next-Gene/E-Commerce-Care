@@ -6,11 +6,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { CartComponent } from "../../../../../shared/components/ui/cart/cart.component";
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Category } from '../../../../../core/interfaces/category';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-items',
   standalone: true,
-  imports: [CommonModule, CartComponent],
+  imports: [CommonModule, CartComponent, TranslateModule],
   templateUrl: './popular-items.component.html',
   styleUrls: ['./popular-items.component.scss']
 })
@@ -71,6 +72,16 @@ export class PopularItemsComponent implements OnInit, OnDestroy {
       (product) => product.category === category.name
     );
   }
+  currentLanguage: string;
+  
+    constructor(private translate: TranslateService) {
+      this.currentLanguage = this.translate.currentLang || this.translate.getDefaultLang();
+      
+      // Optional: subscribe to language change
+      this.translate.onLangChange.subscribe(event => {
+        this.currentLanguage = event.lang;
+      });
+    }
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();

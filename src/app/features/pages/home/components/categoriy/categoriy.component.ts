@@ -4,10 +4,11 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from '../../../../../core/service/categories.service';
 import { Category } from '../../../../../core/interfaces/category';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categoriy',
-  imports: [CarouselModule,RouterLink,CommonModule],
+  imports: [CarouselModule,RouterLink,CommonModule,TranslateModule],
   templateUrl: './categoriy.component.html',
   styleUrl: './categoriy.component.scss'
 })
@@ -60,7 +61,11 @@ export class CategoriyComponent {
       }
 
     },
-    nav: false
+    nav: false,
+    rtl: true, // This is the key RTL setting
+    autoWidth: false, // Ensure consistent item width
+    slideBy: 1, // Slide one item at a time
+    pullDrag: true // Allow pull-to-drag
   }
 
 }

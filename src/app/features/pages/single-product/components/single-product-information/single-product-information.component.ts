@@ -4,9 +4,10 @@ import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Product } from '../../../../../core/interfaces/product';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-single-product-information',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './single-product-information.component.html',
   styleUrls: ['./single-product-information.component.scss']
 })

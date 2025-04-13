@@ -3,10 +3,11 @@ import { Product } from '../../../../../core/interfaces/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-single-product-title',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './single-product-title.component.html',
   styleUrl: './single-product-title.component.scss'
 })

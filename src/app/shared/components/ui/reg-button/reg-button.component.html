@@ -1,19 +1,24 @@
-
-@if (role=="tosignup") {
-    <button (click)="navigateToSignup()" class=" bg-blue-900 text-white hover:bg-blue-700 duration-500  text-center  rounded-3xl px-12  p-4 text-xl">
-      signup
-    </button>
+@if (role == "tosignup") {
+<button
+  (click)="navigateToSignup()"
+  class="bg-blue-900 text-white hover:bg-blue-700 duration-500 text-center rounded-3xl px-12 p-4 text-xl"
+  [attr.aria-label]="'AUTH_BUTTONS.SIGNUP' | translate"
+>
+  {{ "AUTH_BUTTONS.SIGNUP" | translate }}
+</button>
+} @else if (role == "tologin") {
+<button
+  (click)="navigateToLogin()"
+  class="bg-blue-900 text-white hover:bg-blue-700 duration-500 text-center rounded-3xl px-12 p-4 text-xl"
+  [attr.aria-label]="'AUTH_BUTTONS.LOGIN' | translate"
+>
+  {{ "AUTH_BUTTONS.LOGIN" | translate }}
+</button>
+} @else {
+<button
+  class="bg-blue-900 text-white hover:bg-blue-700 duration-500 text-center rounded-3xl px-12 p-4 text-xl"
+  [attr.aria-label]="'AUTH_BUTTONS.SUBMIT' | translate"
+>
+  <ng-content></ng-content>
+</button>
 }
-  @else if (role=="tologin") {
-    <button (click)="navigateToLogin()" class=" bg-blue-900 text-white hover:bg-blue-700 duration-500  text-center  rounded-3xl px-12  p-4 text-xl">
-login 
-  </button>
-}
-@else{
-    <button  class=" bg-blue-900 text-white hover:bg-blue-700 duration-500  text-center  rounded-3xl px-12  p-4 text-xl">
-<ng-content></ng-content>
-    </button> 
-}
-        
-  
- 

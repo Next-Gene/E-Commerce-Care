@@ -1,43 +1,139 @@
-<div class="w-full sm:w-[90%] sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] dark:bg-[#313131] transition-colors duration-300 rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10 ">
-  
-  <div class="flex flex-col lg:flex-row items-center text-center lg:text-left space-y-3 lg:space-y-0 lg:space-x-3">
-    <div class="bg-[#5BB8FF] p-4 rounded-full">
-      <i class="text-white fa-solid fa-truck fa-lg"></i>
-    </div>
-    <div>
-      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">Free Delivery</h2>
-      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">Orders Over $120</h3>
-    </div>
-  </div>
+<div
+  class="w-full sm:w-[90%] sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] dark:bg-[#313131] transition-colors duration-300 rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10"
+  [ngClass]="{ 'rtl': currentLanguage === 'ar', 'ltr': currentLanguage !== 'ar' }"
+>
 
-  <div class="flex flex-col lg:flex-row items-center text-center lg:text-left space-y-3 lg:space-y-0 lg:space-x-3">
-    <div class="bg-[#5BB8FF] p-4 rounded-full">
-      <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
-    </div>
-    <div>
-      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">Get Refund</h2>
-      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">Within 30 Days Returns</h3>
-    </div>
-  </div>
+  <!-- Item -->
+  <div class="flex items-center gap-x-3"
+  [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
 
-  <div class="flex flex-col lg:flex-row items-center text-center lg:text-left space-y-3 lg:space-y-0 lg:space-x-3">
-    <div class="bg-[#5BB8FF] p-4 rounded-full">
-      <i class="text-white fa-solid fa-wallet fa-lg"></i>
-    </div>
-    <div>
-      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">Safe Payment</h2>
-      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">100% Secure Payment</h3>
-    </div>
-  </div>
+<!-- لما اللغة عربية: الأيقونة في اليمين -->
+<ng-container *ngIf="currentLanguage === 'en'; else rtrOrder">
+ <div class="bg-[#5BB8FF] p-4 rounded-full">
+   <i class="text-white fa-solid fa-truck fa-lg"></i>
+ </div>
+ <div class="flex-1 text-left ">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+     {{ 'INFO.FREE_DELIVERY.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.FREE_DELIVERY.SUBTITLE' | translate }}
+   </h3>
+ </div>
+</ng-container>
 
-  <div class="flex flex-col lg:flex-row items-center text-center lg:text-left space-y-3 lg:space-y-0 lg:space-x-3">
-    <div class="bg-[#5BB8FF] p-4 rounded-full">
-      <i class="text-white fa-solid fa-headset fa-xl"></i>
-    </div>
-    <div>
-      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">24/7 Support</h2>
-      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">Feel Free To Call Us</h3>
-    </div>
+<!-- لما اللغة إنجليزي: النص في اليسار، الأيقونة في الشمال -->
+<ng-template #rtrOrder>
+ <div class="flex-1 text-right">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
+     {{ 'INFO.FREE_DELIVERY.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.FREE_DELIVERY.SUBTITLE' | translate }}
+   </h3>
+ </div>
+ <div class="bg-[#5BB8FF] p-4 rounded-full">
+   <i class="text-white fa-solid fa-truck fa-lg"></i>
+ </div>
+</ng-template>
+
+</div>
+
+
+  <!-- Item -->
+  <!-- Refund -->
+<div class="flex items-center gap-x-3"
+[ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
+<ng-container *ngIf="currentLanguage === 'ar'; else refundLtr">
+  <div class="text-right">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
+     {{ 'INFO.REFUND.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.REFUND.SUBTITLE' | translate }}
+   </h3>
   </div>
+<div class="bg-[#5BB8FF] p-4 rounded-full">
+ <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
+</div>
+</ng-container>
+<ng-template #refundLtr>
+  <div class="bg-[#5BB8FF] p-4 rounded-full">
+    <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
+  </div>
+  <div class="text-left">
+   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
+     {{ 'INFO.REFUND.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.REFUND.SUBTITLE' | translate }}
+   </h3>
+  </div>
+</ng-template>
+</div>
+
+<!-- Safe Payment -->
+<div class="flex items-center gap-x-3"
+[ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
+<ng-container *ngIf="currentLanguage === 'ar'; else paymentLtr">
+  <div class="text-right">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300 ">
+     {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
+   </h3>
+  </div>
+<div class="bg-[#5BB8FF] p-4 rounded-full">
+ <i class="text-white fa-solid fa-wallet fa-lg"></i>
+</div>
+</ng-container>
+<ng-template #paymentLtr>
+  <div class="bg-[#5BB8FF] p-4 rounded-full">
+    <i class="text-white fa-solid fa-wallet fa-lg"></i>
+  </div>
+  <div class="text-left">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+     {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
+   </h3>
+  </div>
+</ng-template>
+</div>
+
+<!-- Support -->
+<div class="flex items-center gap-x-3"
+[ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
+<ng-container *ngIf="currentLanguage === 'ar'; else supportLtr">
+  <div class="text-right">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+     {{ 'INFO.SUPPORT.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
+   </h3>
+  </div>
+<div class="bg-[#5BB8FF] p-4 rounded-full">
+ <i class="text-white fa-solid fa-headset fa-xl"></i>
+</div>
+</ng-container>
+<ng-template #supportLtr>
+  <div class="bg-[#5BB8FF] p-4 rounded-full">
+    <i class="text-white fa-solid fa-headset fa-xl"></i>
+  </div>
+  <div class="text-left">
+   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+     {{ 'INFO.SUPPORT.TITLE' | translate }}
+   </h2>
+   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
+     {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
+   </h3>
+  </div>
+</ng-template>
+</div>
+
+
 
 </div>

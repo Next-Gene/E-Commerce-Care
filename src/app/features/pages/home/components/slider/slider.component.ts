@@ -4,11 +4,12 @@ import { DiscBtnComponent } from "../../../../../shared/components/ui/disc-btn/d
 import { TextsComponent } from "../../../../../shared/texts/texts.component";
 import { GetImagesService } from '../../../../../core/service/get-images.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [DiscBtnComponent, TextsComponent, CarouselModule,CommonModule ],
+  imports: [DiscBtnComponent, TextsComponent, CarouselModule,CommonModule, TranslateModule ],
 
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss'
@@ -43,6 +44,12 @@ export class SliderComponent {
       },
       nav: false,
       dots: false,
+      rtl: true, // This is the key RTL setting
+      autoWidth: false, // Ensure consistent item width
+      slideBy: 1, // Slide one item at a time
+      mouseDrag: true, // Allow mouse dragging
+      touchDrag: true, // Allow touch dragging
+      pullDrag: true // Allow pull-to-drag
 
     };
   }
