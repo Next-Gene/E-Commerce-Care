@@ -239,14 +239,16 @@
     },
     {
       "_id": "11",
-      "title": "Intravenous Injection ",
-      "slug": "Intravenous Injection ",
-      "description": "A method of delivering fluids, medications, or nutrients directly into a vein using a needle or catheter. It allows for rapid absorption into the bloodstream.",
-      "imgCover": "/images/product/medical sup.jpg" ,
+      "title": "Insulin Glargine ",
+      "slug": "Insulin Glargine ",
+      "description": "Used to keep insulin levels stable all day.Injected once daily at the same time.Starts working in a few hours, lasts up to 24+ hours.",
+      "imgCover": "../../images/product/111.jpeg" ,
       "images": [
+        "../../images/product/1111.webp",
+        "../../images/product/111111.jpeg"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 30.0,
+      "priceAfterDiscount": 25.0,
       "quantity": 10,
       "category": "Blood Sugar Monitoring",
       "occasion": "Monitoring",
@@ -260,17 +262,18 @@
     },
     {
       "_id": "12",
-      "title": "Dermaheal SB",
-      "slug": "Dermaheal SB",
-      "description": "Care",
-      "imgCover": "/images/product/cosmaticc.jpg",
+      "title": "Sun screen bobai",
+      "slug": "Sun screen bobai",
+      "description": "a skincare product applied to the skin to protect it from harmful ultraviolet (UV) rays from the sun. It helps prevent sunburn, premature aging, and reduces the risk of skin cancer.",
+      "imgCover": "/images/product/12112.webp",
       "images": [
-      
+      "../../images/product/1212.jpg",
+      "../../images/product/121212.png"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 250.0,
+      "priceAfterDiscount": 200.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Cosmetic Treatments",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -282,17 +285,17 @@
     },
     {
       "_id": "13",
-      "title": "kerastase",
-      "slug": "kerastase",
-      "description": "",
-      "imgCover": "../../images/product/kerastase.jpg",
+      "title": "Genesis Anti-Hair Fall Ampoules",
+      "slug": "Genesis Anti-Hair Fall Ampoules",
+      "description": "A powerful blend that boosts scalp health and rebuilds hair, making it thicker and healthier",
+      "imgCover": "./images/product/1333.jpg",
       "images": [
-      
+      "../../images/product/13133.jpeg"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 400.0,
+      "priceAfterDiscount": 350.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Medical Ampoules",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -304,17 +307,17 @@
     },
     {
       "_id": "14",
-      "title": "",
-      "slug": "",
+      "title": "Cetrocare 0.25mg",
+      "slug": "Cetrocare 0.25mg",
       "description": "",
-      "imgCover": "../../images/product/med equi.jpg",
+      "imgCover": "../../images/product/141414.webp",
       "images": [
-      
+      "../../images/product/141414.webp"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 75.0,
+      "priceAfterDiscount": 71.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Injections & Medical Care",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -331,12 +334,14 @@
       "description": "A tool used by doctors to listen to the heart, lungs, and other body sounds to help diagnose health problems.",
       "imgCover": "../../images/product/sma3aa.jpg",
       "images": [
-      
+        "../../images/product/hhhhhh.webp",
+        "../../images/product/hh.png",
+        "../../images/product/hh.png"
       ],
       "price": 1500.0,
       "priceAfterDiscount": 1350.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Doctor’s Essentials",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -348,17 +353,18 @@
     },
     {
       "_id": "16",
-      "title": "Dermatology and Cosmetics",
-      "slug": "Dermatology and Cosmetics",
-      "description": " Dermatology treats skin conditions, while cosmetics enhance appearance and beauty.",
-      "imgCover": "../../images/product/cosmetic.jpg",
+      "title": "Congestal",
+      "slug": "Congestal",
+      "description": " used to treat symptoms of the common cold and flu, such as nasal congestion, runny nose, headache, and body aches.",
+      "imgCover": "../../images/product/mmmm.png",
       "images": [
-      
+        "../../images/product/mr.jpg",
+        "../../images/product/mm.jpg"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 150.0,
+      "priceAfterDiscount": 130.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Medications & Medical Solutions",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -370,17 +376,18 @@
     },
     {
       "_id": "17",
-      "title": "Blood Glucose Meter",
-      "slug": "Blood Glucose Meter",
-      "description": "",
-      "imgCover": "../../images/product/healt monn.jpg",
+      "title": "Glucophage",
+      "slug": "Glucophage",
+      "description": "a medication that contains the active ingredient Metformin. It is primarily used to treat type 2 diabetes. ",
+      "imgCover": "../../images/product/qq.jpeg",
       "images": [
-      
+      "../../images/product/qqqqq.jpeg",
+      "../../images/product/q.jpeg"
       ],
-      "price": 1500.0,
-      "priceAfterDiscount": 1350.0,
+      "price": 20.0,
+      "priceAfterDiscount": 18.0,
       "quantity": 10,
-      "category": "Blood Sugar Monitoring",
+      "category": "Creative Medical Frame",
       "occasion": "Monitoring",
       "createdAt": "2025-01-10T14:00:00Z",
       "updatedAt": "2025-02-10T14:00:00Z",
@@ -394,10 +401,11 @@
       "_id": "18",
       "title": "Heart Rate Monitor",
       "slug": "Heart Rate Monitor",
-      "description": "A device used to measure the number of heartbeats per minute, helping to monitor heart health and detect any irregularities in the heart rate.",
-      "imgCover": "../../images/product/time.jpg",
+      "description": "A device used to measure heartbeats per minute, helping monitor heart health and detect irregularities in heart rate.",
+      "imgCover": "../../images/product/kkkkk.webp",
       "images": [
-      
+      "../../images/product/kkk.avif",
+      "../../images/product/time.jpg"
       ],
       "price": 1500.0,
       "priceAfterDiscount": 1350.0,
@@ -417,9 +425,10 @@
       "title": "Cardiac Defibrillator",
       "slug": "Cardiac Defibrillator",
       "description": "A device used to restore a normal heart rhythm by delivering an electric shock to the heart in cases of severe arrhythmia or cardiac arrest.",
-      "imgCover": "../../images/product/timer.jpg",
+      "imgCover": "../../images/product/aaaaa.png",
       "images": [
-      
+      "../../images/product/timer.jpg",
+      "../../images/product/aaa.jpg"
       ],
       "price": 1500.0,
       "priceAfterDiscount": 1350.0,
@@ -433,7 +442,192 @@
       "sold": 5,
       "id": "10",
       "rate": 4.7
+    },
+    {
+      "_id": "20",
+      "title": "Pampers-pants",
+      "slug": "Pampers-pants",
+      "description": "Comfort for Babies,High Absorption: They contain absorbent layers that keep the baby dry for long periods.",
+      "imgCover": "../../images/product/OIP (3).jpeg",
+      "images": [
+      "../../images/product/OIP (4).jpeg",
+      "../../images/product/download (3).jpeg"
+      ],
+      "price": 500.0,
+      "priceAfterDiscount": 450.0,
+      "quantity": 10,
+      "category": "Family Healthcare",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "21",
+      "title": "Mechanical Ventilation Machine",
+      "slug": "Mechanical Ventilation Machine",
+      "description": "The machine can control breathing entirely or assist the patient’s natural breaths.",
+      "imgCover": "../../images/product/R.jpeg",
+      "images": [
+      "../../images/product/rrr.jpeg",
+      "../../images/product/rr.avif"
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Medical Consultation",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "22",
+      "title": "Protective Glasses",
+      "slug": "Protective Glasses",
+      "description": "Provides protection from blood splashes or chemical exposure in the operating room.",
+      "imgCover": "../../images/product/66666.jpg",
+      "images": [
+      "../../images/product/66.webp",
+      "../../images/product/666.webp"
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Health Protection Supplies",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "23",
+      "title": "Mercury Thermometer",
+      "slug": "Mercury Thermometer",
+      "description": "Contains liquid mercury that expands with heat and rises in the glass tube to show temperature.Commonly marked in Celsius (°C) or Fahrenheit (°F).",
+      "imgCover": "../../images/product/2444.jpg",
+      "images": [
+      "../../images/product/24.webp",
+      "../../images/product/244.jpeg"
+      ],
+      "price": 50.0,
+      "priceAfterDiscount": 49.0,
+      "quantity": 10,
+      "category": "Online Medical Consultation",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "24",
+      "title": "Surgical gloves",
+      "slug": "Surgical gloves",
+      "description": "",
+      "imgCover": "../../images/product/latex-medical-gloves-3.jpg",
+      "images": [
+        "../../images/product/latex-medical-gloves-4.jpg",
+        "../../images/product/latex-medical-gloves.jpg"
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Blood Sugar Monitoring",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "25",
+      "title": "Heart Rate Monitor Watch",
+      "slug": "Heart Rate Monitor Watch",
+      "description": "is a wearable device that tracks your heartbeats in real time. It’s commonly used in fitness, health monitoring",
+      "imgCover": "../../images/product/5555.jpg",
+      "images": [
+        "../../images/product/555555.jpeg",
+        "../../images/product/555.jpg"
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Time & Health Management",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "26",
+      "title": "Digital Thermometer",
+      "slug": "Digital Thermometer",
+      "description": "Provides quick readings (usually within 10–60 seconds).Easy to read display screen showing temperature in Celsius (°C) or Fahrenheit (°F).",
+      "imgCover": "../../images/product/266.jpg",
+      "images": [
+      "../../images/product/26.jpg",
+      "../../images/product/26666.webp"
+      ],
+      "price": 1500.0,
+      "priceAfterDiscount": 1350.0,
+      "quantity": 10,
+      "category": "Health Monitoring Devices",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
+    },
+    {
+      "_id": "27",
+      "title": "Automatic Hand Sanitizer Dispenser",
+      "slug": "Automatic Hand Sanitizer Dispenser",
+      "description": "a hands-free device commonly used in medical environments like hospitals, clinics",
+      "imgCover": "../../images/product/777.webp",
+      "images": [
+      "../../images/product/77.webp",
+      "../../images/product/7.webp"
+      ],
+      "price": 500.0,
+      "priceAfterDiscount": 450.0,
+      "quantity": 10,
+      "category": "Health Monitoring Devices",
+      "occasion": "Monitoring",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "10",
+      "rate": 4.7
     }
+
 
 
     
