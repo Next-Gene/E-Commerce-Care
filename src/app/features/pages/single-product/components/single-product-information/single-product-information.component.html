@@ -1,4 +1,4 @@
-<div class="relative text-2xl w-60 font-semibold dark:text-white  text-black mb-8 max-lg:ml-6 ml-24dark:text-white transition-colors duration-300">
+<div class="relative text-2xl w-60 font-semibold dark:text-white  text-black mb-8 max-lg:mx-6 mx-16  transition-colors duration-300">
   {{ 'PRODUCT_INFO.TITLE' | translate }}
   <span
         class="absolute  dark:bg-white/50 transition-colors duration-300 bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"
@@ -16,7 +16,7 @@
   <img class="rounded-20 images w-96 h-full" 
        [src]="product.imgCover" 
        [alt]="product.title"
-       *ngIf="product.imgCover; else placeholderImage"/>
+       *ngIf="product?.imgCover; else placeholderImage"/>
   <ng-template #placeholderImage>
     <div class="w-96 h-full flex items-center justify-center bg-gray-200 rounded-20">
       <span class="text-gray-500">{{ 'PRODUCT_INFO.PLACEHOLDER' | translate }}</span>

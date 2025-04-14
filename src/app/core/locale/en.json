@@ -505,11 +505,12 @@
       "TITLE": "Prime Care",
       "HOME": "Home",
       "PRODUCTS": "Products",
-      "TESTIMONIALS": "Testimonials",
+      "Categories": "categories",
       "ABOUT": "About"
     },
     "STORE": {
       "TITLE": "Store Location",
+      "Stores": "Store Location",
       "CONTACT": "Contact",
       "DELIVERY": "Delivery",
       "POLICY": "Policy",
