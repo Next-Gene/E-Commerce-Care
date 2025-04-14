@@ -55,6 +55,7 @@ export class NavbarComponent {
   logout() {
     this.isLoggedIn = false; 
     this.isDropdownOpen = false;
+    localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
    switchLang() {

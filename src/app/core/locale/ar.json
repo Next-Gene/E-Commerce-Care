@@ -505,7 +505,7 @@
       "TITLE": "برايم كير",
       "HOME": "الرئيسية",
       "PRODUCTS": "المنتجات",
-      "TESTIMONIALS": "الشهادات",
+      "Categories": "الفئات",
       "ABOUT": "من نحن"
     },
     "STORE": {
@@ -517,10 +517,10 @@
     },
     "CATEGORIES": {
       "TITLE": "فئات المتجر",
-      "MEDICAL_DEVICES": "الأجهزة الطبية",
-      "HEALTH_WELLNESS": "الصحة والعافية",
-      "HOSPITAL_EQUIPMENT": "معدات المستشفيات",
-      "PHARMACEUTICALS": "المستحضرات الصيدلانية"
+      "MEDICAL_DEVICES": "معدات طبية",
+      "HEALTH_WELLNESS": "معدات تشخيصية",
+      "HOSPITAL_EQUIPMENT":" مستلزمات طبية",
+      "PHARMACEUTICALS": "نظافة"
     },
     "COPYRIGHT": "© {{year}} برايم كير للابتكارات الطبية. جميع الحقوق محفوظة."
   }
