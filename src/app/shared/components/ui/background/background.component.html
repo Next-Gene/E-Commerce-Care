@@ -1,20 +1,21 @@
 @if (role == "login") {
-<div
-  class="im flex flex-col justify-center items-center h-full px-24 rounded-l-3xl text-white"
+
+  <div
+  class="im flex flex-col justify-center items-center h-full px-44 rounded-3xl w- text-white"
 >
-  <h2 class="text-4xl font-semibold mb-4">
+  <h2 class="text-4xl font-semibold mb-4 ">
     {{ "AUTH_BACKGROUND.LOGIN.TITLE" | translate }}
   </h2>
   <br />
   <br />
-  <h2 class="text-xl">{{ "AUTH_BACKGROUND.LOGIN.SUBTITLE" | translate }}</h2>
+  <h2 class="text-xl ">{{ "AUTH_BACKGROUND.LOGIN.SUBTITLE" | translate }}</h2>
   <app-reg-button role="tosignup" class="mt-56">
     {{ "AUTH_BACKGROUND.LOGIN.BUTTON" | translate }}
   </app-reg-button>
 </div>
 } @else if (role == "signup") {
 <div
-  class="im flex flex-col justify-center items-center h-full px-24 rounded-r-3xl text-white"
+  class="im flex flex-col justify-center items-center h-full px-24 rounded-3xl text-white"
 >
   <h2 class="text-4xl font-semibold mb-4">
     {{ "AUTH_BACKGROUND.SIGNUP.TITLE" | translate }}

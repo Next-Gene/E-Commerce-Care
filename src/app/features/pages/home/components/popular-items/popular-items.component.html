@@ -17,10 +17,10 @@
     
     
     <div class="w-full sm:w-auto overflow-x-auto">
-      <ul class="flex gap-2 whitespace-nowrap max-sm:flex-wrap max-sm:justify-center">
+      <ul class="flex gap-2 dark:text-white duration-300 transition-colors whitespace-nowrap max-sm:flex-wrap max-sm:justify-center">
         <li
           *ngFor="let category of categories; let i = index"
-          class="cursor-pointer text-gray-600 hover:text-pink-500 transition-colors duration-300 px-2"
+          class="cursor-pointer text-gray-600 dark:text-white hover:text-pink-500 transition-colors duration-300 px-2"
           [ngClass]="{
             'text-pink-500 border-b-2 border-pink-500': selectedCategoryIndex === i
           }"
