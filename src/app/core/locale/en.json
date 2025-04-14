@@ -486,7 +486,7 @@
     "DROPDOWN": {
       "EDIT_PROFILE": "Edit Profile",
       "LOGOUT": "Log out",
-    "TOGGLE_THEME": "Change Mood"
+      "TOGGLE_THEME": "Change Mood"
     }
   },
   "FOOTER": {
@@ -523,5 +523,9 @@
       "Medical_Supplies": "Medical Supplies",
       "Hygiene": "Hygiene"
     }
+  },
+  "PAGINATION": {
+    "NEXT": "Next",
+    "PREVIOUS": "Previous"
   }
 }

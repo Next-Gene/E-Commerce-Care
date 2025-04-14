@@ -523,5 +523,9 @@
       "PHARMACEUTICALS": "نظافة"
     },
     "COPYRIGHT": "© {{year}} برايم كير للابتكارات الطبية. جميع الحقوق محفوظة."
+  },
+  "PAGINATION": {
+    "NEXT": "التالي",
+    "PREVIOUS": "السابق"
   }
 }
