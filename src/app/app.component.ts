@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { initFlowbite } from 'flowbite';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
@@ -30,8 +30,9 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private _router: Router,
+    private _viewportScroller: ViewportScroller,
     private translationService: TranslationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.dir = this.translationService.getDir();
@@ -64,6 +65,12 @@ export class AppComponent implements OnInit {
         this.isAuthPage = authPages.includes(event.url);
       }
     });
+    this._router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd && isPlatformBrowser(this.platformId)) {
+        this._viewportScroller.scrollToPosition([0, 0]);
+      }
+    });
   }
-  
+
+
 }
