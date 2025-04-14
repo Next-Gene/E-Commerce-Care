@@ -26,10 +26,10 @@
     </div>
     }
   </div>
-
+  @if (selectedSection === 'payment') {
+    <app-paymet></app-paymet>
+    }
   @if (selectedSection === 'form') {
   <app-form></app-form>
-  } @if (selectedSection === 'paymet') {
-  <app-paymet></app-paymet>
-  }
+  } 
 </div>
