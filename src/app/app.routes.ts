@@ -35,12 +35,7 @@ export const routes: Routes = [
             .then(c => c.AllProductComponent)
 
     },
-    {
-        path: 'cart',
-        loadComponent: () => import('./shared/components/ui/cart/cart.component')
-            .then(c => c.CartComponent)
-
-    },
+   
     {
         path: 'login',
         loadComponent: () =>
@@ -137,6 +132,15 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./features/pages/static pages/stores/stores.component').then(
                 (c) => c.StoresComponent
+            ),
+            
+    },
+
+    {
+        path: 'cart',
+        loadComponent: () =>
+            import('./features/pages/cart/cart.component').then(
+                (c) => c.CartComponent   
             ),
             
     },

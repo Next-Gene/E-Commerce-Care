@@ -93,7 +93,9 @@
       <!-- أيقونة عربة التسوق -->
       <a
         *ngIf="isLoggedIn"
-        href="/cart"
+        routerLink="cart"
+        routerLinkActive="active"
+
         class="relative text-black dark:text-white duration-300 transition-all dark:hover:text-blue-500 hover:text-blue-500 p-1"
         [attr.aria-label]="'NAV.ACTIONS.CART' | translate"
       >
