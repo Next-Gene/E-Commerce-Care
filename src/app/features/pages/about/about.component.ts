@@ -9,7 +9,7 @@ import { AboutFullStackComponent } from './About-us-component`s/about-full-stack
 
 @Component({
   selector: 'app-about',
-  imports: [MadeByComponent, AboutBackEndComponent, AboutFrontEndComponent, AboutProjectManagerComponent, AboutUIUXComponent, AboutPrimeCareComponent],
+  imports: [MadeByComponent, AboutBackEndComponent, AboutFrontEndComponent, AboutProjectManagerComponent, AboutUIUXComponent, AboutPrimeCareComponent, AboutFullStackComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
