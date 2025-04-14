@@ -1,6 +1,10 @@
 import { CategoriesService } from './../../../core/service/categories.service';
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  CommonModule,
+  isPlatformBrowser,
+  ViewportScroller,
+} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../../core/interfaces/product';
 import { ProductsService } from '../../../core/service/products.service';
@@ -8,30 +12,53 @@ import { CartComponent } from '../../../shared/components/ui/cart/cart.component
 import { FiltersComponent } from './components/filters/filters.component';
 import { Category } from '../../../core/interfaces/category';
 import { TranslateModule } from '@ngx-translate/core';
+import { PaginationComponent } from '../../../shared/components/ui/pagination/pagination.component';
 
 @Component({
   selector: 'app-all-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule, CartComponent, FiltersComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    CartComponent,
+    PaginationComponent,
+    FiltersComponent,
+  ],
   templateUrl: './all-prodect.component.html',
-  styleUrls: ['./all-prodect.component.scss']
+  styleUrls: ['./all-prodect.component.scss'],
 })
 export class AllProductComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
   filteredProducts: Product[] = [];
   showFilters: boolean = false;
+  showingProducts: Product[] = [];
+  currentPage: number = 1;
+  limitProducts: number = 12;
+  totalPages: number = 1;
 
-  constructor(private _productsService: ProductsService,private _categoriesService:CategoriesService) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private viewportScroller: ViewportScroller,
+    private _productsService: ProductsService,
+    private _categoriesService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this._productsService.getAllProducts().subscribe((data: Product[]) => {
       this.products = data;
       this.filteredProducts = [...this.products];
+      this.totalPages = Math.ceil(
+        this.filteredProducts.length / this.limitProducts
+      );
+      this.onPageChange(this.currentPage);
     });
-    this._categoriesService.getAllCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-    });
+    this._categoriesService
+      .getAllCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
   }
 
   toggleFilters(): void {
@@ -41,5 +68,15 @@ export class AllProductComponent implements OnInit {
 
   isMobile(): boolean {
     return window.innerWidth < 640;
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    const startIndex = (this.currentPage - 1) * this.limitProducts;
+    const endIndex = startIndex + this.limitProducts;
+    this.showingProducts = this.filteredProducts.slice(startIndex, endIndex);
+    if (isPlatformBrowser(this.platformId)) {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    }
   }
 }
