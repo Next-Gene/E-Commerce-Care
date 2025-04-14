@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject, ElementRef } from '@angular/core';
 import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -16,11 +16,11 @@ export class NavbarComponent {
   toggleTheme() {
     this._ThemeService.toggleDarkMode();
   }
-  cartCount: number = 0;
+  cartCount: number = 5;
   isMenuOpen: boolean = false;
   isLoggedIn: boolean = false;
   constructor(private _FlowbiteService: FlowbiteService, private router: Router,
-    private translationService: TranslationService, private themeService: ThemeService
+    private translationService: TranslationService, private themeService: ThemeService, private _eref: ElementRef
   ) {}
   isDropdownOpen = false;
    currentLanguage!: 'ar' | 'en';
@@ -28,6 +28,7 @@ export class NavbarComponent {
     this.currentLanguage = this.translationService.getLang();
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
+    
   }
   get isArabic(): boolean {
     return document.documentElement.dir === 'rtl'; // أو استخدم أي منطق يعتمد على اللغة الحالية
@@ -60,5 +61,11 @@ export class NavbarComponent {
   }
    switchLang() {
     this.translationService.switchLang();
+  }
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    if (!this._eref.nativeElement.contains(event.target)) {
+      this.isDropdownOpen = false; // Close dropdown if clicked outside
+    }
   }
 }
