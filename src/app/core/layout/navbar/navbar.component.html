@@ -93,7 +93,9 @@
       <!-- أيقونة عربة التسوق -->
       <a
         *ngIf="isLoggedIn"
-        href="/cart"
+        routerLink="cart"
+        routerLinkActive="active"
+
         class="relative text-black dark:text-white duration-300 transition-all dark:hover:text-blue-500 hover:text-blue-500 p-1"
         [attr.aria-label]="'NAV.ACTIONS.CART' | translate"
       >
@@ -177,9 +179,10 @@
        
         <div
   *ngIf="isDropdownOpen"
-  class="absolute right-[-73px] mt-2 w-48 bg-white border  rounded-lg shadow-lg z-50"
+   class="absolute   ltr:right-[-73px] rtl:left-[-73px] mt-2 w-48 bg-white border mx-16 rounded-lg shadow-lg z-50"
   [ngClass]="currentLanguage === 'ar' ? 'text-right' : 'text-left'"
->
+
+  >
   <a
     routerLink=""
     class="block px-4 py-2 text-gray-700 dark:bg-[#353535] dark:hover:bg-[#383838] transition-colors duration-300 dark:text-white hover:bg-gray-100 cursor-pointer"
@@ -188,11 +191,13 @@
   </a>
 
   <div
-    class="px-4 py-2 hover:bg-gray-100 dark:bg-[#353535] dark:hover:bg-[#383838] cursor-pointer duration-300 transition-colors flex items-center justify-between"
+    class="px-4 py-2 hover:bg-gray-100 dark:bg-[#353535]  dark:hover:bg-[#383838] cursor-pointer duration-300 transition-colors flex items-center justify-between "
     [ngClass]="currentLanguage === 'ar' ? 'text-right' : 'text-left'"
   >
-    <span class="text-gray-700 dark:text-white duration-300 transition-colors">
+    <span         (click)="toggleTheme()"
+    class="text-gray-700 dark:text-white duration-300 transition-colors ">
       {{ "NAV.DROPDOWN.TOGGLE_THEME" | translate }}
+      
     </span>
 
     <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn">

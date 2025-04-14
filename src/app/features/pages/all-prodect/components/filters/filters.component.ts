@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-filters',
   standalone: true,
-  imports: [CommonModule, FormsModule,TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
@@ -18,6 +18,7 @@ export class FiltersComponent implements OnInit, OnChanges {
   @Input() showFilters: boolean = false;
   @Output() filteredProductsChange = new EventEmitter<Product[]>();
   @Output() toggleFiltersEvent = new EventEmitter<void>();
+
   selectedCategory: string = 'all';
   selectedReview: string = 'all';
   selectedPriceRange: string = '';
@@ -33,8 +34,6 @@ export class FiltersComponent implements OnInit, OnChanges {
       this.applyFilters();
     }
   }
-
- 
 
   applyFilters(): void {
     const filtered = this.products.filter(product => {
@@ -55,6 +54,7 @@ export class FiltersComponent implements OnInit, OnChanges {
       }
       let matchDiscount = true;
       if (this.selectedDiscount && this.selectedDiscount !== 'all') {
+        // هنا يمكن تعديل منطق الفلترة للخصم إذا كان يحتاج للنطاق أو قيمة واحدة
         matchDiscount = (product.discount ?? 0) >= parseInt(this.selectedDiscount, 10);
       }
       return matchCategory && matchReview && matchPrice && matchDiscount;

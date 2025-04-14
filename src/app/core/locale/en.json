@@ -486,7 +486,7 @@
     "DROPDOWN": {
       "EDIT_PROFILE": "Edit Profile",
       "LOGOUT": "Log out",
-    "TOGGLE_THEME": "Change Mood"
+      "TOGGLE_THEME": "Change Mood"
     }
   },
   "FOOTER": {
@@ -518,10 +518,14 @@
     },
     "CATEGORIES": {
       "TITLE": "Shop Categories",
-      "MEDICAL_DEVICES": "Medical Devices",
-      "HEALTH_WELLNESS": "Health & Wellness",
-      "HOSPITAL_EQUIPMENT": "Hospital Equipment",
-      "PHARMACEUTICALS": "Pharmaceuticals"
+      "Medical_Equipment": "Medical Equipment",
+      "Diagnostic_Equipment": "Diagnostic Equipment",
+      "Medical_Supplies": "Medical Supplies",
+      "Hygiene": "Hygiene"
     }
+  },
+  "PAGINATION": {
+    "NEXT": "Next",
+    "PREVIOUS": "Previous"
   }
 }

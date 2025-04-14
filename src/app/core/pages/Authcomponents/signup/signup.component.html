@@ -1,6 +1,7 @@
 <div class="flex min-h-screen dark:bg-[#252525] flex-col lg:flex-row w-full relative text-center">
   <!-- Logo -->
-  <img class="absolute top-0 right-0 w-32 sm:w-48" 
+  <img  class="absolute top-0 right-0 w-32 sm:w-48 rtl:left-0 rtl:right-auto "
+  routerLink="/home" 
        src="images/logo 2 trams.png" 
        [alt]="'SIGNUP.LOGO_ALT' | translate">
 
@@ -61,7 +62,7 @@
           type="tel" 
           [placeholder]="'SIGNUP.FORM.PHONE.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.PHONE.LABEL' | translate"
-          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
+          class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 rtl:text-right text-blue-700 dark:bg-gray-200">
       </div>
       <app-alerts [formName]="register" controlName="phone"/>
 

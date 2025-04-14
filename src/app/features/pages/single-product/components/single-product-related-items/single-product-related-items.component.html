@@ -17,13 +17,12 @@
   ></app-cart>
 </div>
 
-<!-- Optional View All Button -->
-<div class="text-center mt-8">
+<div class="text-center mt-8 pb-10">
   <a 
-    routerLink="/related-products" 
-    class="text-blue-600 hover:text-blue-800 hover:underline"
-    [attr.aria-label]="'RELATED_PRODUCTS.VIEW_ALL' | translate"
-  >
-    {{ 'RELATED_PRODUCTS.VIEW_ALL' | translate }}
-  </a>
+  [routerLink]="['/details-category', categoryId]"
+  class="text-blue-600 hover:text-blue-800 hover:underline cursor-pointer text-center mt-8 mb-10"
+  [attr.aria-label]="'RELATED_PRODUCTS.VIEW_ALL' | translate"
+>
+  {{ 'RELATED_PRODUCTS.VIEW_ALL' | translate }}
+</a>
 </div>
