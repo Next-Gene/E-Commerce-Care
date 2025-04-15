@@ -47,6 +47,17 @@ body {
   --text-13: 0.619rem;
 }
 
+.footer-custom {
+  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  color: var(--light-background);
+  transition: background 0.3s ease-in-out;
+}
+
+/* دعم النمط الليلي */
+.dark .footer-custom {
+  background: linear-gradient(to right, #1a1a1a, #333333);
+  color: #f0f0f0;
+}
 /***************** FONT CLASSES **************** */
 .inter-100 {
   font-weight: 100;
