@@ -1,5 +1,5 @@
 <div
-  class="w-full sm:w-[90%] sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] dark:bg-[#313131] transition-colors duration-300 rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10"
+  class="w-full sm:w-[90%] max-sm:mt-12 mb-9 m-auto p-12 bg-[#CEEAFF] dark:bg-[#313131] transition-colors duration-300 rounded-3xl grid grid-cols-1 lg:grid-cols-4 gap-6 px-10"
   [ngClass]="{ 'rtl': currentLanguage === 'ar', 'ltr': currentLanguage !== 'ar' }"
 >
 
@@ -40,99 +40,104 @@
 </div>
 
 
-  <!-- Item -->
-  <!-- Refund -->
+<!-- Refund -->
 <div class="flex items-center gap-x-3"
 [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
-<ng-container *ngIf="currentLanguage === 'ar'; else refundLtr">
-  <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
-     {{ 'INFO.REFUND.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.REFUND.SUBTITLE' | translate }}
-   </h3>
-  </div>
-<div class="bg-[#5BB8FF] p-4 rounded-full">
- <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
-</div>
-</ng-container>
-<ng-template #refundLtr>
+<ng-container *ngIf="currentLanguage === 'en'; else refundRtl">
   <div class="bg-[#5BB8FF] p-4 rounded-full">
     <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
   </div>
-  <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold  dark:text-white transition-colors duration-300">
-     {{ 'INFO.REFUND.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.REFUND.SUBTITLE' | translate }}
-   </h3>
+  <div class="flex-1 text-left">
+    <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+      {{ 'INFO.REFUND.TITLE' | translate }}
+    </h2>
+    <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+      {{ 'INFO.REFUND.SUBTITLE' | translate }}
+    </h3>
+  </div>
+</ng-container>
+<ng-template #refundRtl>
+  <div class="flex-1 text-right">
+    <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+      {{ 'INFO.REFUND.TITLE' | translate }}
+    </h2>
+    <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+      {{ 'INFO.REFUND.SUBTITLE' | translate }}
+    </h3>
+  </div>
+  <div class="bg-[#5BB8FF] p-4 rounded-full">
+    <i class="text-white fa-solid fa-arrows-rotate fa-lg"></i>
   </div>
 </ng-template>
 </div>
+
 
 <!-- Safe Payment -->
 <div class="flex items-center gap-x-3"
 [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
-<ng-container *ngIf="currentLanguage === 'ar'; else paymentLtr">
-  <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300 ">
-     {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
-   </h3>
-  </div>
-<div class="bg-[#5BB8FF] p-4 rounded-full">
- <i class="text-white fa-solid fa-wallet fa-lg"></i>
-</div>
-</ng-container>
-<ng-template #paymentLtr>
+<ng-container *ngIf="currentLanguage === 'en'; else paymentRtl">
   <div class="bg-[#5BB8FF] p-4 rounded-full">
     <i class="text-white fa-solid fa-wallet fa-lg"></i>
   </div>
-  <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
-     {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
-   </h3>
+  <div class="flex-1 text-left">
+    <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+      {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
+    </h2>
+    <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+      {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
+    </h3>
+  </div>
+</ng-container>
+<ng-template #paymentRtl>
+  <div class="flex-1 text-right">
+    <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+      {{ 'INFO.SAFE_PAYMENT.TITLE' | translate }}
+    </h2>
+    <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+      {{ 'INFO.SAFE_PAYMENT.SUBTITLE' | translate }}
+    </h3>
+  </div>
+  <div class="bg-[#5BB8FF] p-4 rounded-full">
+    <i class="text-white fa-solid fa-wallet fa-lg"></i>
   </div>
 </ng-template>
 </div>
 
+
 <!-- Support -->
-<div class="flex items-center gap-x-3"
-[ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }">
-<ng-container *ngIf="currentLanguage === 'ar'; else supportLtr">
-  <div class="text-right">
-   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
-     {{ 'INFO.SUPPORT.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
-   </h3>
-  </div>
-<div class="bg-[#5BB8FF] p-4 rounded-full">
- <i class="text-white fa-solid fa-headset fa-xl"></i>
+<div
+  class="flex items-center gap-x-3"
+  [ngClass]="{ 'flex-row-reverse': currentLanguage === 'ar', 'flex-row': currentLanguage !== 'ar' }"
+>
+  <ng-container *ngIf="currentLanguage === 'ar'; else supportLtr">
+    <div class="flex-1 text-right">
+      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+        {{ 'INFO.SUPPORT.TITLE' | translate }}
+      </h2>
+      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+        {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
+      </h3>
+    </div>
+    <div class="bg-[#5BB8FF] p-4 rounded-full">
+      <i class="text-white fa-solid fa-headset fa-xl"></i>
+    </div>
+  </ng-container>
+
+  <ng-template #supportLtr>
+    <div class="bg-[#5BB8FF] p-4 rounded-full">
+      <i class="text-white fa-solid fa-headset fa-xl"></i>
+    </div>
+    <div class="flex-1 text-left">
+      <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
+        {{ 'INFO.SUPPORT.TITLE' | translate }}
+      </h2>
+      <h3 class="text-[#757F95] dark:text-gray-300 transition-colors duration-300 text-sm">
+        {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
+      </h3>
+    </div>
+  </ng-template>
 </div>
-</ng-container>
-<ng-template #supportLtr>
-  <div class="bg-[#5BB8FF] p-4 rounded-full">
-    <i class="text-white fa-solid fa-headset fa-xl"></i>
-  </div>
-  <div class="text-left">
-   <h2 class="text-[#160E4B] text-xl font-semibold dark:text-white transition-colors duration-300">
-     {{ 'INFO.SUPPORT.TITLE' | translate }}
-   </h2>
-   <h3 class="text-[#757F95]  dark:text-gray-300 transition-colors duration-300 text-sm">
-     {{ 'INFO.SUPPORT.SUBTITLE' | translate }}
-   </h3>
-  </div>
-</ng-template>
-</div>
+
 
 
 
