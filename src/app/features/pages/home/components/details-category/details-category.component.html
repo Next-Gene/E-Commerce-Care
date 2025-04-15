@@ -12,8 +12,17 @@
     </div>
   </div>
   
-  <!-- Display all products using *ngFor -->
+  <!-- Display products for the current page -->
   <div class="grid grid-cols-4 mx-14 gap-6 mt-8 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
-    <app-cart *ngFor="let product of products" [product]="product"></app-cart>
+    <app-cart *ngFor="let product of displayedProducts" [product]="product"></app-cart>
+  </div>
+
+  <!-- Pagination Component -->
+  <div class="mt-6 flex justify-center">
+    <app-pagination
+      [totalPages]="totalPages" 
+      [currentPage]="currentPage" 
+      (pageChange)="onPageChange($event)">
+    </app-pagination>
   </div>
 </div>
