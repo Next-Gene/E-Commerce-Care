@@ -464,7 +464,7 @@
       "RETURN_HOME": "العودة إلى الصفحة الرئيسية"
     }
   },
- "NAV": {
+  "NAV": {
     "LOGO_ALT": "شعار برايم كير",
     "LINKS": {
       "HOME": "الرئيسية",
@@ -490,40 +490,42 @@
     }
   },
   "FOOTER": {
-    "ABOUT_US": {
-      "TITLE": "معلومات عنا",
-      "DESCRIPTION": "نحن شركة تهتم بصحتك وتساعد المستشفيات والأطباء في توفير أفضل المعدات والعلاج."
-    },
-    "SOCIAL": {
-      "FOLLOW_US": "تابعنا",
-      "FACEBOOK": "فيسبوك",
-      "TWITTER": "تويتر",
-      "INSTAGRAM": "إنستغرام",
-      "LINKEDIN": "لينكد إن"
-    },
-    "COMPANY": {
-      "TITLE": "برايم كير",
-      "HOME": "الرئيسية",
-      "PRODUCTS": "المنتجات",
-      "Categories": "الفئات",
-      "ABOUT": "من نحن"
-    },
-    "STORE": {
-      "TITLE": "موقع المتجر",
-      "CONTACT": "اتصل بنا",
-      "DELIVERY": "التوصيل",
-      "POLICY": "السياسات",
-      "FAQS": "الأسئلة الشائعة"
-    },
-    "CATEGORIES": {
-      "TITLE": "فئات المتجر",
-      "MEDICAL_DEVICES": "معدات طبية",
-      "HEALTH_WELLNESS": "معدات تشخيصية",
-      "HOSPITAL_EQUIPMENT":" مستلزمات طبية",
-      "PHARMACEUTICALS": "نظافة"
-    },
-    "COPYRIGHT": "© {{year}} برايم كير للابتكارات الطبية. جميع الحقوق محفوظة."
+  "ABOUT_US": {
+    "TITLE": "معلومات عنا",
+    "DESCRIPTION": "نحن شركة تهتم بصحتك وتساعد المستشفيات والأطباء في توفير أفضل المعدات والعلاج."
   },
+  "SOCIAL": {
+    "FOLLOW_US": "تابعنا",
+    "FACEBOOK": "فيسبوك",
+    "TWITTER": "تويتر",
+    "INSTAGRAM": "إنستغرام",
+    "LINKEDIN": "لينكد إن"
+  },
+  "COMPANY": {
+    "TITLE": "برايم كير",
+    "HOME": "الرئيسية",
+    "PRODUCTS": "المنتجات",
+    "Categories": "الفئات",
+    "ABOUT": "من نحن"
+  },
+  "STORE": {
+    "TITLE": "موقع المتجر",
+    "Stores": "موقع المتجر",
+    "CONTACT": "اتصل بنا",
+    "DELIVERY": "التوصيل",
+    "POLICY": "السياسات",
+    "FAQS": "الأسئلة الشائعة"
+  },
+  "CATEGORIES": {
+    "TITLE": "فئات المتجر",
+    "Medical_Equipment": "معدات طبية",
+    "Diagnostic_Equipment": "معدات تشخيصية",
+    "Medical_Supplies": "مستلزمات طبية",
+    "Hygiene": "نظافة"
+  },
+  "COPYRIGHT": "© {{year}} برايم كير للابتكارات الطبية. جميع الحقوق محفوظة."
+}
+,
   "PAGINATION": {
     "NEXT": "التالي",
     "PREVIOUS": "السابق"

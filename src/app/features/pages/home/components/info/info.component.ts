@@ -4,9 +4,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info',
-  imports: [TranslateModule,CommonModule],
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
   templateUrl: './info.component.html',
-  styleUrl: './info.component.scss'
+  styleUrls: ['./info.component.scss']  // تم تصحيح المفتاح هنا
 })
 export class InfoComponent {
   currentLanguage: string;
@@ -14,7 +15,7 @@ export class InfoComponent {
   constructor(private translate: TranslateService) {
     this.currentLanguage = this.translate.currentLang || this.translate.getDefaultLang();
     
-    // Optional: subscribe to language change
+    // الاشتراك في تغييرات اللغة لتحديث currentLanguage عند تغيير لغة التطبيق
     this.translate.onLangChange.subscribe(event => {
       this.currentLanguage = event.lang;
     });
