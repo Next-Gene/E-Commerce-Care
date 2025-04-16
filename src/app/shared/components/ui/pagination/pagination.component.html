@@ -1,40 +1,43 @@
-<div class="flex flex-wrap items-center dark:text-white justify-between gap-2 md:gap-0">
+<div
+  class="flex flex-wrap items-center justify-between gap-4 py-4 dark:text-white"
+>
   <!-- Previous Button -->
   <button
-    class="px-3 py-1 border rounded-md dark:text-white flex gap-2 items-center order-2 lg:order-1 text-black disabled:opacity-50"
+    class="flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white disabled:opacity-50 order-2 lg:order-1 text-black"
     [disabled]="currentPage === 1"
     (click)="goToPage(currentPage - 1)"
   >
-    <span class="w-4 "> < </span>
+    <span class="text-xl">←</span>
     <span>{{ "PAGINATION.PREVIOUS" | translate }}</span>
   </button>
 
   <!-- Page Numbers -->
   <div
-    class="flex flex-wrap justify-center w-full lg:w-auto gap-1 md:gap-2 order-1 lg:order-2"
+    class="flex flex-wrap justify-center w-full lg:w-auto gap-2 order-1 lg:order-2"
   >
     @for (page of pages; track $index) {
     <button
       *ngIf="page !== '...'; else dots"
-      class="px-2 md:px-3 py-1 border rounded-md"
-      [class.bg-gray-200]="page === currentPage"
+      class="px-4 py-2 rounded-lg text-sm font-medium border transition-all duration-200"
+      [class.bg-blue-600]="page === currentPage"
+      [class.text-white]="page === currentPage"
       (click)="goToPage(page)"
     >
       {{ page }}
     </button>
     <ng-template #dots>
-      <span class="px-2">...</span>
+      <span class="px-3 py-2 text-gray-500">...</span>
     </ng-template>
     }
   </div>
 
   <!-- Next Button -->
   <button
-    class="px-3 py-1 border rounded-md dark:text-white flex gap-2 items-center order-3 text-black disabled:opacity-50"
+    class="flex items-center  gap-2 px-4 py-2 text-sm font-medium border rounded-lg transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white disabled:opacity-50 order-3 text-black"
     [disabled]="currentPage === totalPages || totalPages === 0"
     (click)="goToPage(currentPage + 1)"
   >
     <span>{{ "PAGINATION.NEXT" | translate }}</span>
-    <span class="w-4 "> > </span>
+    <span class="text-xl">→</span>
   </button>
 </div>
