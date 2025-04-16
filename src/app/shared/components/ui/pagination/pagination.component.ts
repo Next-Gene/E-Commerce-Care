@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.css',
+  styleUrl: './pagination.component.scss',
 })
 export class PaginationComponent implements OnChanges {
   @Input() totalPages!: number;
