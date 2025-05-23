@@ -1,0 +1,28 @@
+{
+    "testimonials": [
+        {
+           "_id": "1", 
+            "name": "John Carter",
+            "title":"An amazing service",
+            "position": "CEO of Example Corp",
+            "image": "/images/booking/test1.png",
+            "text": "Lorem ipsum dolor sit ametolil col consectetur adipiscing lectus a nunc mauris scelerisque sed egestas."
+        },
+        {
+            "_id": "2",
+            "name": "Sophie Moore",
+            "title":"One of a kind service",
+            "position": "MD at Facebook",
+            "image": "/images/booking/test2.png",
+            "text": "Lorem ipsum dolor sit ametolil col consectetur adipiscing lectus a nunc mauris scelerisque sed egestas."
+        },
+        {
+            "_id": "3",
+            "name": "Andy Smith",
+            "title":"The best service",
+            "position": "CEO Dot Austere",
+            "image": "/images/booking/test3.png",
+            "text": "Lorem ipsum dolor sit ametolil col consectetur adipiscing lectus a nunc mauris scelerisque sed egestas."
+        }
+    ]
+}

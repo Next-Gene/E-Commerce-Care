@@ -1,0 +1,45 @@
+{
+"treatments": [
+    {
+        "_id": 1,
+        "name": "Dental treatments",
+        "description": "Maintaining good oral health is essential for overall well-being. Our dental clinic offers a range of treatments to keep your teeth and gums healthy, restore function, and enhance your smile.",
+         "photoUrl": "/images/booking/jaws.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Bones treatments",
+        "description": "Bone treatment involves medical and surgical interventions to address injuries, diseases, or degenerative conditions affecting the skeletal system. The goal is to relieve pain, restore function, and promote healing.",
+        "photoUrl": "/images/booking/broke.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Diagnosis",
+        "description": "refers to the medical process of identifying a disease, injury, or condition (diagnosis) and then applying appropriate medical interventions (treatment) to manage or cure it. Accurate diagnosis is crucial for effective treatment planning."
+        ,
+        "photoUrl": "/images/booking/slave.jpg",
+        "duration": "Ongoing practice",
+        "effectiveness": "Moderate for stress reduction"
+    }
+    ,
+    {
+        "_id": 4,
+        "name": "Surgery",
+        "description": "Surgery is a medical specialty that involves the use of operative techniques to treat diseases, injuries, or deformities. It can be performed for diagnostic, therapeutic, or reconstructive purposes.",
+        "photoUrl": "/images/booking/xray.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Cardiology",
+        "description": "Cardiology is the branch of medicine focused on the heart and cardiovascular system, including the diagnosis, treatment, and prevention of conditions affecting the heart, arteries, veins, and circulation. Cardiologists specialize in managing diseases such as coronary artery disease, heart failure,",
+        "photoUrl": "/images/booking/horror.jpg"
+    }
+    ,
+    {
+        "_id": 6,
+        "name": "Eye Care",
+        "description": "Eye care encompasses the prevention, diagnosis, and treatment of conditions affecting vision and eye health. Specialists include ophthalmologists (MDs for medical/surgical care), optometrists (ODs for vision correction and primary eye care), and opticians (technicians for eyewear fitting).",
+        "photoUrl": "/images/booking/eye.jpg"
+    }
+]
+}
