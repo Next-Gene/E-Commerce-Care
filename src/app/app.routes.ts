@@ -144,6 +144,14 @@ export const routes: Routes = [
             ),
             
     },
+       {
+        path: 'booking',
+        loadComponent: () =>
+            import('./features/pages/booking/booking.component').then(
+                (c) => c.BookingComponent
+            ),
+            
+    },
     {
         path: '**',
         loadComponent: () =>

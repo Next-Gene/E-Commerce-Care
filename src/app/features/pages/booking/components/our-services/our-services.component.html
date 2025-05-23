@@ -1,0 +1,20 @@
+<div class="mt-20 text-center">
+<h2 class="text-2xl font-semibold text-[#5BB8FF]">Services We Provide </h2>
+<h2 class="mt-5 text-[#555555] dark:text-white transition-colors duration-300">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar <br class="max-sm:hidden">
+     elementum tempus hac tellus libero accumsan. </h2>
+</div>
+<div class="p-6  min-h-screen">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl  mx-auto">
+    
+    <!-- Card Component -->
+  
+@for (treat of treatments; track $index) {
+    <div class="  rounded-xl shadow-xl p-5   ">
+      <img [src]="treat.photoUrl" alt="Dental treatments" class="rounded-lg w-full h-60 object-cover">
+      <h3 class="text-blue-600 text-lg font-semibold mt-4">{{treat.name}}</h3>
+      <p class="text-gray-600 mt-2 text-sm dark:text-white transition-colors duration-300 leading-relaxed">{{treat.description}}</p>
+      <a href="#" class="text-blue-500 hover:underline text-sm mt-3 inline-block">Learn more →</a>
+    </div>
+}
+  </div>
+</div>
