@@ -1,0 +1,50 @@
+{
+    "team": [
+        
+   
+        {
+            "_id": 1,
+        "name": "Jane Smith",
+        "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi. ",
+    "role": "CEO & Co-Founder",
+        "image": "/images/booking/team1.png"
+        },
+        {
+            "_id": 2,
+        "name": "Sophie Moore"
+        ,
+        "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi.",
+        "role": "dental specialist",
+        "image": "/images/booking/team2.png"
+        },
+        {
+            "_id": 3,
+        "name": "Matt Cannon",
+         "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi. ",      
+           "role": "orthopedic",
+        "image": "/images/booking/team3.png"
+        },
+        {
+            "_id": 4,
+         "name": "Andy Smith",
+         "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi. ",      
+           "role": "orthopedic",
+        "image": "/images/booking/team4.png" 
+        },
+        {
+           
+            "_id": 5,
+        "name": "Lily Woods",
+         "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi. ",      
+           "role": "heart specialist",
+        "image": "/images/booking/team5.png"
+        },
+        {
+            "_id": 6,
+        "name": "Sarah Johnson",
+         "description":"Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nulla sed enim iaculis mi. ",      
+           "role": "eye specialist",
+        "image": "/images/booking/team6.png"
+        }
+    ]
+}
