@@ -263,6 +263,16 @@
       "createdAt": "2025-03-01T12:00:00.000Z",
       "updatedAt": "2025-03-01T12:00:00.000Z",
       "productsCount": 0
-    }
+    },
+{
+      "_id": "28",
+      "name": "Hair Care & Hair Loss Treatment",
+      "slug": "Hair Care Essentials",
+      "image": "/images/category/hair.webp",
+      "createdAt": "2025-03-01T12:00:00.000Z",
+      "updatedAt": "2025-03-01T12:00:00.000Z",
+      "productsCount": 0,
+      "description": " protect your hair with essential care for a healthy, vibrant look."
+}
   ]
 }
