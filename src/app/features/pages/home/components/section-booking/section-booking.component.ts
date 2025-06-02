@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { DoctorComponent } from "../../../../../shared/components/ui/doctor/doctor.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-section-booking',
-  imports: [DoctorComponent],
+  imports: [RouterLink],
   templateUrl: './section-booking.component.html',
   styleUrl: './section-booking.component.scss'
 })

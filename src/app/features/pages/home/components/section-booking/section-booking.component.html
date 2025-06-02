@@ -1,39 +1,157 @@
-<div class="flex  max-lg:flex-wrap   mt-10">
- <app-doctor class="lg:hidden"></app-doctor>
+<div class="flex max-lg:flex-wrap mt-10">
+  <div
+    class="w-full max-xl:pl-0 bg-[#F6FAFF] dark:bg-[#292929] duration-300 rounded-[37px] transition-colors grid grid-cols-2 max-md:grid-cols-1 mt-5 gap-x-0 items-center"
+  >
+    <div class="max-md:hidden m-0">
+      <img
+        class="w-full max-w-[400px]"
+        src="/images/booking/blue-doctor.png"
+        alt=""
+      />
+    </div>
+    <div class="m-0 max-sm:ml-4">
+      <div class="flex max-lg:w-full gap-3 pb-3">
+        <img
+          class="w-1/12 max-sm:w-1/6"
+          src="/images/booking/gear.png"
+          alt=""
+        />
+        <h2
+          class="font-semibold text-2xl  pt-1.5 dark:text-white duration-300 transition-colors"
+        >
+          Under Development
+        </h2>
+      </div>
+      <h2
+        class="text-3xl font-bold leading-10 dark:text-white duration-300 transition-colors"
+      >
+        Find <span class="text-[#257FFA]">Best Clinic</span> <br />
+        To Get Solutions.
+      </h2>
+      <p
+        class="text-sm pt-3 leading-6 dark:text-white duration-300 transition-colors"
+      >
+        Health is one of the most important things for us<br cla>
+        therefore immediately check your health for your good.
+      </p>
+      <button
+        class="mt-5 bg-[#0063FE] text-white p-3 rounded-xl hover:bg-blue-700 duration-500"
+        routerLink="/booking"
+      >
+        Appointment
+      </button>
+    </div>
+  </div>
 
-<div class="w-[25%] max-lg:mt-4 max-md:flex-wrap max-lg:flex xl:ml-12 max-xl:w-full">
- <div class="p-5 max-md:w-full  ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/yellow.png" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">Search Doctor</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">Registration for a check at the  clinic needed for treatment</h2>
- </div>
- <div class="p-3  max-md:w-full  max-sm:mt-0   ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/message.png" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">Search Doctor</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">Registration for a check at the  clinic needed for treatment</h2>
- </div>
+  <div class="w-[25%] mt-16 max-md:flex-wrap max-lg:flex xl:mr-8 max-xl:w-full">
+
+    <div class="p-5 max-md:w-full">
+      <img
+        class="rounded-full m-auto w-16 h-16"
+        src="/images/booking/yellow.png"
+        alt=""
+      />
+      <h2
+        class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+      >
+        Search Doctor
+      </h2>
+      <h2
+        class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+      >
+        Registration for a check at the clinic needed for treatment
+      </h2>
+    </div>
+    <div class="p-3 max-md:w-full max-sm:mt-0">
+      <img
+        class="rounded-full m-auto w-16 h-16"
+        src="/images/booking/message.png"
+        alt=""
+      />
+      <h2
+        class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+      >
+        Search Doctor
+      </h2>
+      <h2
+        class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+      >
+        Registration for a check at the clinic needed for treatment
+      </h2>
+    </div>
+  </div>
 </div>
-<app-doctor class="max-lg:hidden"></app-doctor>
-</div>
-<div class="grid xl:pt-8 grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 ">
- <div class="p-5 max-md:w-full  ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/calender.png" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">Make Appoinment</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">Registration for a check at the  clinic needed for treatment</h2>
- </div>
-  <div class="p-5 max-md:w-full  ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/Q.png" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">Chat Support</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">24 chat support for  all <br> clints for  all needs</h2>
- </div>
-  <div class="p-5 max-md:w-full  ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/m.png" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">New Technology</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">24 chat support for  all <br> clints for  all needs</h2>
- </div>
-  <div class="p-5 max-md:w-full ">
-  <img class="rounded-full m-auto w-16 h-16" src="/images/booking/scope.jpg" alt="">
-  <h2 class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg">Get Solutions</h2>
-  <h2 class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors ">Registration for a check at the  clinic needed for treatment</h2>
- </div>
+<div
+  class="grid xl:pt-8 grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4"
+>
+  <div class="p-5 max-md:w-full">
+    <img
+      class="rounded-full m-auto w-16 h-16"
+      src="/images/booking/calender.png"
+      alt=""
+    />
+    <h2
+      class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+    >
+      Make Appoinment
+    </h2>
+    <h2
+      class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+    >
+      Registration for a check at the clinic needed for treatment
+    </h2>
+  </div>
+  <div class="p-5 max-md:w-full">
+    <img
+      class="rounded-full m-auto w-16 h-16"
+      src="/images/booking/Q.png"
+      alt=""
+    />
+    <h2
+      class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+    >
+      Chat Support
+    </h2>
+    <h2
+      class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+    >
+      24 chat support for all <br />
+      clints for all needs
+    </h2>
+  </div>
+  <div class="p-5 max-md:w-full">
+    <img
+      class="rounded-full m-auto w-16 h-16"
+      src="/images/booking/m.png"
+      alt=""
+    />
+    <h2
+      class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+    >
+      New Technology
+    </h2>
+    <h2
+      class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+    >
+      24 chat support for all <br />
+      clints for all needs
+    </h2>
+  </div>
+  <div class="p-5 max-md:w-full">
+    <img
+      class="rounded-full m-auto w-16 h-16"
+      src="/images/booking/scope.jpg"
+      alt=""
+    />
+    <h2
+      class="text-center mt-2 dark:text-white duration-300 transition-colors font-semibold text-lg"
+    >
+      Get Solutions
+    </h2>
+    <h2
+      class="pt-3 leading-relaxed text-sm text-center dark:text-white duration-300 transition-colors"
+    >
+      Registration for a check at the clinic needed for treatment
+    </h2>
+  </div>
 </div>
