@@ -1718,4 +1718,21 @@
       "images": [
       "../../images/product/47214-LA-ROCHE-POSAY-VITAMIN-C-C10-SERUM-30ML-LEFT-SIDE.webp",
       "../../images/product/47214-LA-ROCHE-POSAY-VITAMIN-C-C10-SERUM-30ML-RIGHT-SIDE.webp",
-      "../../images/product/47214-LA-ROCHE-POSAY-VITAMIN-C-C10-SERUM-30ML.web
+      "../../images/product/47214-LA-ROCHE-POSAY-VITAMIN-C-C10-SERUM-30ML.webp"
+      ],
+            "price": 500.0,
+      "priceAfterDiscount": 450.0,
+      "quantity": 10,
+      "category": "",
+      "occasion": "",
+      "createdAt": "2025-01-10T14:00:00Z",
+      "updatedAt": "2025-02-10T14:00:00Z",
+      "__v": 0,
+      "discount": 10,
+      "sold": 5,
+      "id": "73",
+      "rate": 4.7
+    }
+  ]
+
+}
