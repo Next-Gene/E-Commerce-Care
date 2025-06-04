@@ -5,10 +5,11 @@ import { Observable, map } from 'rxjs';
 import { CategoriesAPI } from '../base/CategoriesAPI';
 import { CategoriesAdapter } from '../adapters/categories.adapter';
 import { APICategoriesResponse, Category } from '../interfaces/category';
+
 @Injectable({
   providedIn: 'root',
 })
-export class CategoriesService implements CategoriesAPI{
+export class CategoriesService implements CategoriesAPI {
   constructor(
     private _httpClient: HttpClient,
     private _categoriesAdapter: CategoriesAdapter
@@ -24,16 +25,15 @@ export class CategoriesService implements CategoriesAPI{
       );
   }
 
-
-  getCategoryById(id: string): Observable<Category> {
-    return this._httpClient.get<APICategoriesResponse>(`${ApiEndpoint.CATEGORIES}`)
+  getCategoryById(id: string | number): Observable<Category> {
+    return this._httpClient
+      .get<Category>(`${ApiEndpoint.CATEGORIES_BY_ID}/${id}`)
       .pipe(
-        map((res: APICategoriesResponse) => {
-          const category = res.categories.find(p => p._id === id);
-          if (!category) {
+        map((res: any) => {
+          if (!res) {
             throw new Error(`Category with ID ${id} not found`);
           }
-          return category;
+          return res.data;
         })
       );
   }
