@@ -40,7 +40,7 @@ export class AuthApiService implements AuthAPI {
     return this._HttpClient.post(AuthENDPOINT.VERIFY_RESET_CODE, data);
   }
   resetpass(data: ResetPassUser): Observable<any> {
-    return this._HttpClient.put(AuthENDPOINT.RESET_PASSWORD, data);
+    return this._HttpClient.post(AuthENDPOINT.RESET_PASSWORD, data);
   }
   Logout() :Observable<any>{
     return this._HttpClient.get(AuthENDPOINT.LOGIN_OUT );

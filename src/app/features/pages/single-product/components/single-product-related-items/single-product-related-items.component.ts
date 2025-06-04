@@ -52,7 +52,7 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
 
                 this._ProductsService.getRelatedProducts(
                   this.category,
-                  this.product._id ?? ''
+                  String(this.product.id ?? '')
                 )
                 .pipe(takeUntil(this._destroy$))
                 .subscribe((related) => {

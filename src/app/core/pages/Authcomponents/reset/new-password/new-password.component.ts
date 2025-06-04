@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { validsignup } from '../../../../../shared/utilites/validsignup';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
@@ -23,8 +23,12 @@ private _AuthApiService=inject(AuthApiService)
     errormessage : string="";
     resetpass:FormGroup=new FormGroup({
         email:new FormControl(null,validsignup.email),
-        newPassword:new FormControl(null,validsignup.Password),
-      })
+        password:new FormControl(null,validsignup.Password),
+    confirmPassword:new FormControl(null)
+  },this.confirmpass)
+  confirmpass(g:AbstractControl){
+    return g.get('password')?.value==g.get('confirmPassword')?.value ?null : {missmatch:true}
+  }
   submit3=()=>{
     if(this.resetpass.valid)
       {

@@ -6,10 +6,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { AuthApiService } from '../../../../../../../projects/auth-api/src/public-api';
 import { TranslateModule } from '@ngx-translate/core';
+import { AlertsComponent } from "../../../../../shared/components/ui/alerts/alerts.component";
+import { validsignup } from '../../../../../shared/utilites/validsignup';
 
 @Component({
   selector: 'app-verfiycode',
-  imports: [TranslateModule, RegButtonComponent, ReactiveFormsModule],
+  imports: [TranslateModule, RegButtonComponent, ReactiveFormsModule, AlertsComponent],
   templateUrl: './verfiycode.component.html',
   styleUrl: './verfiycode.component.scss'
 })
@@ -23,6 +25,8 @@ export class VerfiycodeComponent {
 
   ngOnInit(): void {
     this.verifycode = new FormGroup({
+              email:new FormControl(null,validsignup.email),
+
       digit1: new FormControl(null, [Validators.required]),
       digit2: new FormControl(null, [Validators.required]),
       digit3: new FormControl(null, [Validators.required]),
@@ -75,9 +79,17 @@ export class VerfiycodeComponent {
   }
 
   submit2(): void {
-    if (this.verifycode.valid) {
-      const resetCode = Object.values(this.verifycode.value).join(''); // Combine digits into a single string
-      this._AuthApiService.VerifyCode({ resetCode })
+  if (this.verifycode.valid) {
+    const email = this.verifycode.get('email')?.value || '';
+    const code = [
+      this.verifycode.get('digit1')?.value,
+      this.verifycode.get('digit2')?.value,
+      this.verifycode.get('digit3')?.value,
+      this.verifycode.get('digit4')?.value,
+      this.verifycode.get('digit5')?.value,
+      this.verifycode.get('digit6')?.value,
+    ].join('');
+      this._AuthApiService.VerifyCode({ code, email })
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe({
           next: (res) => {
