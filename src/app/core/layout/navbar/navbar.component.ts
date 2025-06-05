@@ -1,18 +1,23 @@
-import { Component, HostListener, inject, ElementRef } from '@angular/core';
+import { Component, HostListener, inject, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { FlowbiteService } from '../../service/flowbite.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../service/translation.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../service/theme.service';
+import { Subject, takeUntil } from 'rxjs';
+
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive, TranslateModule, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
-    private _ThemeService = inject(ThemeService);
+export class NavbarComponent implements OnInit, OnDestroy {
+  private _ThemeService = inject(ThemeService);
+  private destroy$ = new Subject<void>();
+  isDarkMode = false;
+
   toggleTheme() {
     this._ThemeService.toggleDarkMode();
   }
@@ -23,13 +28,26 @@ export class NavbarComponent {
     private translationService: TranslationService, private themeService: ThemeService, private _eref: ElementRef
   ) {}
   isDropdownOpen = false;
-   currentLanguage!: 'ar' | 'en';
+  currentLanguage!: 'ar' | 'en';
+  
   ngOnInit(): void {
     this.currentLanguage = this.translationService.getLang();
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
     
+    // Subscribe to theme changes
+    this._ThemeService.darkMode$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isDark => {
+        this.isDarkMode = isDark;
+      });
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   get isArabic(): boolean {
     return document.documentElement.dir === 'rtl'; // أو استخدم أي منطق يعتمد على اللغة الحالية
   }

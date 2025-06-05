@@ -8,14 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-cart',
   standalone: true,
-
-  imports: [
-    TranslateModule,
-    CurrencyPipe,
-    DecimalPipe,
-    CommonModule,
-    RouterLink,
-  ],
+  imports: [TranslateModule, CurrencyPipe, DecimalPipe, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })

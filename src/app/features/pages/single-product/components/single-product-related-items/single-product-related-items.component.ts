@@ -71,6 +71,7 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
   
             this._ProductsService
               .getRelatedProducts(this.category, String(this.product.id))
+
               .pipe(takeUntil(this._destroy$))
               .subscribe({
                 next: (related) => {
@@ -78,13 +79,13 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
                 },
                 error: (err) => {
                   console.error('Error fetching related products:', err);
-                },
+                }
               });
           }
         },
         error: (err) => {
           console.error('Error fetching categories:', err);
-        },
+        }
       });
   }
   
