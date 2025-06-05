@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, fromEvent } from 'rxjs';
-import { CommonModule, CurrencyPipe, DecimalPipe, TitleCasePipe } from '@angular/common';
-import { TruncatePipe } from '../../../pipes/truncate.pipe';
+import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -9,8 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-cart',
   standalone: true,
-
-  imports: [TruncatePipe, TranslateModule, CurrencyPipe, TitleCasePipe, DecimalPipe, CommonModule, RouterLink],
+  imports: [TranslateModule, CurrencyPipe, DecimalPipe, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
