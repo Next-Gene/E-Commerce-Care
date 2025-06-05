@@ -33,7 +33,7 @@ export class CategoriesService implements CategoriesAPI {
           if (!res) {
             throw new Error(`Category with ID ${id} not found`);
           }
-          return res.data;
+          return res;
         })
       );
   }

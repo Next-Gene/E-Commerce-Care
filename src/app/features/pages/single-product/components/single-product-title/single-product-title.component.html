@@ -1,6 +1,7 @@
 <div class="pt-24 max-sm:pt-20 ml-0 md:ml-20 md:flex mb-14">
   <!-- Product Images -->
   <div class="mx-0 md:mx-20 max-sm:pb-10">
+    <!-- الصورة الرئيسية -->
     <div
       class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square shadow-xl border-t-white border w-80 h-96 bg-white"
     >
@@ -10,34 +11,45 @@
         [alt]="product.name"
       />
     </div>
+  
+    <!-- صور مصغرة للاختيار -->
     <div class="mt-5 flex justify-center">
-      @for (image of product.productPhotos; track $index) {
-      <div
-        class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
-      >
-        <img
-          class="rounded-lg images w-24 h-24 cursor-pointer"
-          [src]="image"
-          [alt]="'Product image ' + ($index + 1)"
-          (click)="changeMainImage(image.url)"
-        />
-      </div>
+      @for (image of product.productPhotos; track image.id) {
+        <div
+          class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
+        >
+          <img
+            class="rounded-lg images w-24 h-24 cursor-pointer"
+            [src]="image.url"
+            [alt]="'Product image ' + image.id"
+            (click)="changeMainImage(image.url)"
+          />
+        </div>
       }
     </div>
   </div>
-
+  
   <!-- Product Details -->
   <div class="max-sm:mx-20 mx-10">
-    <h2 class="text-2xl dark:text-white transition-colors duration-300">{{ product.name }}</h2>
+    <h2 class="text-2xl dark:text-white transition-colors duration-300">
+      {{ product.name }}
+    </h2>
     <!-- <h2 class="text-[#0070CD] dark:text-blue-500 duration-300 transition-colors text-xl">${{ product.priceAfterDiscount }}</h2> -->
-    <h2 class=" dark:text-white transition-colors duration-300 ">
-      <span class="line-through text-[#757F95] dark:text-gray-400 duration-300 transition-colors text-xl"
+    <h2 class="dark:text-white transition-colors duration-300">
+      <span
+        class="line-through text-[#757F95] dark:text-gray-400 duration-300 transition-colors text-xl"
         >${{ product.price }}</span
       >
       <!-- {{ product.discount }}{{ "PRODUCT_DETAILS.DISCOUNT" | translate }} -->
     </h2>
-    <h2 class="text-[#757F95] sm:w-1/2 w-full dark: dark:text-gray-300 duration-300 transition-colors">{{ product.description }}</h2>
-    <h2 class="text-[#757F95] pt-3 dark:text-white duration-300 transition-colors">
+    <h2
+      class="text-[#757F95] sm:w-1/2 w-full dark: dark:text-gray-300 duration-300 transition-colors"
+    >
+      {{ product.description }}
+    </h2>
+    <h2
+      class="text-[#757F95] pt-3 dark:text-white duration-300 transition-colors"
+    >
       {{ "PRODUCT_DETAILS.QUANTITY" | translate }}
     </h2>
 
@@ -91,13 +103,13 @@
     <!-- Action Buttons -->
     <div class="flex mt-5">
       <button
-        class="bg-[#0070CD] text-white p-2 px-4 rounded-xl hover:bg-blue-600 duration-500   mx-2"
+        class="bg-[#0070CD] text-white p-2 px-4 rounded-xl hover:bg-blue-600 duration-500 mx-2"
       >
         <i class="fa-solid fa-bag-shopping mr-2"></i>
         {{ "PRODUCT_DETAILS.ADD_TO_CART" | translate }}
       </button>
       <button
-        class="text-white bg-[#0070CD] hover:bg-blue-600 duration-500 p-3 rounded-full  hover:text-red-500"
+        class="text-white bg-[#0070CD] hover:bg-blue-600 duration-500 p-3 rounded-full hover:text-red-500"
         [attr.aria-label]="'PRODUCT_DETAILS.WISHLIST' | translate"
       >
         <svg

@@ -16,16 +16,12 @@ import { PaginationComponent } from '../../../../../shared/components/ui/paginat
   styleUrls: ['./details-category.component.scss'],
 })
 export class DetailsCategoryComponent implements OnInit, OnDestroy {
-  // Original full products array from the API
   products: Product[] = [];
-  // Subset of products to display on the current page
   displayedProducts: Product[] = [];
   dcategory!: Category;
   id: string = '';
-
-  // Pagination variables
   currentPage: number = 1;
-  pageSize: number = 12; // Adjust the page size as desired
+  pageSize: number = 12;
   totalPages: number = 0;
 
   private _Activatedroute = inject(ActivatedRoute);
@@ -37,7 +33,6 @@ export class DetailsCategoryComponent implements OnInit, OnDestroy {
     this.getParam();
   }
 
-  // Retrieves the category data and its products
   getParam(): void {
     this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
       next: (params) => {

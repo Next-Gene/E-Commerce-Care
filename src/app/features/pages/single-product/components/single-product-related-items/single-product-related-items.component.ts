@@ -58,7 +58,6 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
   }
 
   private loadRelatedProducts(): void {
-    // First get all categories to find the category ID
     this._CategoriesService
       .getAllCategories()
       .pipe(takeUntil(this._destroy$))
@@ -69,21 +68,12 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
           );
           if (foundCategory) {
             this.categoryId = foundCategory.id;
-            // Now get related products
+  
             this._ProductsService
-              .getRelatedProducts(this.category, this.id)
+              .getRelatedProducts(this.category, String(this.product.id))
               .pipe(takeUntil(this._destroy$))
-              .subscribe((cats) => {
-                const found = cats.find(c => c.name === this.category);
-                this.categoryId = found?._id ?? '';
-
-                this._ProductsService.getRelatedProducts(
-                  this.category,
-                  String(this.product.id ?? '')
-                )
-                .pipe(takeUntil(this._destroy$))
-                .subscribe((related) => {
-
+              .subscribe({
+                next: (related) => {
                   this.relatedProducts = related;
                 },
                 error: (err) => {
@@ -97,6 +87,7 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
         },
       });
   }
+  
 
   ngOnDestroy(): void {
     this._destroy$.next();
