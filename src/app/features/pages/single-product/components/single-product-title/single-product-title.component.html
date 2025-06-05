@@ -17,7 +17,7 @@
       >
         <img
           class="rounded-lg images w-24 h-24 cursor-pointer"
-          [src]="image"
+          [src]="image.url"
           [alt]="'Product image ' + ($index + 1)"
           (click)="changeMainImage(image.url)"
         />

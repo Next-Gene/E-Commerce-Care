@@ -3,13 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+
+/* Global styles */
+html, body {
   height: 100%;
-  font-family: 'Inter', sans-serif;
-  color: var(--text-color);
-  background: #f5f9ff;
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #37B2FF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darken(#37B2FF, 10%);
 }
 
 /***************** VARIABLES **************** */

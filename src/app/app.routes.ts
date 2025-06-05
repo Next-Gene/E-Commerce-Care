@@ -9,7 +9,14 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+    {
+        path: 'chatbot',
+        loadComponent: () => import('./features/chatbot/chatbot.component')
+            .then(c => c.ChatbotComponent)
+    },
 
+
+    
     {
         path: 'home',
         loadComponent: () => import('./features/pages/home/home.component')
