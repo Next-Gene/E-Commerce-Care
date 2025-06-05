@@ -9,9 +9,6 @@ export interface Category {
   description?: string;
 }
 
-// The API returns a single category object directly for getCategoryById
-export type CategoryResponse = Category;
-
 export type APICategoriesResponse = Category[];
 
 export interface Metadata {

@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, CurrencyPipe, DecimalPipe, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
@@ -20,10 +20,12 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.adjustTruncateCount(window.innerWidth);
-    this.resizeSubscription = fromEvent(window, 'resize').subscribe((event: Event) => {
-      const width = (event.target as Window).innerWidth;
-      this.adjustTruncateCount(width);
-    });
+    this.resizeSubscription = fromEvent(window, 'resize').subscribe(
+      (event: Event) => {
+        const width = (event.target as Window).innerWidth;
+        this.adjustTruncateCount(width);
+      }
+    );
   }
 
   adjustTruncateCount(width: number): void {
@@ -34,20 +36,20 @@ export class CartComponent implements OnInit, OnDestroy {
     }
   }
   getPriceAfterDiscount(product: Product): number {
-  const discountPercent = 10; // خصم 10%
-  if (!product.price) return 0;
-  return product.price - (product.price * discountPercent) / 100;
-}
+    const discountPercent = 10; // خصم 10%
+    if (!product.price) return 0;
+    return product.price - (product.price * discountPercent) / 100;
+  }
 
-calculateDiscount(product: Product): number {
-  const discountPercent = 10; // نفس النسبة
-  return discountPercent;
-}
+  calculateDiscount(product: Product): number {
+    const discountPercent = 10; // نفس النسبة
+    return discountPercent;
+  }
 
   getStars(rate?: number): string[] {
     const validRate = rate ?? 0;
     const fullStars = Math.floor(validRate);
-    const halfStar = (validRate - fullStars) >= 0.5 ? 1 : 0;
+    const halfStar = validRate - fullStars >= 0.5 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStar;
     const stars: string[] = [];
     for (let i = 0; i < fullStars; i++) {
