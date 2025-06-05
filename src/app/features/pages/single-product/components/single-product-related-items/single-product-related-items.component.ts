@@ -73,8 +73,17 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
             this._ProductsService
               .getRelatedProducts(this.category, this.id)
               .pipe(takeUntil(this._destroy$))
-              .subscribe({
-                next: (related) => {
+              .subscribe((cats) => {
+                const found = cats.find(c => c.name === this.category);
+                this.categoryId = found?._id ?? '';
+
+                this._ProductsService.getRelatedProducts(
+                  this.category,
+                  String(this.product.id ?? '')
+                )
+                .pipe(takeUntil(this._destroy$))
+                .subscribe((related) => {
+
                   this.relatedProducts = related;
                 },
                 error: (err) => {

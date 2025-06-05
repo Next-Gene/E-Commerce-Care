@@ -37,10 +37,11 @@ export class LoginComponent {
     next: (res: any) => {
       localStorage.setItem("token", res.token);
       this._router.navigate(["home"])
-      
+
     },
     error: (err: HttpErrorResponse) => {
       this.errormessage = err.error.message;
+
     }
   });
 }

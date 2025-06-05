@@ -35,13 +35,16 @@ export class CartComponent implements OnInit, OnDestroy {
       this.truncateCount = 3;
     }
   }
+  getPriceAfterDiscount(product: Product): number {
+  const discountPercent = 10; // خصم 10%
+  if (!product.price) return 0;
+  return product.price - (product.price * discountPercent) / 100;
+}
 
-  calculateDiscount(product: Product): number {
-    if (product.price == null || product.priceAfterDiscount == null || product.price === 0) {
-      return 0;
-    }
-    return ((product.price - product.priceAfterDiscount) / product.price) * 100;
-  }
+calculateDiscount(product: Product): number {
+  const discountPercent = 10; // نفس النسبة
+  return discountPercent;
+}
 
   getStars(rate?: number): string[] {
     const validRate = rate ?? 0;

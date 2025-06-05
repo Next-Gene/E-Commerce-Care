@@ -1,7 +1,7 @@
 import { environment } from '../../../../environments/environment';
 
 export class ApiEndpoint {
-  static PRODUCTS = '/assets/data/product.json';
+  static PRODUCTS = '${environment.baseUrl}/api/v1/products';
   static CATEGORIES = `${environment.baseUrl}/api/v1/categories`;
   static CATEGORIES_BY_ID = `${environment.baseUrl}/api/v1/categories`;
   static TREARMENT = '/assets/data/treatment.json';

@@ -1,17 +1,17 @@
 <div class="product-card flex justify-center   pb-4 dark:bg-[#252525] transition-colors duration-300 ">
   <div class="product-card__inner">
     <div class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
-         routerLink="/SingleProduct/{{ product._id }}">
+         routerLink="/SingleProduct/{{ product.id }}">
       <img class="rounded-20 images w-96 h-full"
-           [src]="product.imgCover"
-           [alt]="product.title" />
+           [src]="product.productPhotos"
+           [alt]="product.name" />
       <div class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center">
         <div class="product-card__overlay__content flex justify-center items-center">
           <div class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary">
-            <img src="/icons/eye.svg" [alt]="'PRODUCT_CARD.VIEW' | translate" />
+            <img src="/icons/eye.svg" alt="View" />
           </div>
           <div class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary">
-            <button class="text-white hover:text-red-500" [attr.aria-label]="'PRODUCT_CARD.WISHLIST' | translate">
+            <button class="text-white hover:text-red-500" aria-label="Wishlist">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                    xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -26,13 +26,13 @@
 
     <!-- Product Card Content -->
     <div class="product-card__content px-2 py-2 flex flex-col">
-      <h3 class="font-semibold text-sm  dark:text-white transition-colors duration-300" [title]="product.title">
-        {{ product.title | truncate:truncateCount | titlecase }}
+      <h3 class="font-semibold text-sm  dark:text-white transition-colors duration-300" [title]="product.name">
+        {{ product.name }}
       </h3>
 
       <!-- Star Rating -->
       <div class="product-card__stars flex my-1">
-        <ng-container *ngFor="let star of getStars(product.rate ?? 0)">
+        <ng-container *ngFor="let star of getStars( 0)">
           <i *ngIf="star === 'full'" class="fa-solid fa-star text-xs" style="color: #74C0FC;"></i>
           <i *ngIf="star === 'half'" class="fa-solid fa-star-half-stroke text-xs" style="color: #74C0FC;"></i>
           <i *ngIf="star === 'empty'" class="fa-regular fa-star text-xs" style="color: #74C0FC;"></i>
@@ -43,23 +43,23 @@
       <div class="product-card__price flex flex-col">
         <div class="flex items-center">
           <span class="dark:text-cyan-300 duration-300 transition-colors text-blue-800 font-medium text-sm">
-            {{ product.priceAfterDiscount | currency:currencyCode }}
+{{ getPriceAfterDiscount(product) | currency:currencyCode }}
           </span>
           <span class="text-xs text-blue-500 line-through ml-1">
             {{ product.price | currency:currencyCode }}
           </span>
         </div>
         <span class="text-[10px] text-green-600 mt-1">
-          {{ calculateDiscount(product) | number:'1.0-0' }}{{ 'PRODUCT_CARD.DISCOUNT' | translate }}
+          {{ calculateDiscount(product) | number:'1.0-0' }}Discount
         </span>
       </div>
       
       <!-- Add to Cart Button -->
       <div class="product-card__actions flex justify-end">
         <div class="product-card__actions__item flex justify-center">
-          <button [attr.aria-label]="'PRODUCT_CARD.ADD_TO_CART' | translate">
+          <button aria-label="Add to Cart">
             <img src="/icons/shopping-bag-icon.svg" 
-                 [alt]="'PRODUCT_CARD.ADD_TO_CART' | translate" 
+                 alt="Add to Cart" 
                  class="w-full h-full" />
           </button>
         </div>

@@ -1,9 +1,9 @@
 export interface registerUser{
     username:string,
-    firstName:string,
-    lastName:string,
+    fName:string,
+    lName:string,
     email:string,
     password:string,
     rePassword:string,
-    phone:string
+    phoneNumber:string
 }

@@ -35,32 +35,40 @@ export class FiltersComponent implements OnInit, OnChanges {
     }
   }
 
-  applyFilters(): void {
-    const filtered = this.products.filter(product => {
-      const matchCategory = this.selectedCategory === 'all' || product.category === this.selectedCategory;
-      let matchReview = true;
-      if (this.selectedReview !== 'all') {
-        if (this.selectedReview.includes('-')) {
-          const [min, max] = this.selectedReview.split('-').map(val => parseFloat(val));
-          matchReview = (product.rate ?? 0) >= min && (product.rate ?? 0) <= max;
-        } else {
-          matchReview = (product.rate ?? 0) === parseFloat(this.selectedReview);
-        }
+ applyFilters(): void {
+  const filtered = this.products.filter(product => {
+  const rate = (product as any).rate ?? 0;
+const discount = (product as any).discount ?? 0;
+    const price = product.price ?? 0;
+
+    const matchCategory = this.selectedCategory === 'all' || product.category === this.selectedCategory;
+
+    let matchReview = true;
+    if (this.selectedReview !== 'all') {
+      if (this.selectedReview.includes('-')) {
+        const [min, max] = this.selectedReview.split('-').map(val => parseFloat(val));
+        matchReview = rate >= min && rate <= max;
+      } else {
+        matchReview = rate === parseFloat(this.selectedReview);
       }
-      let matchPrice = true;
-      if (this.selectedPriceRange) {
-        const [min, max] = this.selectedPriceRange.split('-').map(val => +val);
-        matchPrice = (product.price ?? 0) >= min && (product.price ?? 0) <= max;
-      }
-      let matchDiscount = true;
-      if (this.selectedDiscount && this.selectedDiscount !== 'all') {
-        // هنا يمكن تعديل منطق الفلترة للخصم إذا كان يحتاج للنطاق أو قيمة واحدة
-        matchDiscount = (product.discount ?? 0) >= parseInt(this.selectedDiscount, 10);
-      }
-      return matchCategory && matchReview && matchPrice && matchDiscount;
-    });
-    this.filteredProductsChange.emit(filtered);
-  }
+    }
+
+    let matchPrice = true;
+    if (this.selectedPriceRange) {
+      const [min, max] = this.selectedPriceRange.split('-').map(val => +val);
+      matchPrice = price >= min && price <= max;
+    }
+
+    let matchDiscount = true;
+    if (this.selectedDiscount && this.selectedDiscount !== 'all') {
+      matchDiscount = discount >= parseInt(this.selectedDiscount, 10);
+    }
+
+    return matchCategory && matchReview && matchPrice && matchDiscount;
+  });
+
+  this.filteredProductsChange.emit(filtered);
+}
 
   onToggleFilters(): void {
     this.toggleFiltersEvent.emit();

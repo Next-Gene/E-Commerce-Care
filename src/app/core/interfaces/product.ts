@@ -1,25 +1,19 @@
+
 export interface Product {
-  _id?: string;
-  title?: string;
-  slug?: string;
-  description?: string;
-  imgCover?: string;
-  images?: string[];
-  price?: number;
-  priceAfterDiscount?: number;
-  quantity?: number;
-  category?: string;
-  occasion?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  __v?: number;
-  discount?: number;
-  sold?: number;
-  id?: string;
-  rate?: number;
+  id: number
+  name: string
+  description: string
+  price: number
+  productBrand: string
+  category: string
+  productPhotos: ProductPhotos[]
+  photoUrl?: string
 }
 
-export interface APIProductsResponse {
-  message: string;
-  products: Product[];
+export interface ProductPhotos{
+  id: number
+  url: string
+  isMain: boolean
 }
+
+export type APIProductsResponse = Product[];

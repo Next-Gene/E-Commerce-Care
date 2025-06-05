@@ -24,13 +24,7 @@ export class ResetPasswordComponent {
   forgetpass:FormGroup=new FormGroup({
   email:new FormControl(null,validsignup.email),
   })
-  verifycode:FormGroup=new FormGroup({
-    resetCode:new FormControl(null,[Validators.required]),
-    })
-    resetpass:FormGroup=new FormGroup({
-      email:new FormControl(null,validsignup.email),
-      newPassword:new FormControl(null,validsignup.Password),
-    })
+
 
   submit=()=>{
     if(this.forgetpass.valid){
