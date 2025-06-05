@@ -34,37 +34,37 @@
       <div class="relative w-full mt-4">
         <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
         <input 
-          formControlName="firstName" 
+          formControlName="fname" 
           type="text" 
           [placeholder]="'SIGNUP.FORM.FIRST_NAME.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.FIRST_NAME.LABEL' | translate"
           class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
-      <app-alerts [formName]="register" controlName="firstName"/>
+      <app-alerts [formName]="register" controlName="fname"/>
 
       <!-- Last Name Field -->
       <div class="relative w-full mt-4">
         <i class="fa-solid fa-user text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
         <input 
-          formControlName="lastName" 
+          formControlName="lname" 
           type="text" 
           [placeholder]="'SIGNUP.FORM.LAST_NAME.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.LAST_NAME.LABEL' | translate"
           class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
-      <app-alerts [formName]="register" controlName="lastName"/>
+      <app-alerts [formName]="register" controlName="lname"/>
 
       <!-- Phone Field -->
       <div class="relative w-full mt-4">
         <i class="fa-solid fa-phone text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
         <input 
-          formControlName="phone" 
+          formControlName="phoneNumber" 
           type="tel" 
           [placeholder]="'SIGNUP.FORM.PHONE.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.PHONE.LABEL' | translate"
           class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 rtl:text-right text-blue-700 dark:bg-gray-200">
       </div>
-      <app-alerts [formName]="register" controlName="phone"/>
+      <app-alerts [formName]="register" controlName="phoneNumber"/>
 
       <!-- Email Field -->
       <div class="relative w-full mt-4">
@@ -94,13 +94,13 @@
       <div class="relative w-full mt-4">
         <i class="fas fa-lock text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
         <input 
-          formControlName="rePassword" 
+          formControlName="repassword" 
           type="password" 
           [placeholder]="'SIGNUP.FORM.CONFIRM_PASSWORD.PLACEHOLDER' | translate"
           [attr.aria-label]="'SIGNUP.FORM.CONFIRM_PASSWORD.LABEL' | translate"
           class="w-full border border-blue-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 placeholder-blue-900 text-blue-700 dark:bg-gray-200">
       </div>
-      <app-alerts [formName]="register" controlName="rePassword"/>
+      <app-alerts [formName]="register" controlName="repassword"/>
 
       <!-- Error Message -->
       <p class="mt-2 text-red-600">{{errormessage}}</p>

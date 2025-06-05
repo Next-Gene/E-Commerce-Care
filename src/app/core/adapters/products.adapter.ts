@@ -8,17 +8,16 @@ import { APIProductsResponse} from '../interfaces/product';
 export class ProductsAdapter {
   constructor() {}
 
-  ProductsAdapter(rawRes: APIProductsResponse): Product[] {
-    return rawRes.products.map((resItem) => ({
-      _id: resItem._id,
-      title: resItem.title,
-      price: resItem.price,
-      priceAfterDiscount: resItem.priceAfterDiscount,
-      imgCover: resItem.imgCover,
-      category: resItem.category,
-      rate: resItem.rate,
+  ProductsAdapter(response: APIProductsResponse): Product[] {
+    return response.map((item) => ({
+      id: item.id,
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      category: item.category,
+      photoUrl: item.photoUrl,
+      productPhotos: item.productPhotos || [],
+      productBrand: item.productBrand || '',
     }));
-    
   }
-
 }

@@ -26,15 +26,15 @@ export class SignupComponent {
   private _AuthApiService=inject(AuthApiService)
   register:FormGroup=new FormGroup({
   username:new FormControl(null,validsignup.name),
-  firstName:new FormControl(null,validsignup.name),
-  lastName:new FormControl(null,validsignup.name),
-  phone:new FormControl(null,validsignup.phone),
+  fname:new FormControl(null,validsignup.name),
+  lname:new FormControl(null,validsignup.name),
+  phoneNumber:new FormControl(null,validsignup.phone),
   email:new FormControl(null,validsignup.email),
   password:new FormControl(null,validsignup.Password ),
-  rePassword:new FormControl(null)
+  repassword:new FormControl(null)
   },this.confirmpass)
   confirmpass(g:AbstractControl){
-    return g.get('password')?.value==g.get('rePassword')?.value ?null : {missmatch:true}
+    return g.get('password')?.value==g.get('repassword')?.value ?null : {missmatch:true}
   }
 
 
@@ -43,7 +43,8 @@ export class SignupComponent {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe({
         next: (res: any) => {
-          if (typeof document !== 'undefined' && res.message === "success") {
+
+          if (typeof document !== 'undefined' && res.message ==undefined) {
             this._router.navigate(['/login']);
           }
         },
