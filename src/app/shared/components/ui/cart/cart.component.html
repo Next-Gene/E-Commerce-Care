@@ -1,22 +1,48 @@
-<div class="product-card flex justify-center   pb-4 dark:bg-[#252525] transition-colors duration-300 ">
+<div
+  class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300"
+>
   <div class="product-card__inner">
-    <div class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
-         routerLink="/SingleProduct/{{ product.id }}">
-      <img class="rounded-20 images w-96 h-full"
-           [src]="product.photoUrl"
-           [alt]="product.name" />
-      <div class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center">
-        <div class="product-card__overlay__content flex justify-center items-center">
-          <div class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary">
+    <div
+      class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
+      routerLink="/SingleProduct/{{ product.id }}"
+    >
+      <img
+        class="rounded-20 images w-96 h-full"
+        [src]="product.photoUrl"
+        [alt]="product.name"
+      />
+      <div
+        class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"
+      >
+        <div
+          class="product-card__overlay__content flex justify-center items-center"
+        >
+          <div
+            class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+          >
             <img src="/icons/eye.svg" alt="View" />
           </div>
-          <div class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary">
-            <button class="text-white hover:text-red-500" aria-label="Wishlist">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z">
-                </path>
+          <div
+            class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+          >
+            <button
+              class="text-white hover:text-red-500"
+              aria-label="Wishlist"
+              (click)="addToWishlist()"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"
+                ></path>
               </svg>
             </button>
           </div>
@@ -26,46 +52,65 @@
 
     <!-- Product Card Content -->
     <div class="product-card__content px-2 py-2 flex flex-col">
-      <h3 class="font-semibold text-sm  dark:text-white transition-colors duration-300" [title]="product.name">
+      <h3
+        class="font-semibold text-sm dark:text-white transition-colors duration-300"
+        [title]="product.name"
+      >
         {{ product.name }}
       </h3>
 
       <!-- Star Rating -->
       <div class="product-card__stars flex my-1">
-        <ng-container *ngFor="let star of getStars( 0)">
-          <i *ngIf="star === 'full'" class="fa-solid fa-star text-xs" style="color: #74C0FC;"></i>
-          <i *ngIf="star === 'half'" class="fa-solid fa-star-half-stroke text-xs" style="color: #74C0FC;"></i>
-          <i *ngIf="star === 'empty'" class="fa-regular fa-star text-xs" style="color: #74C0FC;"></i>
+        <ng-container *ngFor="let star of getStars(0)">
+          <i
+            *ngIf="star === 'full'"
+            class="fa-solid fa-star text-xs"
+            style="color: #74c0fc"
+          ></i>
+          <i
+            *ngIf="star === 'half'"
+            class="fa-solid fa-star-half-stroke text-xs"
+            style="color: #74c0fc"
+          ></i>
+          <i
+            *ngIf="star === 'empty'"
+            class="fa-regular fa-star text-xs"
+            style="color: #74c0fc"
+          ></i>
         </ng-container>
       </div>
 
       <!-- Pricing and Discount -->
       <div class="product-card__price flex flex-col">
         <div class="flex items-center">
-          <span class="dark:text-cyan-300 duration-300 transition-colors text-blue-800 font-medium text-sm">
-{{ getPriceAfterDiscount(product) | currency:currencyCode }}
+          <span
+            class="dark:text-cyan-300 duration-300 transition-colors text-blue-800 font-medium text-sm"
+          >
+            {{ getPriceAfterDiscount(product) | currency : currencyCode }}
           </span>
           <span class="text-xs text-blue-500 line-through ml-1">
-            {{ product.price | currency:currencyCode }}
+            {{ product.price | currency : currencyCode }}
           </span>
         </div>
         <span class="text-[10px] text-green-600 mt-1">
-          {{ calculateDiscount(product) | number:'1.0-0' }}Discount
+          {{ calculateDiscount(product) | number : "1.0-0" }}Discount
         </span>
       </div>
-      
+
       <!-- Add to Cart Button -->
       <div class="product-card__actions flex justify-end">
         <div class="product-card__actions__item flex justify-center">
-          <button aria-label="Add to Cart">
-            <img src="/icons/shopping-bag-icon.svg" 
-                 alt="Add to Cart" 
-                 class="w-full h-full" />
+          <button aria-label="Add to Cart" (click)="addToCart()">
+            <img
+              src="/icons/shopping-bag-icon.svg"
+              alt="Add to Cart"
+              class="w-full h-full"
+            />
           </button>
         </div>
       </div>
     </div>
-     <!-- زر إضافة إلى السلة -->
+    <!-- زر إضافة إلى السلة -->
     <!-- <div class="product-card__actions flex justify-end">
       <div class="product-card__actions__item flex justify-center">
         <div class="w-5 h-5 text-white">

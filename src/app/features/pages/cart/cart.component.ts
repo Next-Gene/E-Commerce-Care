@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ProductsService } from '../../../core/service/products.service';
-import { NEVER } from 'rxjs';
-import { CartServiveService } from '../../../core/service/cart-servive.service';
-import { Cart } from '../../../core/interfaces/Cartitems';
+import { CartServive } from '../../../core/service/cart.service';
+import { Cart } from '../../../core/interfaces/cart';
 import { CartSammaryComponent } from '../../../shared/components/ui/cart-sammary/cart-sammary.component';
 import { RouterLink } from '@angular/router';
 
@@ -29,7 +28,7 @@ export class CartComponent {
     'Remove',
   ];
 
-  constructor(private _CartServiveService: CartServiveService) {}
+  constructor(private _CartServiveService: CartServive) {}
 
   getCartItems() {
     this._CartServiveService.getItems().subscribe({
@@ -39,5 +38,11 @@ export class CartComponent {
     });
   }
 
-  
+  deleteItem(id: number) {
+    this._CartServiveService.deleteItem(id).subscribe({
+      next: (res) => {
+        this.getCartItems();
+      },
+    });
+  }
 }

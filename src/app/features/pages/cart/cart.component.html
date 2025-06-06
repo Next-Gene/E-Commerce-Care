@@ -18,10 +18,12 @@
           ></span>
         </div>
 
+        @if (cart) {
         <p class="text-gray-500 dark:text-gray-400 mt-2">
-          @if (cart.cartItems.length > 0) {
+          @if (cart.cartItems.length) {
           {{ cart.cartItems.length }} item@if(cart.cartItems.length > 1){s} }
         </p>
+        }
       </div>
       <button
         routerLink="/All-prodect"
@@ -52,7 +54,7 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                @for (product of cart.cartItems; track product.id) {
+                @if(cart) { @for (product of cart.cartItems; track product.id) {
                 <tr
                   class="hover:bg-gray-50 dark:hover:bg-[#3a3a3a] transition-colors"
                 >
@@ -103,12 +105,13 @@
                   <td class="px-6 py-4 text-center">
                     <button
                       class="p-1.5 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-600"
+                      (click)="deleteItem(product.id)"
                     >
                       <i class="fas fa-trash-alt text-lg"></i>
                     </button>
                   </td>
                 </tr>
-                }
+                }}
               </tbody>
             </table>
           </div>
