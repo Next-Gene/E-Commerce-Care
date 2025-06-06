@@ -1,21 +1,20 @@
+export interface Cart {
+  id: string;
+  cartItems: CartItem[];
+  totalPrice: number;
+  taxAmount: number;
+  totalPriceWithTax: number;
+  // deliveryMethodId: null;
+  // clientSecret: null;
+  // paymentIntentId: null;
+}
 
-
-export interface cartItems {
-  _id: string
-  title: string
-  slug: string
-  description: string
-  imgCover: string
-  price: number
-  priceAfterDiscount: number
-  quantity: number
-  category: string
-  occasion: string
-  createdAt: string
-  updatedAt: string
-  __v: number
-  discount: number
-  sold: number
-  id: string
-  rate: number
+export interface CartItem {
+  id: number;
+  productName: string;
+  price: number;
+  quantity: number;
+  pictureUrl: string;
+  brand: string;
+  category: string;
 }
