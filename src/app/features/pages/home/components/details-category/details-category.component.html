@@ -1,7 +1,11 @@
 <div class="dark:bg-[#252525] duration-300 transition-colors">
-  <div class="flex justify-between items-center pt-24 max-sm:pt-24 max-sm:ml-2 max-sm:mb-1 max-sm:mr-3 ml-10 mr-10">
-    <div class="relative text-l font-bold text-[var(--secondary-color)] dark:text-white duration-300 transition-colors pb-1/2">
-      {{ dcategory?.name || 'Category Name' }}
+  <div
+    class="flex justify-between items-center pt-24 max-sm:pt-24 max-sm:ml-2 max-sm:mb-1 max-sm:mr-3 ml-10 mr-10"
+  >
+    <div
+      class="relative text-l font-bold text-[var(--secondary-color)] dark:text-white duration-300 transition-colors pb-1/2"
+    >
+      {{ dcategory.name || "Category Name" }}
       <span
         class="absolute dark:bg-white/50 transition-colors duration-300 bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"
       ></span>
@@ -11,18 +15,24 @@
       ></span>
     </div>
   </div>
-  
+
   <!-- Display products for the current page -->
-  <div class="grid grid-cols-4 mx-14 gap-6 mt-8 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
-    <app-cart *ngFor="let product of displayedProducts" [product]="product"></app-cart>
+  <div
+    class="grid grid-cols-4 mx-14 gap-6 mt-8 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1"
+  >
+    <app-cart
+      *ngFor="let product of displayedProducts"
+      [product]="product"
+    ></app-cart>
   </div>
 
   <!-- Pagination Component -->
   <div class="mt-6 flex justify-center">
     <app-pagination
-      [totalPages]="totalPages" 
-      [currentPage]="currentPage" 
-      (pageChange)="onPageChange($event)">
+      [totalPages]="totalPages"
+      [currentPage]="currentPage"
+      (pageChange)="onPageChange($event)"
+    >
     </app-pagination>
   </div>
 </div>
