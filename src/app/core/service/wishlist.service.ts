@@ -17,34 +17,14 @@ export class WishlistServive {
   }
 
   addItem(productId: number): Observable<Wishlist> {
-    return this._HttpClient.post<Wishlist>(
-      `${ApiEndpoint.WISHLIST}/items`,
-      { productId }   
-    ).pipe(
-      tap((res) => {
-        this.toastr.success('item added to wishlist', 'Success', {
-          timeOut: 3000,
-          positionClass: 'toast-top-right',
-          progressBar: true,
-          progressAnimation: 'increasing',
-          easeTime: 300,
-          closeButton: true,
-          tapToDismiss: true,
-          toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
-          });
-      })
-    );
+    return this._HttpClient.post<Wishlist>(`${ApiEndpoint.WISHLIST}/items`, {
+      productId,
+    });
   }
 
   deleteItem(productId: number): Observable<Wishlist> {
     return this._HttpClient.delete<Wishlist>(
       `${ApiEndpoint.WISHLIST}/items/${productId}`
-    ).pipe(
-      tap((res) => {
-        this.toastr.error('item removed from wishlist', 'Removed', {
-          timeOut: 3000,
-        });
-      })
-    );
+    )
   }
 }

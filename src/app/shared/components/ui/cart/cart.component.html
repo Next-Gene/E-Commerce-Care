@@ -4,7 +4,6 @@
   <div class="product-card__inner">
     <div
       class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
-      routerLink="/SingleProduct/{{ product.id }}"
     >
       <img
         class="rounded-20 images w-96 h-full"
@@ -20,7 +19,11 @@
           <div
             class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
           >
-            <img src="/icons/eye.svg" alt="View" />
+            <img
+              src="/icons/eye.svg"
+              alt="View"
+              routerLink="/SingleProduct/{{ product.id }}"
+            />
           </div>
           <div
             class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
@@ -30,20 +33,12 @@
               aria-label="Wishlist"
               (click)="addToWishlist()"
             >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"
-                ></path>
-              </svg>
+              <i
+                [class]="
+                  isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'
+                "
+                [style.color]="isInWishlist ? '#ff0000' : '#ffffff'"
+              ></i>
             </button>
           </div>
         </div>
@@ -51,10 +46,11 @@
     </div>
 
     <!-- Product Card Content -->
-    <div class="product-card__content px-2 py-2 flex flex-col">
+    <div class="product-card__content px-2 py-2 flex flex-col cursor-pointer">
       <h3
         class="font-semibold text-sm dark:text-white transition-colors duration-300"
         [title]="product.name"
+        routerLink="/SingleProduct/{{ product.id }}"
       >
         {{ product.name }}
       </h3>
@@ -98,7 +94,7 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <div class="product-card__actions flex justify-end">
+      <div class="product-card__actions flex justify-end mt-2">
         <div class="product-card__actions__item flex justify-center">
           <button aria-label="Add to Cart" (click)="addToCart()">
             <img
@@ -110,13 +106,5 @@
         </div>
       </div>
     </div>
-    <!-- زر إضافة إلى السلة -->
-    <!-- <div class="product-card__actions flex justify-end">
-      <div class="product-card__actions__item flex justify-center">
-        <div class="w-5 h-5 text-white">
-          <img src="/icons/shopping-bag-icon.svg" alt="Shopping Bag" class="w-full h-full" />
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>

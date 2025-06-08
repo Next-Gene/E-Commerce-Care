@@ -1,32 +1,51 @@
-<div class="bg-[#E9F5FF]  dark:bg-[#424242] duration-300 transition-colors p-6 rounded-xl shadow-md mt-6">
-  <h2 class="text-base font-medium mb-4 text-[var(--secondary-color)]  dark:text-white duration-300 transition-colors">
-      {{ 'CART_SUMMARY.TITLE' | translate }}
+<div
+  class="bg-[#E9F5FF] dark:bg-[#424242] duration-300 transition-colors p-6 rounded-xl shadow-md mt-6"
+>
+  <h2
+    class="text-base font-medium mb-4 text-[var(--secondary-color)] dark:text-white duration-300 transition-colors"
+  >
+    {{ "CART_SUMMARY.TITLE" | translate }}
   </h2>
+  @if (cart) {
   <div class="text-sm space-y-2">
-    <p class="flex  dark:text-white duration-300 transition-colors justify-between text-[#160E4B]">
-      <span>{{ 'CART_SUMMARY.SUBTOTAL' | translate }}</span>
-      <span class="text-[#547BD1] dark:dark:text-cyan-300 duration-300 transition-colors">{{ 'CART_SUMMARY.VALUES.SUBTOTAL' | translate }}</span>
+    <p
+      class="flex dark:text-white duration-300 transition-colors justify-between text-[#160E4B]"
+    >
+      <span>{{ "CART_SUMMARY.SUBTOTAL" | translate }}</span>
+      <span
+        class="text-[#547BD1] dark:text-cyan-300 duration-300 transition-colors"
+          >{{ cart.totalPrice | currency : " EGP " }}</span
+      >
     </p>
-    <p class="flex  dark:text-white duration-300 transition-colors justify-between text-[#160E4B]">
-      <span>{{ 'CART_SUMMARY.DISCOUNT' | translate }}</span>
-      <span class="text-[#547BD1] dark:dark:text-cyan-300 duration-300 transition-colors">{{ 'CART_SUMMARY.VALUES.DISCOUNT' | translate }}</span>
+    <p
+      class="flex dark:text-white duration-300 transition-colors justify-between text-[#160E4B]"
+    >
+      <span>{{ "CART_SUMMARY.TAXES" | translate }}</span>
+      <span
+        class="text-[#547BD1] dark:text-cyan-300 duration-300 transition-colors"
+        >{{ cart.taxAmount | currency : " EGP " }}</span
+      >
     </p>
-    <p class="flex dark:text-white duration-300 transition-colors justify-between text-[#160E4B]">
-      <span>{{ 'CART_SUMMARY.SHIPPING' | translate }}</span>
-      <span class="text-[#547BD1] dark:dark:text-cyan-300 duration-300 transition-colors">{{ 'CART_SUMMARY.VALUES.SHIPPING' | translate }}</span>
-    </p>
-    <p class="flex dark:text-white duration-300 transition-colors justify-between text-[#160E4B]">
-      <span>{{ 'CART_SUMMARY.TAXES' | translate }}</span>
-      <span class="text-[#547BD1] dark:dark:text-cyan-300 duration-300 transition-colors">{{ 'CART_SUMMARY.VALUES.TAXES' | translate }}</span>
-    </p>
-    <p class="flex dark:text-white duration-300 transition-colors justify-between mt-3 font-medium text-[#160E4B]">
-      <span>{{ 'CART_SUMMARY.TOTAL' | translate }}</span>
-      <span class="text-[#547BD1] dark:dark:text-cyan-300 duration-300 transition-colors">{{ 'CART_SUMMARY.VALUES.TOTAL' | translate }}</span>
+    <p
+      class="flex dark:text-white duration-300 transition-colors justify-between mt-3 font-medium text-[#160E4B]"
+    >
+      <span>{{ "CART_SUMMARY.TOTAL" | translate }}</span>
+      <span
+        class="text-[#547BD1] dark:text-cyan-300 duration-300 transition-colors"
+        >{{ cart.totalPriceWithTax | currency : " EGP " }}</span
+      >
     </p>
   </div>
-  <button routerLink="/checkout"
-    class="w-full bg-[#0070CD] text-white text-sm py-2 px-3 mt-4 rounded-lg shadow-md"
+  <button
+    routerLink="/checkout"
+    [disabled]="!cart.cartItems.length"
+    class="w-full bg-[#0070CD] text-white text-sm py-2 px-3 mt-4 rounded-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
   >
-    {{ 'CART_SUMMARY.CHECKOUT_BUTTON' | translate }}
+    {{ "CART_SUMMARY.CHECKOUT_BUTTON" | translate }}
   </button>
+  } @else {
+  <div class="text-center text-gray-500 dark:text-gray-400">
+    {{ "CART_SUMMARY.LOADING" | translate }}
+  </div>
+  }
 </div>

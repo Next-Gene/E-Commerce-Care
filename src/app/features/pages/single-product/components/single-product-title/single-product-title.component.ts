@@ -6,6 +6,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartServive } from '../../../../../core/service/cart.service';
 import { WishlistServive } from '../../../../../core/service/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-single-product-title',
@@ -16,7 +17,8 @@ import { WishlistServive } from '../../../../../core/service/wishlist.service';
 export class SingleProductTitleComponent {
   product!: Product;
   id: string = '';
-
+  isInWishlist: boolean = false;
+  private toastr = inject(ToastrService);
   // Modal and rating variables
   showRatingModal: boolean = false;
   currentRating: number = 0;
@@ -26,7 +28,29 @@ export class SingleProductTitleComponent {
     private _ProductsService: ProductsService,
     private _CartService: CartServive,
     private _WishlistService: WishlistServive
-  ) {}
+  ) {
+    // Get the product ID from route params
+    this._Activatedroute.params.subscribe((params) => {
+      this.id = params['id'];
+      // Get product details
+      this._ProductsService.getProductById(this.id).subscribe({
+        next: (res) => {
+          this.product = res;
+          // Check if product is in wishlist
+          this._WishlistService.getItems().subscribe({
+            next: (wishlist) => {
+              this.isInWishlist = wishlist.items.some(
+                (item) => item.id === Number(this.id)
+              );
+            },
+            error: (err) => {
+              console.error('Error checking wishlist status:', err);
+            },
+          });
+        },
+      });
+    });
+  }
 
   private _destroy$ = new Subject<void>();
 
@@ -37,27 +61,58 @@ export class SingleProductTitleComponent {
   addToCart() {
     this._CartService.addItem(Number(this.id)).subscribe({
       next: (res) => {
-        alert('item added to cart');
+        this.toastr.success('Item added to cart', 'Success', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+        });
       },
       error: (err) => {
-        alert('failed add item to cart');
+        this.toastr.error('Failed to add item to cart', 'Error', {
+          timeOut: 3000,
+        });
       },
     });
   }
 
   addToWishlist() {
-    this._WishlistService.addItem(Number(this.id)).subscribe({
-      next: (res) => {
-        alert('item added to wishlist');
-      },
-      error: (err) => {
-        if (err.status === 409) {
-          alert('item already in wishlist');
-        } else {
-          alert('failed add item to wishlist');
-        }
-      },
-    });
+    if (this.isInWishlist) {
+      // Remove from wishlist
+      this._WishlistService.deleteItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = false;
+          this.toastr.error('Item removed from wishlist', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+        error: (err) => {
+          this.toastr.error('Failed to remove item from wishlist', 'Error', {
+            timeOut: 3000,
+          });
+        },
+      });
+    } else {
+      // Add to wishlist
+      this._WishlistService.addItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = true;
+          this.toastr.success('Item added to wishlist', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+        
+      });
+    }
   }
 
   getParam(): void {

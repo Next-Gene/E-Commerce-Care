@@ -48,31 +48,7 @@
     >
       {{ product.description }}
     </h2>
-    <h2
-      class="text-[#757F95] pt-3 dark:text-white duration-300 transition-colors"
-    >
-      {{ "PRODUCT_DETAILS.QUANTITY" | translate }}
-    </h2>
-
-    <!-- Quantity Selector -->
-    <div class="flex pt-3">
-      <button
-        (click)="decrease(product)"
-        class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]"
-        [attr.aria-label]="'Decrease quantity'"
-      >
-        -
-      </button>
-      <!-- <h2 class="text-[#0070CD] mx-3 pt-2">{{ product.quantity }}</h2> -->
-      <button
-        (click)="increase(product)"
-        class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]"
-        [attr.aria-label]="'Increase quantity'"
-      >
-        +
-      </button>
-    </div>
-
+ 
     <!-- Product Specs -->
     <ul class="mt-7 list-disc text-[#757F95]">
       <li class="mt-4">
@@ -115,20 +91,11 @@
         [attr.aria-label]="'PRODUCT_DETAILS.WISHLIST' | translate"
         (click)="addToWishlist()"
       >
-        <svg
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09A6.48 6.48 0 0 1 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"
-          ></path>
-        </svg>
+        <i
+          [class]="isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
+          [style.color]="isInWishlist ? '#ff0000' : '#ffffff'"
+          class="text-xl"
+        ></i>
       </button>
     </div>
   </div>

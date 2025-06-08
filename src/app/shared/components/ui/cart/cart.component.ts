@@ -23,8 +23,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CartComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
-  @Input() currencyCode: string = 'USD';
+  @Input() currencyCode: string = 'EGP ';
   @Input() truncateCount: number = 3;
+  @Input() isInWishlist: boolean = false;
   resizeSubscription: Subscription | undefined;
   private toastr = inject(ToastrService);
 
@@ -41,12 +42,25 @@ export class CartComponent implements OnInit, OnDestroy {
         this.adjustTruncateCount(width);
       }
     );
+    // Only check wishlist status if not explicitly set
+    if (this.isInWishlist === false) {
+      this._WishlistService.getItems().subscribe({
+        next: (wishlist) => {
+          this.isInWishlist = wishlist.items.some(
+            (item) => item.id === this.product.id
+          );
+        },
+        error: (err) => {
+          console.error('Error checking wishlist status:', err);
+        },
+      });
+    }
   }
 
   addToCart() {
     this._CartService.addItem(Number(this.product.id)).subscribe({
       next: (res) => {
-        this.toastr.success('item added to cart', 'Success', {
+        this.toastr.success('Item added to cart', 'Success', {
           timeOut: 3000,
           positionClass: 'toast-top-right',
           progressBar: true,
@@ -54,11 +68,15 @@ export class CartComponent implements OnInit, OnDestroy {
           easeTime: 300,
           closeButton: true,
           tapToDismiss: true,
-          toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
+          toastClass: 'ngx-toastr animate__animated animate__fadeInUp',
         });
       },
       error: (err) => {
-        this.toastr.error('failed add item to cart', 'Error', {
+        let errorMessage = 'Failed to add item to cart';
+        if (err.status === 409) {
+          errorMessage = 'Item already in cart';
+        }
+        this.toastr.error(errorMessage, 'Error', {
           timeOut: 3000,
           positionClass: 'toast-top-right',
           progressBar: true,
@@ -73,32 +91,65 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   addToWishlist() {
-    this._WishlistService.addItem(Number(this.product.id)).subscribe({
-      next: (res) => {
-        this.toastr.success('item added to wishlist', 'Success', {
-          timeOut: 3000,
-          positionClass: 'toast-top-right',
-          progressBar: true,
-          progressAnimation: 'increasing',
-          easeTime: 300,
-          closeButton: true,
-          tapToDismiss: true,
-          toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
-        });
-      },
-      error: (err) => {
-        this.toastr.error('failed add item to wishlist', 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-right',
-          progressBar: true,
-          progressAnimation: 'increasing',
-          easeTime: 300,
-          closeButton: true,
-          tapToDismiss: true,
-          toastClass: 'ngx-toastr animate__animated animate__shakeX',
-        });
-      },
-    });
+    if (this.isInWishlist) {
+      // Remove from wishlist
+      this._WishlistService.deleteItem(Number(this.product.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = false;
+          this.toastr.error('Item removed from wishlist', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+            closeButton: true,
+            tapToDismiss: true,
+            toastClass: 'ngx-toastr animate__animated animate__shakeX',
+          });
+        },
+        error: (err) => {
+          this.toastr.error('Failed to remove item from wishlist', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+            closeButton: true,
+            tapToDismiss: true,
+            toastClass: 'ngx-toastr animate__animated animate__shakeX',
+          });
+        },
+      });
+    } else {
+      // Add to wishlist
+      this._WishlistService.addItem(Number(this.product.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = true;
+          this.toastr.success('Item added to wishlist', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+            closeButton: true,
+            tapToDismiss: true,
+            toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
+          });
+        },
+        error: (err) => {
+          this.toastr.error('Failed to add item to wishlist', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+            closeButton: true,
+            tapToDismiss: true,
+            toastClass: 'ngx-toastr animate__animated animate__shakeX',
+          });
+        },
+      });
+    }
   }
 
   adjustTruncateCount(width: number): void {
