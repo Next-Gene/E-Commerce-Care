@@ -4,8 +4,8 @@
   <!-- Header -->
   <div class="text-center mt-20 mb-8 animate-fade-in">
     <h1 class="text-4xl font-bold">
-      <span class="text-white">Prime</span>
-      <span class="text-[#37B2FF]">AI</span>
+      <span class="dark:text-white text-black">Prime</span>
+      <span class="dark:text-[#37B2FF] text-[#37B2FF]">AI</span>
     </h1>
     <p class="text-gray-600 dark:text-gray-300 mt-2">
       Your Intelligent Healthcare Assistant
@@ -152,28 +152,46 @@
     <!-- Emergency Contacts -->
     <div
       *ngIf="emergencyContacts$ | async as contacts"
-      class="mt-6 glass-card bg-white/80 dark:bg-gray-800/80 rounded-2xl p-6 hover-scale theme-transition backdrop-blur-sm"
+      class="mt-6 bg-white/90 dark:bg-gray-800/90 rounded-2xl p-6 shadow-lg backdrop-blur-sm transition-all duration-300"
     >
       <div class="flex items-center space-x-2 mb-4">
         <i
-          class="fas fa-exclamation-triangle text-red-500 text-xl emergency-icon"
+          class="fas fa-exclamation-triangle text-red-500 dark:text-red-400 text-xl"
         ></i>
         <h3 class="text-xl font-bold text-gray-800 dark:text-white">
           Emergency Contacts
         </h3>
       </div>
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="emergency-card p-4 rounded-xl">
-          <div class="font-semibold mb-1">Emergency</div>
-          <div class="contact-number">{{ contacts.emergencyNumber }}</div>
+        <div
+          class="bg-red-50 dark:bg-red-900/30 p-4 rounded-xl transition-colors duration-300"
+        >
+          <div class="font-semibold mb-1 text-red-800 dark:text-red-300">
+            Emergency
+          </div>
+          <div class="text-red-700 dark:text-red-200">
+            {{ contacts.emergencyNumber }}
+          </div>
         </div>
-        <div class="poison-card p-4 rounded-xl">
-          <div class="font-semibold mb-1">Poison Control</div>
-          <div class="contact-number">{{ contacts.poisonControl }}</div>
+        <div
+          class="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-xl transition-colors duration-300"
+        >
+          <div class="font-semibold mb-1 text-yellow-800 dark:text-yellow-300">
+            Poison Control
+          </div>
+          <div class="text-yellow-700 dark:text-yellow-200">
+            {{ contacts.poisonControl }}
+          </div>
         </div>
-        <div class="mental-card p-4 rounded-xl">
-          <div class="font-semibold mb-1">Mental Health Crisis</div>
-          <div class="contact-number">{{ contacts.mentalHealthCrisis }}</div>
+        <div
+          class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-xl transition-colors duration-300"
+        >
+          <div class="font-semibold mb-1 text-purple-800 dark:text-purple-300">
+            Mental Health Crisis
+          </div>
+          <div class="text-purple-700 dark:text-purple-200">
+            {{ contacts.mentalHealthCrisis }}
+          </div>
         </div>
       </div>
     </div>

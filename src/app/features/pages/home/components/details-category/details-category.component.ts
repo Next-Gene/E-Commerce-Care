@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../../../shared/components/ui/paginat
 
 @Component({
   selector: 'app-details-category',
+  standalone: true,
   imports: [CartComponent, CommonModule, PaginationComponent],
   templateUrl: './details-category.component.html',
   styleUrls: ['./details-category.component.scss'],
@@ -18,7 +19,7 @@ import { PaginationComponent } from '../../../../../shared/components/ui/paginat
 export class DetailsCategoryComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   displayedProducts: Product[] = [];
-  dcategory!: Category;
+  dcategory: Category = {} as Category;
   id: string = '';
   currentPage: number = 1;
   pageSize: number = 12;

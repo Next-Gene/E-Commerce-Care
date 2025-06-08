@@ -16,7 +16,7 @@ export class TreatmentsService implements TreatmentApi {
     private _treatmentsAdapter: TreatmentAdapter
   ) {}
   getAllTreatments() {
-return this._httpClient.get<APITreatmentsResponse>(ApiEndpoint.TREARMENT).pipe(
+return this._httpClient.get<APITreatmentsResponse>(ApiEndpoint.TREATMENT).pipe(
   map((res: APITreatmentsResponse) =>
     this._treatmentsAdapter.TreatmentAdapter(res)
   )

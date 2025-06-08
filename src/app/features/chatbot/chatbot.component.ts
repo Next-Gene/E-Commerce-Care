@@ -1,12 +1,24 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewChecked, inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { ChatbotService } from '../../core/service/chatbot.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ChatMessage } from '../../core/interfaces/models/chat-message.model';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/service/auth.service';
 import { UsageStatus } from '../../core/interfaces/models/usage-status.model';
 import { EmergencyContacts } from '../../core/interfaces/models/emergency-contacts.model';
 import { ChatResponse } from '../../core/interfaces/models/chat-response.model';
@@ -16,7 +28,7 @@ import { ChatResponse } from '../../core/interfaces/models/chat-response.model';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './chatbot.component.html',
-  styleUrls: ['./chatbot.component.scss']
+  styleUrls: ['./chatbot.component.scss'],
 })
 export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('chatMessages') private chatMessages!: ElementRef;
@@ -29,7 +41,6 @@ export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  private authService = inject(AuthService);
   private chatbotService = inject(ChatbotService);
 
   usageStatus$ = this.chatbotService.getUsageStatus();
@@ -37,12 +48,11 @@ export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   constructor() {
     this.chatForm = this.fb.group({
-      message: ['', [Validators.required, Validators.minLength(2)]]
+      message: ['', [Validators.required, Validators.minLength(2)]],
     });
   }
 
   ngOnInit(): void {
-    this.checkAuthentication();
     this.loadInitialMessages();
   }
 
@@ -53,17 +63,11 @@ export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
   }
 
-  private checkAuthentication(): void {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: '/chatbot' } });
-    }
-  }
-
   private loadInitialMessages(): void {
     this.chatHistory.push({
-      content: 'Hello! I\'m your AI health assistant. How can I help you today?',
+      content: "Hello! I'm your AI health assistant. How can I help you today?",
       isUser: false,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
   }
 
@@ -79,61 +83,69 @@ export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.chatHistory.push({
       content: message,
       isUser: true,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
 
     this.loading = true;
     this.shouldScroll = true;
     this.chatForm.disable();
 
-    this.chatbotService.askQuestion(message)
-  .pipe(takeUntil(this.destroy$))
-  .subscribe({
-    next: (response: ChatResponse) => {
-      let content = `💬 ${response.response}`;  // response.response مش response.answer
+    this.chatbotService
+      .askQuestion(message)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response: ChatResponse) => {
+          let content = `💬 ${response.response}`; // response.response مش response.answer
 
-      if (response.isEmergencyDetected) {
-        content += `\n🚨 *Emergency detected!*`;
-      }
+          if (response.isEmergencyDetected) {
+            content += `\n🚨 *Emergency detected!*`;
+          }
 
-      if (response.recommendedActions?.length) {
-        content += `\n✅ *Recommended Actions:* \n- ${response.recommendedActions.join('\n- ')}`;
-      }
+          if (response.recommendedActions?.length) {
+            content += `\n✅ *Recommended Actions:* \n- ${response.recommendedActions.join(
+              '\n- '
+            )}`;
+          }
 
-      if (response.disclaimers?.length) {
-        content += `\n⚠️ *Disclaimers:* \n- ${response.disclaimers.join('\n- ')}`;
-      }
+          if (response.disclaimers?.length) {
+            content += `\n⚠ *Disclaimers:* \n- ${response.disclaimers.join(
+              '\n- '
+            )}`;
+          }
 
-      if (response.confidenceLevel !== undefined) {
-        content += `\n📊 *Confidence Level:* ${response.confidenceLevel}`;
-      }
+          if (response.confidenceLevel !== undefined) {
+            content += `\n📊 *Confidence Level:* ${response.confidenceLevel}`;
+          }
 
-      this.chatHistory.push({
-        content,
-        isUser: false,
-        timestamp: new Date(response.timestamp)
+          this.chatHistory.push({
+            content,
+            isUser: false,
+            timestamp: new Date(response.timestamp),
+          });
+
+          this.shouldScroll = true;
+          this.chatForm.enable();
+          this.chatForm.reset();
+          this.loading = false;
+        },
+        error: (error) => {
+          this.handleError(error);
+        },
       });
-
-      this.shouldScroll = true;
-      this.chatForm.enable();
-      this.chatForm.reset();
-      this.loading = false;
-    },
-    error: (error) => {
-      this.handleError(error);
-    }
-  });
-
   }
 
-  private handleError(error: { status: number; error?: { message: string } }): void {
+  private handleError(error: {
+    status: number;
+    error?: { message: string };
+  }): void {
     let errorMessage = 'An error occurred while processing your request.';
-    
+
     if (error.status === 401) {
       errorMessage = 'Your session has expired. Please login again.';
       this.router.navigate(['/auth/login']);
     } else if (error.status === 429) {
-      errorMessage = 'You have reached your daily limit. Please try again tomorrow.';
+      errorMessage =
+        'You have reached your daily limit. Please try again tomorrow.';
     } else if (error.error?.message) {
       errorMessage = error.error.message;
     }
@@ -142,15 +154,16 @@ export class ChatbotComponent implements OnInit, OnDestroy, AfterViewChecked {
       content: errorMessage,
       isUser: false,
       timestamp: new Date(),
-      isError: true
+      isError: true,
     });
-    
+
     this.shouldScroll = true;
   }
 
   private scrollToBottom(): void {
     try {
-      this.chatMessages.nativeElement.scrollTop = this.chatMessages.nativeElement.scrollHeight;
+      this.chatMessages.nativeElement.scrollTop =
+        this.chatMessages.nativeElement.scrollHeight;
     } catch (err) {
       console.error('Error scrolling to bottom:', err);
     }

@@ -4,11 +4,19 @@ import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartServive } from '../../../../core/service/cart.service';
+import { WishlistServive } from '../../../../core/service/wishlist.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [TranslateModule, CurrencyPipe, DecimalPipe, CommonModule, RouterLink],
+  imports: [
+    TranslateModule,
+    CurrencyPipe,
+    DecimalPipe,
+    CommonModule,
+    RouterLink,
+  ],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
@@ -18,6 +26,11 @@ export class CartComponent implements OnInit, OnDestroy {
   @Input() truncateCount: number = 3;
   resizeSubscription: Subscription | undefined;
 
+  constructor(
+    private _CartService: CartServive,
+    private _WishlistService: WishlistServive
+  ) {}
+
   ngOnInit(): void {
     this.adjustTruncateCount(window.innerWidth);
     this.resizeSubscription = fromEvent(window, 'resize').subscribe(
@@ -26,6 +39,32 @@ export class CartComponent implements OnInit, OnDestroy {
         this.adjustTruncateCount(width);
       }
     );
+  }
+
+  addToCart() {
+    this._CartService.addItem(Number(this.product.id)).subscribe({
+      next: (res) => {
+        alert('item added to cart');
+      },
+      error: (err) => {
+        alert('failed add item to cart');
+      },
+    });
+  }
+
+  addToWishlist() {
+    this._WishlistService.addItem(Number(this.product.id)).subscribe({
+      next: (res) => {
+        alert('item added to wishlist');  
+      },
+      error: (err) => {
+        if (err.status === 409) {
+          alert('item already in wishlist');
+        } else {
+          alert('failed add item to wishlist');
+        }
+      },
+    });
   }
 
   adjustTruncateCount(width: number): void {

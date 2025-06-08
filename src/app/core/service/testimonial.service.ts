@@ -15,9 +15,9 @@ export class TestimonialService {
      private _testimonialAdapter: TestimonialAdapter
   ) { }
   getAllTestimonials() {
-    return this._httpClient.get<APITestimonialResponse>(ApiEndpoint.Testimonial) 
+    return this._httpClient.get<APITestimonialResponse>(ApiEndpoint.TESTIMONIAL) 
     .pipe( map((res: APITestimonialResponse) =>
         this._testimonialAdapter.TestimonialAdapter(res)
-  ));
+  )); 
   }
 }

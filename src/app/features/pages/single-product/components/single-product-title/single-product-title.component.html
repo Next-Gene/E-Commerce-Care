@@ -11,25 +11,25 @@
         [alt]="product.name"
       />
     </div>
-  
+
     <!-- صور مصغرة للاختيار -->
     <div class="mt-5 flex justify-center">
       @for (image of product.productPhotos; track image.id) {
-        <div
-          class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
-        >
-          <img
-            class="rounded-lg images w-24 h-24 cursor-pointer"
-            [src]="image.url"
-            [alt]="'Product image ' + image.id"
-            (click)="changeMainImage(image.url)"
-          />
-        </div>
+      <div
+        class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
+      >
+        <img
+          class="rounded-lg images w-24 h-24 cursor-pointer"
+          [src]="image.url"
+          [alt]="'Product image ' + image.id"
+          (click)="changeMainImage(image.url)"
+        />
+      </div>
 
       }
     </div>
   </div>
-  
+
   <!-- Product Details -->
   <div class="max-sm:mx-20 mx-10">
     <h2 class="text-2xl dark:text-white transition-colors duration-300">
@@ -105,6 +105,7 @@
     <div class="flex mt-5">
       <button
         class="bg-[#0070CD] text-white p-2 px-4 rounded-xl hover:bg-blue-600 duration-500 mx-2"
+        (click)="addToCart()"
       >
         <i class="fa-solid fa-bag-shopping mr-2"></i>
         {{ "PRODUCT_DETAILS.ADD_TO_CART" | translate }}
@@ -112,6 +113,7 @@
       <button
         class="text-white bg-[#0070CD] hover:bg-blue-600 duration-500 p-3 rounded-full hover:text-red-500"
         [attr.aria-label]="'PRODUCT_DETAILS.WISHLIST' | translate"
+        (click)="addToWishlist()"
       >
         <svg
           fill="none"
