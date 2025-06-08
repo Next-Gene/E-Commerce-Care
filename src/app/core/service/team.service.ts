@@ -15,7 +15,7 @@ export class TeamService {
    private _teamAdapter: TeamAdapter
   ) { }
   getAllTeam() {
-    return this._httpClient.get<APITeamResponse>(ApiEndpoint.team).pipe(
+    return this._httpClient.get<APITeamResponse>(ApiEndpoint.TEAM).pipe(
       map((res: any) => this._teamAdapter.TeamAdapter(res))
     )
   }

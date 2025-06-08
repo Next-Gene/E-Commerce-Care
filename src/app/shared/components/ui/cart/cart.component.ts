@@ -55,7 +55,7 @@ export class CartComponent implements OnInit, OnDestroy {
   addToWishlist() {
     this._WishlistService.addItem(Number(this.product.id)).subscribe({
       next: (res) => {
-        alert('item added to wishlist');
+        alert('item added to wishlist');  
       },
       error: (err) => {
         if (err.status === 409) {

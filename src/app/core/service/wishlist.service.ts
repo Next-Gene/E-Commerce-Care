@@ -1,35 +1,30 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Wishlist } from '../interfaces/wishlist';
-import { environment } from '../../../../environments/environment';
-import { AuthService } from './auth.service';
+import { ApiEndpoint } from '../enums/api.endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WishlistServive {
-  private apiUrl = `${environment.baseUrl}/api/v1/wishlist`;
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private _HttpClient: HttpClient) {}
 
   getItems(): Observable<Wishlist> {
-    return this.http.get<Wishlist>(`${this.apiUrl}`, {
-      headers: { Authorization: `Bearer  ${this.auth.getToken()}` },
-    });
+      return this._HttpClient.get<Wishlist>(`${ApiEndpoint.WISHLIST}`);
   }
 
   addItem(productId: number): Observable<Wishlist> {
-    return this.http.post<Wishlist>(
-      `${this.apiUrl}/items`,
-      { productId },
-      { headers: { Authorization: `Bearer  ${this.auth.getToken()}` } }
+    return this._HttpClient.post<Wishlist>(
+      `${ApiEndpoint.WISHLIST}/items`,
+      { productId }
     );
   }
 
   deleteItem(productId: number): Observable<Wishlist> {
-    return this.http.delete<Wishlist>(`${this.apiUrl}/items/${productId}`, {
-      headers: { Authorization: `Bearer  ${this.auth.getToken()}` },
-    });
+    return this._HttpClient.delete<Wishlist>(
+      `${ApiEndpoint.WISHLIST}/items/${productId}`
+    );
   }
 }

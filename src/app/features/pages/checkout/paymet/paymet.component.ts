@@ -12,8 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
 export class PaymetComponent {
   paymentMethod: string = '';
   paymentOptions = [
-    { type: 'cash', label: 'Cash On Delivery', img: '/money.png' },
-    { type: 'card', label: 'Pay With Credit Card', img: '/credit.png' }
+    { type: 'cash', label: 'Cash On Delivery', img: 'images/money.png' },
+    { type: 'card', label: 'Pay With Credit Card', img: 'images/credit.png' }
   ];
 
   selectPaymentMethod(method: string) {
