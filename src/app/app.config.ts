@@ -19,6 +19,7 @@ import { routes } from './app.routes';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { HttpLoaderFactory } from './core/service/translation.service';
 import { headerInterceptor } from './core/interceptors/header.interceptor';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideAnimations(),
+    provideToastr(),
     provideHttpClient(
       withInterceptors([loadingInterceptor, headerInterceptor])
     ),

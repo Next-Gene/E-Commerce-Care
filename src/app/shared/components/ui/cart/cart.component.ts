@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject } from '@angular/core';
 import { Subscription, fromEvent } from 'rxjs';
 import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../../core/interfaces/product';
@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartServive } from '../../../../core/service/cart.service';
 import { WishlistServive } from '../../../../core/service/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -25,6 +26,7 @@ export class CartComponent implements OnInit, OnDestroy {
   @Input() currencyCode: string = 'USD';
   @Input() truncateCount: number = 3;
   resizeSubscription: Subscription | undefined;
+  private toastr = inject(ToastrService);
 
   constructor(
     private _CartService: CartServive,
@@ -44,10 +46,28 @@ export class CartComponent implements OnInit, OnDestroy {
   addToCart() {
     this._CartService.addItem(Number(this.product.id)).subscribe({
       next: (res) => {
-        alert('item added to cart');
+        this.toastr.success('item added to cart', 'Success', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+          closeButton: true,
+          tapToDismiss: true,
+          toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
+        });
       },
       error: (err) => {
-        alert('failed add item to cart');
+        this.toastr.error('failed add item to cart', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+          closeButton: true,
+          tapToDismiss: true,
+          toastClass: 'ngx-toastr animate__animated animate__shakeX',
+        });
       },
     });
   }
@@ -55,14 +75,28 @@ export class CartComponent implements OnInit, OnDestroy {
   addToWishlist() {
     this._WishlistService.addItem(Number(this.product.id)).subscribe({
       next: (res) => {
-        alert('item added to wishlist');  
+        this.toastr.success('item added to wishlist', 'Success', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+          closeButton: true,
+          tapToDismiss: true,
+          toastClass: 'ngx-toastr animate__animated animate__fadeInRight',
+        });
       },
       error: (err) => {
-        if (err.status === 409) {
-          alert('item already in wishlist');
-        } else {
-          alert('failed add item to wishlist');
-        }
+        this.toastr.error('failed add item to wishlist', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+          closeButton: true,
+          tapToDismiss: true,
+          toastClass: 'ngx-toastr animate__animated animate__shakeX',
+        });
       },
     });
   }
