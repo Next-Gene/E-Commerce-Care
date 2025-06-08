@@ -35,8 +35,8 @@
     "ngx-owl-carousel-o": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3",
-    "typescript": "~5.5.0"
+    "typescript": "~5.5.0",
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.0",

@@ -160,6 +160,14 @@ export const routes: Routes = [
             
     },
     {
+        path: 'wishlist',
+        loadComponent: () =>
+            import('./features/pages/wishlist/wishlist.component').then(
+                (c) => c.WishlistComponent
+            ),
+            
+    },
+    {
         path: '**',
         loadComponent: () =>
             import('./shared/components/ui/error-page/error-page.component').then(
