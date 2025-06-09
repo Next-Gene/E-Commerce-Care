@@ -4,23 +4,54 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartServive } from '../../../../../core/service/cart.service';
+import { WishlistServive } from '../../../../../core/service/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-single-product-title',
   imports: [TranslateModule],
   templateUrl: './single-product-title.component.html',
-  styleUrl: './single-product-title.component.scss'
+  styleUrl: './single-product-title.component.scss',
 })
 export class SingleProductTitleComponent {
   product!: Product;
-  id: string = "";
-quantity: number = 0;
+  id: string = '';
+  isInWishlist: boolean = false;
+  private toastr = inject(ToastrService);
   // Modal and rating variables
   showRatingModal: boolean = false;
   currentRating: number = 0;
 
-  private _Activatedroute = inject(ActivatedRoute);
-  private _ProductsService = inject(ProductsService);
+  constructor(
+    private _Activatedroute: ActivatedRoute,
+    private _ProductsService: ProductsService,
+    private _CartService: CartServive,
+    private _WishlistService: WishlistServive
+  ) {
+    // Get the product ID from route params
+    this._Activatedroute.params.subscribe((params) => {
+      this.id = params['id'];
+      // Get product details
+      this._ProductsService.getProductById(this.id).subscribe({
+        next: (res) => {
+          this.product = res;
+          // Check if product is in wishlist
+          this._WishlistService.getItems().subscribe({
+            next: (wishlist) => {
+              this.isInWishlist = wishlist.items.some(
+                (item) => item.id === Number(this.id)
+              );
+            },
+            error: (err) => {
+              console.error('Error checking wishlist status:', err);
+            },
+          });
+        },
+      });
+    });
+  }
+
   private _destroy$ = new Subject<void>();
 getphotos(){
 this.product.productPhotos = this.product.productPhotos || [];
@@ -33,23 +64,79 @@ this.product.productPhotos = this.product.productPhotos || [];
       this.getphotos();
   }
 
-  getParam(): void {
-    this._Activatedroute.paramMap
-      .pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: (params) => {
-          this.id = params.get('id') || '';
-          if (this.id) {
-            this._ProductsService.getProductById(this.id)
-              .pipe(takeUntil(this._destroy$))
-              .subscribe({
-                next: (res) => {
-                  this.product = res;
-                }
-              });
-          }
-        }
+  addToCart() {
+    this._CartService.addItem(Number(this.id)).subscribe({
+      next: (res) => {
+        this.toastr.success('Item added to cart', 'Success', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+        });
+      },
+      error: (err) => {
+        this.toastr.error('Failed to add item to cart', 'Error', {
+          timeOut: 3000,
+        });
+      },
+    });
+  }
+
+  addToWishlist() {
+    if (this.isInWishlist) {
+      // Remove from wishlist
+      this._WishlistService.deleteItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = false;
+          this.toastr.error('Item removed from wishlist', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+        error: (err) => {
+          this.toastr.error('Failed to remove item from wishlist', 'Error', {
+            timeOut: 3000,
+          });
+        },
       });
+    } else {
+      // Add to wishlist
+      this._WishlistService.addItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = true;
+          this.toastr.success('Item added to wishlist', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+        
+      });
+    }
+  }
+
+  getParam(): void {
+    this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
+      next: (params) => {
+        this.id = params.get('id') || '';
+        if (this.id) {
+          this._ProductsService
+            .getProductById(this.id)
+            .pipe(takeUntil(this._destroy$))
+            .subscribe({
+              next: (res) => {
+                this.product = res;
+              },
+            });
+        }
+      },
+    });
   }
   increase(product: any): void {
     this.quantity++;
@@ -63,7 +150,9 @@ this.product.productPhotos = this.product.productPhotos || [];
     this._destroy$.next();
     this._destroy$.complete();
   }
-changeMainImage(url: string): void {
-  this.product.photoUrl = url;
-}
+
+  changeMainImage(newImage: string) {
+    this.product.photoUrl = newImage;
+  }
+
 }

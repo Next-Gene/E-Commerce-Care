@@ -1,10 +1,15 @@
 import { environment } from '../../../../environments/environment';
 
 export class ApiEndpoint {
-  static PRODUCTS = 'https://primecareapi.runasp.net/api/v1/products';
-  static ProductBrand="https://primecareapi.runasp.net/api/v1/product-brands";
-  static CATEGORIES = '/assets/data/data.json';
-  static TREARMENT = '/assets/data/treatment.json';
-  static team= '/assets/data/team.json';
-  static Testimonial = '/assets/data/testimonial.json';
+  static PRODUCTS = `${environment.baseUrl}/api/v1/products`;
+  static CATEGORIES = `${environment.baseUrl}/api/v1/categories`;
+  static CATEGORIES_BY_ID = `${environment.baseUrl}/api/v1/categories`;
+  static WISHLIST = `${environment.baseUrl}/api/v1/wishlist`;
+  static CART = `${environment.baseUrl}/api/v1/cart`;
+  static CHATBOT = `${environment.baseUrl}/api/PrimeAi`;
+
+  // Static JSONs
+  static TREATMENT = '/assets/data/treatment.json';
+  static TEAM = '/assets/data/team.json';
+  static TESTIMONIAL = '/assets/data/testimonial.json';
 }

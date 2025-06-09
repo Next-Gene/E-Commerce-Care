@@ -17,33 +17,6 @@
     <button (click)="onToggleFilters()" class="text-2xl">&times;</button>
   </div>
 
-  <!-- Department Filter -->
-  <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)] dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.DEPARTMENT.TITLE' | translate }}</h3>
-    <ul class="space-y-2 dark:text-white duration-300 transition-colors">
-      <li *ngFor="let dept of ['all', 'deals', 'super_offers']">
-        <label class="inline-flex items-center space-x-2">
-          <input
-            type="radio"
-            name="department"
-            class="form-radio h-4 w-4 text-blue-600"
-            [(ngModel)]="selectedDepartment"
-            [value]="dept"
-            (change)="applyFilters()"
-          />
-          <span class="mr-4">
-            {{ 
-              dept === 'all' ? ('FILTERS.DEPARTMENT.ALL' | translate) : 
-              dept === 'deals' ? ('FILTERS.DEPARTMENT.DEALS' | translate) : 
-              ('FILTERS.DEPARTMENT.SUPER_OFFERS' | translate) 
-            }}
-          </span>
-        </label>
-      </li>
-    </ul>
-  </div>
-  <hr class="my-4 border-gray-300" />
-
   <!-- Category Filter -->
   <div>
     <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.CATEGORY.TITLE' | translate }}</h3>

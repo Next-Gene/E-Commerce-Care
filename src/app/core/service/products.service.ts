@@ -15,46 +15,46 @@ export class ProductsService implements ProductsAPI {
     private _productsAdapter: ProductsAdapter
   ) {}
 
-getAllProducts(): Observable<Product[]> {
-  return this._httpClient
-    .get<APIProductsResponse>(ApiEndpoint.PRODUCTS)
-    .pipe(
-      map((res) => this._productsAdapter.ProductsAdapter(res))
+  getAllProducts(): Observable<Product[]> {
+    return this._httpClient
+      .get<APIProductsResponse>(ApiEndpoint.PRODUCTS)
+      .pipe(map((res) => this._productsAdapter.ProductsAdapter(res)));
+  }
+  getProductById(id: string): Observable<Product> {
+    return this._httpClient.get<APIProductsResponse>(ApiEndpoint.PRODUCTS).pipe(
+      map((res: APIProductsResponse) => {
+        const product = res.find((p) => String(p.id) === String(id));
+        if (!product) {
+          throw new Error(`Product with ID ${id} not found`);
+        }
+        return product;
+      })
     );
-}
-getProductById(id: string): Observable<Product> {
-  return this._httpClient.get<APIProductsResponse>(ApiEndpoint.PRODUCTS).pipe(
-    map((res: APIProductsResponse) => {
-      const product = res.find(p => String(p.id) === String(id));
-      if (!product) {
-        throw new Error(`Product with ID ${id} not found`);
-      }
-      return product;
-    })
-  );
-}
+  }
 
-getRelatedProducts(category: string, excludeProductId: string): Observable<Product[]> {
-  return this._httpClient
-    .get<APIProductsResponse>(ApiEndpoint.PRODUCTS)
-    .pipe(
+  getRelatedProducts(
+    category: string,
+    excludeProductId: string
+  ): Observable<Product[]> {
+    return this._httpClient.get<APIProductsResponse>(ApiEndpoint.PRODUCTS).pipe(
       map((res: APIProductsResponse) => {
         return res.filter(
-          (p) => p.category === category && String(p.id) !== String(excludeProductId)
+          (p) =>
+            p.category === category && String(p.id) !== String(excludeProductId)
         );
       })
     );
-}
+  }
 
- getProductsByCategory(categoryName: string): Observable<Product[]> {
-  return this._httpClient
-    .get<APIProductsResponse>(ApiEndpoint.PRODUCTS)
-    .pipe(
+  getProductsByCategory(categoryName: string): Observable<Product[]> {
+    return this._httpClient.get<APIProductsResponse>(ApiEndpoint.PRODUCTS).pipe(
       map((res: APIProductsResponse) => {
-        return res.filter((product) => product.category === categoryName);
+        const filteredProducts = res.filter(
+          (product) =>
+            product.category?.toLowerCase() === categoryName.toLowerCase()
+        );
+        return this._productsAdapter.ProductsAdapter(filteredProducts);
       })
     );
+  }
 }
-
-}
-

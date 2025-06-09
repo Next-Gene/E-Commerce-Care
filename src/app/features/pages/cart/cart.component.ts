@@ -1,104 +1,142 @@
-import { Component, inject } from '@angular/core';
-import { ProductsService } from '../../../core/service/products.service';
-import { NEVER } from 'rxjs';
-import { CartServiveService } from '../../../core/service/cart-servive.service';
-import { cartItems } from '../../../core/interfaces/Cartitems';
-import { CartSammaryComponent } from "../../../shared/components/ui/cart-sammary/cart-sammary.component";
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CartServive } from '../../../core/service/cart.service';
+import { Cart, CartItem } from '../../../core/interfaces/cart';
 import { RouterLink } from '@angular/router';
+import { CartSammaryComponent } from '../../../shared/components/ui/cart-sammary/cart-sammary.component';
+import { ToastrService } from 'ngx-toastr';
+import {
+  BehaviorSubject,
+  EMPTY,
+  Subject,
+  catchError,
+  finalize,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-cart',
-  imports: [CartSammaryComponent ,RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink, CartSammaryComponent],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent {
+export class CartComponent implements OnInit, OnDestroy {
+  private refreshSubject = new BehaviorSubject<void>(undefined);
+  private destroy$ = new Subject<void>();
 
+  cart: Cart | null = null;
+  tableHeaders: string[] = [
+    'Product',
+    'Name',
+    'Price',
+    'Quantity',
+    'Subtotal',
+    '',
+  ];
+  private toastr = inject(ToastrService);
 
-
-  private _ProductsService = inject(ProductsService);
+  constructor(private cartService: CartServive) {
+    // Initialize cart data stream
+    this.refreshSubject
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(() =>
+          this.cartService.getItems().pipe(
+            catchError((error) => {
+              console.error('Error loading cart:', error);
+              this.toastr.error('Failed to load cart items', 'Error');
+              return EMPTY;
+            })
+          )
+        )
+      )
+      .subscribe((cart) => {
+        this.cart = cart;
+      });
+  }
 
   ngOnInit(): void {
-  
-    this.getCartItems();
+    this.refreshCart();
   }
 
-  cartItems: cartItems[] = [];
-  tableHeaders: string[] = ['Image', 'Title', 'Price', 'Quantity', 'Subtotal', 'Remove'];
-
-  constructor(private _CartServiveService: CartServiveService) {}
-
-  
-
-
-  getCartItems() {
-    this._CartServiveService.getProducts().subscribe(response => {
-      this.cartItems = response.products.map((product: any) => ({
-        ...product,
-        quantity: 1,
-        subTotal: product.priceAfterDiscount
-      }));
-    });
-
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  /** Fetch user's cart items and calculate subtotals & total **/
-  // getUserCart() {
-  //   this._checkoutService.getUserCart().subscribe(
-  //     (res) => {
-  //       this.cartData = res.cart;
+  private refreshCart(): void {
+    this.refreshSubject.next(undefined);
+  }
 
-  //       // Calculate `subTotal` for each item during initialization
-  //       this.cartItems = res.cart.cartItems.map((product) => ({
-  //         ...product,
-  //         subTotal: product.product.price * product.quantity,
-  //       }));
-  //     },
-  //     (err) => console.log(err)
-  //   );
-  // }
+  loadCart(): void {
+    this.refreshCart();
+  }
 
-  // /** Handle increasing or decreasing quantity **/
-  // updateQuantity(product: ICartProducts, change: number): void {
-  //   const newQuantity = product.quantity + change;
-  //   if (newQuantity < 1) return; // Prevent invalid values
+  deleteItem(productId: number): void {
+    this.cartService
+      .deleteItem(productId)
+      .pipe(
+        tap(() => {
+          this.refreshCart();
+        }),
+        catchError((error) => {
+          console.error('Error removing item:', error);
+          this.toastr.error('Failed to remove item from cart', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+          });
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
 
-  //   product.quantity = newQuantity;
-  //   product.subTotal = product.product.price * product.quantity; // Recalculate subTotal
-  //   this.updateCartQuantity(product);
-  // }
+  incrementQuantity(item: CartItem): void {
+    if (item.quantity >= 99) {
+      this.toastr.warning('Maximum quantity reached', 'Warning');
+      return;
+    }
 
-  // /** Handle manual input change **/
-  // onQuantityChange(product: ICartProducts): void {
-  //   if (product.quantity < 1 || isNaN(product.quantity)) {
-  //     product.quantity = 1; // Prevent invalid input
-  //   }
+    this.cartService
+      .updateItem(item.id, item.quantity + 1)
+      .pipe(
+        tap(() => {
+          this.refreshCart();
+        }),
+        catchError((error) => {
+          console.error('Error updating quantity:', error);
+          this.toastr.error('Failed to update quantity', 'Error');
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
 
-  //   product.subTotal = product.product.price * product.quantity; // Update subTotal
-  //   this.updateCartQuantity(product);
-  // }
+  decrementQuantity(item: CartItem): void {
+    if (item.quantity <= 1) {
+      this.toastr.warning('Minimum quantity reached', 'Warning');
+      return;
+    }
 
-  // /** Call API to update quantity **/
-  // updateCartQuantity(product: ICartProducts): void {
-  //   if (!product?.product?.id) return;
-
-  //   const data = { quantity: product.quantity };
-  //   this._checkoutService
-  //     .updateCartProductQuantity(product.product.id, data)
-  //     .subscribe({
-  //       next: () => console.log(`Updated quantity to ${product.quantity}`),
-  //     });
-  // }
-
-  // /** Remove product from cart **/
-  // RemoveProductFromCart(productId?: string): void {
-  //   this._checkoutService.deleteProductFromCart(productId).subscribe({
-  //     next: () => {
-  //       console.log('Product removed from cart');
-  //       this.getUserCart(); // Refresh cart after removal
-  //     },
-  //   });
-  // }
-
-
+    this.cartService
+      .updateItem(item.id, item.quantity - 1)
+      .pipe(
+        tap(() => {
+          this.refreshCart();
+        }),
+        catchError((error) => {
+          console.error('Error updating quantity:', error);
+          this.toastr.error('Failed to update quantity', 'Error');
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
 }

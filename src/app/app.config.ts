@@ -13,14 +13,13 @@ import {
   provideHttpClient,
   withInterceptors,
 } from '@angular/common/http';
-import {
-  TranslateLoader,
-  TranslateModule,
-} from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { HttpLoaderFactory } from './core/service/translation.service';
+import { headerInterceptor } from './core/interceptors/header.interceptor';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,7 +27,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideAnimations(),
-    provideHttpClient(withInterceptors([loadingInterceptor])),
+    provideToastr(),
+    provideHttpClient(
+      withInterceptors([loadingInterceptor, headerInterceptor])
+    ),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {

@@ -1,4 +1,3 @@
-
 export interface Product {
   id: number
   name: string
@@ -10,9 +9,10 @@ export interface Product {
   photoUrl?: string
 }
 
-export interface   ProductPhotos{
+export interface ProductPhotos{
   id: number
   url: string
   isMain: boolean
 }
+
 export type APIProductsResponse = Product[];

@@ -9,7 +9,14 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+    {
+        path: 'chatbot',
+        loadComponent: () => import('./features/chatbot/chatbot.component')
+            .then(c => c.ChatbotComponent)
+    },
 
+
+    
     {
         path: 'home',
         loadComponent: () => import('./features/pages/home/home.component')
@@ -157,6 +164,14 @@ export const routes: Routes = [
         loadComponent: () =>
             import('./features/pages/best-seller/best-seller.component').then(
                 (c) => c.BestSellerComponent
+            ),
+            
+    },
+    {
+        path: 'wishlist',
+        loadComponent: () =>
+            import('./features/pages/wishlist/wishlist.component').then(
+                (c) => c.WishlistComponent
             ),
             
     },

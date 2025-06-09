@@ -18,7 +18,7 @@ import { CategoriesService } from '../../../../../core/service/categories.servic
 export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
   product!: Product;
   id: string = '';
-  categoryId: string = '';
+  categoryId: number | null = null;
   relatedProducts: Product[] = [];
   category: string = ''; // initialize with empty string to avoid "undefined"
 
@@ -32,36 +32,63 @@ export class SingleProductRelatedItemsComponent implements OnInit, OnDestroy {
   }
 
   getParam(): void {
-    this._Activatedroute.paramMap
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((params) => {
-        this.id = params.get('id') ?? '';
-        if (!this.id) return;
+    this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
+      next: (params) => {
+        const paramId = params.get('id');
+        if (!paramId) return;
+        this.id = paramId;
 
-        this._ProductsService.getProductById(this.id)
+        this._ProductsService
+          .getProductById(this.id)
           .pipe(takeUntil(this._destroy$))
-          .subscribe((res) => {
-            this.product = res;
-            this.category = res.category ?? '';
-
-            this._CategoriesService.getAllCategories()
-              .pipe(takeUntil(this._destroy$))
-              .subscribe((cats) => {
-                const found = cats.find(c => c.name === this.category);
-                this.categoryId = found?._id ?? '';
-
-                this._ProductsService.getRelatedProducts(
-                  this.category,
-                  String(this.product.id ?? '')
-                )
-                .pipe(takeUntil(this._destroy$))
-                .subscribe((related) => {
-                  this.relatedProducts = related;
-                });
-              });
+          .subscribe({
+            next: (res) => {
+              this.product = res;
+              if (res.category) {
+                this.category = res.category;
+                this.loadRelatedProducts();
+              }
+            },
+            error: (err) => {
+              console.error('Error fetching product:', err);
+            },
           });
+      },
+    });
+  }
+
+  private loadRelatedProducts(): void {
+    this._CategoriesService
+      .getAllCategories()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (categories) => {
+          const foundCategory = categories.find(
+            (c) => c.name === this.category
+          );
+          if (foundCategory) {
+            this.categoryId = foundCategory.id;
+  
+            this._ProductsService
+              .getRelatedProducts(this.category, String(this.product.id))
+
+              .pipe(takeUntil(this._destroy$))
+              .subscribe({
+                next: (related) => {
+                  this.relatedProducts = related;
+                },
+                error: (err) => {
+                  console.error('Error fetching related products:', err);
+                }
+              });
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching categories:', err);
+        }
       });
   }
+  
 
   ngOnDestroy(): void {
     this._destroy$.next();
