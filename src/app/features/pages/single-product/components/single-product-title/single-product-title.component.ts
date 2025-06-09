@@ -53,9 +53,15 @@ export class SingleProductTitleComponent {
   }
 
   private _destroy$ = new Subject<void>();
+getphotos(){
+this.product.productPhotos = this.product.productPhotos || [];
 
+  const mainPhoto = this.product.productPhotos.find(p => p.isMain);
+  this.product.photoUrl = mainPhoto ? mainPhoto.url : this.product.productPhotos[0]?.url;
+}
   ngOnInit(): void {
     this.getParam();
+      this.getphotos();
   }
 
   addToCart() {
@@ -133,18 +139,20 @@ export class SingleProductTitleComponent {
     });
   }
   increase(product: any): void {
-    product.quantity++;
+    this.quantity++;
   }
   decrease(product: any): void {
-    if (product.quantity > 1) {
-      product.quantity--;
+    if (this.quantity > 0) {
+      this.quantity--;
     }
   }
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }
+
   changeMainImage(newImage: string) {
     this.product.photoUrl = newImage;
   }
+
 }

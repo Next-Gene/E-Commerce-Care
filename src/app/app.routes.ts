@@ -159,6 +159,14 @@ export const routes: Routes = [
             ),
             
     },
+          {
+        path: 'best-seller',
+        loadComponent: () =>
+            import('./features/pages/best-seller/best-seller.component').then(
+                (c) => c.BestSellerComponent
+            ),
+            
+    },
     {
         path: 'wishlist',
         loadComponent: () =>

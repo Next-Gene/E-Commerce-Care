@@ -1,0 +1,28 @@
+<div class="mb-16 mt-8 px-4">
+    <div
+        class="relative inline-block text-2xl font-semibold  mb-24 dark:text-white transition-colors duration-300 text-black">
+        Top Brands
+        <!-- الخط العريض الخلفي -->
+        <span
+            class="absolute  dark:bg-white/50 transition-colors duration-300 bottom-0 start-0 h-2 w-3/4 bg-blue-600/20 rounded-e-full end-0 rounded-s-full"></span>
+
+        <!-- الخط الرفيع الأمامي -->
+        <span
+            class="absolute  dark:bg-white transition-colors duration-300 bottom-0 start-0 h-[2px] w-1/2 bg-blue-600 end-0 rounded-s-full"></span>
+    </div>
+
+    <owl-carousel-o [options]="carouselOptions">
+        <ng-container>
+            <ng-template carouselSlide *ngFor="let brand of brands">
+                <div
+                    class=" text-center mx-auto overflow-hidden rounded-20 border-t-white mb-20 shadow-xl border dark:bg-[#353535] duration-300 transition-colors p-4 sm:p-6 max-sm:p-1 flex flex-col w-full max-w-sm">
+
+                    <h2 class="text-2xl font-bold text-[#0070CD] mb-2"> {{ brand.name }}
+                    </h2>
+                    <p class="text-gray-500 dark:text-gray-300  duration-300 transition-colors text-sm">Trusted brand
+                    </p>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>
