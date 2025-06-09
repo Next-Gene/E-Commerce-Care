@@ -13,7 +13,7 @@ import { TranslationService } from '../../service/translation.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../service/theme.service';
 import { Subject, takeUntil } from 'rxjs';
-import { CartServive } from '../../service/cart.service';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,7 +24,7 @@ import { CartServive } from '../../service/cart.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   private _ThemeService = inject(ThemeService);
-  private _cartService = inject(CartServive);
+  private _cartService = inject(CartService);
   private destroy$ = new Subject<void>();
   isDarkMode = false;
 

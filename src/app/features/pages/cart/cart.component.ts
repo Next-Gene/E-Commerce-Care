@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartServive } from '../../../core/service/cart.service';
+import { CartService } from '../../../core/service/cart.service';
 import { Cart, CartItem } from '../../../core/interfaces/cart';
 import { RouterLink } from '@angular/router';
 import { CartSammaryComponent } from '../../../shared/components/ui/cart-sammary/cart-sammary.component';
@@ -23,7 +23,7 @@ import {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class CartComponent implements OnInit {
   private refreshSubject = new BehaviorSubject<void>(undefined);
   private destroy$ = new Subject<void>();
 
@@ -38,13 +38,13 @@ export class CartComponent implements OnInit, OnDestroy {
   ];
   private toastr = inject(ToastrService);
 
-  constructor(private cartService: CartServive) {
+  constructor(private _cartService: CartService) {
     // Initialize cart data stream
     this.refreshSubject
       .pipe(
         takeUntil(this.destroy$),
         switchMap(() =>
-          this.cartService.getItems().pipe(
+          this._cartService.getItems().pipe(
             catchError((error) => {
               console.error('Error loading cart:', error);
               this.toastr.error('Failed to load cart items', 'Error');
@@ -62,10 +62,6 @@ export class CartComponent implements OnInit, OnDestroy {
     this.refreshCart();
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 
   private refreshCart(): void {
     this.refreshSubject.next(undefined);
@@ -76,7 +72,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   deleteItem(productId: number): void {
-    this.cartService
+    this._cartService
       .deleteItem(productId)
       .pipe(
         tap(() => {
@@ -102,7 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.cartService
+    this._cartService
       .updateItem(item.id, item.quantity + 1)
       .pipe(
         tap(() => {
@@ -124,7 +120,7 @@ export class CartComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.cartService
+    this._cartService
       .updateItem(item.id, item.quantity - 1)
       .pipe(
         tap(() => {

@@ -1,23 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap, EMPTY } from 'rxjs';
+import { BehaviorSubject, Observable, tap, EMPTY, map } from 'rxjs';
 import { ApiEndpoint } from '../enums/api.endpoints';
-import { Cart } from '../interfaces/cart';
+import { APICartResponse, Cart } from '../interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
+import { CartAPI } from '../base/CartAPI';
+import { CartAdapter } from '../adapters/cart.adapter';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CartServive {
+export class CartService implements CartAPI {
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   private cartSubject = new BehaviorSubject<Cart | null>(null);
 
   cartItemCount$ = this.cartItemCountSubject.asObservable();
   cart$ = this.cartSubject.asObservable();
 
-  constructor(private _HttpClient: HttpClient, private toastr: ToastrService) {
-    // Initialize cart
-    this.getItems().subscribe();
+  constructor(
+    private _HttpClient: HttpClient,
+    private toastr: ToastrService,
+    private _cartAdapter: CartAdapter
+  ) {
+    this.getCart().subscribe();
   }
 
   private updateCartState(cart: Cart) {
@@ -33,66 +38,78 @@ export class CartServive {
     this.cartItemCountSubject.next(count);
   }
 
-  getItems(): Observable<Cart> {
-    return this._HttpClient
-      .get<Cart>(`${ApiEndpoint.CART}`)
-      .pipe(tap((cart) => this.updateCartState(cart)));
+  getCart(): Observable<Cart> {
+    return this._HttpClient.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
+      map((res) => this._cartAdapter.CartAdapter(res)),
+      tap((cart) => this.updateCartState(cart))
+    );
   }
 
-  addItem(productId: number, quantity: number = 1): Observable<Cart> {
+  addToCart(productId: number, quantity: number = 1): Observable<Cart> {
     return this._HttpClient
-      .post<Cart>(`${ApiEndpoint.CART}/items`, { productId, quantity })
-      .pipe(tap((cart) => this.updateCartState(cart)));
-  }
-
-  updateItem(productId: number, quantity: number): Observable<Cart> {
-    if (quantity < 1) {
-      this.toastr.error('Quantity cannot be less than 1', 'Error');
-      return EMPTY;
-    }
-    if (quantity > 99) {
-      this.toastr.error('Quantity cannot be more than 99', 'Error');
-      return EMPTY;
-    }
-
-    return this._HttpClient
-      .put<Cart>(`${ApiEndpoint.CART}/items/${productId}/quantity`, {
+      .post<APICartResponse>(`${ApiEndpoint.CART}/items`, {
+        productId,
         quantity,
       })
       .pipe(
+        map((res) => this._cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-          this.toastr.success('Quantity updated', 'Success', {
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            progressBar: true,
-            progressAnimation: 'increasing',
-            easeTime: 300,
-            closeButton: true,
-            tapToDismiss: true,
-            toastClass: 'ngx-toastr animate__animated animate__fadeInUp',
-          });
         })
       );
   }
 
-  deleteItem(productId: number): Observable<Cart> {
+  updateCart(productId: number, quantity: number): Observable<Cart> {
+    if (quantity < 1 || quantity > 99) {
+      this.toastr.error('Quantity must be between 1 and 99', 'Error');
+      return EMPTY;
+    }
+
     return this._HttpClient
-      .delete<Cart>(`${ApiEndpoint.CART}/items/${productId}`)
+      .put<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}/quantity`, {
+        quantity,
+      })
       .pipe(
+        map((res) => this._cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-          this.toastr.error('Item removed from cart', 'Removed', {
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            progressBar: true,
-            progressAnimation: 'increasing',
-            easeTime: 300,
-            closeButton: true,
-            tapToDismiss: true,
-            toastClass: 'ngx-toastr animate__animated animate__shakeX',
-          });
+
         })
       );
+  }
+
+  removeFromCart(productId: number): Observable<Cart> {
+    return this._HttpClient
+      .delete<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
+      .pipe(
+        map((res) => this._cartAdapter.CartAdapter(res)),
+        tap((cart) => {
+          this.updateCartState(cart);
+
+        })
+      );
+  }
+
+  getCartItemById(productId: number): Observable<Cart> {
+    return this._HttpClient
+      .get<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
+      .pipe(map((res) => this._cartAdapter.CartAdapter(res)));
+  }
+
+  // Aliases for convenience (optional)
+  getItems(): Observable<Cart> {
+    return this.getCart();
+  }
+
+  addItem(productId: number, quantity: number = 1): Observable<Cart> {
+    return this.addToCart(productId, quantity);
+  }
+
+  updateItem(productId: number, quantity: number): Observable<Cart> {
+    return this.updateCart(productId, quantity);
+  }
+
+  deleteItem(productId: number): Observable<Cart> {
+    return this.removeFromCart(productId);
   }
 }

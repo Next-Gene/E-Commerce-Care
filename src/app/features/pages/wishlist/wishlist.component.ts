@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { WishlistServive } from '../../../core/service/wishlist.service';
 import { LoadingService } from '../../../core/service/loading-service.service';
 import {
@@ -24,11 +24,11 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, RouterLink, CartComponent],
+  imports: [CommonModule, CartComponent, RouterModule],
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss'],
 })
-export class WishlistComponent implements OnInit, OnDestroy {
+export class WishlistComponent implements OnInit {
   private refreshSubject = new BehaviorSubject<void>(undefined);
   private destroy$ = new Subject<void>();
   private toastr = inject(ToastrService);
@@ -48,10 +48,6 @@ export class WishlistComponent implements OnInit, OnDestroy {
     this.refreshWishlist();
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 
   private mapToProduct(item: WishlistItem): Product {
     return {

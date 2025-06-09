@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
-import { CartServive } from '../../../../../core/service/cart.service';
+import { CartService } from '../../../../../core/service/cart.service';
 import { WishlistServive } from '../../../../../core/service/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -26,7 +26,7 @@ export class SingleProductTitleComponent {
   constructor(
     private _Activatedroute: ActivatedRoute,
     private _ProductsService: ProductsService,
-    private _CartService: CartServive,
+    private _CartService: CartService,
     private _WishlistService: WishlistServive
   ) {
     // Get the product ID from route params
@@ -138,14 +138,7 @@ this.product.productPhotos = this.product.productPhotos || [];
       },
     });
   }
-  increase(product: any): void {
-    this.quantity++;
-  }
-  decrease(product: any): void {
-    if (this.quantity > 0) {
-      this.quantity--;
-    }
-  }
+
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();

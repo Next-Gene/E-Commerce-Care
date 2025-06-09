@@ -15,7 +15,7 @@ export class BrandService {
     private _brandAdapter: BrandAdapter
   ) { }
   getAllBrands() {
- return this._httpClient.get<APIBrandResponse>(ApiEndpoint.ProductBrand).pipe(
+ return this._httpClient.get<APIBrandResponse>(ApiEndpoint.PRODUCTBRAND).pipe(
   map((res) => this._brandAdapter.BrandAdapter(res)
  ))
   }

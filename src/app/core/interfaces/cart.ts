@@ -4,9 +4,9 @@ export interface Cart {
   totalPrice: number;
   taxAmount: number;
   totalPriceWithTax: number;
-  // deliveryMethodId: null;
-  // clientSecret: null;
-  // paymentIntentId: null;
+  deliveryMethodId: null | number;
+  clientSecret: null | string;
+  paymentIntentId: null | string;
 }
 
 export interface CartItem {
@@ -18,3 +18,5 @@ export interface CartItem {
   brand: string;
   category: string;
 }
+
+export type APICartResponse = Cart;

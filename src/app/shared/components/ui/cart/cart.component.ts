@@ -4,7 +4,7 @@ import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { CartServive } from '../../../../core/service/cart.service';
+import { CartService } from '../../../../core/service/cart.service';
 import { WishlistServive } from '../../../../core/service/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -30,7 +30,7 @@ export class CartComponent implements OnInit, OnDestroy {
   private toastr = inject(ToastrService);
 
   constructor(
-    private _CartService: CartServive,
+    private _CartService: CartService,
     private _WishlistService: WishlistServive
   ) {}
 

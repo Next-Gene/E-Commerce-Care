@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { CartServive } from '../../../../core/service/cart.service';
+import { CartService } from '../../../../core/service/cart.service';
 import { Cart } from '../../../../core/interfaces/cart';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class CartSammaryComponent implements OnInit, OnDestroy {
   cart: Cart | null = null;
   private destroy$ = new Subject<void>();
 
-  constructor(private _CartService: CartServive) {}
+  constructor(private _CartService: CartService) {}
 
   ngOnInit(): void {
     // Subscribe to cart updates

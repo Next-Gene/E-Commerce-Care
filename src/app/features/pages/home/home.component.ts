@@ -8,7 +8,7 @@ import { InformationComponent } from "./components/information/information.compo
 import { CategoriyComponent } from "./components/categoriy/categoriy.component";
 import { SectionBookingComponent } from "./components/section-booking/section-booking.component";
 import { BestSellerComponent } from "./components/best-seller/best-seller.component";
-import { BrandsComponent } from "./components/brands/brands.component";
+import { BrandsComponent } from './components/brands/brands.component';
 
 @Component({
   selector: 'app-home',
