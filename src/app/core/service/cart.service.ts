@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap, EMPTY, map } from 'rxjs';
+import { BehaviorSubject, Observable, tap, EMPTY, map, catchError } from 'rxjs';
 import { ApiEndpoint } from '../enums/api.endpoints';
 import { APICartResponse, Cart } from '../interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,7 @@ import { CartAdapter } from '../adapters/cart.adapter';
 export class CartService implements CartAPI {
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   private cartSubject = new BehaviorSubject<Cart | null>(null);
+  private readonly CART_STORAGE_KEY = 'cart_data';
 
   cartItemCount$ = this.cartItemCountSubject.asObservable();
   cart$ = this.cartSubject.asObservable();
@@ -22,12 +23,16 @@ export class CartService implements CartAPI {
     private toastr: ToastrService,
     private _cartAdapter: CartAdapter
   ) {
+    // Try to restore cart from storage first
+    this.restoreCartFromStorage();
+    // Then get fresh data from server
     this.getCart().subscribe();
   }
 
   private updateCartState(cart: Cart) {
     this.cartSubject.next(cart);
     this.updateCartItemCount(cart);
+    this.saveCartToStorage(cart);
   }
 
   private updateCartItemCount(cart: Cart) {
@@ -38,10 +43,38 @@ export class CartService implements CartAPI {
     this.cartItemCountSubject.next(count);
   }
 
+  private saveCartToStorage(cart: Cart) {
+    localStorage.setItem(this.CART_STORAGE_KEY, JSON.stringify(cart));
+  }
+
+  private restoreCartFromStorage() {
+    const savedCart = localStorage.getItem(this.CART_STORAGE_KEY);
+    if (savedCart) {
+      try {
+        const cart = JSON.parse(savedCart) as Cart;
+        this.updateCartState(cart);
+      } catch (error) {
+        console.error('Error restoring cart from storage:', error);
+        localStorage.removeItem(this.CART_STORAGE_KEY);
+      }
+    }
+  }
+
   getCart(): Observable<Cart> {
     return this._HttpClient.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
       map((res) => this._cartAdapter.CartAdapter(res)),
-      tap((cart) => this.updateCartState(cart))
+      tap((cart) => this.updateCartState(cart)),
+      catchError((error) => {
+        // If server request fails, use cached cart
+        const currentCart = this.cartSubject.getValue();
+        if (currentCart) {
+          return new Observable<Cart>((observer) => {
+            observer.next(currentCart);
+            observer.complete();
+          });
+        }
+        throw error;
+      })
     );
   }
 
@@ -55,6 +88,7 @@ export class CartService implements CartAPI {
         map((res) => this._cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
+          this.toastr.success('Item added to cart', 'Success');
         })
       );
   }
@@ -73,7 +107,7 @@ export class CartService implements CartAPI {
         map((res) => this._cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-
+          this.toastr.success('Quantity updated', 'Success');
         })
       );
   }
@@ -85,7 +119,7 @@ export class CartService implements CartAPI {
         map((res) => this._cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-
+          this.toastr.error('Item removed from cart', 'Removed');
         })
       );
   }

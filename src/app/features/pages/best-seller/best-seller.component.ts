@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartComponent } from "../../../shared/components/ui/cart/cart.component";
 import { Product } from '../../../core/interfaces/product';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './best-seller.component.html',
   styleUrl: './best-seller.component.scss'
 })
-export class BestSellerComponent {
+export class BestSellerComponent implements OnInit {
   products: Product[] = [];
 
   ngOnInit(): void {
