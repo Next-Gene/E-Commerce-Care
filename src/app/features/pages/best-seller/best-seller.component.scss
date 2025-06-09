@@ -1,0 +1,30 @@
+.p {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.badge-new {
+  background-color: #22c55e;
+  color: white;
+}
+
+.badge-hot {
+  background-color: #ef4444;
+  color: white;
+}
+
+:host {
+  display: block;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}

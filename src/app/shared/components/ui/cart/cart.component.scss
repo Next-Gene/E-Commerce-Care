@@ -1,28 +1,53 @@
 .product-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &__inner {
+    height: 100%;
+  }
+
   &__overlay {
     transform: translatey(100%);
     transition: all 0.3s ease-in-out;
     background-color: rgba(91, 184, 255, 0); // مخفي افتراضيًا
     opacity: 0;
-    
+
     &__item {
       width: 40px;
       height: 40px;
       border-radius: 100%;
       cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
-  
+
   &__image {
     position: relative;
     overflow: hidden;
-    
-    &:hover .product-card__overlay {
-      cursor: pointer;
-      transform: translatey(0%);
-      background-color: rgba(91, 184, 255, 0.7); // لون خلفية شفاف
-      opacity: 1;
+
+    img {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+
+      .product-card__overlay {
+        transform: translatey(0%);
+        background-color: rgba(91, 184, 255, 0.7); // لون خلفية شفاف
+        opacity: 1;
+      }
     }
   }
 
@@ -33,13 +58,26 @@
     align-items: start;
     justify-content: center;
   }
+
+  &__content {
+    h3 {
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
   &__actions {
     &__item {
-      padding: 13px;
+      padding: 10px;
       border-radius: 100%;
       cursor: pointer;
       background-color: var(--primary-color) !important;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
-  
 }

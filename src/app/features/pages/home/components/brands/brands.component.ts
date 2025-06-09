@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BrandService } from '../../../../../core/service/brand.service';
 import { brand } from '../../../../../core/interfaces/brand';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
-export class BrandsComponent implements OnInit {
+export class BrandsComponent {
   private brandService = inject(BrandService);
   brands: brand[] = [];
   carouselOptions: any;
