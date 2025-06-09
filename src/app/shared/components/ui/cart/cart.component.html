@@ -1,9 +1,9 @@
 <div class="product-card flex justify-center   pb-4 dark:bg-[#252525] transition-colors duration-300 ">
   <div class="product-card__inner">
-    <div class="product-card__image relative mx-auto overflow-hidden rounded-20 aspect-square"
+    <div class="product-card__image   w-[280px] max-xl:w-full max-sm:w-[280px] relative mx-auto overflow-hidden rounded-20 aspect-square"
          routerLink="/SingleProduct/{{ product.id }}">
       <img class="rounded-20 images w-96 h-full"
-           [src]="product.productPhotos"
+           [src]="product.photoUrl"
            [alt]="product.name" />
       <div class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center">
         <div class="product-card__overlay__content flex justify-center items-center">
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Product Card Content -->
-    <div class="product-card__content px-2 py-2 flex flex-col">
+    <div class="product-card__content px-2 py-2 flex  flex-col">
       <h3 class="font-semibold text-sm  dark:text-white transition-colors duration-300" [title]="product.name">
         {{ product.name }}
       </h3>

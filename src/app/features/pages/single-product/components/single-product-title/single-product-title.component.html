@@ -11,18 +11,16 @@
       />
     </div>
     <div class="mt-5 flex justify-center">
-      @for (image of product.productPhotos; track $index) {
-      <div
-        class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
-      >
-        <img
-          class="rounded-lg images w-24 h-24 cursor-pointer"
-          [src]="image"
-          [alt]="'Product image ' + ($index + 1)"
-          (click)="changeMainImage(image.url)"
-        />
-      </div>
-      }
+  @for (image of product.productPhotos; track $index) {
+  <div class="...">
+    <img
+      class="..."
+      [src]="image.url"
+      [alt]="'Product image ' + ($index + 1)"
+      (click)="changeMainImage(image.url)"
+    />
+  </div>
+}
     </div>
   </div>
 
@@ -50,7 +48,7 @@
       >
         -
       </button>
-      <!-- <h2 class="text-[#0070CD] mx-3 pt-2">{{ product.quantity }}</h2> -->
+      <h2 class="text-[#0070CD] mx-3 pt-2">{{ quantity }}</h2>
       <button
         (click)="increase(product)"
         class="p-1 text-xl text-[#0070CD] px-3 rounded-full bg-[#C4DCF9]"

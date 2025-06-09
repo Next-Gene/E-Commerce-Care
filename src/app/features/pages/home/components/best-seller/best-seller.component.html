@@ -1,0 +1,37 @@
+<div class="flex max-xl:flex-wrap mt-20">
+    <div class="w-[22%] max-xl:w-full mt-12 text-center">
+        <h2 class="text-3xl text-[#157DD2] mb-3">Best Seller </h2>
+        <p class="leading-relaxed dark:text-white duration-300 transition-colors ">Discover our most popular products that customers love! Carefully
+            selected based on top sales and glowing reviews, these best sellers combine quality, performance, and value.
+            Don’t miss out—find your next favorite today!</p>
+        <button routerLink="/best-seller"
+            class="mt-5 bg-[#0063FE] text-white p-3 px-14 rounded-xl hover:bg-blue-700 duration-500">
+            See All
+        </button>
+    </div>
+    <div class="w-[78%] max-xl:w-full">
+        <div class="w-full   max-lg:mx-0   px-2 sm:px-0 mt-3">
+            <owl-carousel-o [options]="carouselOptions">
+                <ng-container>
+                    <ng-template carouselSlide *ngFor="let product of products; let i = index">
+  <div class="relative h-full">
+    <span
+      class="p"
+      [ngClass]="{
+        'badge-new': i % 3 === 0,
+        'badge-hot': i % 3 === 1,
+        'badge-out': i % 3 === 2
+      }"
+    >
+      {{ i % 3 === 0 ? 'NEW' : i % 3 === 1 ? 'HOT' : 'OUT OF STOCK' }}
+    </span>
+
+    <app-cart [product]="product" class="h-full"></app-cart>
+  </div>
+</ng-template>
+
+                </ng-container>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
