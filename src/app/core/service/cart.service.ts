@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap, EMPTY, map, catchError } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  tap,
+  EMPTY,
+  map,
+  catchError,
+  throwError,
+} from 'rxjs';
 import { ApiEndpoint } from '../enums/api.endpoints';
 import { APICartResponse, Cart } from '../interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
@@ -13,29 +21,28 @@ import { CartAdapter } from '../adapters/cart.adapter';
 export class CartService implements CartAPI {
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   private cartSubject = new BehaviorSubject<Cart | null>(null);
-  private readonly CART_STORAGE_KEY = 'cart_data';
 
   cartItemCount$ = this.cartItemCountSubject.asObservable();
   cart$ = this.cartSubject.asObservable();
 
   constructor(
-    private _HttpClient: HttpClient,
+    private http: HttpClient,
     private toastr: ToastrService,
-    private _cartAdapter: CartAdapter
+    private cartAdapter: CartAdapter
   ) {
-    // Try to restore cart from storage first
-    this.restoreCartFromStorage();
-    // Then get fresh data from server
+    this.loadCart();
+  }
+
+  private loadCart(): void {
     this.getCart().subscribe();
   }
 
-  private updateCartState(cart: Cart) {
+  private updateCartState(cart: Cart): void {
     this.cartSubject.next(cart);
     this.updateCartItemCount(cart);
-    this.saveCartToStorage(cart);
   }
 
-  private updateCartItemCount(cart: Cart) {
+  private updateCartItemCount(cart: Cart): void {
     const count = cart.cartItems.reduce(
       (total, item) => total + item.quantity,
       0
@@ -43,52 +50,29 @@ export class CartService implements CartAPI {
     this.cartItemCountSubject.next(count);
   }
 
-  private saveCartToStorage(cart: Cart) {
-    localStorage.setItem(this.CART_STORAGE_KEY, JSON.stringify(cart));
-  }
-
-  private restoreCartFromStorage() {
-    const savedCart = localStorage.getItem(this.CART_STORAGE_KEY);
-    if (savedCart) {
-      try {
-        const cart = JSON.parse(savedCart) as Cart;
-        this.updateCartState(cart);
-      } catch (error) {
-        console.error('Error restoring cart from storage:', error);
-        localStorage.removeItem(this.CART_STORAGE_KEY);
-      }
-    }
-  }
-
   getCart(): Observable<Cart> {
-    return this._HttpClient.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
-      map((res) => this._cartAdapter.CartAdapter(res)),
+    return this.http.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
+      map((res) => this.cartAdapter.CartAdapter(res)),
       tap((cart) => this.updateCartState(cart)),
       catchError((error) => {
-        // If server request fails, use cached cart
-        const currentCart = this.cartSubject.getValue();
-        if (currentCart) {
-          return new Observable<Cart>((observer) => {
-            observer.next(currentCart);
-            observer.complete();
-          });
-        }
-        throw error;
+        this.toastr.error('Failed to load cart', 'Error');
+        return EMPTY;
       })
     );
   }
 
   addToCart(productId: number, quantity: number = 1): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .post<APICartResponse>(`${ApiEndpoint.CART}/items`, {
         productId,
         quantity,
       })
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
-        tap((cart) => {
-          this.updateCartState(cart);
-          this.toastr.success('Item added to cart', 'Success');
+        map((res) => this.cartAdapter.CartAdapter(res)),
+        tap((cart) => this.updateCartState(cart)),
+        catchError((error) => {
+          this.toastr.error('Failed to add item to cart', 'Error');
+          return throwError(() => error);
         })
       );
   }
@@ -99,38 +83,62 @@ export class CartService implements CartAPI {
       return EMPTY;
     }
 
-    return this._HttpClient
+    return this.http
       .put<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}/quantity`, {
         quantity,
       })
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
+        map((res) => this.cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-          this.toastr.success('Quantity updated', 'Success');
+          this.toastr.success('Quantity updated', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            closeButton: true,
+          });
+        }),
+        catchError((error) => {
+          this.toastr.error('Failed to update quantity', 'Error');
+          return throwError(() => error);
         })
       );
   }
 
   removeFromCart(productId: number): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .delete<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
+        map((res) => this.cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-          this.toastr.error('Item removed from cart', 'Removed');
+          this.toastr.info('Item removed from cart', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            closeButton: true,
+          });
+        }),
+        catchError((error) => {
+          this.toastr.error('Failed to remove item', 'Error');
+          return throwError(() => error);
         })
       );
   }
 
   getCartItemById(productId: number): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .get<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
-      .pipe(map((res) => this._cartAdapter.CartAdapter(res)));
+      .pipe(
+        map((res) => this.cartAdapter.CartAdapter(res)),
+        catchError((error) => {
+          this.toastr.error('Failed to retrieve item from cart', 'Error');
+          return throwError(() => error);
+        })
+      );
   }
 
-  // Aliases for convenience (optional)
+  // Aliases
   getItems(): Observable<Cart> {
     return this.getCart();
   }

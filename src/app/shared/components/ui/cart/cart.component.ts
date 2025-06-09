@@ -5,7 +5,7 @@ import { Product } from '../../../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../../../core/service/cart.service';
-import { WishlistServive } from '../../../../core/service/wishlist.service';
+import { WishlistService } from '../../../../core/service/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -31,7 +31,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   constructor(
     private _CartService: CartService,
-    private _WishlistService: WishlistServive
+    private _WishlistService: WishlistService
   ) {}
 
   ngOnInit(): void {

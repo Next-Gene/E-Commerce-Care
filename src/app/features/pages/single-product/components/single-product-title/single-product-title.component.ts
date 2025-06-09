@@ -5,7 +5,7 @@ import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../../../../core/service/cart.service';
-import { WishlistServive } from '../../../../../core/service/wishlist.service';
+import { WishlistService } from '../../../../../core/service/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -27,7 +27,7 @@ export class SingleProductTitleComponent {
     private _Activatedroute: ActivatedRoute,
     private _ProductsService: ProductsService,
     private _CartService: CartService,
-    private _WishlistService: WishlistServive
+    private _WishlistService: WishlistService
   ) {
     // Get the product ID from route params
     this._Activatedroute.params.subscribe((params) => {

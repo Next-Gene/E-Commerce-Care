@@ -1,14 +1,15 @@
 <div
-  class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300 w-full h-[420px]"
+  class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300 w-full h-[480px]"
 >
   <div class="product-card__inner w-full flex flex-col">
     <div
-      class="product-card__image relative mx-auto overflow-hidden rounded-20 w-full h-[250px]"
+      class="product-card__image relative mx-auto overflow-hidden rounded-20 w-full h-[400px]"
     >
       <img
-        class="rounded-20 w-full h-full object-cover"
+        class="rounded-20 w-[90%] h-[90%] object-cover"
         [src]="product.photoUrl"
         [alt]="product.name"
+        loading="lazy"
       />
       <div
         class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"
@@ -48,7 +49,7 @@
     <!-- Product Card Content -->
     <div class="product-card__content px-4 py-3 flex flex-col flex-grow">
       <h3
-        class="font-semibold text-sm dark:text-white transition-colors duration-300 line-clamp-2 h-10"
+        class="font-semibold text-sm dark:text-white transition-colors duration-300 line-clamp-2 "
         [title]="product.name"
         routerLink="/SingleProduct/{{ product.id }}"
       >
@@ -94,9 +95,9 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <div class="product-card__actions flex justify-end mt-3">
+      <div class="product-card__actions flex justify-end mt-3" (click)="addToCart()">
         <div class="product-card__actions__item flex justify-center">
-          <button aria-label="Add to Cart" (click)="addToCart()">
+          <button aria-label="Add to Cart" >
             <img
               src="/icons/shopping-bag-icon.svg"
               alt="Add to Cart"
