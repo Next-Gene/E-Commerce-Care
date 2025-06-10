@@ -1,0 +1,57 @@
+<div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto border dark:bg-[#242424] mt-20 ">
+  <h2 class="text-xl font-bold text-[var(--secondary-color)] dark:text-white mb-4">
+    Order #{{ orders.id }} - {{ orders.status }}
+  </h2>
+  <hr class="border-[#5BB8FF] mb-4" />
+
+  <!-- Customer Info -->
+  <div class="mb-6">
+    <h3 class="text-[#5BB8FF] font-bold mb-2">Customer Info</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div class="text-[var(--secondary-color)]">Email:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.buyerEmail }}</div>
+      <div class="text-[var(--secondary-color)]">Name:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.firstName }} {{ orders.shippingAddress.lastName }}</div>
+      <div class="text-[var(--secondary-color)]">Phone:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.phoneNumber }}</div>
+    </div>
+  </div>
+
+  <!-- Shipping Address -->
+  <div class="mb-6">
+    <h3 class="text-[#5BB8FF] font-bold mb-2">Shipping Address</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div class="text-[var(--secondary-color)]">Street:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.street }}</div>
+      <div class="text-[var(--secondary-color)]">City:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.city }}</div>
+      <div class="text-[var(--secondary-color)]">State:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.state }}</div>
+      <div class="text-[var(--secondary-color)]">ZIP Code:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.shippingAddress.zipCode }}</div>
+      <div class="text-[var(--secondary-color)]">Delivery:</div>
+      <div class="text-gray-900 dark:text-white">{{ orders.deliveryMethod }} - ${{ orders.shippingPrice.toFixed(2) }}</div>
+    </div>
+  </div>
+
+  <!-- Items -->
+  <div class="mb-6">
+    <h3 class="text-[#5BB8FF] font-bold mb-2">Items</h3>
+    <div class="border border-[#5BB8FF] rounded p-3 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+      <img [src]="orders.orderItems[0].pictureUrl" alt="Product" class="w-20 h-20 object-cover rounded" />
+      <div>
+        <div class="font-semibold text-gray-800 dark:text-white">{{ orders.orderItems[0].productName }}</div>
+        <div class="text-sm text-gray-600 dark:text-gray-300">Quantity: {{ orders.orderItems[0].quantity }}</div>
+        <div class="text-sm text-gray-600 dark:text-gray-300">Price: ${{ orders.orderItems[0].price.toFixed(2) }}</div>
+      </div>
+    </div>
+  </div>
+
+    <hr class="border-[#5BB8FF] mb-6 " />
+  <!-- Summary -->
+  <div class="text-sm text-right text-[var(--secondary-color)] dark:text-white">
+    <div class="mb-1">Subtotal: <span class="ml-2">${{ orders.subtotal.toFixed(2) }}</span></div>
+    <div class="mb-1">Shipping: <span class="ml-2">${{ orders.shippingPrice.toFixed(2) }}</span></div>
+    <div class="font-bold text-lg">Total: <span class="ml-2">${{ orders.total.toFixed(2) }}</span></div>
+  </div>
+</div>

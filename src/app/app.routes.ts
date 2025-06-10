@@ -176,6 +176,22 @@ export const routes: Routes = [
             
     },
     {
+        path: 'orders',
+        loadComponent: () =>
+            import('./features/pages/orders/orders.component').then(
+                (c) => c.OrdersComponent
+            ),
+            
+    },
+    {
+        path: 'details-order/:id',
+        loadComponent: () =>
+            import('./features/pages/details-order/details-order.component').then(
+                (c) => c.DetailsOrderComponent
+            ),
+            
+    },
+    {
         path: '**',
         loadComponent: () =>
             import('./shared/components/ui/error-page/error-page.component').then(
