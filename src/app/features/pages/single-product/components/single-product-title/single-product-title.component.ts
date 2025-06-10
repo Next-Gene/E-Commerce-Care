@@ -53,15 +53,49 @@ export class SingleProductTitleComponent {
   }
 
   private _destroy$ = new Subject<void>();
-getphotos(){
-this.product.productPhotos = this.product.productPhotos || [];
 
-  const mainPhoto = this.product.productPhotos.find(p => p.isMain);
-  this.product.photoUrl = mainPhoto ? mainPhoto.url : this.product.productPhotos[0]?.url;
-}
+  getphotos() {
+    if (!this.product || !this.product.productPhotos) {
+      return;
+    }
+    const mainPhoto = this.product.productPhotos.find((p) => p.isMain);
+    this.product.photoUrl = mainPhoto
+      ? mainPhoto.url
+      : this.product.productPhotos[0]?.url;
+  }
+
   ngOnInit(): void {
     this.getParam();
-      this.getphotos();
+  }
+
+  getParam(): void {
+    this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
+      next: (params) => {
+        this.id = params.get('id') || '';
+        if (this.id) {
+          this._ProductsService
+            .getProductById(this.id)
+            .pipe(takeUntil(this._destroy$))
+            .subscribe({
+              next: (res) => {
+                this.product = res;
+                this.getphotos();
+                // Check if product is in wishlist after loading
+                this._WishlistService.getItems().subscribe({
+                  next: (wishlist) => {
+                    this.isInWishlist = wishlist.items.some(
+                      (item) => item.id === Number(this.id)
+                    );
+                  },
+                  error: (err) => {
+                    console.error('Error checking wishlist status:', err);
+                  },
+                });
+              },
+            });
+        }
+      },
+    });
   }
 
   addToCart() {
@@ -116,27 +150,8 @@ this.product.productPhotos = this.product.productPhotos || [];
             easeTime: 300,
           });
         },
-        
       });
     }
-  }
-
-  getParam(): void {
-    this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
-      next: (params) => {
-        this.id = params.get('id') || '';
-        if (this.id) {
-          this._ProductsService
-            .getProductById(this.id)
-            .pipe(takeUntil(this._destroy$))
-            .subscribe({
-              next: (res) => {
-                this.product = res;
-              },
-            });
-        }
-      },
-    });
   }
 
   ngOnDestroy(): void {
@@ -147,5 +162,4 @@ this.product.productPhotos = this.product.productPhotos || [];
   changeMainImage(newImage: string) {
     this.product.photoUrl = newImage;
   }
-
 }
