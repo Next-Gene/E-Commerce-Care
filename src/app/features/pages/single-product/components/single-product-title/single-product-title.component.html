@@ -7,14 +7,14 @@
     >
       <img
         class="rounded-20 images w-96 h-full"
-        [src]="product.photoUrl"
-        [alt]="product.name"
+        [src]="product?.photoUrl"
+        [alt]="product?.name"
       />
     </div>
 
     <!-- صور مصغرة للاختيار -->
     <div class="mt-5 flex justify-center">
-      @for (image of product.productPhotos; track image.id) {
+      @for (image of product?.productPhotos || []; track image.id) {
       <div
         class="product-card__image overflow-hidden mr-3 rounded-lg aspect-square shadow-2xl border w-24 h-24 bg-white"
       >
@@ -25,7 +25,6 @@
           (click)="changeMainImage(image.url)"
         />
       </div>
-
       }
     </div>
   </div>
@@ -33,20 +32,20 @@
   <!-- Product Details -->
   <div class="max-sm:mx-20 mx-10">
     <h2 class="text-2xl dark:text-white transition-colors duration-300">
-      {{ product.name }}
+      {{ product?.name }}
     </h2>
     <!-- <h2 class="text-[#0070CD] dark:text-blue-500 duration-300 transition-colors text-xl">${{ product.priceAfterDiscount }}</h2> -->
     <h2 class="dark:text-white transition-colors duration-300">
       <span
         class="line-through text-[#757F95] dark:text-gray-400 duration-300 transition-colors text-xl"
-        >${{ product.price }}</span
+        >${{ product?.price }}</span
       >
       <!-- {{ product.discount }}{{ "PRODUCT_DETAILS.DISCOUNT" | translate }} -->
     </h2>
     <h2
       class="text-[#757F95] sm:w-1/2 w-full dark: dark:text-gray-300 duration-300 transition-colors"
     >
-      {{ product.description }}
+      {{ product?.description }}
     </h2>
     <!-- Product Specs -->
     <ul class="mt-7 list-disc text-[#757F95]">
@@ -60,13 +59,13 @@
         <span class="font-semibold">{{
           "PRODUCT_DETAILS.CATEGORY" | translate
         }}</span>
-        {{ product.category }}
+        {{ product?.category }}
       </li>
       <li class="mt-4">
         <span class="font-semibold">{{
           "PRODUCT_DETAILS.BRAND" | translate
         }}</span>
-        {{ product.productBrand }}
+        {{ product?.productBrand }}
       </li>
       <li class="mt-4">
         <span class="font-semibold">{{

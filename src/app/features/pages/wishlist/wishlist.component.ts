@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { WishlistServive } from '../../../core/service/wishlist.service';
-import { LoadingService } from '../../../core/service/loading-service.service';
 import {
   BehaviorSubject,
   EMPTY,
@@ -17,9 +15,11 @@ import {
   tap,
 } from 'rxjs';
 import { WishlistItem } from '../../../core/interfaces/wishlist';
-import { CartComponent } from '../../../shared/components/ui/cart/cart.component';
 import { Product } from '../../../core/interfaces/product';
+import { WishlistService } from '../../../core/service/wishlist.service';
+import { LoadingService } from '../../../core/service/loading-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { CartComponent } from '../../../shared/components/ui/cart/cart.component';
 
 @Component({
   selector: 'app-wishlist',
@@ -28,16 +28,16 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss'],
 })
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit, OnDestroy {
   private refreshSubject = new BehaviorSubject<void>(undefined);
   private destroy$ = new Subject<void>();
   private toastr = inject(ToastrService);
 
-  loading = false;
+  loading = true;
   wishlistItems$: Observable<Product[]>;
 
   constructor(
-    private wishlistService: WishlistServive,
+    private wishlistService: WishlistService,
     private router: Router,
     private loadingService: LoadingService
   ) {
@@ -48,6 +48,10 @@ export class WishlistComponent implements OnInit {
     this.refreshWishlist();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   private mapToProduct(item: WishlistItem): Product {
     return {
@@ -70,23 +74,17 @@ export class WishlistComponent implements OnInit {
       }),
       switchMap(() =>
         this.wishlistService.getItems().pipe(
-          map((response) =>
-            (response.items || []).map((item) => this.mapToProduct(item))
-          ),
+          map((response) => (response.items || []).map((item) => this.mapToProduct(item))),
           catchError((error) => {
             console.error('Error loading wishlist:', error);
-            this.toastr.error('Failed to load wishlist items', 'Error', {
-              timeOut: 3000,
-              positionClass: 'toast-top-right',
-              progressBar: true,
-              progressAnimation: 'increasing',
-              easeTime: 300,
-            });
+            this.toastr.error('فشل تحميل العناصر من المفضلة', 'خطأ');
             return EMPTY;
           }),
           finalize(() => {
-            this.loading = false;
-            this.loadingService.hide();
+            setTimeout(() => {
+              this.loading = false;
+              this.loadingService.hide();
+            });
           })
         )
       ),
@@ -96,7 +94,7 @@ export class WishlistComponent implements OnInit {
   }
 
   refreshWishlist(): void {
-    this.refreshSubject.next(undefined);
+    this.refreshSubject.next();
   }
 
   removeFromWishlist(productId: number): void {
@@ -104,24 +102,12 @@ export class WishlistComponent implements OnInit {
       .deleteItem(productId)
       .pipe(
         tap(() => {
+          this.toastr.success('تمت إزالة المنتج من المفضلة', 'تم');
           this.refreshWishlist();
-          this.toastr.success('Item removed from wishlist', 'Success', {
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            progressBar: true,
-            progressAnimation: 'increasing',
-            easeTime: 300,
-          });
         }),
         catchError((error) => {
-          console.error('Error removing item from wishlist:', error);
-          this.toastr.error('Failed to remove item from wishlist', 'Error', {
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            progressBar: true,
-            progressAnimation: 'increasing',
-            easeTime: 300,
-          });
+          console.error('Error removing wishlist item:', error);
+          this.toastr.error('فشل في إزالة المنتج من المفضلة', 'خطأ');
           return EMPTY;
         }),
         takeUntil(this.destroy$)

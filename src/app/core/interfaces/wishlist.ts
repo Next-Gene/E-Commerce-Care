@@ -13,3 +13,5 @@ export interface WishlistItem {
   category: string;
   addedAt: Date;
 }
+
+export type APIWishlistResponse = Wishlist;
