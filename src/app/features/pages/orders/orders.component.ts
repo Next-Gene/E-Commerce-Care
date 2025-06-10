@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { APIOrderResponse, order } from '../../../core/interfaces/order';
 import { OrdersService } from '../../../core/service/orders.service';
-import { error } from 'console';
 import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-orders',
@@ -11,23 +11,30 @@ import { CommonModule } from '@angular/common';
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnInit, OnDestroy {
   Orders: APIOrderResponse = [];
-private _OrdersService = inject(OrdersService)
-  
-    ngOnInit(): void {
-      this.getallOrders();
-    }
-    getallOrders() {
-      this._OrdersService.getAllOrders().subscribe({
-  next: (res) => {
-    this.Orders = res;
-  },
-  error: (err) => {
-    console.error(err);
-  }
-});
-  
-    }
+  private _OrdersService = inject(OrdersService);
+  private _destroy$ = new Subject<void>();
 
+  ngOnInit(): void {
+    this.getallOrders();
+  }
+
+  getallOrders() {
+    this._OrdersService.getAllOrders()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (res) => {
+          this.Orders = res;
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
 }
