@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap, EMPTY, map } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  tap,
+  EMPTY,
+  map,
+  catchError,
+  throwError,
+} from 'rxjs';
 import { ApiEndpoint } from '../enums/api.endpoints';
 import { APICartResponse, Cart } from '../interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
@@ -18,19 +26,23 @@ export class CartService implements CartAPI {
   cart$ = this.cartSubject.asObservable();
 
   constructor(
-    private _HttpClient: HttpClient,
+    private http: HttpClient,
     private toastr: ToastrService,
-    private _cartAdapter: CartAdapter
+    private cartAdapter: CartAdapter
   ) {
+    this.loadCart();
+  }
+
+  private loadCart(): void {
     this.getCart().subscribe();
   }
 
-  private updateCartState(cart: Cart) {
+  private updateCartState(cart: Cart): void {
     this.cartSubject.next(cart);
     this.updateCartItemCount(cart);
   }
 
-  private updateCartItemCount(cart: Cart) {
+  private updateCartItemCount(cart: Cart): void {
     const count = cart.cartItems.reduce(
       (total, item) => total + item.quantity,
       0
@@ -39,22 +51,28 @@ export class CartService implements CartAPI {
   }
 
   getCart(): Observable<Cart> {
-    return this._HttpClient.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
-      map((res) => this._cartAdapter.CartAdapter(res)),
-      tap((cart) => this.updateCartState(cart))
+    return this.http.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
+      map((res) => this.cartAdapter.CartAdapter(res)),
+      tap((cart) => this.updateCartState(cart)),
+      catchError((error) => {
+        this.toastr.error('Failed to load cart', 'Error');
+        return EMPTY;
+      })
     );
   }
 
   addToCart(productId: number, quantity: number = 1): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .post<APICartResponse>(`${ApiEndpoint.CART}/items`, {
         productId,
         quantity,
       })
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
-        tap((cart) => {
-          this.updateCartState(cart);
+        map((res) => this.cartAdapter.CartAdapter(res)),
+        tap((cart) => this.updateCartState(cart)),
+        catchError((error) => {
+          this.toastr.error('Failed to add item to cart', 'Error');
+          return throwError(() => error);
         })
       );
   }
@@ -65,38 +83,62 @@ export class CartService implements CartAPI {
       return EMPTY;
     }
 
-    return this._HttpClient
+    return this.http
       .put<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}/quantity`, {
         quantity,
       })
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
+        map((res) => this.cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-
+          this.toastr.success('Quantity updated', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            closeButton: true,
+          });
+        }),
+        catchError((error) => {
+          this.toastr.error('Failed to update quantity', 'Error');
+          return throwError(() => error);
         })
       );
   }
 
   removeFromCart(productId: number): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .delete<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
       .pipe(
-        map((res) => this._cartAdapter.CartAdapter(res)),
+        map((res) => this.cartAdapter.CartAdapter(res)),
         tap((cart) => {
           this.updateCartState(cart);
-
+          this.toastr.info('Item removed from cart', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            closeButton: true,
+          });
+        }),
+        catchError((error) => {
+          this.toastr.error('Failed to remove item', 'Error');
+          return throwError(() => error);
         })
       );
   }
 
   getCartItemById(productId: number): Observable<Cart> {
-    return this._HttpClient
+    return this.http
       .get<APICartResponse>(`${ApiEndpoint.CART}/items/${productId}`)
-      .pipe(map((res) => this._cartAdapter.CartAdapter(res)));
+      .pipe(
+        map((res) => this.cartAdapter.CartAdapter(res)),
+        catchError((error) => {
+          this.toastr.error('Failed to retrieve item from cart', 'Error');
+          return throwError(() => error);
+        })
+      );
   }
 
-  // Aliases for convenience (optional)
+  // Aliases
   getItems(): Observable<Cart> {
     return this.getCart();
   }

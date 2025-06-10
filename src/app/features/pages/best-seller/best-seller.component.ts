@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
-import { CartComponent } from "../../../shared/components/ui/cart/cart.component";
+import { Component, inject, OnInit } from '@angular/core';
+import { CartComponent } from '../../../shared/components/ui/cart/cart.component';
 import { Product } from '../../../core/interfaces/product';
 import { CommonModule } from '@angular/common';
+import { ProductsService } from '../../../core/service/products.service';
 
 @Component({
   selector: 'app-best-seller',
-  imports: [CartComponent,CommonModule],
+  standalone: true,
+  imports: [CartComponent, CommonModule],
   templateUrl: './best-seller.component.html',
-  styleUrl: './best-seller.component.scss'
+  styleUrl: './best-seller.component.scss',
 })
-export class BestSellerComponent {
+export class BestSellerComponent implements OnInit {
+  private _productsService = inject(ProductsService);
+  private selectedProducts: Product[] | null = null;
+
   products: Product[] = [];
+  getRandomProducts(products: Product[], count: number): Product[] {
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
 
   ngOnInit(): void {
-   const cached = localStorage.getItem('bestSellerProducts');
-  if (cached) {
-    this.products = JSON.parse(cached);
-  } else {
-    console.warn('No bestSellerProducts found in localStorage');
-  }
+    this._productsService.getAllProducts().subscribe((data: Product[]) => {
+      this.products = this.getRandomProducts(data, 10);
+    });
   }
 }
