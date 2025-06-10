@@ -37,17 +37,22 @@
   <!-- Items -->
   <div class="mb-6">
     <h3 class="text-[#5BB8FF] font-bold mb-2">Items</h3>
-    <div class="border border-[#5BB8FF] rounded p-3 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-      <img [src]="orders.orderItems[0].pictureUrl" alt="Product" class="w-20 h-20 object-cover rounded" />
-      <div>
-        <div class="font-semibold text-gray-800 dark:text-white">{{ orders.orderItems[0].productName }}</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300">Quantity: {{ orders.orderItems[0].quantity }}</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300">Price: ${{ orders.orderItems[0].price.toFixed(2) }}</div>
-      </div>
+    <div class="space-y-4">
+      @for (item of orders.orderItems; track item.productId) {
+        <div class="border border-[#5BB8FF] rounded p-3 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <img [src]="item.pictureUrl" [alt]="item.productName" class="w-20 h-20 object-cover rounded" />
+          <div>
+            <div class="font-semibold text-gray-800 dark:text-white">{{ item.productName }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Quantity: {{ item.quantity }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Price: ${{ item.price.toFixed(2) }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Total: ${{ (item.price * item.quantity).toFixed(2) }}</div>
+          </div>
+        </div>
+      }
     </div>
   </div>
 
-    <hr class="border-[#5BB8FF] mb-6 " />
+  <hr class="border-[#5BB8FF] mb-6" />
   <!-- Summary -->
   <div class="text-sm text-right text-[var(--secondary-color)] dark:text-white">
     <div class="mb-1">Subtotal: <span class="ml-2">${{ orders.subtotal.toFixed(2) }}</span></div>

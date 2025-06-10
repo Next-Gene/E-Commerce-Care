@@ -10,30 +10,29 @@ import { order } from '../../../core/interfaces/order';
   templateUrl: './details-order.component.html',
   styleUrl: './details-order.component.scss'
 })
-export class DetailsOrderComponent  implements OnInit{
+export class DetailsOrderComponent implements OnInit {
   orders: order = {} as order;
- private _Activatedroute = inject(ActivatedRoute);
- private _OrdersService = inject(OrdersService);
+  private _Activatedroute = inject(ActivatedRoute);
+  private _OrdersService = inject(OrdersService);
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.getOrderParam();
-}
- getOrderParam(): void {
-      this._Activatedroute.paramMap.subscribe({
-        next: (params) => {
+  }
+
+  getOrderParam(): void {
+    this._Activatedroute.paramMap.subscribe({
+      next: (params) => {
         let id = params.get('id') || '';
         this._OrdersService.getOrderById(id).subscribe({
-          next:(res)=>{
-            console.log(res)
+          next: (res) => {
+            this.orders = res;
+            console.log('Order details loaded:', this.orders);
           },
-          error:(err)=>{
-            console.log(err)
+          error: (err) => {
+            console.error('Error loading order:', err);
           }
-        })
-        }
-      
-
-      })
-  
-}
+        });
+      }
+    });
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { order } from '../../../core/interfaces/order';
+import { APIOrderResponse, order } from '../../../core/interfaces/order';
 import { OrdersService } from '../../../core/service/orders.service';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './orders.component.scss'
 })
 export class OrdersComponent {
-  Orders: order[] = [];
+  Orders: APIOrderResponse = [];
 private _OrdersService = inject(OrdersService)
   
     ngOnInit(): void {
@@ -21,8 +21,7 @@ private _OrdersService = inject(OrdersService)
     getallOrders() {
       this._OrdersService.getAllOrders().subscribe({
   next: (res) => {
-    console.log(res);
-    
+    this.Orders = res;
   },
   error: (err) => {
     console.error(err);
