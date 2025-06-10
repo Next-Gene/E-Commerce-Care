@@ -401,8 +401,8 @@
       }
     },
     "BUTTONS": {
-      "PREVIOUS": "Previous",
-      "PAY_NOW": "Pay Now"
+      "PREVIOUS": " Back To Cart",
+      "PAY_NOW": "Next Step"
     }
   },
   "CART_SUMMARY": {
@@ -448,7 +448,7 @@
       "MESSAGE_PLACEHOLDER": "Your Message"
     },
     "BUTTONS": {
-      "BACK_TO_CART": "Back To Cart",
+      "BACK_TO_CART": "Previous",
       "NEXT_STEP": "Next Step"
     }
   },

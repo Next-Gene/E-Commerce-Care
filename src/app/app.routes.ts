@@ -1,6 +1,4 @@
-import { DetailsCategoryComponent } from './features/pages/home/components/details-category/details-category.component';
-import { PaymetComponent } from './features/pages/checkout/paymet/paymet.component';
-import { FormComponent } from './features/pages/checkout/form/form.component';
+import { CkeckoutComponent } from './features/pages/checkout/ckeckout/ckeckout.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -95,6 +93,28 @@ export const routes: Routes = [
       import('./features/pages/checkout/ckeckout/ckeckout.component').then(
         (c) => c.CkeckoutComponent
       ),
+    children: [
+      {
+        path: '',
+        redirectTo: 'payment',
+        pathMatch: 'full',
+      },
+      {
+        path: 'form',
+        loadComponent: () =>
+          import(
+            './features/pages/checkout/ckeckout/components/form/form.component'
+          ).then((c) => c.FormComponent),
+      },
+      {
+        path: 'payment',
+        loadComponent: () =>
+          import(
+            './features/pages/checkout/ckeckout/components/paymet/paymet.component'
+          ).then((c) => c.PaymetComponent),
+      },
+      
+    ],
   },
   {
     path: 'details-category/:id',
