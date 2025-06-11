@@ -1,0 +1,73 @@
+<div class="bg-white dark:bg-[#1e1e1e] rounded-2xl shadow-lg ring-1 ring-gray-100 dark:ring-gray-700 p-4 max-w-xl mx-auto border border-gray-200 dark:border-gray-700 mt-32 mb-16">
+  <h2 class="text-lg font-bold text-[var(--secondary-color)] dark:text-white mb-3">
+    Order #{{ orders.id }} - {{ orders.status }}
+  </h2>
+  <hr class="border-[#5BB8FF] dark:border-blue-300 mb-3" />
+
+  <!-- Customer Info -->
+  <div class="mb-4">
+    <h3 class="text-[#5BB8FF] dark:text-blue-300 font-bold mb-2">Customer Info</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">Email:</div>
+      <div class="text-gray-800 dark:text-white ">{{ orders.buyerEmail }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">Name:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.firstName }} {{ orders.shippingAddress.lastName }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">Phone:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.phoneNumber }}</div>
+    </div>
+  </div>
+
+  <!-- Shipping Address -->
+  <div class="mb-4">
+    <h3 class="text-[#5BB8FF] dark:text-blue-300 font-bold mb-2">Shipping Address</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">Street:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.street }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">City:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.city }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">State:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.state }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">ZIP Code:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.shippingAddress.zipCode }}</div>
+      <div class="text-[var(--secondary-color)] dark:text-gray-300">Delivery:</div>
+      <div class="text-gray-800 dark:text-white">{{ orders.deliveryMethod }} - EGP{{ orders.shippingPrice.toFixed(2) }}</div>
+    </div>
+  </div>
+
+  <!-- Items -->
+  <div class="mb-4">
+    <h3 class="text-[#5BB8FF] dark:text-blue-300 font-bold mb-2">Items</h3>
+    <div class="space-y-3">
+      @for (item of orders.orderItems; track item.productId) {
+        <div class="border border-[#5BB8FF] dark:border-blue-400 rounded p-2 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+          <img [src]="item.pictureUrl" [alt]="item.productName" class="w-16 h-16 object-cover rounded" />
+          <div>
+            <div class="font-semibold text-gray-800 dark:text-white">{{ item.productName }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Quantity: {{ item.quantity }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Price: EGP{{ item.price.toFixed(2) }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Total: EGP{{ (item.price * item.quantity).toFixed(2) }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <hr class="border-[#5BB8FF] dark:border-blue-300 mb-4" />
+  
+  <!-- Summary -->
+
+<div class="text-sm text-[var(--secondary-color)] dark:text-white space-y-1">
+  <div class="flex justify-between ">
+    <span class="dark:text-gray-300">Subtotal:</span>
+    <span class="font-mono font-medium">EGP{{ orders.subtotal.toFixed(2) }}</span>
+  </div>
+  <div class="flex justify-between ">
+    <span class="dark:text-gray-300">Shipping:</span>
+    <span class="font-mono font-medium">EGP{{ orders.shippingPrice.toFixed(2) }}</span>
+  </div>
+  <div class="flex justify-between text-lg font-bold border-t border-[#5BB8FF] dark:border-blue-300 pt-2 mt-2">
+    <span>Total:</span>
+    <span class="font-mono">EGP{{ orders.total.toFixed(2) }}</span>
+  </div>
+</div>
+

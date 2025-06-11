@@ -8,7 +8,8 @@ export class ApiEndpoint {
   static WISHLIST = `${environment.baseUrl}/api/v1/wishlist`;
   static CART = `${environment.baseUrl}/api/v1/cart`;
   static CHATBOT = `${environment.baseUrl}/api/PrimeAi`;
-  
+  static OREDR = `${environment.baseUrl}/api/v1/Order/getOrderForUser`;
+  static OREDR_BY_ID = `${environment.baseUrl}/api/v1/Order/getOrderById`;
 
   // Static JSONs
   static TREATMENT = '/assets/data/treatment.json';
