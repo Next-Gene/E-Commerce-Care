@@ -43,12 +43,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
   isDropdownOpen = false;
   currentLanguage!: 'ar' | 'en';
-  
+
   ngOnInit(): void {
     this.currentLanguage = this.translationService.getLang();
     this._FlowbiteService.loadFlowbite(() => {});
     this.checkLoginStatus();
-    
+
     // Subscribe to theme changes
     this._ThemeService.darkMode$
       .pipe(takeUntil(this.destroy$))
@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   get isArabic(): boolean {
     return document.documentElement.dir === 'rtl'; // أو استخدم أي منطق يعتمد على اللغة الحالية
   }
-  
+
   checkLoginStatus() {
     this.isLoggedIn = !!localStorage.getItem('token');
   }
@@ -93,12 +93,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
   logout() {
-    this.isLoggedIn = false; 
+    this.isLoggedIn = false;
     this.isDropdownOpen = false;
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
-   switchLang() {
+  switchLang() {
     this.translationService.switchLang();
   }
   @HostListener('document:click', ['$event'])

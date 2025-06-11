@@ -1,30 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { Wishlist } from '../interfaces/wishlist';
+import { Observable } from 'rxjs';
+import { APIWishlistResponse } from '../interfaces/wishlist';
 import { ApiEndpoint } from '../enums/api.endpoints';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WishlistServive {
+export class WishlistService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private _HttpClient: HttpClient, private toastr: ToastrService) {}
-
-  getItems(): Observable<Wishlist> {
-      return this._HttpClient.get<Wishlist>(`${ApiEndpoint.WISHLIST}`);
+  getItems(): Observable<APIWishlistResponse> {
+    return this.http.get<APIWishlistResponse>(ApiEndpoint.WISHLIST);
   }
 
-  addItem(productId: number): Observable<Wishlist> {
-    return this._HttpClient.post<Wishlist>(`${ApiEndpoint.WISHLIST}/items`, {
-      productId,
-    });
+  addItem(productId: number): Observable<APIWishlistResponse> {
+    return this.http.post<APIWishlistResponse>(
+      `${ApiEndpoint.WISHLIST}/items`,
+      { productId }
+    );
   }
 
-  deleteItem(productId: number): Observable<Wishlist> {
-    return this._HttpClient.delete<Wishlist>(
+  deleteItem(productId: number): Observable<APIWishlistResponse> {
+    return this.http.delete<APIWishlistResponse>(
       `${ApiEndpoint.WISHLIST}/items/${productId}`
-    )
+    );
   }
 }

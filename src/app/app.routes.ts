@@ -4,6 +4,7 @@ import { FormComponent } from './features/pages/checkout/form/form.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+
     {
         path: '',
         redirectTo: 'home',
