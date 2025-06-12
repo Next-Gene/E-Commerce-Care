@@ -45,6 +45,7 @@ export class BrandsComponent {
       mouseDrag: true,
       touchDrag: true,
       autoplay: true,
+      rtl: true,
       autoplayTimeout: 2000,
       dots: false,
       navSpeed: 700,
