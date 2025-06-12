@@ -47,7 +47,6 @@ export class AllProductComponent implements OnInit {
       // عند تحميل الصفحة نعتمد القائمة الكاملة كقائمة مبدئية للتصفية
       this.filteredProducts = [...this.products];
       this.calculatePagination();
-      this.onPageChange(this.currentPage);
     });
 
     this._categoriesService.getAllCategories().subscribe((categories: Category[]) => {

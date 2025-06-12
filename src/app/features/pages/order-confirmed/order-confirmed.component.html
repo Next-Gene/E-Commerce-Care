@@ -1,0 +1,163 @@
+<div
+  class="bg-slate-50 min-h-screen py-8 dark:bg-[#252525] duration-300 transition-colors"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Success Header -->
+    <div class="mb-8">
+        <div class="flex items-center justify-center mb-4">
+            <span class="text-green-500 text-4xl">✓</span>
+        </div>
+      <h1
+        class="text-2xl font-semibold text-[--secondary-color] dark:text-white mb-2"
+      >
+        Your Order Is Confirmed
+      </h1>
+      <p class="text-gray-600 dark:text-gray-300">
+        Check Your Email Box For More Information
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Left Column - Cart Summary -->
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6">
+        <h2 class="text-xl mb-4 dark:text-white">Cart Summary</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-300">Sub Total:</span>
+            <span class="font-medium dark:text-white"
+              >EGP: {{ orderDetails?.subtotal?.toFixed(2) }}</span
+            >
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-300">Discount:</span>
+            <span class="font-medium dark:text-white">EGP 0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-300">Shipping:</span>
+            <span class="font-medium dark:text-white"
+              >EGP: {{ orderDetails?.deliveryMethod?.price?.toFixed(2) }}</span
+            >
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-300">Taxes:</span>
+            <span class="font-medium dark:text-white"
+              >EGP: {{ tax?.toFixed(2) }}</span
+            >
+          </div>
+          <div class="border-t pt-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600 dark:text-gray-300">Total:</span>
+              <span class="font-semibold dark:text-white"
+                >EGP: {{ total?.toFixed(2) }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle Column - Order Details -->
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6">
+        <h2 class="text-xl mb-4 dark:text-white">Order Details</h2>
+        <div class="mb-6">
+          <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Ship To
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            {{ orderDetails?.shippingAddress?.firstName }}
+            {{ orderDetails?.shippingAddress?.lastName }}<br />
+            {{ orderDetails?.shippingAddress?.street }}<br />
+            {{ orderDetails?.shippingAddress?.city }},
+            {{ orderDetails?.shippingAddress?.state }}<br />
+            {{ orderDetails?.shippingAddress?.zipCode }}<br />
+            Egypt
+          </p>
+        </div>
+
+        <!-- Order Status -->
+        <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-lg font-medium text-blue-800 dark:text-blue-300">
+              Order ID
+            </h3>
+            <span class="text-blue-600 dark:text-blue-400"
+              >#{{ orderDetails?.id }}</span
+            >
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-blue-600 dark:text-blue-400">Status</span>
+            <span
+              class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full"
+              >{{ orderDetails?.status }}</span
+            >
+          </div>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-blue-600 dark:text-blue-400"
+              >Estimated Arrival</span
+            >
+            <span class="text-blue-800 dark:text-blue-300">{{
+              orderDetails?.deliveryMethod?.deliveryTime
+            }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Items Details -->
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6">
+        <h2 class="text-xl mb-4 dark:text-white">Items Details</h2>
+        <div class="space-y-4">
+          <div
+            *ngFor="let item of orderDetails?.orderItems"
+            class="flex gap-4 border-b pb-4"
+          >
+            <img
+              [src]="item.itemOrderd.productImageUrl"
+              [alt]="item.itemOrderd.productName"
+              class="w-20 h-20 object-cover rounded-lg"
+            />
+            <div class="flex-1">
+              <h4
+                class="text-gray-800 dark:text-gray-200 font-medium line-clamp-2"
+              >
+                {{ item.itemOrderd.productName }}
+              </h4>
+              <div class="flex justify-between mt-2">
+                <span class="text-gray-600 dark:text-gray-400"
+                  >Qty: {{ item.quantity }}</span
+                >
+                <span class="font-medium dark:text-white"
+                  >EGP{{ item.price }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-6 space-y-2">
+          <button
+            routerLink="/All-prodect"
+            class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition-colors"
+          >
+            Buy Again
+          </button>
+          <button
+            [routerLink]="['/details-order', orderDetails?.id]"
+            class="w-full border border-gray-300 text-gray-600 py-2 rounded-xl hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+          >
+            View Your Item
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home Button -->
+    <div class="text-center mt-8">
+      <button
+        routerLink="/"
+        class="bg-blue-600 text-white px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors duration-200"
+      >
+        Home →
+      </button>
+    </div>
+  </div>
+</div>

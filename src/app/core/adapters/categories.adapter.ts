@@ -8,12 +8,15 @@ export class CategoriesAdapter {
   constructor() {}
 
   CategoriesAdapter(rawRes: APICategoriesResponse): Category[] {
-    return rawRes.categories.map((resItem) => ({
-      _id: resItem._id,
-      image: resItem.image,
+    return rawRes.map((resItem: Category) => ({
+      id: resItem.id,
+      photoUrl: resItem.photoUrl,
       name: resItem.name,
-      productsCount: resItem.productsCount,
-      description:resItem.description,
+      description: resItem.description,
+      slug: resItem.slug,
+      categoryPhoto: resItem.categoryPhoto,
+      createdAt: resItem.createdAt,
+      updatedAt: resItem.updatedAt,
     }));
   }
 }

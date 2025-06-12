@@ -1,18 +1,15 @@
 export interface Category {
-  _id?: string;
-  name?: string;
-  slug?: string;
-  image?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  productsCount?: number;
+  id: number;
+  name: string;
+  slug: string;
+  categoryPhoto: string | null;
+  photoUrl: string;
+  createdAt: string;
+  updatedAt: string;
   description?: string;
 }
-export interface APICategoriesResponse {
-  message: string;
-  metadata: Metadata;
-  categories: Category[];
-}
+
+export type APICategoriesResponse = Category[];
 
 export interface Metadata {
   currentPage: number;

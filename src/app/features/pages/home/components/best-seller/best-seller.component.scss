@@ -1,0 +1,24 @@
+.p {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  color: white;
+  text-align: left;
+  z-index: 10;
+}
+
+.badge-new {
+  background-color: #f43f5e;
+}
+
+.badge-hot {
+  background-color: #0ea5e9; 
+}
+
+.badge-out {
+  background-color: #ef4444; 
+}

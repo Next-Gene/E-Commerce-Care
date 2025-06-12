@@ -1,0 +1,238 @@
+<div
+  class="bg-slate-50 min-h-screen dark:bg-[#252525] duration-300 transition-colors"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 p-6">
+        <h2
+          class="text-2xl font-semibold dark:text-blue-500 transition-colors duration-300 mb-6 text-[var(--secondary-color)]"
+        >
+          {{ "CHECKOUT.BILLING_ADDRESS.TITLE" | translate }}
+        </h2>
+        <form [formGroup]="billingForm" class="space-y-6">
+          <div
+            formGroupName="shippingAddress"
+            class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.FIRST_NAME" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="firstName"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.FIRST_NAME_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.firstName')?.touched && billingForm.get('shippingAddress.firstName')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                First name is required
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.LAST_NAME" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="lastName"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.LAST_NAME_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.lastName')?.touched && billingForm.get('shippingAddress.lastName')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Last name is required
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.EMAIL" | translate }}
+              </label>
+              <input
+                type="email"
+                formControlName="email"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.EMAIL_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.email')?.touched && billingForm.get('shippingAddress.email')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Email is required
+              </div>
+              <div
+                *ngIf="billingForm.get('shippingAddress.email')?.touched && billingForm.get('shippingAddress.email')?.errors?.['email']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Please enter a valid email
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.PHONE" | translate }}
+              </label>
+              <input
+                type="tel"
+                formControlName="phoneNumber"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.PHONE_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.phoneNumber')?.touched && billingForm.get('shippingAddress.phoneNumber')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Phone number is required
+              </div>
+            </div>
+
+            <div class="md:col-span-2">
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.ADDRESS_LINE_1" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="street"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.ADDRESS_LINE_1_PLACEHOLDER'
+                    | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.street')?.touched && billingForm.get('shippingAddress.street')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Street address is required
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.CITY" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="city"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.CITY_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.city')?.touched && billingForm.get('shippingAddress.city')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                City is required
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.POST_CODE" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="zipCode"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.POST_CODE_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.zipCode')?.touched && billingForm.get('shippingAddress.zipCode')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Postal code is required
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="mb-2 dark:text-gray-200 duration-300 transition-colors block text-[var(--secondary-color)] text-lg drop-shadow-lg"
+              >
+                {{ "CHECKOUT.BILLING_ADDRESS.STATE" | translate }}
+              </label>
+              <input
+                type="text"
+                formControlName="state"
+                [placeholder]="
+                  'CHECKOUT.BILLING_ADDRESS.STATE_PLACEHOLDER' | translate
+                "
+                class="w-full dark:bg-gray-300 duration-300 transition-colors text-gray-500 font-light rounded-lg shadow-md shadow-gray-350 border-gray-200 focus:ring-blue-500"
+              />
+              <div
+                *ngIf="billingForm.get('shippingAddress.state')?.touched && billingForm.get('shippingAddress.state')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                State is required
+              </div>
+            </div>
+          </div>
+
+          <!-- inside your <form [formGroup]="billingForm"> -->
+          <div *ngIf="paymentMethod === 'online'" class="md:col-span-2">
+            <label
+              class="mb-2 dark:text-gray-200 block text-lg drop-shadow-lg text-[var(--secondary-color)]"
+            >
+              {{ "CHECKOUT.BILLING_ADDRESS.MESSAGE" | translate }}
+            </label>
+            <textarea
+              formControlName="notes"
+              [placeholder]="
+                'CHECKOUT.BILLING_ADDRESS.MESSAGE_PLACEHOLDER' | translate
+              "
+              class="w-full font-light dark:bg-gray-300 rounded-lg shadow-md focus:ring-blue-500 h-20"
+            ></textarea>
+          </div>
+        </form>
+
+        <div class="flex justify-between mt-6">
+          <button
+            routerLink="/checkout/payment"
+            class="px-1 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200"
+          >
+            &larr; {{ "CHECKOUT.BUTTONS.BACK_TO_CART" | translate }}
+          </button>
+          <button
+            (click)="goToNextStep()"
+            class="max-sm:px-1 xl:px-2 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200"
+          >
+            {{ "CHECKOUT.BUTTONS.NEXT_STEP" | translate }} &rarr;
+          </button>
+        </div>
+      </div>
+      <div>
+        <app-cart-sammary></app-cart-sammary>
+      </div>
+    </div>
+  </div>
+</div>

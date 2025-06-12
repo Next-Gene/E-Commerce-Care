@@ -4,61 +4,146 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../../core/service/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../../../../core/service/cart.service';
+import { WishlistService } from '../../../../../core/service/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-single-product-title',
   imports: [TranslateModule],
   templateUrl: './single-product-title.component.html',
-  styleUrl: './single-product-title.component.scss'
+  styleUrl: './single-product-title.component.scss',
 })
 export class SingleProductTitleComponent {
   product!: Product;
-  id: string = "";
-
+  id: string = '';
+  isInWishlist: boolean = false;
+  private toastr = inject(ToastrService);
   // Modal and rating variables
   showRatingModal: boolean = false;
   currentRating: number = 0;
 
-  private _Activatedroute = inject(ActivatedRoute);
-  private _ProductsService = inject(ProductsService);
+  constructor(
+    private _Activatedroute: ActivatedRoute,
+    private _ProductsService: ProductsService,
+    private _CartService: CartService,
+    private _WishlistService: WishlistService
+  ) {}
+
   private _destroy$ = new Subject<void>();
+
+  getphotos() {
+    if (!this.product?.productPhotos) {
+      return;
+    }
+    const mainPhoto = this.product.productPhotos.find((p) => p.isMain);
+    if (this.product) {
+      this.product.photoUrl = mainPhoto
+        ? mainPhoto.url
+        : this.product.productPhotos[0]?.url;
+    }
+  }
 
   ngOnInit(): void {
     this.getParam();
   }
 
   getParam(): void {
-    this._Activatedroute.paramMap
-      .pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: (params) => {
-          this.id = params.get('id') || '';
-          if (this.id) {
-            this._ProductsService.getProductById(this.id)
-              .pipe(takeUntil(this._destroy$))
-              .subscribe({
-                next: (res) => {
-                  this.product = res;
-                }
-              });
-          }
+    this._Activatedroute.paramMap.pipe(takeUntil(this._destroy$)).subscribe({
+      next: (params) => {
+        this.id = params.get('id') || '';
+        if (this.id) {
+          this._ProductsService
+            .getProductById(this.id)
+            .pipe(takeUntil(this._destroy$))
+            .subscribe({
+              next: (res: Product) => {
+                this.product = res;
+                this.getphotos();
+                this._WishlistService.getItems().subscribe({
+                  next: (wishlist: { items: Array<{ id: number }> }) => {
+                    this.isInWishlist = wishlist.items.some(
+                      (item) => item.id === Number(this.id)
+                    );
+                  },
+                  error: (err: Error) => {
+                    console.error('Error checking wishlist status:', err);
+                  },
+                });
+              },
+              error: (err: Error) => {
+                console.error('Error loading product:', err);
+              },
+            });
         }
+      },
+    });
+  }
+
+  addToCart() {
+    this._CartService.addItem(Number(this.id)).subscribe({
+      next: (res) => {
+        this.toastr.success('Item added to cart', 'Success', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          progressBar: true,
+          progressAnimation: 'increasing',
+          easeTime: 300,
+        });
+      },
+      error: (err) => {
+        this.toastr.error('Failed to add item to cart', 'Error', {
+          timeOut: 3000,
+        });
+      },
+    });
+  }
+
+  addToWishlist() {
+    if (this.isInWishlist) {
+      // Remove from wishlist
+      this._WishlistService.deleteItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = false;
+          this.toastr.error('Item removed from wishlist', 'Removed', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+        error: (err) => {
+          this.toastr.error('Failed to remove item from wishlist', 'Error', {
+            timeOut: 3000,
+          });
+        },
       });
-  }
-  increase(product: any): void {
-    product.quantity++;
-  }
-  decrease(product: any): void {
-    if (product.quantity > 1) {
-      product.quantity--;
+    } else {
+      // Add to wishlist
+      this._WishlistService.addItem(Number(this.id)).subscribe({
+        next: (res) => {
+          this.isInWishlist = true;
+          this.toastr.success('Item added to wishlist', 'Success', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            easeTime: 300,
+          });
+        },
+      });
     }
   }
+
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }
-  changeMainImage(newImage: string) {
-    this.product.imgCover = newImage;
-}
 
+  changeMainImage(newImage: string) {
+    if (this.product) {
+      this.product.photoUrl = newImage;
+    }
+  }
 }
