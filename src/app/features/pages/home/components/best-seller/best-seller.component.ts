@@ -44,6 +44,7 @@ export class BestSellerComponent implements OnInit {
       mouseDrag: true,
       touchDrag: true,
       autoplay: true,
+      rtl: true,
       autoplayTimeout: 2000,
       dots: false,
       navSpeed: 700,
