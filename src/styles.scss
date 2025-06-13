@@ -21,6 +21,13 @@ body {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+   transition-duration: 300ms;
+  transition-property: background;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #202020;
+  transition-duration: 300ms;
+  transition-property: background;
 }
 
 ::-webkit-scrollbar-thumb {

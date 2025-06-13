@@ -1,7 +1,7 @@
 <div class="flex max-xl:flex-wrap mt-20">
   <div class="w-[22%] max-xl:w-full mt-12 ">
-    <h2 class="text-3xl text-[#157DD2] mb-3">Best Seller</h2>
-    <p class="leading-relaxed dark:text-white duration-300 transition-colors">
+    <h2 class="text-3xl text-[#157DD2] mb-3 max-xl:text-center">Best Seller</h2>
+    <p class="leading-relaxed dark:text-white max-sm:text-center duration-300 transition-colors ">
       Discover our most popular products that customers love! Carefully selected
       based on top sales and glowing reviews, these best sellers combine
       quality, performance, and value. Don't miss out—find your next favorite
@@ -9,7 +9,7 @@
     </p>
     <button
       routerLink="/best-seller"
-      class="mt-5 bg-[#0063FE] text-white p-3 px-14 rounded-xl hover:bg-blue-700 duration-500"
+      class="mt-5 max-md:ml-20 max-xl:ml-48 max-lg:ml-56 max-xl:mb-4 bg-[#0063FE] text-white p-3 px-14 rounded-xl hover:bg-blue-700 duration-500"
     >
       See All
     </button>
@@ -22,7 +22,7 @@
             carouselSlide
             *ngFor="let product of products; let i = index"
           >
-            <div class="relative h-full mx-2">
+            <div class="relative h-full  mx-2">
               <span
                 class="p"
                 [ngClass]="{
