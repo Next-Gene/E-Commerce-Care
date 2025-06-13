@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import {
   BehaviorSubject,
   Observable,
@@ -8,12 +8,14 @@ import {
   map,
   catchError,
   throwError,
+  of,
 } from 'rxjs';
 import { ApiEndpoint } from '../enums/api.endpoints';
 import { APICartResponse, Cart } from '../interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
 import { CartAPI } from '../base/CartAPI';
 import { CartAdapter } from '../adapters/cart.adapter';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +23,7 @@ import { CartAdapter } from '../adapters/cart.adapter';
 export class CartService implements CartAPI {
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   private cartSubject = new BehaviorSubject<Cart | null>(null);
+  private authService = inject(AuthService);
 
   cartItemCount$ = this.cartItemCountSubject.asObservable();
   cart$ = this.cartSubject.asObservable();
@@ -34,6 +37,11 @@ export class CartService implements CartAPI {
   }
 
   private loadCart(): void {
+    if (!this.authService.isAuthenticated()) {
+      this.cartSubject.next(null);
+      this.cartItemCountSubject.next(0);
+      return;
+    }
     this.getCart().subscribe();
   }
 
@@ -51,12 +59,21 @@ export class CartService implements CartAPI {
   }
 
   getCart(): Observable<Cart> {
+    if (!this.authService.isAuthenticated()) {
+      return EMPTY;
+    }
+
     return this.http.get<APICartResponse>(`${ApiEndpoint.CART}`).pipe(
       map((res) => this.cartAdapter.CartAdapter(res)),
       tap((cart) => this.updateCartState(cart)),
-      catchError((error) => {
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.cartSubject.next(null);
+          this.cartItemCountSubject.next(0);
+          return EMPTY;
+        }
         this.toastr.error('Failed to load cart', 'Error');
-        return EMPTY;
+        return throwError(() => error);
       })
     );
   }
@@ -153,5 +170,34 @@ export class CartService implements CartAPI {
 
   deleteItem(productId: number): Observable<Cart> {
     return this.removeFromCart(productId);
+  }
+
+  updateCartItemQuantity(
+    cartItemId: number,
+    quantity: number
+  ): Observable<Cart> {
+    return this.updateCart(cartItemId, quantity);
+  }
+
+  clearCart(): Observable<void> {
+    if (!this.authService.isAuthenticated()) {
+      return EMPTY;
+    }
+    return this.http.delete<void>(`${ApiEndpoint.CART}/clear`).pipe(
+      tap(() => {
+        this.cartSubject.next(null);
+        this.cartItemCountSubject.next(0);
+        this.toastr.success('Cart cleared', 'Success');
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.cartSubject.next(null);
+          this.cartItemCountSubject.next(0);
+          return EMPTY;
+        }
+        this.toastr.error('Failed to clear cart', 'Error');
+        return throwError(() => error);
+      })
+    );
   }
 }

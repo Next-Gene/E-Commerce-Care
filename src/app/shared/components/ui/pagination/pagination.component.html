@@ -1,24 +1,15 @@
 <div
-  class="flex flex-wrap items-center justify-between gap-4 py-4 dark:text-white"
+  class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 py-4 dark:text-white"
 >
-  <!-- Previous Button -->
-  <button
-    class="flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white disabled:opacity-50 order-2 lg:order-1 text-black"
-    [disabled]="currentPage === 1"
-    (click)="goToPage(currentPage - 1)"
-  >
-    <span class="text-xl">←</span>
-    <span>{{ "PAGINATION.PREVIOUS" | translate }}</span>
-  </button>
 
   <!-- Page Numbers -->
   <div
-    class="flex flex-wrap justify-center w-full lg:w-auto gap-2 order-1 lg:order-2"
+    class="flex flex-wrap justify-center gap-1 sm:gap-2 w-full order-first sm:order-none"
   >
     @for (page of pages; track $index) {
     <button
       *ngIf="page !== '...'; else dots"
-      class="px-4 py-2 rounded-lg text-sm font-medium border transition-all duration-200"
+      class="px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border transition-all duration-200 min-w-[32px] sm:min-w-[40px]"
       [class.bg-blue-600]="page === currentPage"
       [class.text-white]="page === currentPage"
       (click)="goToPage(page)"
@@ -26,18 +17,13 @@
       {{ page }}
     </button>
     <ng-template #dots>
-      <span class="px-3 py-2 text-gray-500">...</span>
+      <span class="px-2 sm:px-3 py-1.5 sm:py-2 text-gray-500 text-xs sm:text-sm"
+        >...</span
+      >
     </ng-template>
     }
   </div>
 
   <!-- Next Button -->
-  <button
-    class="flex items-center  gap-2 px-4 py-2 text-sm font-medium border rounded-lg transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white disabled:opacity-50 order-3 text-black"
-    [disabled]="currentPage === totalPages || totalPages === 0"
-    (click)="goToPage(currentPage + 1)"
-  >
-    <span>{{ "PAGINATION.NEXT" | translate }}</span>
-    <span class="text-xl">→</span>
-  </button>
+
 </div>
