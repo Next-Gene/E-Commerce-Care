@@ -50,9 +50,6 @@ export class CartComponent implements OnInit, OnDestroy {
             (item) => item.id === this.product.id
           );
         },
-        error: (err) => {
-          console.error('Error checking wishlist status:', err);
-        },
       });
     }
   }
