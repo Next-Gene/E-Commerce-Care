@@ -96,7 +96,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isLoggedIn = false;
     this.isDropdownOpen = false;
     localStorage.removeItem('token');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home']).then(() => {
+        window.location.reload();
+      });
   }
   switchLang() {
     this.translationService.switchLang();

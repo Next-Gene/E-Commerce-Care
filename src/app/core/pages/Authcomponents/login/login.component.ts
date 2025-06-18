@@ -36,7 +36,9 @@ export class LoginComponent {
   .subscribe({
     next: (res: any) => {
       localStorage.setItem("token", res.token);
-      this._router.navigate(["home"])
+      this._router.navigate(["home"]).then(() => {
+        window.location.reload();
+      });
 
     },
     error: (err: HttpErrorResponse) => {
