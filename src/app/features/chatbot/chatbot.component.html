@@ -37,7 +37,7 @@
           <div class="flex mb-2 items-center justify-between">
             <div>
               <span
-                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200/50 backdrop-blur-sm"
+                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full duration-300 transition-colors text-blue-600 dark:bg-[#303030] bg-blue-200/50 backdrop-blur-sm"
               >
                 Usage
               </span>
@@ -82,7 +82,7 @@
             'flex justify-end': message.isUser,
             'flex justify-start': !message.isUser
           }"
-          class="w-full"
+          class="w-full "
         >
           <div
             [ngClass]="{
@@ -90,9 +90,9 @@
               'message-bot': !message.isUser && !message.isError,
               'message-error': message.isError
             }"
-            class="max-w-[80%] rounded-2xl px-4 py-3 shadow-lg message-bubble theme-transition"
+            class="max-w-[80%] rounded-2xl  px-4 py-3 shadow-lg message-bubble theme-transition"
           >
-            <div class="message-content" style="white-space: pre-line">
+            <div class="message-content " style="white-space: pre-line ">
               {{ message.content }}
             </div>
             <div
@@ -133,7 +133,7 @@
                 loading ? 'Please wait...' : 'Type your health question...'
               "
               [disabled]="loading"
-              class="chat-input w-full px-4 py-3 rounded-xl border border-gray-300/50 dark:border-gray-600/50 focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500 focus:border-transparent dark:bg-gray-700/50 dark:text-white theme-transition"
+              class=" w-full px-4 py-3 rounded-xl border border-gray-300/50 dark:border-gray-600/50 focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500 focus:border-transparent dark:bg-gray-700/50 dark:text-white theme-transition"
               [ngClass]="{ 'opacity-50': loading }"
             />
           </div>
@@ -152,7 +152,7 @@
     <!-- Emergency Contacts -->
     <div
       *ngIf="emergencyContacts$ | async as contacts"
-      class="mt-6 bg-white/90 dark:bg-gray-800/90 rounded-2xl p-6 shadow-lg backdrop-blur-sm transition-all duration-300"
+      class="mt-6 bg-white/90 dark:bg-gray-800/90 rounded-2xl  p-6 shadow-lg backdrop-blur-sm transition-all duration-300"
     >
       <div class="flex items-center space-x-2 mb-4">
         <i

@@ -4,10 +4,11 @@ import { APIOrderResponse, order } from '../../../core/interfaces/order';
 import { OrdersService } from '../../../core/service/orders.service';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { TruncatePipe } from '../../../shared/pipes/truncate.pipe';
 
 @Component({
   selector: 'app-orders',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,TruncatePipe],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
