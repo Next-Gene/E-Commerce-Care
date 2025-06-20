@@ -1,90 +1,76 @@
-<div class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300 w-full min-h-[480px] h-full">
+<div class="product-card flex justify-center w-full dark:bg-[#252525] transition-colors duration-300">
+  <div class="product-card__inner w-full flex flex-col rounded-2xl shadow-md overflow-hidden bg-white dark:bg-[#1e1e1e] transition-all h-full">
 
-  <div class="product-card__inner w-full flex flex-col ">
-    <div
-      class="product-card__image relative  overflow-hidden rounded-20 w-full h-[400px]"
-    >
+    <!-- Product Image -->
+    <div class="relative h-[300px] overflow-hidden group">
       <img
-        class="rounded-20 w-[100%] h-[100%] object-cover"
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         [src]="product.photoUrl"
         [alt]="product.name"
         loading="lazy"
       />
+
+      <!-- Overlay -->
       <div
-      
-        class="product-card__overlay w-full h-full absolute top-0 flex justify-center items-center"
+        class="absolute inset-0 bg-gradient-to-t from-blue-600/70 to-blue-400/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4"
       >
-        <div
-        
-          class="product-card__overlay__content flex justify-center items-center"
+        <!-- View Icon -->
+        <a
+          [routerLink]="'/SingleProduct/' + product.id"
+          class="w-10 h-10 rounded-full bg-white hover:scale-110 transition-transform flex items-center justify-center shadow-md"
         >
-          <div
-            class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
-          >
-            <img
-              src="/icons/eye.svg"
-              alt="View"
-              routerLink="/SingleProduct/{{ product.id }}"
-            />
-          </div>
-          <div
-            class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
-          >
-            <button
-              class="text-white hover:text-red-500"
-              aria-label="Wishlist"
-              (click)="addToWishlist()"
-            >
-              <i
-                [class]="
-                  isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'
-                "
-                [style.color]="isInWishlist ? '#ff0000' : '#ffffff'"
-              ></i>
-            </button>
-          </div>
-        </div>
+          <i class="fa-solid fa-eye text-gray-700"></i>
+        </a>
+
+        <!-- Wishlist -->
+        <button
+          class="w-10 h-10 rounded-full bg-white hover:scale-110 transition-transform flex items-center justify-center shadow-md"
+          aria-label="Wishlist"
+          (click)="addToWishlist()"
+        >
+          <i
+            [class]="isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
+            [style.color]="isInWishlist ? '#ff0000' : '#333333'"
+          ></i>
+        </button>
       </div>
     </div>
 
-    <!-- Product Card Content -->
-    <div class="product-card__content px-4 py-3  flex flex-col flex-grow">
+    <!-- Card Content -->
+    <div class="flex flex-col p-4 flex-grow">
+      <!-- Product Title -->
       <h3
-        class="font-semibold cursor-pointer text-sm mb-2 dark:text-white transition-colors duration-300 line-clamp-2 "
+        class="font-semibold text-sm mb-0 cursor-pointer dark:text-white text-gray-800 hover:text-blue-600 line-clamp-2 transition-colors"
         [title]="product.name"
-        routerLink="/SingleProduct/{{ product.id }}"
+        [routerLink]="'/SingleProduct/' + product.id"
       >
         {{ product.name }}
       </h3>
 
-      <!-- Pricing and Discount -->
-      <div class="product-card__price flex flex-col mt-auto">
+      <!-- Price and Discount -->
+      <div class="mt-auto">
         <div class="flex items-center">
-          <span
-            class="dark:text-cyan-300 duration-300 transition-colors text-blue-800 font-medium text-sm"
-          >
+          <span class="text-blue-800 dark:text-cyan-300 font-medium text-sm">
             {{ getPriceAfterDiscount(product) | currency : currencyCode }}
           </span>
-          <span class="text-xs text-blue-500 line-through ml-1">
+          <span class="text-xs text-blue-500 line-through ml-2">
             {{ product.price | currency : currencyCode }}
           </span>
         </div>
-        <span class="text-[10px] text-green-600 mt-1">
-          {{ calculateDiscount(product) | number : "1.0-0" }}% Discount
+        <span class="text-[10px] text-green-600 mt-1 block">
+          {{ calculateDiscount(product) | number : '1.0-0' }}% Discount
         </span>
       </div>
 
-      <!-- Add to Cart Button -->
-      <div class="product-card__actions flex justify-end mt-3" (click)="addToCart()">
-        <div class="product-card__actions__item flex justify-center">
-          <button aria-label="Add to Cart" >
-            <img
-              src="/icons/shopping-bag-icon.svg"
-              alt="Add to Cart"
-              class="w-6 h-6"
-            />
-          </button>
-        </div>
+      <!-- Add to Cart -->
+      <div class="mt-4 flex justify-end">
+        <button
+          aria-label="Add to Cart"
+          (click)="addToCart()"
+          class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 rounded-full flex items-center justify-center transition-transform hover:scale-110 shadow-md"
+        >
+          <img src="/icons/shopping-bag-icon.svg" alt="Add to Cart" class="w-5 h-5" />
+        </button>
       </div>
     </div>
   </div>

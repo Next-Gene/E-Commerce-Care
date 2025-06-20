@@ -1,11 +1,11 @@
 <aside
   *ngIf="!isMobile() || showFilters"
   (click)="$event.stopPropagation()"
-  class="w-3/4 md:w-[20rem] p-4 rounded-lg space-y-6"
+  class="w-3/4 md:w-[20rem] p-4 rounded-lg space-y-6 bg-white dark:bg-[#1e1e1e] shadow-lg"
   [ngClass]="
     isMobile()
       ? {
-          'fixed top-14 left-0 w-3/4 bg-white h-full z-50 transition-transform duration-300 shadow-2xl overflow-y-auto rounded-40': true,
+          'fixed top-14 left-0 w-3/4 h-full z-50 transition-transform duration-300 shadow-2xl overflow-y-auto rounded-r-2xl': true,
           '-translate-x-full': !showFilters,
           'translate-x-0': showFilters
         }
@@ -13,60 +13,69 @@
   "
 >
   <!-- Close button (only on mobile) -->
-  <div class="flex justify-end mb-2 sm:hidden">
-    <button (click)="onToggleFilters()" class="text-2xl">&times;</button>
+  <div class="flex justify-end mb-4 sm:hidden">
+    <button 
+      (click)="onToggleFilters()" 
+      class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors"
+    >
+      <i class="fa-solid fa-times text-gray-600 dark:text-gray-300"></i>
+    </button>
   </div>
 
   <!-- Category Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.CATEGORY.TITLE' | translate }}</h3>
-    <ul class="space-y-4  duration-300 dark:text-white transition-colors">
+    <h3 class="font-semibold text-lg mb-4 text-[var(--secondary-color)] dark:text-blue-400 transition-colors">
+      {{ 'FILTERS.CATEGORY.TITLE' | translate }}
+    </h3>
+    <ul class="space-y-3">
       <li>
-        <label class="inline-flex items-center space-x-4">
+        <label class="inline-flex items-center space-x-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
           <input
             type="radio"
             name="category"
-            class="form-radio h-4 w-4 text-blue-600"
+            class="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500"
             [(ngModel)]="selectedCategory"
             value="all"
             (change)="applyFilters()"
           />
-          <span>{{ 'FILTERS.CATEGORY.ALL' | translate }}</span>
+          <span class="text-gray-700 dark:text-gray-300">{{ 'FILTERS.CATEGORY.ALL' | translate }}</span>
         </label>
       </li>
       <li *ngFor="let category of categories">
-        <label class="inline-flex items-center space-x-2">
+        <label class="inline-flex items-center space-x-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
           <input
             type="radio"
             name="category"
-            class="form-radio h-4 w-4 text-blue-600"
+            class="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500"
             [(ngModel)]="selectedCategory"
             [value]="category.name"
             (change)="applyFilters()"
           />
-          <span class="w-full">{{ category.name }}</span>
+          <span class="text-gray-700 dark:text-gray-300 w-full">{{ category.name }}</span>
         </label>
       </li>
     </ul>
   </div>
-  <hr class="my-4 border-gray-300" />
-
+  
+  <hr class="border-gray-200 dark:border-gray-600" />
 
   <!-- Price Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.PRICE.TITLE' | translate }}</h3>
-    <ul class="space-y-2 dark:text-white duration-300 transition-colors">
+    <h3 class="font-semibold text-lg mb-4 text-[var(--secondary-color)] dark:text-blue-400 transition-colors">
+      {{ 'FILTERS.PRICE.TITLE' | translate }}
+    </h3>
+    <ul class="space-y-3">
       <li *ngFor="let price of ['', '0-25', '25-50', '50-100', '100-200', '200-999999']">
-        <label class="inline-flex items-center space-x-2">
+        <label class="inline-flex items-center space-x-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
           <input
             type="radio"
             name="price"
-            class="form-radio h-4 w-4 text-blue-600"
+            class="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500"
             [(ngModel)]="selectedPriceRange"
             [value]="price"
             (change)="applyFilters()"
           />
-          <span>
+          <span class="text-gray-700 dark:text-gray-300">
             {{
               price === ''
                 ? ('FILTERS.PRICE.ALL' | translate)
@@ -84,24 +93,27 @@
         </label>
       </li>
     </ul>
-    <hr class="my-4 border-gray-300" />
   </div>
+  
+  <hr class="border-gray-200 dark:border-gray-600" />
 
   <!-- Discount Filter -->
   <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.DISCOUNT.TITLE' | translate }}</h3>
-    <ul class="space-y-2  dark:text-white duration-300 transition-colors">
+    <h3 class="font-semibold text-lg mb-4 text-[var(--secondary-color)] dark:text-blue-400 transition-colors">
+      {{ 'FILTERS.DISCOUNT.TITLE' | translate }}
+    </h3>
+    <ul class="space-y-3">
       <li *ngFor="let discount of ['', '0-10', '25', '50', '70']">
-        <label class="inline-flex items-center space-x-2">
+        <label class="inline-flex items-center space-x-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
           <input
             type="radio"
             name="discount"
-            class="form-radio h-4 w-4 text-blue-600"
+            class="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500"
             [(ngModel)]="selectedDiscount"
             [value]="discount"
             (change)="applyFilters()"
           />
-          <span>
+          <span class="text-gray-700 dark:text-gray-300">
             {{
               discount === ''
                 ? ('FILTERS.DISCOUNT.ALL' | translate)
@@ -117,6 +129,5 @@
         </label>
       </li>
     </ul>
-    <br /><br />
   </div>
 </aside>
