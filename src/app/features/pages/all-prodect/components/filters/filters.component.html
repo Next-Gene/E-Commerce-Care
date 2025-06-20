@@ -51,68 +51,6 @@
   </div>
   <hr class="my-4 border-gray-300" />
 
-  <!-- Customer Reviews Filter -->
-  <div>
-    <h3 class="font-semibold text-lg mb-2 text-[var(--secondary-color)]  dark:text-blue-600 duration-300 transition-colors">{{ 'FILTERS.REVIEWS.TITLE' | translate }}</h3>
-    <ul class="space-y-2  dark:text-white duration-300 transition-colors">
-      <li *ngFor="let review of ['all', '5.0', '4.0-4.9', '3.0-3.9', '2.0-2.9', '1.0-1.9']">
-        <label class="inline-flex items-center space-x-2">
-          <input
-            type="radio"
-            name="reviews"
-            class="form-radio h-4 w-4 text-blue-600"
-            [(ngModel)]="selectedReview"
-            [value]="review"
-            (change)="applyFilters()"
-          />
-          <span *ngIf="review === 'all'">{{ 'FILTERS.REVIEWS.ALL' | translate }}</span>
-          <span *ngIf="review !== 'all'">
-            <ng-container *ngIf="review === '5.0'">
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              {{ 'FILTERS.REVIEWS.5_STAR' | translate }}
-            </ng-container>
-            <ng-container *ngIf="review === '4.0-4.9'">
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              {{ 'FILTERS.REVIEWS.4_STAR' | translate }}
-            </ng-container>
-            <ng-container *ngIf="review === '3.0-3.9'">
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              {{ 'FILTERS.REVIEWS.3_STAR' | translate }}
-            </ng-container>
-            <ng-container *ngIf="review === '2.0-2.9'">
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              {{ 'FILTERS.REVIEWS.2_STAR' | translate }}
-            </ng-container>
-            <ng-container *ngIf="review === '1.0-1.9'">
-              <i class="fa-solid fa-star inline-block h-4 w-4" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              <i class="fa-regular fa-star" style="color: #74c0fc"></i>
-              {{ 'FILTERS.REVIEWS.1_STAR' | translate }}
-            </ng-container>
-          </span>
-        </label>
-      </li>
-    </ul>
-    <hr class="my-4 border-gray-300" />
-  </div>
 
   <!-- Price Filter -->
   <div>

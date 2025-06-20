@@ -1,4 +1,4 @@
-<div class="dark:bg-[#242424] mx-auto max-sm:p-1 px-4 md:px-8 transition-colors duration-300 lg:px-32 xl:px-40 max-sm:mx-3 max-sm:py-16 py-24 xl:pb-20">
+<div class="dark:bg-[#242424] mx-auto max-sm:p-1 px-4 md:px-8 transition-colors duration-300  xl:px-20 max-sm:mx-3 max-sm:py-16 py-24 xl:pb-20">
   <!-- Title Section -->
   <div class="relative text-2xl font-semibold text-black inline-block mb-5 dark:text-white transition-colors duration-300">
     {{ "PRODUCTS_SECTION.TITLE" | translate }}
@@ -30,11 +30,11 @@
     ></app-filters>
 
     <!-- Products Grid -->
-    <section class="flex-1 max-sm:mb-3 grid grid-cols-1 sm:grid-cols-4 xl:grid-cols-3 gap-8 md:gap-x-4 lg:gap-6">
+    <section  class="flex-1 max-sm:mb-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 auto-rows-fr gap-8 md:gap-x-4 lg:gap-6">
       <app-cart
         *ngFor="let product of showingProducts"
         [product]="product"
-        class="product-card"
+        class="product-card flex flex-col justify-between h-full min-h-[520px]"
       ></app-cart>
     </section>
   </div>

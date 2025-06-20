@@ -25,7 +25,6 @@ import { OnlinePaymentService } from '../../../../../core/service/online-payment
   selector: 'app-form',
   standalone: true,
   imports: [
-    RouterLink,
     TranslateModule,
     CartSammaryComponent,
     ReactiveFormsModule,
