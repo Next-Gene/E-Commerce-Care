@@ -25,7 +25,6 @@ import { OnlinePaymentService } from '../../../../../core/service/online-payment
   selector: 'app-form',
   standalone: true,
   imports: [
-    RouterLink,
     TranslateModule,
     CartSammaryComponent,
     ReactiveFormsModule,
@@ -75,7 +74,11 @@ export class FormComponent {
       }
     });
   }
+  @Output() backToPayment = new EventEmitter<void>();
 
+  triggerBack() {
+    this.backToPayment.emit();
+  }
   goToNextStep() {
     if (!this.billingForm.valid) {
       this._toastr.error(

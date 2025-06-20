@@ -2,27 +2,33 @@
     "images": [
       {
         "id": 1,
-        "path": "/images/slider/cpsu9wcj.png"
+        "path": "/images/slider/clear.png"
       },
       {
         "id": 2,
-        "path": "/images/slider/WhatsApp_Image_2025-06-11_at_9.39.31_AM_2.webp"
+        "path": "/images/slider/axe.jpg"
       },
       {
         "id": 3,
-        "path": "/images/slider/5456d4a0b8bc8721832b4ab40c67c9cc.jpg"
+        "path": "/images/slider/high-purity-lutein-contained-jar-260nw-609860942.png"
       },
       {
         "id": 4,
-        "path": "/images/slider/f707a0b6f367dea96d4b9d0b99fade95.jpg"
+        "path": "/images/slider/the-science-behind-imodium-2_2x.png"
       },
       {
         "id": 5,
-        "path": "/images/slider/aa6efbc0ba6fa8ccf9b30ec0706262fc.jpg"
+        "path": "/images/slider/make-attractive-ads-for-your-medicine.jpg"
       },
       {
-        "id": 5,
-        "path": "/images/slider/3f13b84216dce201a1d42a8f587f7f3e.jpg"
+        "id": 6,
+        "path": "/images/slider/Dom Vasto.png"
+      },
+      {
+        "id": 7,
+        "path": "/images/slider/fat.jpg"
       }
+      
+
     ]
   }

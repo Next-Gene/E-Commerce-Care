@@ -1,8 +1,6 @@
-<div
+<div class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300 w-full min-h-[480px] h-full">
 
-  class="product-card flex justify-center pb-4 dark:bg-[#252525] transition-colors duration-300 w-full h-[480px]"
->
-  <div class="product-card__inner w-full flex flex-col">
+  <div class="product-card__inner w-full flex flex-col ">
     <div
       class="product-card__image relative  overflow-hidden rounded-20 w-full h-[400px]"
     >
@@ -50,35 +48,14 @@
     </div>
 
     <!-- Product Card Content -->
-    <div class="product-card__content px-4 py-3 flex flex-col flex-grow">
+    <div class="product-card__content px-4 py-3  flex flex-col flex-grow">
       <h3
-        class="font-semibold cursor-pointer text-sm dark:text-white transition-colors duration-300 line-clamp-2 "
+        class="font-semibold cursor-pointer text-sm mb-2 dark:text-white transition-colors duration-300 line-clamp-2 "
         [title]="product.name"
         routerLink="/SingleProduct/{{ product.id }}"
       >
         {{ product.name }}
       </h3>
-
-      <!-- Star Rating -->
-      <div class="product-card__stars flex my-2">
-        <ng-container *ngFor="let star of getStars(0)">
-          <i
-            *ngIf="star === 'full'"
-            class="fa-solid fa-star text-xs"
-            style="color: #74c0fc"
-          ></i>
-          <i
-            *ngIf="star === 'half'"
-            class="fa-solid fa-star-half-stroke text-xs"
-            style="color: #74c0fc"
-          ></i>
-          <i
-            *ngIf="star === 'empty'"
-            class="fa-regular fa-star text-xs"
-            style="color: #74c0fc"
-          ></i>
-        </ng-container>
-      </div>
 
       <!-- Pricing and Discount -->
       <div class="product-card__price flex flex-col mt-auto">

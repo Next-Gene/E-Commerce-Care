@@ -29,7 +29,7 @@
     }
   </div>
   @if (selectedSection === 'form') {
-  <app-form></app-form>
+<app-form (backToPayment)="showSection('payment')"></app-form>
   } @if (selectedSection === 'payment') {
   <app-paymet (sectionChange)="showSection($event)"></app-paymet>
   }
