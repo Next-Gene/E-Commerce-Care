@@ -75,7 +75,11 @@ export class FormComponent {
       }
     });
   }
+  @Output() backToPayment = new EventEmitter<void>();
 
+  triggerBack() {
+    this.backToPayment.emit();
+  }
   goToNextStep() {
     if (!this.billingForm.valid) {
       this._toastr.error(

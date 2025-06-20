@@ -71,25 +71,44 @@
         ></i>
       </button>
 
-      <!-- زر البحث -->
-      <button
-        class="text-black dark:text-white duration-300 transition-colors dark:hover:text-blue-500 hover:text-blue-500 p-1"
-        [attr.aria-label]="'NAV.ACTIONS.SEARCH' | translate"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21 21l-4.35-4.35m2.3-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
-          ></path>
-        </svg>
-      </button>
+     <!-- زر البحث -->
+<button
+  class="text-black dark:text-white duration-300 transition-colors dark:hover:text-blue-500 hover:text-blue-500 p-1"
+  [attr.aria-label]="'NAV.ACTIONS.SEARCH' | translate"
+
+  (click)="toggleSearch()"
+  routerLink="All-prodect"
+>
+  <svg
+    class="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 21l-4.35-4.35m2.3-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+    ></path>
+  </svg>
+</button>
+
+<!-- input search -->
+<div
+  *ngIf="showSearchInput"
+  @fadeZoomIn
+  class="mt-2"
+>
+<input
+  type="text"
+  (input)="onSearchInput($event)"
+
+  placeholder="Search..."
+class="w-full sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg px-3 py-2 mx-auto border rounded-md dark:bg-gray-800 dark:text-white shadow-md"
+/>
+</div>
+
 
       <!-- أيقونة عربة التسوق -->
       <a

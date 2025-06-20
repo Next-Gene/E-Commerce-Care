@@ -6,7 +6,7 @@
       },
       {
         "id": 2,
-        "path": "/images/slider/product-jpeg (1).jpeg"
+        "path": "/images/slider/axe.jpg"
       },
       {
         "id": 3,
@@ -21,8 +21,14 @@
         "path": "/images/slider/make-attractive-ads-for-your-medicine.jpg"
       },
       {
-        "id": 5,
+        "id": 6,
         "path": "/images/slider/Dom Vasto.png"
+      },
+      {
+        "id": 7,
+        "path": "/images/slider/fat.jpg"
       }
+      
+
     ]
   }

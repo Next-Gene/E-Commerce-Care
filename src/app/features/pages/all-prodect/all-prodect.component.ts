@@ -1,5 +1,5 @@
 import { CategoriesService } from './../../../core/service/categories.service';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../../core/interfaces/product';
@@ -9,6 +9,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { Category } from '../../../core/interfaces/category';
 import { TranslateModule } from '@ngx-translate/core';
 import { PaginationComponent } from '../../../shared/components/ui/pagination/pagination.component';
+import { SearchService } from '../../../core/service/search.service';
 
 @Component({
   selector: 'app-all-product',
@@ -33,6 +34,7 @@ export class AllProductComponent implements OnInit {
   currentPage: number = 1;
   limitProducts: number = 12;
   totalPages: number = 1;
+  private _searchservice=inject(SearchService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -52,6 +54,14 @@ export class AllProductComponent implements OnInit {
     this._categoriesService.getAllCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
     });
+
+      this._searchservice.searchTerm1.subscribe((term) => {
+    this.filteredProducts = this.products.filter(p =>
+      p.name.toLowerCase().includes(term.toLowerCase())
+    );
+        this.calculatePagination(); // ✅ تحدّث عدد الصفحات
+    this.onPageChange(1);    
+  });
   }
 
   toggleFilters(): void {

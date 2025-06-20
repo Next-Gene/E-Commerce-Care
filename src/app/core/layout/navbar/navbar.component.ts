@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import {
   Component,
   HostListener,
@@ -14,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../service/theme.service';
 import { Subject, takeUntil } from 'rxjs';
 import { CartService } from '../../service/cart.service';
+import { SearchService } from '../../service/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,12 +23,28 @@ import { CartService } from '../../service/cart.service';
   imports: [CommonModule, RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+    animations: [  // ✅ هنا فقط
+trigger('fadeZoomIn', [
+  transition(':enter', [
+    style({ opacity: 0, transform: 'scale(0.8)' }),
+    animate('250ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+  ]),
+  transition(':leave', [
+    animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.8)' })),
+  ]),
+])
+  ],
 })
+
 export class NavbarComponent implements OnInit, OnDestroy {
+  private _searchService = inject(SearchService);
   private _ThemeService = inject(ThemeService);
   private _cartService = inject(CartService);
   private destroy$ = new Subject<void>();
   isDarkMode = false;
+  showSearchInput = false;
+  private searchSubject = new Subject<string>();
+  searchTerm = '';
 
   toggleTheme() {
     this._ThemeService.toggleDarkMode();
@@ -40,7 +58,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private translationService: TranslationService,
     private themeService: ThemeService,
     private _eref: ElementRef
-  ) {}
+  ) {
+
+  }
   isDropdownOpen = false;
   currentLanguage!: 'ar' | 'en';
 
@@ -63,7 +83,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.cartCount = count;
       });
   }
-
+onSearchInput(event: Event) {
+  const input = event.target as HTMLInputElement;
+  const value = input?.value ?? '';
+  this._searchService.updateSearchTerm(value);
+}
+  toggleSearch() {
+    this.showSearchInput = !this.showSearchInput;
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
