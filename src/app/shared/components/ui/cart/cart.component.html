@@ -16,23 +16,32 @@
       >
         <!-- View Icon -->
         <a
-          [routerLink]="'/SingleProduct/' + product.id"
-          class="w-10 h-10 rounded-full bg-white hover:scale-110 transition-transform flex items-center justify-center shadow-md"
+          routerLink="/SingleProduct/{{ product.id }}"
+          class="w-10 h-10 rounded-full bg-primary hover:scale-110 transition-transform flex items-center justify-center shadow-md"
         >
-          <i class="fa-solid fa-eye text-gray-700"></i>
+          <img
+              src="/icons/eye.svg"
+              alt="View"
+            />
         </a>
 
         <!-- Wishlist -->
-        <button
-          class="w-10 h-10 rounded-full bg-white hover:scale-110 transition-transform flex items-center justify-center shadow-md"
-          aria-label="Wishlist"
-          (click)="addToWishlist()"
-        >
-          <i
-            [class]="isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
-            [style.color]="isInWishlist ? '#ff0000' : '#333333'"
-          ></i>
-        </button>
+        <div
+            class="product-card__overlay__item mx-5 flex justify-center items-center bg-primary"
+          >
+            <button
+              class="text-white hover:text-red-500"
+              aria-label="Wishlist"
+              (click)="addToWishlist()"
+            >
+              <i
+                [class]="
+                  isInWishlist ? 'fa-solid fa-heart' : 'fa-regular fa-heart'
+                "
+                [style.color]="isInWishlist ? '#ff0000' : '#ffffff'"
+              ></i>
+            </button>
+          </div>
       </div>
     </div>
 
@@ -42,13 +51,13 @@
       <h3
         class="font-semibold text-sm mb-0 cursor-pointer dark:text-white text-gray-800 hover:text-blue-600 line-clamp-2 transition-colors"
         [title]="product.name"
-        [routerLink]="'/SingleProduct/' + product.id"
+        routerLink="/SingleProduct/{{ product.id }}"
       >
         {{ product.name }}
       </h3>
 
       <!-- Price and Discount -->
-      <div class="mt-auto">
+      <div class="mt-4">
         <div class="flex items-center">
           <span class="text-blue-800 dark:text-cyan-300 font-medium text-sm">
             {{ getPriceAfterDiscount(product) | currency : currencyCode }}

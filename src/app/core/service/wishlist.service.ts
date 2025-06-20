@@ -66,10 +66,6 @@ export class WishlistService {
     return this.http
       .post<APIWishlistResponse>(`${ApiEndpoint.WISHLIST}/items`, { productId })
       .pipe(
-        tap((wishlist) => {
-          this.wishlistSubject.next(wishlist);
-          this.toastr.success('Item added to wishlist', 'Success');
-        }),
         catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
             this.wishlistSubject.next(null);
@@ -97,10 +93,6 @@ export class WishlistService {
     return this.http
       .delete<APIWishlistResponse>(`${ApiEndpoint.WISHLIST}/items/${productId}`)
       .pipe(
-        tap((wishlist) => {
-          this.wishlistSubject.next(wishlist);
-          this.toastr.success('Item removed from wishlist', 'Success');
-        }),
         catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
             this.wishlistSubject.next(null);
